@@ -117,12 +117,11 @@ Tu dois produire un business plan EXTRÊMEMENT DÉTAILLÉ qui fait entre 15 et 2
 
 RÈGLES ABSOLUES :
 - Parle directement à la personne avec "tu/toi"
-- Chaque point doit avoir minimum 3 lignes d'explication
-- Estimations réalistes du marché français. Lorsque des données précises ne sont pas certaines, indique clairement qu'il s'agit d'une estimation
-- Honnêteté sur les obstacles — mais toujours une solution
-- Chaque section doit être détaillée, concrète et directement exploitable
-- Privilégie la précision et l'utilité plutôt que la longueur
-- IMPORTANT : ne jamais inventer des chiffres présentés comme certains. Si une donnée est estimée, utilise 'environ', 'estimé à', 'approximativement'
+- Chaque point : 2-3 lignes maximum, précises et actionnables
+- Estimations réalistes — utilise "environ", "estimé à" quand les données ne sont pas certaines
+- Honnête sur les obstacles, toujours avec une solution concrète
+- JAMAIS de remplissage — chaque phrase doit apporter de la valeur
+- Réponds en JSON valide et COMPLET — ne tronque jamais la réponse
 
 Réponds UNIQUEMENT en JSON valide sans backticks. Format EXACT :
 {
@@ -135,13 +134,13 @@ Réponds UNIQUEMENT en JSON valide sans backticks. Format EXACT :
       "titre": "PORTRAIT ET SYNTHÈSE DU PROJET",
       "intro": "Phrase d'accroche personnalisée et percutante sur ce projet spécifique",
       "points": [
-        "**Qui tu es :** Description très complète du profil — parcours professionnel, compétences techniques, expériences pertinentes, situation personnelle, ce qui te rend unique et crédible pour ce projet. Explique pourquoi tu es LA bonne personne pour ce business. Minimum 4 lignes.",
-        "**Ton projet en détail :** Description précise et complète — le concept exact, le service ou produit, comment ça fonctionne de A à Z, ce que le client vit depuis le premier contact jusqu'à l'après-vente. Minimum 4 lignes.",
-        "**Le problème que tu résous :** Explication détaillée du problème réel que vivent tes futurs clients aujourd'hui — frustrations, manques, coûts actuels, temps perdu — et pourquoi ta solution arrive au bon moment. Minimum 3 lignes.",
-        "**Ta valeur ajoutée unique :** Ce qui te différencie vraiment de tout ce qui existe — liste précise de tes avantages concurrentiels, pourquoi un client te choisirait TOI. Minimum 3 lignes.",
-        "**Tes forces pour réussir :** Analyse détaillée de tous tes atouts — compétences spécifiques, réseau existant, expérience terrain, avantages de timing, ressources disponibles. Minimum 4 lignes.",
-        "**Les défis à surmonter :** Analyse honnête des 3 obstacles principaux avec pour chacun : description précise, pourquoi c'est un vrai obstacle, et ta stratégie concrète. Minimum 4 lignes.",
-        "**Notre évaluation professionnelle :** Verdict complet sur la viabilité, le potentiel réel, les conditions de réussite. Minimum 3 lignes."
+        "**Qui tu es :** Ton profil, tes compétences clés et pourquoi tu es la bonne personne pour ce projet.",
+        "**Ton projet :** Le concept, ce que tu vends, comment ça fonctionne concrètement.",
+        "**Le problème résolu :** Le besoin réel de tes clients et pourquoi ta solution arrive au bon moment.",
+        "**Ta différence :** Ce qui te distingue de la concurrence et pourquoi les clients te choisiraient.",
+        "**Tes forces :** Atouts principaux — expérience, réseau, timing, ressources.",
+        "**Les défis :** Les 2-3 vrais obstacles et ta stratégie pour les surmonter.",
+        "**Notre verdict :** Évaluation honnête de la viabilité et des conditions de réussite."
       ]
     },
     {
@@ -255,13 +254,59 @@ Réponds UNIQUEMENT en JSON valide sans backticks. Format EXACT :
 
     const data = await response.json();
     const text = data.content.map(i => i.text || "").join("");
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
     
-    if (!jsonMatch) {
-      return res.status(500).json({ error: "Format de réponse invalide" });
+    // LOG pour diagnostic — à supprimer après
+    console.log("=== CLAUDE RAW RESPONSE LENGTH:", text.length);
+    console.log("=== CLAUDE RAW RESPONSE:", text.slice(0, 500));
+    console.log("=== CLAUDE RAW RESPONSE END:", text.slice(-500));
+    
+    // Extraire le JSON de manière robuste
+    let parsed;
+    try {
+      // Essai 1 : extraction directe
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) throw new Error("No JSON found");
+      console.log("=== JSON MATCH LENGTH:", jsonMatch[0].length);
+      console.log("=== JSON MATCH END:", jsonMatch[0].slice(-200));
+      parsed = JSON.parse(jsonMatch[0]);
+    } catch (e1) {
+      try {
+        // Essai 2 : réparer le JSON tronqué en fermant les structures ouvertes
+        let raw = text;
+        // Trouver le début du JSON
+        const start = raw.indexOf('{');
+        if (start === -1) throw new Error("No JSON start");
+        raw = raw.slice(start);
+        
+        // Compter les accolades et crochets pour fermer proprement
+        let depth = 0;
+        let inString = false;
+        let escape = false;
+        let lastValid = 0;
+        
+        for (let i = 0; i < raw.length; i++) {
+          const c = raw[i];
+          if (escape) { escape = false; continue; }
+          if (c === '\\' && inString) { escape = true; continue; }
+          if (c === '"') { inString = !inString; continue; }
+          if (inString) continue;
+          if (c === '{' || c === '[') depth++;
+          if (c === '}' || c === ']') { depth--; if (depth === 0) lastValid = i; }
+        }
+        
+        // Prendre jusqu'au dernier JSON valide complet
+        if (lastValid > 0) {
+          raw = raw.slice(0, lastValid + 1);
+          parsed = JSON.parse(raw);
+        } else {
+          throw new Error("Cannot repair JSON");
+        }
+      } catch (e2) {
+        console.error("JSON parse error:", e2.message);
+        return res.status(500).json({ error: "Format de réponse invalide" });
+      }
     }
-
-    const parsed = JSON.parse(jsonMatch[0]);
+    
     return res.status(200).json(parsed);
 
   } catch (err) {
