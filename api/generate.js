@@ -118,16 +118,17 @@ Tu dois produire un business plan EXTRÊMEMENT DÉTAILLÉ qui fait entre 15 et 2
 RÈGLES ABSOLUES :
 - Parle directement à la personne avec "tu/toi"
 - Chaque point doit avoir minimum 3 lignes d'explication
-- Vraies données du marché français avec chiffres précis
+- Estimations réalistes du marché français. Lorsque des données précises ne sont pas certaines, indique clairement qu'il s'agit d'une estimation
 - Honnêteté sur les obstacles — mais toujours une solution
 - Chaque section doit remplir au moins une page A4
 - NE JAMAIS résumer ou raccourcir — plus c'est détaillé mieux c'est
+- IMPORTANT : ne jamais inventer des chiffres présentés comme certains. Si une donnée est estimée, utilise 'environ', 'estimé à', 'approximativement'
 
 Réponds UNIQUEMENT en JSON valide sans backticks. Format EXACT :
 {
   "nom": "Nom court mémorable (3 mots max)",
   "slogan": "Slogan différenciateur percutant",
-  "score": 78,
+  "score": 78, // Indicateur de potentiel entre 0 et 100 — estimation subjective basée sur les informations fournies
   "scoreExplication": "Explication détaillée en 3-4 phrases : forces, faiblesses, et 2-3 actions prioritaires pour améliorer la viabilité.",
   "sections": [
     {
@@ -240,7 +241,7 @@ Réponds UNIQUEMENT en JSON valide sans backticks. Format EXACT :
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-5-20251022",
+        model: "claude-sonnet-4-5",
         max_tokens: 8000,
         messages: [{ role: "user", content: prompt }],
       }),
