@@ -670,7 +670,7 @@ ${data.sections.map((s, i) => {
             </div>
 
             {/* Question */}
-            <h2 style={{ fontSize: isMobile ? "clamp(22px,6vw,34px)" : "clamp(28px,4vw,44px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 32, textTransform: "uppercase", color: "#fff", animation: "slideDown 0.4s ease both" }}>
+            <h2 style={{ fontSize: isMobile ? "20px" : "28px", fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.4, marginBottom: 32, color: "#fff", maxWidth: 650, animation: "slideDown 0.4s ease both" }}>
               {questions[qIndex]?.question || "Chargement..."}
             </h2>
 
