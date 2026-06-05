@@ -224,8 +224,6 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
       sections: []
     };
 
-    console.log("=== TEXT1 FIRST 300:", text1.slice(0, 300));
-    // Nettoyer les astérisques markdown du texte
     const cleanText1 = text1.replace(/\*\*/g, "");
     const lines1 = cleanText1.split("\n").map(l => l.trim()).filter(l => l);
     let inScoreCriteres = false;
