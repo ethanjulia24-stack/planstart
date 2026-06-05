@@ -220,6 +220,7 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
       sections: []
     };
 
+    console.log("=== TEXT1 FIRST 300:", text1.slice(0, 300));
     const lines1 = text1.split("\n").map(l => l.trim()).filter(l => l);
     let inScoreCriteres = false;
 
