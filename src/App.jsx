@@ -51,7 +51,7 @@ function LoadingScreen() {
   }, []);
 
   const totalDuration = LOADING_STEPS.reduce((s, step) => s + step.duration, 0) / 1000;
-  const globalProgress = Math.min((elapsed / totalDuration) * 100, 95);
+  const globalProgress = Math.min((elapsed / totalDuration) * 100, 85);
   const formatTime = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
   return (
@@ -97,7 +97,8 @@ function LoadingScreen() {
       </div>
 
       <div style={{ marginTop: 36, fontSize: 11, color: "rgba(255,255,255,0.2)", fontFamily: "Arial, sans-serif", textAlign: "center" }}>
-        Temps écoulé : {formatTime(elapsed)} · Cela peut prendre jusqu'à 30 secondes
+        Temps écoulé : {formatTime(elapsed)} · Cela peut prendre 1 à 2 minutes
+        {elapsed > 45 && <div style={{ marginTop: 8, color: "rgba(255,255,255,0.3)" }}>Ton plan est détaillé et personnalisé — encore quelques instants...</div>}
       </div>
     </div>
   );
@@ -189,7 +190,7 @@ export default function App() {
         bloc,
         question: parsed.question,
         placeholder: parsed.placeholder,
-        examples: [],
+        examples: parsed.examples || [],
       }]);
     } catch (err) {
       console.error(err);
@@ -309,6 +310,8 @@ export default function App() {
   const downloadPDF = (data) => {
     const date = new Date().toLocaleDateString("fr-FR");
     const escape = str => (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    // Utiliser le contenu détaillé pour le PDF
+    const sections = data.sections || [];
 
     const html = `<!DOCTYPE html>
 <html lang="fr">
@@ -499,7 +502,7 @@ ${data.sections.map((s, i) => {
 
           {/* STATS */}
           <div style={{ display: "flex", borderBottom: "2px solid #000", borderTop: "2px solid #000" }}>
-            {[{ n: "10 MIN", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
+            {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
               <div key={i} style={{ flex: 1, padding: isMobile ? "20px 12px" : "32px 40px", borderRight: i < 2 ? "2px solid #000" : "none" }}>
                 <div style={{ fontSize: isMobile ? "clamp(11px,3vw,16px)" : "clamp(16px,2vw,22px)", fontWeight: 900 }}>{s.n}</div>
                 <div style={{ fontSize: isMobile ? 10 : 12, color: "rgba(0,0,0,0.45)", marginTop: 4, fontFamily: "Arial, sans-serif" }}>{s.label}</div>
@@ -576,7 +579,7 @@ ${data.sections.map((s, i) => {
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
               <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
-                PLANSTART EST EN COURS DE LANCEMENT.
+                ACCÉDEZ GRATUITEMENT, PARTAGEZ VOTRE AVIS, INFLUENCEZ LA SUITE !
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.7, marginBottom: 40 }}>
                 Génère ton business plan gratuitement et aide-nous à améliorer la plateforme. Ton avis nous aidera à rendre l'outil encore plus utile.
@@ -597,7 +600,7 @@ ${data.sections.map((s, i) => {
                 <p style={{ fontSize: 15, color: "rgba(0,0,0,0.6)", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>L'objectif est simple : rendre la création d'entreprise plus accessible en permettant à chacun d'obtenir un business plan structuré, sans connaissances particulières et sans dépenser des milliers d'euros.</p>
               </div>
               <div style={{ background: "#000", padding: "40px 32px" }}>
-                {[{ n: "100%", label: "Gratuit et sans compte" }, { n: "7 sections", label: "Pour structurer ton projet" }, { n: "10 min", label: "Pour compléter le questionnaire" }].map((stat, i) => (
+                {[{ n: "100%", label: "Gratuit" }, { n: "7 sections", label: "" }, { n: "10 min", label: "" }].map((stat, i) => (
                   <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
                     <div style={{ fontSize: 32, fontWeight: 900, color: "#fff", lineHeight: 1 }}>{stat.n}</div>
                     <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", fontFamily: "Arial, sans-serif", marginTop: 4, letterSpacing: "0.05em" }}>{stat.label}</div>
@@ -674,10 +677,10 @@ ${data.sections.map((s, i) => {
               {questions[qIndex]?.question || "Chargement..."}
             </h2>
 
-            {/* Exemples cliquables (Q1 seulement) */}
-            {qIndex === 0 && FIRST_QUESTION.examples.length > 0 && !current && (
+            {/* Exemples cliquables sur toutes les questions */}
+            {questions[qIndex]?.examples?.length > 0 && !current && (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
-                {FIRST_QUESTION.examples.map((ex, i) => (
+                {questions[qIndex].examples.map((ex, i) => (
                   <button key={i} className="example-pill" onClick={() => setCurrent(ex)} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)", padding: "8px 16px", fontSize: 12, fontFamily: "Arial, sans-serif", borderRadius: 20, transition: "all 0.2s", cursor: "pointer" }}>
                     {ex}
                   </button>
@@ -749,16 +752,28 @@ ${data.sections.map((s, i) => {
                   <div style={{ fontSize: 10, fontWeight: 900, color: "rgba(255,255,255,0.35)", letterSpacing: "0.2em", marginTop: 4 }}>SCORE DE VIABILITÉ / 100</div>
                 </div>
                 {result.scoreExplication && (
-                  <div style={{ maxWidth: 520, margin: "0 auto 32px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", borderRadius: 4 }}>
+                  <div style={{ maxWidth: 520, margin: "0 auto 24px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", borderRadius: 4 }}>
                     <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, fontFamily: "Arial, sans-serif", lineHeight: 1.6 }}>{result.scoreExplication}</p>
                   </div>
                 )}
-                {/* Partage du score */}
-                <button onClick={handleShare} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "12px 24px", fontSize: 12, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 2, cursor: "pointer" }}>
-                  PARTAGER MON SCORE →
-                </button>
-                {shareToast && (
-                  <div style={{ marginTop: 12, fontSize: 12, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif" }}>✓ Copié dans le presse-papier !</div>
+                {result.scoreCriteres && result.scoreCriteres.length > 0 && (
+                  <div style={{ maxWidth: 520, margin: "0 auto 32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "20px 24px", borderRadius: 4 }}>
+                    <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>DÉTAIL DU SCORE</div>
+                    {result.scoreCriteres.map((c, i) => {
+                      const match = c.match(/^(.+?):\s*(\d+)\/10\s*—\s*(.+)/);
+                      if (!match) return null;
+                      const [, label, note, expl] = match;
+                      return (
+                        <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderBottom: i < result.scoreCriteres.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+                          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", minWidth: 120, fontFamily: "Arial, sans-serif" }}>{label}</span>
+                          <div style={{ flex: 1, height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2 }}>
+                            <div style={{ height: "100%", width: `${parseInt(note) * 10}%`, background: parseInt(note) >= 7 ? "#4ade80" : parseInt(note) >= 5 ? "#facc15" : "#f87171", borderRadius: 2 }} />
+                          </div>
+                          <span style={{ fontSize: 12, fontWeight: 900, color: "#fff", minWidth: 32 }}>{note}/10</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 )}
               </div>
 
@@ -797,23 +812,17 @@ ${data.sections.map((s, i) => {
                 <div style={{ marginTop: 48, padding: isMobile ? 24 : 40, background: "#000", textAlign: "center" }}>
                   <p style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>BUSINESS PLAN COMPLET</p>
                   <h3 style={{ fontSize: isMobile ? 18 : 24, fontWeight: 900, color: "#fff", marginBottom: 12, lineHeight: 1.2 }}>TÉLÉCHARGER MON PLAN</h3>
-                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, marginBottom: 8, fontFamily: "Arial, sans-serif" }}>
+                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, marginBottom: 28, fontFamily: "Arial, sans-serif" }}>
                     Analyse de marché · Modèle économique · Plan marketing · Plan d'action
                   </p>
-                  <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 12, marginBottom: 28, fontFamily: "Arial, sans-serif" }}>
-                    Un document de 15 à 20 pages prêt à présenter à une banque ou un investisseur.
-                  </p>
                   <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                    <button onClick={() => downloadPDF(result)} style={{ background: "#fff", color: "#000", border: "none", padding: isMobile ? "14px 28px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em" }}>
-                      ↓ TÉLÉCHARGER (HTML → PDF)
+                    <button onClick={() => downloadPDF(result)} style={{ background: "#fff", color: "#000", border: "none", padding: isMobile ? "14px 28px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", cursor: "pointer" }}>
+                      ↓ TÉLÉCHARGER MON PLAN
                     </button>
-                    <button onClick={handleShare} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.7)", padding: isMobile ? "14px 20px" : "16px 28px", fontSize: 12, fontWeight: 900, letterSpacing: "0.08em" }}>
+                    <button onClick={handleShare} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.7)", padding: isMobile ? "14px 20px" : "16px 28px", fontSize: 12, fontWeight: 900, letterSpacing: "0.08em", cursor: "pointer" }}>
                       PARTAGER →
                     </button>
                   </div>
-                  <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 11, fontFamily: "Arial, sans-serif", marginTop: 16 }}>
-                    Ouvre le fichier dans ton navigateur · Fichier → Imprimer → Enregistrer en PDF
-                  </p>
                 </div>
 
                 <button onClick={restart} style={{ background: "transparent", border: "none", color: "rgba(0,0,0,0.3)", fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", marginTop: 32, padding: 0, cursor: "pointer" }}>← NOUVELLE IDÉE</button>
