@@ -83,8 +83,9 @@ async function callClaude(prompt) {
     },
     body: JSON.stringify({
       model: "claude-sonnet-4-5",
-      max_tokens: 4000,
-      system: "Tu es un expert en création d'entreprise. Réponds UNIQUEMENT dans le format texte demandé. JAMAIS de section ---DETAIL---. Chaque point : 2-3 lignes max.",
+      max_tokens: 5000,
+      system: "Tu es un expert en création d'entreprise. Tu utilises la recherche web pour vérifier les chiffres clés (tailles de marché, statistiques, prix, aides) et tu cites la source en URL complète. Réponds UNIQUEMENT dans le format texte demandé. JAMAIS de section ---DETAIL---. Chaque point : 2-3 lignes max.",
+      tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }],
       messages: [{ role: "user", content: prompt }],
     }),
   });
@@ -128,33 +129,11 @@ Voici l'entretien avec l'entrepreneur :
 ${qaContext}
 
 RÈGLES :
-- Réponds en format texte.
-- JAMAIS de ---DETAIL---.
-- 2 à 3 lignes maximum par point.
-- Tous les montants doivent être exprimés sous forme de fourchettes.
-- Si un chiffre n'est pas certain, préciser "(estimation indicative)".
-- Ne jamais donner de prix unique.
-- Ne jamais présenter une estimation comme une certitude.
-- Les données marché doivent être présentées comme des ordres de grandeur.
-- Privilégier la prudence plutôt que la précision.
-- Ton professionnel et bienveillant.
-- Pour chaque aide, démarche administrative ou obligation légale mentionnée, ajouter le lien officiel correspondant lorsque pertinent.
-
-Tu peux uniquement utiliser les organismes officiels suivants :
-
-https://www.urssaf.fr
-https://formalites.entreprises.gouv.fr
-https://www.service-public.fr
-https://www.inpi.fr
-https://bpifrance-creation.fr
-https://www.cnil.fr
-https://www.economie.gouv.fr
-https://www.legifrance.gouv.fr
-
-Ne jamais inventer de site internet.
-Ne jamais inventer d'URL.
-Ne jamais utiliser d'autres URLs que celles de cette liste.
-Les liens doivent apparaître directement après l'information concernée lorsqu'ils sont utiles.`;
+- Réponds en format texte. JAMAIS de ---DETAIL---. 2-3 lignes max par point. Ton bienveillant.
+- Chiffres en fourchettes. Si tu n'es pas certain d'un chiffre, écris-le suivi de "(≈ approximatif)".
+- Pour CHAQUE statistique, pourcentage, taille de marché ou prix précis : vérifie-le via la recherche web et indique la source en URL COMPLÈTE entre parenthèses juste après, ex : (source : https://www.insee.fr/page-exacte). Jamais d'astérisque, jamais d'URL raccourcie ou inventée.
+- Ne source que l'essentiel (les chiffres clés et statistiques), pas chaque phrase.
+- Pour les ressources utiles (banque pro, URSSAF, immatriculation, aides), donne le lien officiel COMPLET.`;
 
   try {
     // APPEL 1 : Infos de base + sections 1, 2, 3, 4
@@ -221,28 +200,11 @@ INTRO: [1 phrase sur les priorités des 90 premiers jours]
 
 ## DÉMARCHES LÉGALES
 INTRO: [1 phrase sur les obligations légales]
-
 - **Statut recommandé :** [Micro-entrepreneur, SASU ou autre avec justification]
-
-- **Immatriculation :**
-[Site officiel complet avec URL visible]
-[Documents nécessaires]
-[Délai]
-[Coût estimatif]
-
-- **Aides disponibles :**
-[Nom de l'aide]
-[Montant ou avantage]
-[Conditions]
-[URL officielle complète]
-
-- **Obligations sectorielles :**
-[Diplômes, licences ou certifications]
-[URL officielle complète si applicable]
-
-- **Assurances :**
-[Assurances obligatoires]
-[Fourchette de prix]
+- **Immatriculation :** [Site exact, documents, délai et coût]
+- **Aides disponibles :** [ACRE, NACRE, ARE Pôle Emploi — montants et conditions]
+- **Obligations sectorielles :** [Diplômes, licences ou certifications obligatoires]
+- **Assurances :** [Assurances obligatoires avec fourchette de prix]
 
 ## RISQUES ET SOLUTIONS
 INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
