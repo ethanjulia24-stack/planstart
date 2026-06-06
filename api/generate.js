@@ -84,8 +84,7 @@ async function callClaude(prompt) {
     body: JSON.stringify({
       model: "claude-sonnet-4-5",
       max_tokens: 4000,
-      system: "Tu es un expert en création d'entreprise. Tu utilises la recherche web UNIQUEMENT pour vérifier les 1-2 chiffres les plus importants (taille de marché, statistique clé) et tu cites la source en URL complète. Sois rapide et efficace. Réponds UNIQUEMENT dans le format texte demandé. JAMAIS de section ---DETAIL---. Chaque point : 2-3 lignes max.",
-      tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 2 }],
+      system: "Tu es un expert en création d'entreprise. Réponds UNIQUEMENT dans le format texte demandé. JAMAIS de section ---DETAIL---. Chaque point : 2-3 lignes max.",
       messages: [{ role: "user", content: prompt }],
     }),
   });
@@ -131,9 +130,7 @@ ${qaContext}
 RÈGLES :
 - Réponds en format texte. JAMAIS de ---DETAIL---. 2-3 lignes max par point. Ton bienveillant.
 - Chiffres en fourchettes. Si tu n'es pas certain d'un chiffre, écris-le suivi de "(≈ approximatif)".
-- Pour CHAQUE statistique, pourcentage, taille de marché ou prix précis : vérifie-le via la recherche web et indique la source en URL COMPLÈTE entre parenthèses juste après, ex : (source : https://www.insee.fr/page-exacte). Jamais d'astérisque, jamais d'URL raccourcie ou inventée.
-- Ne source que l'essentiel (les chiffres clés et statistiques), pas chaque phrase.
-- Pour les ressources utiles (banque pro, URSSAF, immatriculation, aides), donne le lien officiel COMPLET.`;
+- N'invente JAMAIS de source ni d'URL. Quand tu cites une démarche ou une ressource, reste général ("le guichet unique", "l'URSSAF", "France Travail") sans mettre de lien : les liens officiels sont ajoutés automatiquement en fin de dossier.`;
 
   try {
     // APPEL 1 : Infos de base + sections 1, 2, 3, 4
@@ -253,6 +250,20 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
       console.error("Plan incomplet:", result.sections.length, "sections. Nom:", result.nom);
       return res.status(500).json({ error: "Plan incomplet — réessaie" });
     }
+
+    // Ressources officielles VÉRIFIÉES (liens réels, jamais inventés, ajoutés côté serveur)
+    result.sections.push({
+      titre: "RESSOURCES UTILES",
+      intro: "Les liens officiels pour passer à l'action.",
+      points: [
+        "**Immatriculer ton entreprise :** le guichet unique officiel pour toutes les formalités de création. https://formalites.entreprises.gouv.fr",
+        "**Statut auto-entrepreneur :** créer ton compte, déclarer ton chiffre d'affaires et tes cotisations. https://www.autoentrepreneur.urssaf.fr",
+        "**Aide ACRE (exonération de charges) :** conditions et démarche pour les créateurs. https://www.urssaf.fr/accueil/exoneration-acre-createur.html",
+        "**Aides et accompagnement gratuits :** la boîte à outils Bpifrance Création pour construire ton projet. https://bpifrance-creation.fr",
+        "**Tes droits et démarches :** les fiches officielles sur la création d'entreprise. https://entreprendre.service-public.gouv.fr",
+        "**Aide France Travail (ARE / ARCE) :** si tu es demandeur d'emploi, les aides au lancement. https://www.francetravail.fr",
+      ],
+    });
 
     return res.status(200).json(result);
 
