@@ -137,7 +137,24 @@ RÈGLES :
 - Ne jamais présenter une estimation comme une certitude.
 - Les données marché doivent être présentées comme des ordres de grandeur.
 - Privilégier la prudence plutôt que la précision.
-- Ton professionnel et bienveillant.`;
+- Ton professionnel et bienveillant.
+- Pour chaque aide, démarche administrative ou obligation légale mentionnée, ajouter le lien officiel correspondant lorsque pertinent.
+
+Tu peux uniquement utiliser les organismes officiels suivants :
+
+https://www.urssaf.fr
+https://formalites.entreprises.gouv.fr
+https://www.service-public.fr
+https://www.inpi.fr
+https://bpifrance-creation.fr
+https://www.cnil.fr
+https://www.economie.gouv.fr
+https://www.legifrance.gouv.fr
+
+Ne jamais inventer de site internet.
+Ne jamais inventer d'URL.
+Ne jamais utiliser d'autres URLs que celles de cette liste.
+Les liens doivent apparaître directement après l'information concernée lorsqu'ils sont utiles.`;
 
   try {
     // APPEL 1 : Infos de base + sections 1, 2, 3, 4
