@@ -803,7 +803,8 @@ ${sections.map((s, i) => {
                 )}
                 {result.scoreCriteres && result.scoreCriteres.length > 0 && (
                   <div style={{ maxWidth: 520, margin: "0 auto 32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: isMobile ? "16px" : "20px 24px", borderRadius: 4 }}>
-                    <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>DÉTAIL DU SCORE</div>
+                    <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>DÉTAIL DU SCORE</div>
+                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontFamily: "Arial, sans-serif", marginBottom: 16, fontStyle: "italic" }}>Le score global est la moyenne de ces 6 critères, notés sur 10.</div>
                     {result.scoreCriteres.map((c, i) => {
                       const match = c.match(/^(.+?):\s*(\d+)\/10\s*—\s*(.+)/);
                       if (!match) return null;
