@@ -65,7 +65,9 @@ function parseSections(text) {
     } else if (line.startsWith("INTRO:") && currentSection) {
       currentSection.intro = line.replace("INTRO:", "").trim().replace(/\*\*/g, "");
     } else if ((line.startsWith("- ") || line.startsWith("-**")) && currentSection) {
-      currentPoints.push(line.replace(/^-\s*/, "").trim());
+      const pt = line.replace(/^-\s*/, "").trim();
+      // Ignore les puces "label seul" sans contenu (ex : "**Aides disponibles :**" suivi de sous-puces) qui s'afficheraient vides.
+      if (!/^\*\*[^*]+\*\*\s*:?\s*$/.test(pt)) currentPoints.push(pt);
     }
   }
 
@@ -153,7 +155,7 @@ RÈGLES :
 - PROFONDEUR SECTORIELLE : creuse les obligations et spécificités RÉELLES de SON secteur précis (ex : restaurant → licence III/IV, ERP, accessibilité PMR, sécurité incendie, extraction, commission de sécurité, HACCP ; commerce alimentaire → DDPP ; e-commerce → RGPD, droit de rétractation ; métier réglementé → diplôme/qualification obligatoire). Vérifie les obligations à jour par recherche web. Ne reste pas générique.
 - QUALITÉ DES SOURCES (RÈGLE STRICTE) : tu ne cites une source QUE si elle vient d'une institution ou d'un organisme reconnu — sites en .gouv.fr, INSEE, URSSAF, service-public, France Travail, Bpifrance, CCI/CMA, CNIL, Banque de France, ministères, fédérations professionnelles officielles, ou un grand cabinet immobilier reconnu pour un loyer (ex : JLL, CBRE). INTERDIT formellement comme source : blogs SEO, sites marchands ou de vendeurs (logiciels de caisse, fournisseurs, e-commerçants), revendeurs de rapports payants, comparateurs, agrégateurs, sites d'actualité ou de sorties. Si le seul résultat pour un chiffre vient d'un tel site, NE METS AUCUN lien : écris le chiffre en fourchette avec "(≈ à vérifier)" sans source. Mieux vaut zéro source qu'une source douteuse — la confiance prime toujours sur la quantité.
 - PRUDENCE SUR LES AFFIRMATIONS : n'avance JAMAIS de statistique choc non sourçable (ex : "80% des boutiques ferment en 18 mois"). Formule prudemment et qualitativement ("beaucoup d'e-commerces échouent dans leurs premières années"). Aucun chiffre précis sans source officielle réelle.
-- TON : évite la litanie d'injonctions ("tu dois… tu dois… tu dois…"). Présente plutôt les choses comme des constats, des leviers et des points de vigilance. Quand c'est pertinent, distingue ce qui joue EN SA FAVEUR, ce qui joue CONTRE LUI, et ce qui mérite une VÉRIFICATION TERRAIN.`;
+- FORMAT DES POINTS : respecte EXACTEMENT la liste de points demandée pour chaque section. Mets TOUT le contenu d'un point sur la MÊME ligne que son label (juste après les "**"). Ne crée JAMAIS de sous-puces, ni de label vide : chaque "- **Label :**" doit être immédiatement suivi de son contenu. Si un point a beaucoup d'infos (ex : plusieurs aides), enchaîne-les dans la même ligne en les séparant par des points-virgules, pas en puces enfants.`;
 
   try {
     // APPEL 1 : Infos de base + sections 1, 2, 3, 4
