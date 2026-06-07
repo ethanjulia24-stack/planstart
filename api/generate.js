@@ -60,7 +60,7 @@ function parseSections(text) {
       currentSection = { titre: titre, intro: "" };
       currentPoints = [];
     } else if (line.startsWith("INTRO:") && currentSection) {
-      currentSection.intro = line.replace("INTRO:", "").trim();
+      currentSection.intro = line.replace("INTRO:", "").trim().replace(/\*\*/g, "");
     } else if ((line.startsWith("- ") || line.startsWith("-**")) && currentSection) {
       currentPoints.push(line.replace(/^-\s*/, "").trim());
     }
