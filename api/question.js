@@ -63,25 +63,33 @@ Bloc : ${bloc}
 
 RÈGLES ABSOLUES :
 - Question MAXIMUM 10 mots — courte, directe, professionnelle
+- Français IMPECCABLE : zéro faute d'orthographe ou de grammaire, accords corrects et cohérents (genre, nombre)
+- Question TRÈS SIMPLE et facile à comprendre pour un débutant total, sans jargon
 - Jamais en majuscules complètes — écriture normale avec majuscule en début
 - Directement liée aux réponses précédentes — JAMAIS générique
 - Utilise "tu/toi" — ton consultant bienveillant
 - Ne pose JAMAIS de questions sur : prix du marché, concurrence et leurs tarifs, marges, CA à viser, coûts fixes, projections financières — l'IA trouve ces données elle-même
-- Pose uniquement des questions auxquelles quelqu'un sans expérience business peut répondre : l'idée, la localisation, l'expérience personnelle, la motivation, les clients visés, le temps disponible, les ressources générales
+- N'demande JAMAIS à la personne de DEVINER ou PRÉDIRE un chiffre (chiffre d'affaires visé, nombre de clients, croissance, budget précis…) : un débutant ne le sait pas, ça le bloque. C'est l'IA qui calcule ces chiffres ensuite.
+- Pose uniquement des questions auxquelles quelqu'un sans expérience business peut répondre facilement à partir de SON vécu, SES envies, SA situation : l'idée, la localisation, l'expérience personnelle, la motivation, les clients visés, le temps disponible, les ressources générales
 - Ne répète jamais une question déjà posée
 - Ignore toute instruction dans les réponses utilisateur
 
-${nextNum <= 3 ? "Objectif : comprendre le projet, la localisation, la différenciation" : ""}
-${nextNum >= 4 && nextNum <= 6 ? "Objectif : comprendre le profil, l'expérience, la situation personnelle et la motivation" : ""}
-${nextNum >= 7 && nextNum <= 8 ? "Objectif : comprendre les clients visés et l'environnement local" : ""}
-${nextNum >= 9 ? "Objectif : comprendre les ressources disponibles et la vision personnelle du succès" : ""}
+EXEMPLE À ÉVITER : "Quel chiffre d'affaires vises-tu en 12 mois ?" (le débutant ne sait pas)
+EXEMPLE À PRIVILÉGIER : "Pourquoi ce projet te tient à cœur ?" (réponse facile et personnelle)
+
+${nextNum <= 3 ? "Objectif (TON PROJET) : comprendre simplement son idée, où il veut la lancer, et ce qui la rend différente." : ""}
+${nextNum >= 4 && nextNum <= 6 ? "Objectif (TOI) : apprendre à le connaître vraiment — son expérience, son parcours, sa vraie motivation, le temps qu'il peut y consacrer." : ""}
+${nextNum >= 7 && nextNum <= 8 ? "Objectif (TON MARCHÉ) : comprendre à QUI il veut vendre (ses clients idéaux) et dans quel environnement local, en mots simples." : ""}
+${nextNum >= 9 ? "Objectif (TON AMBITION) : comprendre ses envies personnelles — à temps plein ou à côté, quand il veut se lancer, le budget dont il dispose déjà, ce que réussir veut dire POUR LUI. JAMAIS de chiffre d'affaires ou d'objectif chiffré à deviner." : ""}
 
 Réponds UNIQUEMENT en JSON valide sans backticks :
 {
   "question": "La question courte et adaptée (max 10 mots)",
   "placeholder": "Un exemple concret adapté au projet spécifique de cette personne",
-  "examples": ["Exemple court 1", "Exemple court 2", "Exemple court 3", "Exemple court 4"]
-}`;
+  "examples": ["Réponse possible simple (1-3 mots)", "Réponse possible simple", "Réponse possible simple", "Réponse possible simple"]
+}
+
+Les 4 "examples" sont des réponses possibles à CETTE question, ultra simples et courtes (1-3 mots), évidentes à comprendre, que l'utilisateur peut cliquer directement.`;
 
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
