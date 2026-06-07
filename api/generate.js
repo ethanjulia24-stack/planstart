@@ -160,6 +160,8 @@ RÈGLES :
 
 Génère la PARTIE 1 du business plan dans ce format exact :
 
+IMPORTANT : commence ta réponse DIRECTEMENT par la ligne "NOM:" ci-dessous. Aucun préambule, aucune phrase d'introduction (pas de "Voici le plan", "D'après mes recherches", etc.), même après tes recherches web.
+
 NOM: [Nom du business, 2-3 mots]
 SLOGAN: [Slogan court]
 SCORE: [nombre /100 = moyenne des 6 critères ci-dessous ramenée sur 100, arrondie. Ne mets PAS un score arbitraire : il doit correspondre à la moyenne réelle des 6 notes.]
@@ -257,11 +259,12 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
     let inScoreCriteres = false;
 
     for (const line of lines1) {
-      if (line.startsWith("NOM:")) result.nom = line.replace("NOM:", "").trim();
-      else if (line.startsWith("SLOGAN:")) result.slogan = line.replace("SLOGAN:", "").trim();
-      else if (line.startsWith("SCORE:") && !line.startsWith("SCORE_")) result.score = parseInt(line.replace("SCORE:", "").trim()) || 70;
-      else if (line.startsWith("SCORE_EXPLICATION:")) result.scoreExplication = line.replace("SCORE_EXPLICATION:", "").trim();
-      else if (line.startsWith("SCORE_CRITERES:")) inScoreCriteres = true;
+      let m;
+      if ((m = line.match(/^NOM\s*:\s*(.+)/i))) result.nom = m[1].trim();
+      else if ((m = line.match(/^SLOGAN\s*:\s*(.+)/i))) result.slogan = m[1].trim();
+      else if (!/^SCORE_/i.test(line) && (m = line.match(/^SCORE\s*:\s*(\d+)/i))) result.score = parseInt(m[1]) || 70;
+      else if ((m = line.match(/^SCORE_EXPLICATION\s*:\s*(.+)/i))) result.scoreExplication = m[1].trim();
+      else if (/^SCORE_CRITERES\s*:/i.test(line)) inScoreCriteres = true;
       else if (inScoreCriteres && line.startsWith("-")) result.scoreCriteres.push(line.replace(/^-\s*/, "").trim());
       else if (line.startsWith("##")) inScoreCriteres = false;
     }
@@ -281,8 +284,13 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
     const sections2 = parseSections(text2);
     result.sections = [...sections1, ...sections2];
 
-    if (!result.nom || result.sections.length < 6) {
-      console.error("Plan incomplet:", result.sections.length, "sections. Nom:", result.nom);
+    // Filet : un nom manquant ne doit pas jeter un plan complet. On ne bloque que si les sections manquent.
+    if (!result.nom) {
+      const premiere = Object.values(sanitizedAnswers)[0] || "";
+      result.nom = premiere ? premiere.slice(0, 40) : "Mon Business Plan";
+    }
+    if (result.sections.length < 6) {
+      console.error("Plan incomplet:", result.sections.length, "sections.");
       return res.status(500).json({ error: "Plan incomplet — réessaie" });
     }
 
