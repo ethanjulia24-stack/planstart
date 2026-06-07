@@ -1,5 +1,8 @@
 // /api/generate.js — 2 appels API pour 7 sections complètes
 
+// Vercel Pro : autorise jusqu'à 300s (la recherche web prend du temps).
+export const maxDuration = 300;
+
 const RATE_LIMIT = new Map();
 
 function getRateLimit(ip) {
@@ -83,15 +86,17 @@ async function callClaude(prompt) {
     },
     body: JSON.stringify({
       model: "claude-sonnet-4-5",
-      max_tokens: 4000,
-      system: "Tu es un expert en création d'entreprise. Réponds UNIQUEMENT dans le format texte demandé. JAMAIS de section ---DETAIL---. Chaque point : 2-3 lignes max.",
+      max_tokens: 8000,
+      system: "Tu es un consultant senior expert en création d'entreprise en France. Tu as accès à la recherche web : utilise-la pour VÉRIFIER les chiffres clés (montants des aides, seuils légaux, taille et tendances du marché, loyers et concurrents locaux) AVANT de les écrire, puis cite la source réelle. Réponds UNIQUEMENT dans le format texte demandé. JAMAIS de section ---DETAIL---.",
+      tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 5 }],
       messages: [{ role: "user", content: prompt }],
     }),
   });
 
   if (!response.ok) throw new Error("Anthropic error");
   const data = await response.json();
-  return data.content.map(i => i.text || "").join("");
+  // La réponse peut contenir plusieurs blocs (recherche web + texte) : on ne garde que le texte.
+  return data.content.map(i => (i.type === "text" ? i.text : "")).join("\n");
 }
 
 export default async function handler(req, res) {
@@ -128,12 +133,12 @@ Voici l'entretien avec l'entrepreneur :
 ${qaContext}
 
 RÈGLES :
-- Réponds en format texte. JAMAIS de ---DETAIL---. 2-3 lignes max par point. Ton bienveillant.
+- Réponds en format texte. JAMAIS de ---DETAIL---. Ton bienveillant. Chaque point fait 3 à 5 lignes DENSES et utiles : donne le POURQUOI, le COMMENT et le COMBIEN (chiffres concrets) chaque fois que c'est pertinent. Bannis les phrases creuses valables pour n'importe quel métier ("créer une expérience unique", "fidéliser les clients") : sois spécifique et actionnable.
+- PERSONNALISATION MAXIMALE : ce plan parle du projet PRÉCIS de l'entrepreneur, pas du métier en général. Réutilise explicitement SES réponses (son budget exact, sa ville, son quartier, son expérience, ses objectifs, ses horaires). Écris "avec ton budget de X €", "dans ton quartier Y", "avec tes Z clients/jour" — jamais "un commerce type".
 - Tutoie TOUJOURS l'entrepreneur (tu, toi, ton, ta, tes). N'emploie JAMAIS "vous" ni "votre".
-- Chiffres en fourchettes. Si tu n'es pas certain d'un chiffre, écris-le suivi de "(≈ approximatif)".
-- ANCRAGE LOCAL : raisonne toujours à l'échelle du LIEU PRÉCIS indiqué par l'entrepreneur (sa ville/commune). Adapte tout à cette échelle. N'utilise PAS de statistiques nationales creuses (ex : "le marché pèse 30 milliards d'euros", "plusieurs centaines de millions", "croissance de +8-12% par an", "73% des Français") qui n'aident pas sa décision. Quand tu n'as pas la donnée locale exacte (concurrents nommés, loyers réels), dis-le clairement et invite-le à la vérifier sur place, plutôt que d'inventer.
-- PROFONDEUR SECTORIELLE : creuse les obligations et spécificités RÉELLES de SON secteur précis (ex : restaurant → licence III/IV, ERP, accessibilité PMR, sécurité incendie, extraction, commission de sécurité, HACCP ; commerce alimentaire → DDPP ; e-commerce → RGPD, droit de rétractation ; métier réglementé → diplôme/qualification obligatoire). Ne reste pas générique.
-- N'invente JAMAIS de source ni d'URL. Ne mets JAMAIS de fausse caution de source entre parenthèses (ex : "(source INSEE 2023)", "(selon une étude)") : si tu n'as pas de lien réel, n'attribue AUCUNE source — donne juste le chiffre en fourchette avec "(≈ approximatif)". Quand tu cites une démarche ou une ressource, reste général ("le guichet unique", "l'URSSAF", "France Travail") sans mettre de lien : les liens officiels sont ajoutés automatiquement en fin de dossier.`;
+- RECHERCHE ET SOURCES : tu as accès à la recherche web. Pour TOUT chiffre important (montant d'une aide, seuil légal, taille/croissance du marché, loyer moyen du quartier, prix pratiqués, concurrents locaux), VÉRIFIE-le par une recherche web AVANT de l'écrire, puis cite la source réelle juste après au format : "(Source : Nom — URL)". N'écris JAMAIS un chiffre officiel de mémoire, et n'invente JAMAIS de source : si une recherche ne donne rien de fiable, écris le chiffre en fourchette avec "(≈ à vérifier)" sans fausse source.
+- ANCRAGE LOCAL : raisonne à l'échelle du LIEU PRÉCIS indiqué (sa ville/quartier). Privilégie le local et le raisonnement bottom-up (à partir de SES chiffres). N'utilise une statistique nationale QUE si elle est sourcée par recherche web ET reliée à une conséquence concrète pour son projet — jamais une stat creuse isolée.
+- PROFONDEUR SECTORIELLE : creuse les obligations et spécificités RÉELLES de SON secteur précis (ex : restaurant → licence III/IV, ERP, accessibilité PMR, sécurité incendie, extraction, commission de sécurité, HACCP ; commerce alimentaire → DDPP ; e-commerce → RGPD, droit de rétractation ; métier réglementé → diplôme/qualification obligatoire). Vérifie les obligations à jour par recherche web. Ne reste pas générique.`;
 
   try {
     // APPEL 1 : Infos de base + sections 1, 2, 3, 4
@@ -164,20 +169,21 @@ INTRO: [1 phrase d'accroche]
 - **Verdict :** [Évaluation honnête et encourageante]
 
 ## ANALYSE DU MARCHÉ
-INTRO: [1 phrase sur l'opportunité]
-- **Marché :** [Taille estimée en France et croissance annuelle]
-- **Tendances :** [2-3 tendances favorables avec données]
-- **Concurrents :** [Analyse des concurrents et leurs faiblesses]
-- **Positionnement :** [Comment se différencier concrètement]
-- **Opportunité :** [Le créneau précis à saisir maintenant]
+INTRO: [1 phrase sur l'opportunité, ancrée sur sa ville]
+- **Marché :** [Taille du marché pertinente et SOURCÉE par recherche web (Source : Nom — URL), reliée à une conséquence concrète pour lui. Privilégie une donnée locale/régionale si possible.]
+- **Tendances :** [2-3 tendances favorables vérifiées par recherche web, avec source]
+- **Concurrents :** [Concurrents RÉELS identifiés par recherche web dans sa ville/son quartier : noms, positionnement, prix, points faibles. Si la recherche ne donne rien de fiable, dis-le et explique comment les repérer.]
+- **Positionnement :** [Comment SE différencier concrètement d'EUX, vu ses atouts à lui]
+- **Opportunité :** [Le créneau précis à saisir maintenant, dans SON quartier]
 
 ## MODÈLE ÉCONOMIQUE
-INTRO: [1 phrase sur la logique économique]
-- **Services et prix :** [Offres avec fourchettes de prix recommandées]
-- **Coûts fixes :** [Liste des charges mensuelles, total estimé]
-- **Investissement initial :** [Ce qu'il faut mobiliser pour démarrer]
-- **Seuil de rentabilité :** [Nombre de clients ou CA nécessaire par mois]
-- **Projections :** [CA estimé mois 3, mois 6, mois 12]
+INTRO: [1 phrase sur la logique économique, ancrée sur SON budget et SA ville]
+- **Services et prix :** [Offres avec fourchettes de prix alignées sur les prix RÉELS pratiqués dans sa ville (vérifie par recherche web, cite la source)]
+- **Coûts fixes :** [Charges mensuelles détaillées et chiffrées, total estimé, avec le loyer réel de son quartier vérifié par recherche web (Source — URL)]
+- **Investissement de départ (3 niveaux) :** [MINIMUM pour démarrer / CONFORTABLE / IDÉAL — un montant chiffré pour chacun, adapté à son budget réel annoncé]
+- **Seuil de rentabilité :** [Calcul EXPLICITE : charges ÷ panier moyen = nombre de clients/mois, puis par jour, à partir de SES chiffres réels]
+- **3 scénarios chiffrés :** [PESSIMISTE / RÉALISTE / OPTIMISTE en nombre de clients/jour réaliste pour lui — pour chacun : CA mensuel, charges, et reste à vivre]
+- **Projections :** [CA estimé mois 3, mois 6, mois 12, avec l'hypothèse de fréquentation derrière chaque chiffre]
 
 ## STRATÉGIE MARKETING
 INTRO: [1 phrase sur la stratégie globale]
@@ -204,7 +210,7 @@ INTRO: [1 phrase sur les priorités des 90 premiers jours]
 INTRO: [1 phrase sur les obligations légales]
 - **Statut recommandé :** [Micro-entrepreneur, SASU ou autre avec justification]
 - **Immatriculation :** [Site exact, documents, délai et coût]
-- **Aides disponibles :** [ACRE, NACRE, ARE Pôle Emploi — montants et conditions]
+- **Aides disponibles :** [ACRE, ARE/ARCE France Travail, prêts d'honneur — montants EXACTS et conditions, VÉRIFIÉS par recherche web, avec source (Nom — URL)]
 - **Obligations sectorielles :** [TOUTES les obligations RÉELLES propres à ce secteur précis : diplômes/qualifications obligatoires, licences (ex : licence III/IV pour l'alcool), classement ERP, accessibilité PMR, sécurité incendie, extraction/ventilation, commission de sécurité, déclarations spécifiques (DDPP…), normes d'hygiène. Sois précis et exhaustif pour CE métier.]
 - **Assurances :** [Assurances obligatoires avec fourchette de prix]
 
