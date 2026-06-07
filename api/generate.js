@@ -95,17 +95,19 @@ async function callClaude(prompt) {
 
   if (!response.ok) throw new Error("Anthropic error");
   const data = await response.json();
-  // La réponse peut contenir plusieurs blocs (recherche web + texte).
-  // On garde le texte ET on rattache les sources réellement citées (sécurité si le modèle ne les écrit pas lui-même).
-  return data.content.map(i => {
-    if (i.type !== "text") return "";
-    let t = i.text || "";
-    if (Array.isArray(i.citations) && i.citations.length) {
-      const urls = [...new Set(i.citations.map(c => c && c.url).filter(Boolean))];
-      if (urls.length) t += ` (Source : ${urls.join(" ; ")})`;
-    }
-    return t;
-  }).join("\n");
+  // La réponse peut être découpée en plusieurs blocs de texte autour des recherches web.
+  // On les recolle SANS rien insérer pour reconstituer le texte d'origine (sinon les phrases coupées par une recherche sont brisées).
+  const blocks = data.content.filter(i => i.type === "text");
+  const text = blocks.map(i => i.text || "").join("");
+  // Filet de sécurité : si des recherches ont eu lieu mais que le modèle n'a écrit aucune source,
+  // on rattache les liens consultés en fin de texte (sans casser les phrases).
+  const urls = [...new Set(
+    blocks.flatMap(i => (Array.isArray(i.citations) ? i.citations.map(c => c && c.url) : [])).filter(Boolean)
+  )];
+  if (urls.length && !/Source\s*:/i.test(text)) {
+    return `${text}\n- **Sources consultées :** ${urls.join(" ; ")}`;
+  }
+  return text;
 }
 
 export default async function handler(req, res) {
