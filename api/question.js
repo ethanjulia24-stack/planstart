@@ -64,6 +64,7 @@ Bloc : ${bloc}
 RÈGLES ABSOLUES :
 - Question MAXIMUM 10 mots — courte, directe, professionnelle
 - Français IMPECCABLE : zéro faute d'orthographe ou de grammaire, accords corrects et cohérents (genre, nombre)
+- TYPOGRAPHIE FRANÇAISE : mets toujours une espace AVANT les signes doubles ? ! ; : (écris "comme barbier ?" et jamais "comme barbier?")
 - Question TRÈS SIMPLE et facile à comprendre pour un débutant total, sans jargon
 - Si tu poses la question du LIEU (pour une activité physique/locale), demande la ville/commune PRÉCISE (nom exact, et si possible le département ou code postal), pas une réponse vague comme "une petite ville"
 - Jamais en majuscules complètes — écriture normale avec majuscule en début
@@ -90,7 +91,10 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
   "examples": ["Réponse possible simple (1-3 mots)", "Réponse possible simple", "Réponse possible simple", "Réponse possible simple"]
 }
 
-Les 4 "examples" sont des réponses possibles à CETTE question, ultra simples et courtes (1-3 mots), évidentes à comprendre, que l'utilisateur peut cliquer directement.`;
+Les 4 "examples" sont des réponses possibles à CETTE question précise, courtes (1-4 mots) et directement cliquables comme réponse. Règles pour les rendre utiles :
+- HOMOGÈNES entre elles : toutes la même forme grammaticale (toutes des noms, OU toutes des bouts de phrase) — jamais un mélange "Passion pour les coupes" + "Aimer le contact".
+- VARIÉES et réalistes : 4 réponses vraiment différentes que des gens donneraient.
+- N'induis pas une réponse VAGUE : pour une question de LIEU, ne propose pas juste des noms de grandes villes au hasard (ça pousse à répondre imprécis) — propose plutôt des formats précis comme "Lyon 3e", "Annecy centre", "Nantes Sud".`;
 
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -112,8 +116,15 @@ Les 4 "examples" sont des réponses possibles à CETTE question, ultra simples e
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     
     if (!jsonMatch) return res.status(500).json({ error: "Format invalide" });
-    
-    return res.status(200).json(JSON.parse(jsonMatch[0]));
+
+    const parsed = JSON.parse(jsonMatch[0]);
+    // Typographie française fiable : une espace insécable avant ? ! ; : (garantie côté code).
+    const fixTypo = (s) => typeof s === "string"
+      ? s.replace(/\s*([?!;:])/g, "\u00A0$1").replace(/\u00A0{2,}/g, "\u00A0")
+      : s;
+    if (parsed.question) parsed.question = fixTypo(parsed.question);
+
+    return res.status(200).json(parsed);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Erreur serveur" });
