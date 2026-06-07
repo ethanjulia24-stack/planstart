@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import html2pdf from "html2pdf.js";
 
 // Transforme les URL d'un texte en liens cliquables ENTIERS (jamais d'astérisque).
 // Version écran (renvoie du JSX).
@@ -351,102 +350,110 @@ export default function App() {
     const escape = str => (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const sections = data.sections || [];
 
-    // CSS scopé sous .ps-pdf pour ne PAS toucher au style de la page visible
-    const styles = `
-      .ps-pdf * { margin:0; padding:0; box-sizing:border-box; }
-      .ps-pdf { width:210mm; font-family:Arial,sans-serif; color:#1a1a1a; background:#fff; font-size:13px; line-height:1.6; }
-      .ps-pdf .cover { height:297mm; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:70px 60px; page-break-after:always; }
-      .ps-pdf .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:80px; }
-      .ps-pdf .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:20px; }
-      .ps-pdf .cover-name { font-size:52px; font-weight:900; letter-spacing:-0.02em; line-height:0.9; margin-bottom:16px; }
-      .ps-pdf .cover-slogan { font-size:16px; color:rgba(255,255,255,0.45); font-style:italic; margin-bottom:48px; }
-      .ps-pdf .cover-score { display:inline-block; border:2px solid rgba(255,255,255,0.2); padding:18px 40px; margin-bottom:24px; }
-      .ps-pdf .cover-score-n { font-size:56px; font-weight:900; line-height:1; }
-      .ps-pdf .cover-score-lbl { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(255,255,255,0.3); margin-top:4px; }
-      .ps-pdf .cover-score-expl { max-width:480px; color:rgba(255,255,255,0.5); font-size:13px; line-height:1.6; margin-top:20px; }
-      .ps-pdf .cover-footer { display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:11px; color:rgba(255,255,255,0.25); }
-      .ps-pdf .toc { padding:60px; page-break-after:always; }
-      .ps-pdf .toc-title { font-size:9px; font-weight:900; letter-spacing:0.25em; color:rgba(0,0,0,0.25); margin-bottom:36px; }
-      .ps-pdf .toc-item { display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid #f0f0f0; }
-      .ps-pdf .toc-num { font-size:10px; font-weight:900; color:rgba(0,0,0,0.2); min-width:28px; }
-      .ps-pdf .toc-name { font-size:14px; font-weight:900; flex:1; }
-      .ps-pdf .toc-pg { font-size:11px; color:rgba(0,0,0,0.3); }
-      .ps-pdf .section { padding:56px 60px; page-break-after:always; }
-      .ps-pdf .section:last-child { page-break-after:auto; }
-      .ps-pdf .section-num { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(0,0,0,0.2); margin-bottom:6px; }
-      .ps-pdf .section-title { font-size:22px; font-weight:900; letter-spacing:-0.01em; border-bottom:3px solid #000; padding-bottom:14px; margin-bottom:20px; }
-      .ps-pdf .section-intro { font-size:13px; color:rgba(0,0,0,0.55); font-style:italic; line-height:1.6; margin-bottom:28px; border-left:3px solid #000; padding-left:14px; }
-      .ps-pdf .point { display:flex; gap:16px; padding:13px 0; border-bottom:1px solid #f5f5f5; }
-      .ps-pdf .point-label { font-size:12px; font-weight:900; min-width:160px; color:#000; flex-shrink:0; }
-      .ps-pdf .point-text { font-size:13px; color:rgba(0,0,0,0.65); line-height:1.65; flex:1; }
-      .ps-pdf .pg-footer { text-align:center; font-size:9px; color:rgba(0,0,0,0.2); font-weight:900; letter-spacing:0.1em; border-top:1px solid #e5e5e5; padding:10px 60px; margin-top:40px; }
-    `;
+    const html = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Business Plan — ${escape(data.nom)}</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Arial,sans-serif; color:#1a1a1a; background:#fff; font-size:13px; line-height:1.6; }
+  @page { size:A4; margin:0; }
+  @media print { body { -webkit-print-color-adjust:exact; print-color-adjust:exact; } .section { page-break-after:always; } }
+  a { color:#0a58ca; word-break:break-all; }
 
-    const content = `
-      <div class="cover">
-        <div>
-          <div class="cover-brand">PLANSTART — planstart.fr</div>
-          <div class="cover-label">BUSINESS PLAN PROFESSIONNEL</div>
-          <div class="cover-name">${escape((data.nom || "").toUpperCase())}</div>
-          <div class="cover-slogan">"${escape(data.slogan)}"</div>
-          <div class="cover-score">
-            <div class="cover-score-n">${data.score}</div>
-            <div class="cover-score-lbl">SCORE DE VIABILITÉ / 100</div>
-          </div>
-          <div class="cover-score-expl">${escape(data.scoreExplication || "")}</div>
-        </div>
-        <div class="cover-footer">
-          <div>Document confidentiel<br>Généré le ${date}</div>
-          <div style="text-align:right">PLANSTART<br>planstart.fr</div>
-        </div>
-      </div>
-      <div class="toc">
-        <div class="toc-title">SOMMAIRE</div>
-        ${sections.map((s, i) => `
-        <div class="toc-item">
-          <span class="toc-num">${String(i + 1).padStart(2, "0")}</span>
-          <span class="toc-name">${escape(s.titre)}</span>
-          <span class="toc-pg">Page ${i + 3}</span>
-        </div>`).join("")}
-      </div>
-      ${sections.map((s, i) => {
-        const points = s.points || [];
-        return `
-        <div class="section">
-          <div class="section-num">SECTION ${String(i + 1).padStart(2, "0")} / ${String(sections.length).padStart(2, "0")}</div>
-          <div class="section-title">${escape(s.titre)}</div>
-          ${s.intro ? `<div class="section-intro">${escape(s.intro)}</div>` : ""}
-          ${points.map(p => {
-            const m = (p || "").match(/^\*\*(.+?)\*\*\s*:?\s*([\s\S]*)/);
-            if (m) return `<div class="point"><div class="point-label">${escape(m[1])}</div><div class="point-text">${linkifyHtml(escape(m[2]))}</div></div>`;
-            return `<div class="point"><div class="point-text">${linkifyHtml(escape(p))}</div></div>`;
-          }).join("")}
-          <div class="pg-footer">PLANSTART — ${escape(data.nom)} — Page ${i + 3}</div>
-        </div>`;
-      }).join("")}
-    `;
+  /* COUVERTURE */
+  .cover { min-height:100vh; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:70px 60px; page-break-after:always; }
+  .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:80px; }
+  .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:20px; }
+  .cover-name { font-size:52px; font-weight:900; letter-spacing:-0.02em; line-height:0.9; margin-bottom:16px; }
+  .cover-slogan { font-size:16px; color:rgba(255,255,255,0.45); font-style:italic; margin-bottom:48px; }
+  .cover-score { display:inline-block; border:2px solid rgba(255,255,255,0.2); padding:18px 40px; margin-bottom:24px; }
+  .cover-score-n { font-size:56px; font-weight:900; line-height:1; }
+  .cover-score-lbl { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(255,255,255,0.3); margin-top:4px; }
+  .cover-score-expl { max-width:480px; color:rgba(255,255,255,0.5); font-size:13px; line-height:1.6; margin-top:20px; }
+  .cover-footer { display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:11px; color:rgba(255,255,255,0.25); }
 
-    // On construit le document hors écran, on le transforme en vrai PDF, puis on nettoie
-    const container = document.createElement("div");
-    container.className = "ps-pdf";
-    container.style.position = "fixed";
-    container.style.left = "-99999px";
-    container.style.top = "0";
-    container.innerHTML = `<style>${styles}</style>${content}`;
-    document.body.appendChild(container);
+  /* SOMMAIRE */
+  .toc { padding:60px; page-break-after:always; }
+  .toc-title { font-size:9px; font-weight:900; letter-spacing:0.25em; color:rgba(0,0,0,0.25); margin-bottom:36px; }
+  .toc-item { display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid #f0f0f0; }
+  .toc-num { font-size:10px; font-weight:900; color:rgba(0,0,0,0.2); min-width:28px; }
+  .toc-name { font-size:14px; font-weight:900; flex:1; }
+  .toc-pg { font-size:11px; color:rgba(0,0,0,0.3); }
 
-    const opt = {
-      margin: 0,
-      filename: `${(data.nom || "BusinessPlan").replace(/\s+/g, "_")}_PLANSTART.pdf`,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      pagebreak: { mode: ["css", "legacy"], avoid: [".point", ".toc-item"] },
-    };
+  /* SECTIONS */
+  .section { padding:56px 60px; page-break-after:always; }
+  .section-num { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(0,0,0,0.2); margin-bottom:6px; }
+  .section-title { font-size:22px; font-weight:900; letter-spacing:-0.01em; border-bottom:3px solid #000; padding-bottom:14px; margin-bottom:20px; }
+  .section-intro { font-size:13px; color:rgba(0,0,0,0.55); font-style:italic; line-height:1.6; margin-bottom:28px; border-left:3px solid #000; padding-left:14px; }
+  .point { display:flex; gap:16px; padding:13px 0; border-bottom:1px solid #f5f5f5; }
+  .point-label { font-size:12px; font-weight:900; min-width:160px; color:#000; flex-shrink:0; }
+  .point-text { font-size:13px; color:rgba(0,0,0,0.65); line-height:1.65; flex:1; }
 
-    html2pdf().set(opt).from(container).save()
-      .then(() => { if (container.parentNode) document.body.removeChild(container); })
-      .catch(() => { if (container.parentNode) document.body.removeChild(container); });
+  /* FOOTER */
+  .pg-footer { text-align:center; font-size:9px; color:rgba(0,0,0,0.2); font-weight:900; letter-spacing:0.1em; border-top:1px solid #e5e5e5; padding:10px 60px; margin-top:auto; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div>
+    <div class="cover-brand">PLANSTART — planstart.fr</div>
+    <div class="cover-label">BUSINESS PLAN PROFESSIONNEL</div>
+    <div class="cover-name">${escape((data.nom || "").toUpperCase())}</div>
+    <div class="cover-slogan">"${escape(data.slogan)}"</div>
+    <div class="cover-score">
+      <div class="cover-score-n">${data.score}</div>
+      <div class="cover-score-lbl">SCORE DE VIABILITÉ / 100</div>
+    </div>
+    <div class="cover-score-expl">${escape(data.scoreExplication || "")}</div>
+  </div>
+  <div class="cover-footer">
+    <div>Document confidentiel<br>Généré le ${date}</div>
+    <div style="text-align:right">PLANSTART<br>planstart.fr</div>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">SOMMAIRE</div>
+  ${sections.map((s, i) => `
+  <div class="toc-item">
+    <span class="toc-num">${String(i + 1).padStart(2, "0")}</span>
+    <span class="toc-name">${escape(s.titre)}</span>
+    <span class="toc-pg">Page ${i + 3}</span>
+  </div>`).join("")}
+</div>
+
+${sections.map((s, i) => {
+  const points = s.points || [];
+  return `
+<div class="section">
+  <div class="section-num">SECTION ${String(i + 1).padStart(2, "0")} / ${String(sections.length).padStart(2, "0")}</div>
+  <div class="section-title">${escape(s.titre)}</div>
+  ${s.intro ? `<div class="section-intro">${escape(s.intro)}</div>` : ""}
+  ${points.map(p => {
+    const m = (p || "").match(/^\*\*(.+?)\*\*\s*:?\s*([\s\S]*)/);
+    if (m) return `<div class="point"><div class="point-label">${escape(m[1])}</div><div class="point-text">${linkifyHtml(escape(m[2]))}</div></div>`;
+    return `<div class="point"><div class="point-text">${linkifyHtml(escape(p))}</div></div>`;
+  }).join("")}
+  <div class="pg-footer">PLANSTART — ${escape(data.nom)} — Page ${i + 3}</div>
+</div>`;
+}).join("")}
+
+</body>
+</html>`;
+
+    // Télécharge un fichier HTML : tu l'ouvres puis "Imprimer → Enregistrer en PDF".
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${(data.nom || "BusinessPlan").replace(/\s+/g, "_")}_PLANSTART.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   // ─── STYLES ───────────────────────────────────────────────────────────────────
