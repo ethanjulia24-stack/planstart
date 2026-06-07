@@ -434,8 +434,8 @@ ${sections.map((s, i) => {
   ${s.intro ? `<div class="section-intro">${escape(s.intro)}</div>` : ""}
   ${points.map(p => {
     const m = (p || "").match(/^\*\*(.+?)\*\*\s*:?\s*([\s\S]*)/);
-    if (m) return `<div class="point"><div class="point-label">${escape(m[1])}</div><div class="point-text">${linkifyHtml(escape(m[2]))}</div></div>`;
-    return `<div class="point"><div class="point-text">${linkifyHtml(escape(p))}</div></div>`;
+    if (m) return `<div class="point"><div class="point-label">${escape(m[1])}</div><div class="point-text">${linkifyHtml(escape(m[2].replace(/\*\*/g, "")))}</div></div>`;
+    return `<div class="point"><div class="point-text">${linkifyHtml(escape(p.replace(/\*\*/g, "")))}</div></div>`;
   }).join("")}
   <div class="pg-footer">PLANSTART — ${escape(data.nom)} — Page ${i + 3}</div>
 </div>`;
@@ -841,10 +841,10 @@ ${sections.map((s, i) => {
                             {m ? (
                               <>
                                 <span style={{ fontSize: 13, fontWeight: 900, minWidth: isMobile ? "auto" : 180, color: "#000", flexShrink: 0 }}>{m[1]}</span>
-                                <span style={{ fontSize: 14, color: "rgba(0,0,0,0.65)", lineHeight: 1.65, fontFamily: "Arial, sans-serif" }}>{linkify(m[2])}</span>
+                                <span style={{ fontSize: 14, color: "rgba(0,0,0,0.65)", lineHeight: 1.65, fontFamily: "Arial, sans-serif" }}>{linkify(m[2].replace(/\*\*/g, ""))}</span>
                               </>
                             ) : (
-                              <span style={{ fontSize: 14, color: "rgba(0,0,0,0.65)", lineHeight: 1.65, fontFamily: "Arial, sans-serif" }}>{linkify(point)}</span>
+                              <span style={{ fontSize: 14, color: "rgba(0,0,0,0.65)", lineHeight: 1.65, fontFamily: "Arial, sans-serif" }}>{linkify(point.replace(/\*\*/g, ""))}</span>
                             )}
                           </div>
                         );
