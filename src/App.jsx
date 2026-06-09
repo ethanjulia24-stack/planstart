@@ -353,6 +353,15 @@ export default function App() {
     const date = new Date().toLocaleDateString("fr-FR");
     const escape = str => (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const sections = data.sections || [];
+    const CRIT_FR = { Experience: "Expérience", Marche: "Marché", Differenciation: "Différenciation", Budget: "Budget", Clarte: "Clarté", Timing: "Timing" };
+    const critHTML = (data.scoreCriteres || []).map(c => {
+      const m = c.match(/^(.+?):\s*(\d+)\/10/);
+      if (!m) return "";
+      const label = CRIT_FR[m[1].trim()] || m[1].trim();
+      const n = parseInt(m[2]);
+      const col = n >= 7 ? "#4ade80" : n >= 5 ? "#facc15" : "#f87171";
+      return `<tr><td>${label}</td><td style="padding:7px 14px;"><div style="width:${n * 10}%;height:4px;background:${col};border-radius:2px;min-width:4px;"></div></td><td>${n}/10</td></tr>`;
+    }).join("");
 
     const html = `<!DOCTYPE html>
 <html lang="fr">
@@ -368,14 +377,16 @@ export default function App() {
 
   /* COUVERTURE */
   .cover { min-height:100vh; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:70px 60px; page-break-after:always; }
-  .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:80px; }
-  .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:20px; }
-  .cover-name { font-size:52px; font-weight:900; letter-spacing:-0.02em; line-height:0.9; margin-bottom:16px; }
-  .cover-slogan { font-size:16px; color:rgba(255,255,255,0.45); font-style:italic; margin-bottom:48px; }
-  .cover-score { display:inline-block; border:2px solid rgba(255,255,255,0.2); padding:18px 40px; margin-bottom:24px; }
-  .cover-score-n { font-size:56px; font-weight:900; line-height:1; }
-  .cover-score-lbl { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(255,255,255,0.3); margin-top:4px; }
-  .cover-score-expl { max-width:480px; color:rgba(255,255,255,0.5); font-size:13px; line-height:1.6; margin-top:20px; }
+  .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:64px; }
+  .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:16px; }
+  .cover-activite { font-size:40px; font-weight:900; letter-spacing:-0.02em; line-height:1.1; margin-bottom:36px; color:#fff; }
+  .cover-expl { max-width:500px; color:rgba(255,255,255,0.55); font-size:13px; line-height:1.7; margin-bottom:32px; padding-left:16px; border-left:3px solid rgba(255,255,255,0.2); }
+  .cover-crit-lbl { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(255,255,255,0.3); margin-bottom:12px; }
+  .cover-crit-table { border-collapse:collapse; max-width:460px; margin-bottom:36px; }
+  .cover-crit-table td { padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:12px; vertical-align:middle; }
+  .cover-crit-table td:first-child { color:rgba(255,255,255,0.45); width:150px; }
+  .cover-crit-table td:last-child { font-weight:900; color:#fff; text-align:right; padding-left:12px; width:42px; }
+  .cover-disclaimer { font-size:10.5px; color:rgba(255,255,255,0.22); line-height:1.55; max-width:500px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); margin-bottom:28px; }
   .cover-footer { display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:11px; color:rgba(255,255,255,0.25); }
 
   /* SOMMAIRE */
@@ -405,13 +416,10 @@ export default function App() {
   <div>
     <div class="cover-brand">PLANSTART — planstart.fr</div>
     <div class="cover-label">BUSINESS PLAN PROFESSIONNEL</div>
-    <div class="cover-name">${escape((data.nom || "").toUpperCase())}</div>
-    <div class="cover-slogan">"${escape(data.slogan)}"</div>
-    <div class="cover-score">
-      <div class="cover-score-n">${data.score}</div>
-      <div class="cover-score-lbl">SCORE DE VIABILITÉ / 100</div>
-    </div>
-    <div class="cover-score-expl">${escape(data.scoreExplication || "")}</div>
+    <div class="cover-activite">${escape(data.activite || data.nom || "Mon projet")}</div>
+    ${data.scoreExplication ? `<div class="cover-expl">${escape(data.scoreExplication)}</div>` : ""}
+    ${critHTML ? `<div class="cover-crit-lbl">ANALYSE DE TON PROJET</div><table class="cover-crit-table">${critHTML}</table>` : ""}
+    <div class="cover-disclaimer">Ce business plan a été généré par intelligence artificielle à partir de tes réponses. Il est fourni à titre indicatif et peut contenir des erreurs ou imprécisions. Vérifie les informations importantes auprès de sources officielles avant de te lancer.</div>
   </div>
   <div class="cover-footer">
     <div>Document confidentiel<br>Généré le ${date}</div>
@@ -808,31 +816,29 @@ ${sections.map((s, i) => {
 
           {!loading && result && (
             <>
-              {/* Header résultat */}
+              {/* Header résultat — cover */}
               <div style={{ background: "#000", padding: isMobile ? "100px 24px 48px" : "120px 60px 60px", textAlign: "center" }}>
-                <p style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.3em", color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>TON BUSINESS PLAN</p>
-                <h1 style={{ fontSize: isMobile ? "clamp(36px,10vw,64px)" : "clamp(56px,8vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, color: "#fff", marginBottom: 12 }}>{(result.nom || "").toUpperCase()}</h1>
-                <p style={{ color: "rgba(255,255,255,0.35)", fontSize: isMobile ? 14 : 16, fontFamily: "Arial, sans-serif", marginBottom: 32 }}>"{result.slogan}"</p>
-                <div style={{ display: "inline-block", border: "2px solid rgba(255,255,255,0.2)", padding: "20px 48px", marginBottom: 24 }}>
-                  <div style={{ fontSize: isMobile ? 52 : 72, fontWeight: 900, color: "#fff", lineHeight: 1 }}>{result.score}</div>
-                  <div style={{ fontSize: 10, fontWeight: 900, color: "rgba(255,255,255,0.35)", letterSpacing: "0.2em", marginTop: 4 }}>SCORE DE VIABILITÉ / 100</div>
-                </div>
+                <p style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.3em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>BUSINESS PLAN PROFESSIONNEL</p>
+                <h1 style={{ fontSize: isMobile ? "clamp(28px,8vw,48px)" : "clamp(36px,5vw,60px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#fff", marginBottom: 36, maxWidth: 640, margin: "0 auto 36px" }}>
+                  {result.activite || result.nom || "Ton business plan"}
+                </h1>
                 {result.scoreExplication && (
-                  <div style={{ maxWidth: 520, margin: "0 auto 24px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", borderRadius: 4 }}>
-                    <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, fontFamily: "Arial, sans-serif", lineHeight: 1.6 }}>{result.scoreExplication}</p>
+                  <div style={{ maxWidth: 520, margin: "0 auto 32px", padding: "16px 24px", borderLeft: "3px solid rgba(255,255,255,0.2)" }}>
+                    <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "Arial, sans-serif", lineHeight: 1.6, textAlign: "left" }}>{result.scoreExplication}</p>
                   </div>
                 )}
                 {result.scoreCriteres && result.scoreCriteres.length > 0 && (
                   <div style={{ maxWidth: 520, margin: "0 auto 32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: isMobile ? "16px" : "20px 24px", borderRadius: 4 }}>
-                    <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>DÉTAIL DU SCORE</div>
-                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontFamily: "Arial, sans-serif", marginBottom: 16, fontStyle: "italic" }}>Le score global est la moyenne de ces 6 critères, notés sur 10.</div>
+                    <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>ANALYSE DE TON PROJET</div>
                     {result.scoreCriteres.map((c, i) => {
                       const match = c.match(/^(.+?):\s*(\d+)\/10\s*—\s*(.+)/);
                       if (!match) return null;
-                      const [, label, note, expl] = match;
+                      const CRIT_FR = { Experience: "Expérience", Marche: "Marché", Differenciation: "Différenciation", Budget: "Budget", Clarte: "Clarté", Timing: "Timing" };
+                      const [, label, note] = match;
+                      const labelFR = CRIT_FR[label.trim()] || label.trim();
                       return (
                         <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderBottom: i < result.scoreCriteres.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
-                          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", minWidth: 120, fontFamily: "Arial, sans-serif" }}>{label}</span>
+                          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", minWidth: 120, fontFamily: "Arial, sans-serif", textAlign: "left" }}>{labelFR}</span>
                           <div style={{ flex: 1, height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2 }}>
                             <div style={{ height: "100%", width: `${parseInt(note) * 10}%`, background: parseInt(note) >= 7 ? "#4ade80" : parseInt(note) >= 5 ? "#facc15" : "#f87171", borderRadius: 2 }} />
                           </div>
@@ -842,6 +848,11 @@ ${sections.map((s, i) => {
                     })}
                   </div>
                 )}
+                <div style={{ maxWidth: 520, margin: "0 auto 0", padding: "16px 0", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                  <p style={{ fontSize: 11, color: "rgba(255,255,255,0.2)", fontFamily: "Arial, sans-serif", lineHeight: 1.55, textAlign: "center" }}>
+                    Ce plan est généré par IA à titre indicatif. Les informations peuvent contenir des erreurs — vérifie les points importants auprès de sources officielles avant de te lancer.
+                  </p>
+                </div>
               </div>
 
               {/* Sections */}
