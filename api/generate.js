@@ -158,6 +158,7 @@ RÈGLES :
 - PROFONDEUR SECTORIELLE : creuse les obligations et spécificités RÉELLES de SON secteur précis (ex : restaurant → licence III/IV, ERP, accessibilité PMR, sécurité incendie, extraction, commission de sécurité, HACCP ; commerce alimentaire → DDPP ; e-commerce → RGPD, droit de rétractation ; métier réglementé → diplôme/qualification obligatoire). Vérifie les obligations à jour par recherche web. Ne reste pas générique.
 - QUALITÉ DES SOURCES (RÈGLE STRICTE ET PRIORITAIRE) : tu ne cites une source QUE si elle vient d'une institution ou d'un organisme reconnu — sites en .gouv.fr, INSEE, URSSAF, service-public, France Travail, Bpifrance, CCI/CMA, CNIL, Banque de France, ministères, fédérations professionnelles officielles, ou un grand cabinet immobilier reconnu pour un loyer (ex : JLL, CBRE). INTERDIT formellement comme source : blogs SEO, sites marchands ou de vendeurs, revendeurs de rapports payants, comparateurs, agrégateurs, sites d'actualité ou de sorties — exemples à NE JAMAIS citer : tool-advisor.fr, loyer-commerce.com, modelesdebusinessplan.com, optigestplus.org, hostinger, dpo-partage.fr, legalstart, pantheonconseil.com, legalplace.fr, revue-juridique.fr, mana-sys.fr. INTERDIT ÉGALEMENT : utiliser un concurrent commercial ou un outil SaaS (ex : Propulse by CA, Plania, Visme, Venngage) comme source de données de marché ou de tendances — ce sont des sources intéressées, pas officielles. Si le seul résultat disponible vient d'un tel site, NE METS AUCUN lien : écris "(≈ à vérifier)". Mieux vaut zéro source qu'une source douteuse.
 - PRUDENCE SUR LES AFFIRMATIONS : n'avance JAMAIS de statistique choc non sourçable (ex : "80% des boutiques ferment en 18 mois"). Formule prudemment et qualitativement ("beaucoup d'e-commerces échouent dans leurs premières années"). Aucun chiffre précis sans source officielle réelle.
+- PLAFOND MICRO-ENTREPRENEUR : le plafond annuel de CA pour les prestations de services (BIC ou BNC) est de 77 700 € en 2026 — utilise TOUJOURS ce chiffre, jamais 83 600€ (qui correspond aux activités commerciales/hébergement).
 - TAUX/SEUILS À JOUR (TRÈS IMPORTANT) : pour toute aide, taux ou seuil susceptible de changer (ACRE, ARCE, plafonds, cotisations…), donne la valeur EN VIGUEUR à la date du jour indiquée plus haut. Ne présente JAMAIS un taux futur comme s'il était le taux actuel. EXEMPLE OBLIGATOIRE À RESPECTER : l'exonération ACRE des micro-entrepreneurs est de **50%** jusqu'au 30 juin 2026 inclus (donc AUJOURD'HUI si la date du jour est avant le 1er juillet 2026), et seulement 25% pour les créations à compter du 1er juillet 2026. Si la date du jour est avant le 1er juillet 2026, tu DOIS écrire "50%" (pas 25%). Vérifie toujours par recherche web avant d'écrire un taux.
 - OBLIGATOIRE vs RECOMMANDÉ : distingue rigoureusement ce qui est légalement OBLIGATOIRE de ce qui est seulement RECOMMANDÉ. N'écris "obligatoire" que si ça l'est vraiment. Ex : les premiers secours (PSC1/SST) et la RC Pro pour une activité non réglementée sont RECOMMANDÉS, pas obligatoires. En cas de doute, écris "recommandé" ou "à vérifier".
 - AUCUNE RÉFÉRENCE INVENTÉE : n'invente JAMAIS une date d'entrée en vigueur, un numéro de loi/décret/ordonnance, ni un "depuis 2026". Si tu n'as pas vérifié une date ou une référence juridique par recherche web, ne la cite pas.
@@ -167,7 +168,7 @@ RÈGLES :
 - FORMAT DES POINTS : respecte EXACTEMENT la liste de points demandée pour chaque section. Mets TOUT le contenu d'un point sur la MÊME ligne que son label (juste après les "**"). Ne crée JAMAIS de sous-puces, ni de label vide : chaque "- **Label :**" doit être immédiatement suivi de son contenu. Si un point a beaucoup d'infos (ex : plusieurs aides), enchaîne-les dans la même ligne en les séparant par des points-virgules, pas en puces enfants.`;
 
   try {
-    // APPEL 1 : Infos de base + sections 1, 2, 3, 4
+    // APPEL 1 : Sections 1-5 (portrait, marché, modèle éco, marketing, plan d'action)
     const prompt1 = `${contexte}
 
 Génère la PARTIE 1 du business plan dans ce format exact :
@@ -220,14 +221,7 @@ INTRO: [1 phrase sur la stratégie globale]
 - **Canal principal :** [Le canal d'acquisition PRIORITAIRE basé sur ce que l'entrepreneur a répondu sur comment ses clients le trouvent. S'il a mentionné TikTok/Instagram/réseaux sociaux : construis la stratégie autour de ça en premier (contenu court, Reels, types de vidéos, fréquence). S'il a mentionné Google/bouche-à-oreille/autre : pars de là. Ne mets JAMAIS SEO par défaut si l'utilisateur a dit autre chose.]
 - **Canal secondaire :** [Deuxième canal complémentaire avec tactique concrète]
 - **Réseaux sociaux :** [Quelle plateforme en priorité, quel format de contenu, quelle fréquence, exemples de sujets de posts]
-- **Lancement :** [Actions concrètes pour les 30 premiers jours, cohérentes avec le canal principal]`;
-
-    // APPEL 2 : Sections 5, 6, 7
-    const prompt2 = `${contexte}
-
-Génère la PARTIE 2 du business plan dans ce format exact :
-
-IMPORTANT : commence ta réponse DIRECTEMENT par la ligne "## PLAN D'ACTION 90 JOURS" ci-dessous. Aucun préambule, aucune phrase d'introduction, même après tes recherches web.
+- **Lancement :** [Actions concrètes pour les 30 premiers jours, cohérentes avec le canal principal]
 
 ## PLAN D'ACTION 90 JOURS
 INTRO: [1 phrase sur les priorités des 90 premiers jours]
@@ -235,7 +229,14 @@ INTRO: [1 phrase sur les priorités des 90 premiers jours]
 - **Semaine 3-4 :** [Préparation concrète au lancement, incluant la mise en place du canal d'acquisition principal mentionné par l'entrepreneur dans ses réponses]
 - **Mois 1 — Lancement :** [Comment obtenir les premiers clients via le canal principal déclaré — si TikTok/Instagram : premières vidéos, fréquence, sujets ; si autre canal : adapte]
 - **Mois 2 :** [Actions de croissance sur le canal principal + développement d'un canal secondaire]
-- **Mois 3 :** [Consolidation, mesure des résultats, et cap sur mois 4]
+- **Mois 3 :** [Consolidation, mesure des résultats, et cap sur mois 4]`;
+
+    // APPEL 2 : Sections 6, 7 (légal + risques — nécessitent la recherche web)
+    const prompt2 = `${contexte}
+
+Génère la PARTIE 2 du business plan dans ce format exact :
+
+IMPORTANT : commence ta réponse DIRECTEMENT par la ligne "## DÉMARCHES LÉGALES" ci-dessous. Aucun préambule, aucune phrase d'introduction, même après tes recherches web.
 
 ## DÉMARCHES LÉGALES
 INTRO: [1 phrase sur les obligations légales]
@@ -249,7 +250,7 @@ INTRO: [1 phrase sur les obligations légales]
 INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
 - **Risque principal :** [Le risque numéro 1 avec solution concrète]
 - **Risque financier :** [Sous-capitalisation et comment l'éviter]
-- **Risque marché :** [Risque lié aux clients ou concurrents. Si tu cites des concurrents ici, applique la même règle stricte qu'en section Marché : vérifie qu'ils font vraiment la même chose. N'invente pas de concurrents. Pour un outil en ligne, ne cite pas Venngage, Visme, MyMap.AI ou tout outil de design/mind-mapping — ce ne sont pas des générateurs de business plan.]
+- **Risque marché :** [Risque lié aux clients ou concurrents. INTERDICTION ABSOLUE de citer MyMap.AI, Venngage, Visme, Canva ou Miro comme concurrents — ce sont des outils de design/mind-mapping, pas des générateurs de business plan. Ne cite QUE des outils qui génèrent vraiment des business plans complets.]
 - **Trésorerie de sécurité :** [Montant à prévoir et comment le constituer]
 - **Conseil final :** [Le conseil le plus important pour réussir]`;
 
@@ -333,4 +334,3 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
     return res.status(500).json({ error: "Erreur serveur — réessaie" });
   }
 }
-
