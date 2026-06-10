@@ -360,7 +360,7 @@ export default function App() {
       const label = CRIT_FR[m[1].trim()] || m[1].trim();
       const n = parseInt(m[2]);
       const col = n >= 7 ? "#4ade80" : n >= 5 ? "#facc15" : "#f87171";
-      return `<tr><td>${label}</td><td style="padding:7px 14px;"><div style="width:${n * 10}%;height:4px;background:${col};border-radius:2px;min-width:4px;"></div></td><td>${n}/10</td></tr>`;
+      return `<tr><td>${label}</td><td style="padding-left:14px;padding-right:14px;"><div class="cover-crit-bar-bg"><div class="cover-crit-bar" style="width:${n * 10}%;background:${col};"></div></div></td><td>${n}/10</td></tr>`;
     }).join("");
 
     const html = `<!DOCTYPE html>
@@ -372,20 +372,31 @@ export default function App() {
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:Arial,sans-serif; color:#1a1a1a; background:#fff; font-size:13px; line-height:1.6; word-wrap:break-word; overflow-wrap:break-word; }
   @page { size:A4; margin:0; }
-  @media print { body { -webkit-print-color-adjust:exact; print-color-adjust:exact; } .section { page-break-after:always; } }
+  @media print {
+    body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .section { page-break-after:always; break-after:page; }
+    .section:last-of-type { page-break-after:auto; break-after:auto; }
+    .point { page-break-inside:avoid; break-inside:avoid; }
+    .section-title, .section-intro, .section-num { page-break-after:avoid; break-after:avoid; }
+    .cover { page-break-after:always; break-after:page; }
+    .toc { page-break-after:always; break-after:page; }
+  }
   a { color:#0a58ca; word-break:break-all; }
 
   /* COUVERTURE */
-  .cover { min-height:1050px; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:60px; page-break-after:always; box-sizing:border-box; }
+  .cover { min-height:297mm; height:297mm; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:60px; page-break-after:always; box-sizing:border-box; }
   .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:64px; }
   .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:16px; }
   .cover-activite { font-size:40px; font-weight:900; letter-spacing:-0.02em; line-height:1.1; margin-bottom:36px; color:#fff; }
   .cover-expl { max-width:500px; color:rgba(255,255,255,0.55); font-size:13px; line-height:1.7; margin-bottom:32px; padding-left:16px; border-left:3px solid rgba(255,255,255,0.2); }
   .cover-crit-lbl { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(255,255,255,0.3); margin-bottom:12px; }
-  .cover-crit-table { border-collapse:collapse; max-width:460px; margin-bottom:36px; }
-  .cover-crit-table td { padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:12px; vertical-align:middle; }
-  .cover-crit-table td:first-child { color:rgba(255,255,255,0.45); width:150px; }
-  .cover-crit-table td:last-child { font-weight:900; color:#fff; text-align:right; padding-left:12px; width:42px; }
+  .cover-crit-table { border-collapse:collapse; width:460px; max-width:100%; margin-bottom:36px; table-layout:fixed; }
+  .cover-crit-table td { padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:12px; vertical-align:middle; }
+  .cover-crit-table td:first-child { color:rgba(255,255,255,0.45); width:140px; }
+  .cover-crit-table td:nth-child(2) { width:auto; }
+  .cover-crit-bar-bg { width:100%; height:5px; background:rgba(255,255,255,0.12); border-radius:3px; }
+  .cover-crit-bar { height:5px; border-radius:3px; }
+  .cover-crit-table td:last-child { font-weight:900; color:#fff; text-align:right; padding-left:14px; width:46px; }
   .cover-disclaimer { font-size:10.5px; color:rgba(255,255,255,0.22); line-height:1.55; max-width:500px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); margin-bottom:28px; }
   .cover-footer { display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:11px; color:rgba(255,255,255,0.25); }
 
@@ -398,7 +409,7 @@ export default function App() {
   .toc-pg { font-size:11px; color:rgba(0,0,0,0.3); }
 
   /* SECTIONS */
-  .section { padding:48px 52px; page-break-after:always; page-break-inside:auto; }
+  .section { padding:56px 52px; page-break-after:always; page-break-inside:auto; }
   .section-num { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(0,0,0,0.2); margin-bottom:6px; }
   .section-title { font-size:22px; font-weight:900; letter-spacing:-0.01em; border-bottom:3px solid #000; padding-bottom:14px; margin-bottom:20px; }
   .section-intro { font-size:13px; color:rgba(0,0,0,0.55); font-style:italic; line-height:1.6; margin-bottom:28px; border-left:3px solid #000; padding-left:14px; }
@@ -456,33 +467,44 @@ ${sections.map((s, i) => {
 </body>
 </html>`;
 
-    // Nom du fichier
-    const filename = `${(data.nom || "BusinessPlan").replace(/\s+/g, "_")}_PLANSTART.html`;
-    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    // Impression PDF native : règle le bug Safari (.txt) ET la pagination.
+    // Le moteur d'impression du navigateur génère un vrai PDF propre sur iOS comme sur ordi.
+    const printDoc = `${html.replace("</body>", `<script>
+      window.onload = function () {
+        setTimeout(function () {
+          window.focus();
+          window.print();
+        }, 500);
+      };
+    <\/script></body>`)}`;
 
-    // MOBILE : feuille de partage native (Enregistrer dans Fichiers, Imprimer, envoyer…)
-    // car iOS/Safari ignore l'attribut "download" et ne télécharge pas le fichier.
-    try {
-      const file = new File([blob], filename, { type: "text/html" });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], title: `Business plan — ${data.nom || "PLANSTART"}` });
-        return;
-      }
-    } catch (e) {
-      // L'utilisateur a fermé la feuille de partage : on s'arrête, pas de repli.
-      if (e && e.name === "AbortError") return;
-      // Sinon (partage non supporté), on tente le téléchargement classique ci-dessous.
+    // On ouvre une nouvelle fenêtre/onglet : fiable sur PC (Chrome, Edge, Firefox) ET mobile.
+    // - PC : la boîte d'impression s'ouvre, l'utilisateur choisit "Enregistrer au format PDF".
+    // - iOS : l'onglet s'ouvre, Partager → "Enregistrer dans Fichiers" donne un vrai PDF.
+    const w = window.open("", "_blank");
+    if (w) {
+      w.document.open();
+      w.document.write(printDoc);
+      w.document.close();
+      return;
     }
 
-    // ORDINATEUR (et repli) : téléchargement classique du fichier HTML.
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    // Repli si le navigateur bloque les pop-ups : iframe cachée.
+    const iframe = document.createElement("iframe");
+    iframe.style.position = "fixed";
+    iframe.style.right = "0";
+    iframe.style.bottom = "0";
+    iframe.style.width = "0";
+    iframe.style.height = "0";
+    iframe.style.border = "0";
+    document.body.appendChild(iframe);
+    const idoc = iframe.contentWindow.document;
+    idoc.open();
+    idoc.write(printDoc);
+    idoc.close();
+    setTimeout(() => {
+      try { document.body.removeChild(iframe); } catch (e) {}
+    }, 60000);
   };
 
   // ─── STYLES ───────────────────────────────────────────────────────────────────
@@ -896,9 +918,6 @@ ${sections.map((s, i) => {
                   <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
                     <button onClick={() => downloadPDF(result)} style={{ background: "#fff", color: "#000", border: "none", padding: isMobile ? "14px 28px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", cursor: "pointer" }}>
                       ↓ TÉLÉCHARGER MON PLAN
-                    </button>
-                    <button onClick={handleShare} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.7)", padding: isMobile ? "14px 20px" : "16px 28px", fontSize: 12, fontWeight: 900, letterSpacing: "0.08em", cursor: "pointer" }}>
-                      PARTAGER →
                     </button>
                   </div>
                 </div>
