@@ -373,18 +373,18 @@ export default function App() {
   body { font-family:Arial,sans-serif; color:#1a1a1a; background:#fff; font-size:13px; line-height:1.6; word-wrap:break-word; overflow-wrap:break-word; }
   @page { size:A4; margin:0; }
   @media print {
+    html, body { margin:0 !important; padding:0 !important; }
     body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    .section { page-break-after:always; break-after:page; }
-    .section:last-of-type { page-break-after:auto; break-after:auto; }
-    .point { page-break-inside:avoid; break-inside:avoid; }
-    .section-title, .section-intro, .section-num { page-break-after:avoid; break-after:avoid; }
     .cover { page-break-after:always; break-after:page; }
     .toc { page-break-after:always; break-after:page; }
+    .section { page-break-before:always; break-before:page; }
+    .point { page-break-inside:avoid; break-inside:avoid; }
+    .section-title, .section-intro, .section-num { page-break-after:avoid; break-after:avoid; }
   }
   a { color:#0a58ca; word-break:break-all; }
 
   /* COUVERTURE */
-  .cover { min-height:297mm; height:297mm; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:60px; page-break-after:always; box-sizing:border-box; }
+  .cover { min-height:297mm; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:60px; box-sizing:border-box; overflow:hidden; }
   .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:64px; }
   .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:16px; }
   .cover-activite { font-size:40px; font-weight:900; letter-spacing:-0.02em; line-height:1.1; margin-bottom:36px; color:#fff; }
@@ -401,7 +401,7 @@ export default function App() {
   .cover-footer { display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:11px; color:rgba(255,255,255,0.25); }
 
   /* SOMMAIRE */
-  .toc { padding:60px; page-break-after:always; }
+  .toc { padding:60px; }
   .toc-title { font-size:9px; font-weight:900; letter-spacing:0.25em; color:rgba(0,0,0,0.25); margin-bottom:36px; }
   .toc-item { display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid #f0f0f0; }
   .toc-num { font-size:10px; font-weight:900; color:rgba(0,0,0,0.2); min-width:28px; }
@@ -409,7 +409,7 @@ export default function App() {
   .toc-pg { font-size:11px; color:rgba(0,0,0,0.3); }
 
   /* SECTIONS */
-  .section { padding:56px 52px; page-break-after:always; page-break-inside:auto; }
+  .section { padding:56px 52px; }
   .section-num { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(0,0,0,0.2); margin-bottom:6px; }
   .section-title { font-size:22px; font-weight:900; letter-spacing:-0.01em; border-bottom:3px solid #000; padding-bottom:14px; margin-bottom:20px; }
   .section-intro { font-size:13px; color:rgba(0,0,0,0.55); font-style:italic; line-height:1.6; margin-bottom:28px; border-left:3px solid #000; padding-left:14px; }
@@ -418,7 +418,7 @@ export default function App() {
   .point-text { font-size:13px; color:rgba(0,0,0,0.65); line-height:1.65; flex:1; min-width:200px; overflow-wrap:break-word; word-break:break-word; }
 
   /* FOOTER */
-  .pg-footer { text-align:center; font-size:9px; color:rgba(0,0,0,0.2); font-weight:900; letter-spacing:0.1em; border-top:1px solid #e5e5e5; padding:10px 60px; margin-top:auto; }
+  .pg-footer { text-align:center; font-size:9px; color:rgba(0,0,0,0.2); font-weight:900; letter-spacing:0.1em; border-top:1px solid #e5e5e5; padding-top:14px; margin-top:36px; }
 </style>
 </head>
 <body>
@@ -467,44 +467,58 @@ ${sections.map((s, i) => {
 </body>
 </html>`;
 
-    // Impression PDF native : règle le bug Safari (.txt) ET la pagination.
-    // Le moteur d'impression du navigateur génère un vrai PDF propre sur iOS comme sur ordi.
-    const printDoc = `${html.replace("</body>", `<script>
-      window.onload = function () {
-        setTimeout(function () {
-          window.focus();
-          window.print();
-        }, 500);
-      };
-    <\/script></body>`)}`;
+    const filename = `${(data.titre || data.nom || "BusinessPlan").replace(/[^\wÀ-ÿ]+/g, "_").replace(/^_+|_+$/g, "")}_PLANSTART.pdf`;
 
-    // On ouvre une nouvelle fenêtre/onglet : fiable sur PC (Chrome, Edge, Firefox) ET mobile.
-    // - PC : la boîte d'impression s'ouvre, l'utilisateur choisit "Enregistrer au format PDF".
-    // - iOS : l'onglet s'ouvre, Partager → "Enregistrer dans Fichiers" donne un vrai PDF.
-    const w = window.open("", "_blank");
-    if (w) {
-      w.document.open();
-      w.document.write(printDoc);
-      w.document.close();
-      return;
+    // Repli (impression navigateur) si html2pdf n'a pas chargé.
+    const printFallback = () => {
+      const printDoc = html.replace("</body>", `<script>window.onload=function(){setTimeout(function(){window.focus();window.print();},500);};<\/script></body>`);
+      const w = window.open("", "_blank");
+      if (w) { w.document.open(); w.document.write(printDoc); w.document.close(); return; }
+      const iframe = document.createElement("iframe");
+      iframe.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;";
+      document.body.appendChild(iframe);
+      const idoc = iframe.contentWindow.document;
+      idoc.open(); idoc.write(printDoc); idoc.close();
+      setTimeout(() => { try { document.body.removeChild(iframe); } catch (e) {} }, 60000);
+    };
+
+    // VRAI TÉLÉCHARGEMENT PDF en un clic via html2pdf (chargé en CDN dans index.html).
+    if (typeof window !== "undefined" && window.html2pdf) {
+      try {
+        // On construit le document dans un conteneur hors-écran.
+        const container = document.createElement("div");
+        container.innerHTML = html.replace(/^[\s\S]*?<body[^>]*>/, "").replace(/<\/body>[\s\S]*$/, "");
+        // On réinjecte les styles du template.
+        const styleMatch = html.match(/<style>([\s\S]*?)<\/style>/);
+        if (styleMatch) {
+          const st = document.createElement("style");
+          st.textContent = styleMatch[1];
+          container.appendChild(st);
+        }
+        container.style.cssText = "position:fixed;left:-9999px;top:0;width:794px;background:#fff;";
+        document.body.appendChild(container);
+
+        const opt = {
+          margin: 0,
+          filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"], before: ".section", avoid: ".point" }
+        };
+
+        await window.html2pdf().set(opt).from(container).save();
+        document.body.removeChild(container);
+        return;
+      } catch (e) {
+        // Si html2pdf échoue, on bascule sur l'impression navigateur.
+        printFallback();
+        return;
+      }
     }
 
-    // Repli si le navigateur bloque les pop-ups : iframe cachée.
-    const iframe = document.createElement("iframe");
-    iframe.style.position = "fixed";
-    iframe.style.right = "0";
-    iframe.style.bottom = "0";
-    iframe.style.width = "0";
-    iframe.style.height = "0";
-    iframe.style.border = "0";
-    document.body.appendChild(iframe);
-    const idoc = iframe.contentWindow.document;
-    idoc.open();
-    idoc.write(printDoc);
-    idoc.close();
-    setTimeout(() => {
-      try { document.body.removeChild(iframe); } catch (e) {}
-    }, 60000);
+    // html2pdf indisponible → impression navigateur.
+    printFallback();
   };
 
   // ─── STYLES ───────────────────────────────────────────────────────────────────
