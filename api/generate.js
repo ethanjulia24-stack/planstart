@@ -156,7 +156,7 @@ RÈGLES :
 - RECHERCHE ET SOURCES (ÉTAPE OBLIGATOIRE) : tu as accès à la recherche web. AVANT DE RÉDIGER QUOI QUE CE SOIT, effectue d'abord plusieurs recherches web sur : (1) le montant À JOUR des aides (ACRE, ARCE France Travail), (2) selon le type d'activité : les loyers commerciaux de sa ville SI c'est un commerce physique, sinon les coûts pertinents de son modèle (outils, hébergement, pub…), (3) les VRAIS concurrents — pour un commerce physique : dans sa ville ; pour un outil en ligne/SaaS/produit digital : par CATÉGORIE DE PRODUIT exacte au niveau national (ex : recherche "générateur business plan IA français" et PAS "outils IA"), et vérifie que chacun fait bien la même chose avant de le retenir, (4) la réglementation à jour de son secteur. Ne rédige le plan qu'APRÈS ces recherches. Pour TOUT chiffre important, cite la source juste après, EN TEXTE BRUT que tu écris toi-même, au format "(Source : Nom — URL)" — ne te contente pas d'une citation automatique. N'écris JAMAIS un chiffre officiel de mémoire et n'invente JAMAIS de source : si une recherche ne donne rien de fiable, écris "(≈ à vérifier)" sans fausse source.
 - ANCRAGE LOCAL : raisonne à l'échelle du LIEU PRÉCIS indiqué (sa ville/quartier). Privilégie le local et le raisonnement bottom-up (à partir de SES chiffres). N'utilise une statistique nationale QUE si elle est sourcée par recherche web ET reliée à une conséquence concrète pour son projet — jamais une stat creuse isolée.
 - PROFONDEUR SECTORIELLE : creuse les obligations et spécificités RÉELLES de SON secteur précis (ex : restaurant → licence III/IV, ERP, accessibilité PMR, sécurité incendie, extraction, commission de sécurité, HACCP ; commerce alimentaire → DDPP ; e-commerce → RGPD, droit de rétractation ; métier réglementé → diplôme/qualification obligatoire). Vérifie les obligations à jour par recherche web. Ne reste pas générique.
-- QUALITÉ DES SOURCES (RÈGLE STRICTE ET PRIORITAIRE) : tu ne cites une source QUE si elle vient d'une institution ou d'un organisme reconnu — sites en .gouv.fr, INSEE, URSSAF, service-public, France Travail, Bpifrance, CCI/CMA, CNIL, Banque de France, ministères, fédérations professionnelles officielles, ou un grand cabinet immobilier reconnu pour un loyer (ex : JLL, CBRE). INTERDIT formellement comme source : blogs SEO, sites marchands ou de vendeurs (logiciels de caisse, fournisseurs, e-commerçants), revendeurs de rapports payants, comparateurs, agrégateurs, sites d'actualité, sites de sorties, et tout site "modèles de business plan" ou estimateur de loyer commercial (ex à NE PAS citer : loyer-commerce.com, unemplacement.com, localcommercial.net, modelesdebusinessplan.com, optigestplus.org, hostinger, tool-advisor, leto.legal, mana-sys, legalstart). Cette règle est PRIORITAIRE sur ton envie de sourcer : si le seul résultat vient d'un site non officiel, NE METS AUCUN lien — écris le chiffre en fourchette avec "(≈ à vérifier)". Mieux vaut zéro source qu'une source douteuse.
+- QUALITÉ DES SOURCES (RÈGLE STRICTE ET PRIORITAIRE) : tu ne cites une source QUE si elle vient d'une institution ou d'un organisme reconnu — sites en .gouv.fr, INSEE, URSSAF, service-public, France Travail, Bpifrance, CCI/CMA, CNIL, Banque de France, ministères, fédérations professionnelles officielles, ou un grand cabinet immobilier reconnu pour un loyer (ex : JLL, CBRE). INTERDIT formellement comme source : blogs SEO, sites marchands ou de vendeurs, revendeurs de rapports payants, comparateurs, agrégateurs, sites d'actualité ou de sorties — exemples à NE JAMAIS citer : tool-advisor.fr, loyer-commerce.com, modelesdebusinessplan.com, optigestplus.org, hostinger, dpo-partage.fr, legalstart, pantheonconseil.com. INTERDIT ÉGALEMENT : utiliser un concurrent commercial ou un outil SaaS (ex : Propulse by CA, Plania, Visme, Venngage) comme source de données de marché ou de tendances — ce sont des sources intéressées, pas officielles. Si le seul résultat disponible vient d'un tel site, NE METS AUCUN lien : écris "(≈ à vérifier)". Mieux vaut zéro source qu'une source douteuse.
 - PRUDENCE SUR LES AFFIRMATIONS : n'avance JAMAIS de statistique choc non sourçable (ex : "80% des boutiques ferment en 18 mois"). Formule prudemment et qualitativement ("beaucoup d'e-commerces échouent dans leurs premières années"). Aucun chiffre précis sans source officielle réelle.
 - TAUX/SEUILS À JOUR (TRÈS IMPORTANT) : pour toute aide, taux ou seuil susceptible de changer (ACRE, ARCE, plafonds, cotisations…), donne la valeur EN VIGUEUR à la date du jour indiquée plus haut. Si un changement est prévu plus tard, mentionne-le SÉPARÉMENT ("à partir du [date], ce taux passera à X"). Ne présente JAMAIS un taux futur comme s'il était le taux actuel. Exemple : l'exonération ACRE des micro-entrepreneurs est de 50% jusqu'au 30 juin 2026, puis 25% pour les créations à partir du 1er juillet 2026 — vérifie par recherche web et applique le bon selon la date.
 - OBLIGATOIRE vs RECOMMANDÉ : distingue rigoureusement ce qui est légalement OBLIGATOIRE de ce qui est seulement RECOMMANDÉ. N'écris "obligatoire" que si ça l'est vraiment. Ex : les premiers secours (PSC1/SST) et la RC Pro pour une activité non réglementée sont RECOMMANDÉS, pas obligatoires. En cas de doute, écris "recommandé" ou "à vérifier".
@@ -198,14 +198,14 @@ INTRO: [1 phrase d'accroche]
 INTRO: [1 phrase sur l'opportunité, ancrée sur sa ville]
 - **Marché :** [Taille du marché pertinente et SOURCÉE par recherche web (Source : Nom — URL), reliée à une conséquence concrète pour lui. Privilégie une donnée locale/régionale si possible.]
 - **Tendances :** [2-3 tendances favorables vérifiées par recherche web, avec source]
-- **Concurrents :** [Identifie les concurrents RÉELS par recherche web. RÈGLE CRITIQUE : pour un business LOCAL (restaurant, barbier, boutique…), cherche dans sa ville/son quartier. Pour un OUTIL EN LIGNE / SaaS / produit digital, cherche par CATÉGORIE DE PRODUIT au niveau national (ex : "générateur business plan IA français", "logiciel devis en ligne France"). Ne cite JAMAIS un concurrent que tu n'as pas trouvé via recherche web ET vérifié qu'il fait exactement la même chose — pas juste un "outil IA" ou un "outil marketing" vaguement similaire. Pour chaque concurrent cité : nom, URL, positionnement, prix, point faible.]
+- **Concurrents :** [Identifie les concurrents RÉELS par recherche web. RÈGLE CRITIQUE : pour un business LOCAL, cherche dans sa ville/son quartier. Pour un OUTIL EN LIGNE / SaaS, cherche par CATÉGORIE DE PRODUIT exacte (ex : "générateur business plan IA français"). Vérifie que chaque concurrent fait VRAIMENT la même chose — interdiction formelle de citer : outils de design (Venngage, Visme, Canva), outils de mind-mapping (MyMap.AI, Miro), outils de présentation, outils généralistes de création de contenu. Ces outils ne génèrent PAS de business plans. Pour chaque concurrent retenu : nom, URL, positionnement, prix, point faible.]
 - **Positionnement :** [Comment SE différencier concrètement d'EUX, vu ses atouts à lui]
 - **Opportunité :** [Le créneau précis à saisir maintenant, dans SON quartier]
 
 ## MODÈLE ÉCONOMIQUE
 INTRO: [1 phrase sur la logique économique, ancrée sur SON budget et SA ville]
 - **Services et prix :** [Offres avec fourchettes de prix alignées sur les prix RÉELS pratiqués dans sa ville (vérifie par recherche web, cite la source)]
-- **Coûts fixes :** [Charges mensuelles détaillées et chiffrées, total estimé, avec le loyer réel de son quartier vérifié par recherche web (Source — URL)]
+- **Coûts fixes :** [Charges mensuelles détaillées et chiffrées, total estimé, avec le loyer réel de son quartier vérifié par recherche web (Source — URL). Pour un SaaS : si l'outil utilise une API IA, mentionne "API IA (OpenAI, Anthropic ou équivalent)" sans imposer un fournisseur spécifique si l'entrepreneur n'en a pas mentionné un.]
 - **Investissement de départ (3 niveaux) :** [MINIMUM pour démarrer / CONFORTABLE / IDÉAL — un montant chiffré pour chacun, adapté à son budget réel annoncé]
 - **Seuil de rentabilité :** [Calcul EXPLICITE et logiquement cohérent : charges ÷ panier moyen = nombre de TICKETS/mois, puis ÷ jours d'ouverture = tickets/jour. Garde UNE seule unité claire (le ticket) et ne la mélange pas avec le "nombre de personnes". Pars de SES chiffres réels.]
 - **3 scénarios chiffrés :** [PESSIMISTE / RÉALISTE / OPTIMISTE en nombre de clients/jour réaliste pour lui — pour chacun : CA mensuel, charges, et reste à vivre]
@@ -213,11 +213,11 @@ INTRO: [1 phrase sur la logique économique, ancrée sur SON budget et SA ville]
 
 ## STRATÉGIE MARKETING
 INTRO: [1 phrase sur la stratégie globale]
-- **Client idéal :** [Profil précis — âge, situation, motivations]
-- **Canal principal :** [Tactique concrète avec budget estimé]
-- **Canal secondaire :** [Deuxième tactique avec résultats attendus]
-- **Réseaux sociaux :** [Quelle plateforme, quel contenu, quelle fréquence]
-- **Lancement :** [Actions concrètes pour les 30 premiers jours]`;
+- **Client idéal :** [Profil précis — âge, situation, motivations, comment il découvre des solutions à son problème]
+- **Canal principal :** [Le canal d'acquisition PRIORITAIRE basé sur ce que l'entrepreneur a répondu sur comment ses clients le trouvent. S'il a mentionné TikTok/Instagram/réseaux sociaux : construis la stratégie autour de ça en premier (contenu court, Reels, types de vidéos, fréquence). S'il a mentionné Google/bouche-à-oreille/autre : pars de là. Ne mets JAMAIS SEO par défaut si l'utilisateur a dit autre chose.]
+- **Canal secondaire :** [Deuxième canal complémentaire avec tactique concrète]
+- **Réseaux sociaux :** [Quelle plateforme en priorité, quel format de contenu, quelle fréquence, exemples de sujets de posts]
+- **Lancement :** [Actions concrètes pour les 30 premiers jours, cohérentes avec le canal principal]`;
 
     // APPEL 2 : Sections 5, 6, 7
     const prompt2 = `${contexte}
@@ -229,24 +229,24 @@ IMPORTANT : commence ta réponse DIRECTEMENT par la ligne "## PLAN D'ACTION 90 J
 ## PLAN D'ACTION 90 JOURS
 INTRO: [1 phrase sur les priorités des 90 premiers jours]
 - **Semaine 1-2 :** [Actions administratives et fondations]
-- **Semaine 3-4 :** [Préparation concrète au lancement]
-- **Mois 1 — Lancement :** [Comment obtenir les premiers clients]
-- **Mois 2 :** [Actions de croissance et marketing]
-- **Mois 3 :** [Consolidation, bilan et cap sur mois 4]
+- **Semaine 3-4 :** [Préparation concrète au lancement, incluant la mise en place du canal d'acquisition principal mentionné par l'entrepreneur dans ses réponses]
+- **Mois 1 — Lancement :** [Comment obtenir les premiers clients via le canal principal déclaré — si TikTok/Instagram : premières vidéos, fréquence, sujets ; si autre canal : adapte]
+- **Mois 2 :** [Actions de croissance sur le canal principal + développement d'un canal secondaire]
+- **Mois 3 :** [Consolidation, mesure des résultats, et cap sur mois 4]
 
 ## DÉMARCHES LÉGALES
 INTRO: [1 phrase sur les obligations légales]
 - **Statut recommandé :** [Micro-entrepreneur, SASU ou autre avec justification]
 - **Immatriculation :** [Site exact, documents, délai et coût]
 - **Aides disponibles :** [ACRE, ARE/ARCE France Travail, prêts d'honneur — montants EXACTS et conditions, VÉRIFIÉS par recherche web, avec source (Nom — URL)]
-- **Obligations sectorielles :** [TOUTES les obligations RÉELLES propres à ce secteur précis : diplômes/qualifications obligatoires, licences (ex : licence III/IV pour l'alcool), classement ERP, accessibilité PMR, sécurité incendie, extraction/ventilation, commission de sécurité, déclarations spécifiques (DDPP…), normes d'hygiène. Sois précis et exhaustif pour CE métier.]
+- **Obligations sectorielles :** [TOUTES les obligations RÉELLES propres à ce secteur précis : diplômes/qualifications obligatoires, licences (ex : licence III/IV pour l'alcool), classement ERP, accessibilité PMR, sécurité incendie, extraction/ventilation, commission de sécurité, déclarations spécifiques (DDPP…), normes d'hygiène. Pour un outil SaaS/numérique : RGPD détaillé (politique de confidentialité, registre des traitements, droits utilisateurs, notification CNIL sous 72h) — SOURCE RGPD : utilise EXCLUSIVEMENT cnil.fr ou francenum.gouv.fr, jamais un site de conseil DPO commercial. Sois précis et exhaustif pour CE métier.]
 - **Assurances :** [Assurances obligatoires avec fourchette de prix]
 
 ## RISQUES ET SOLUTIONS
 INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
 - **Risque principal :** [Le risque numéro 1 avec solution concrète]
 - **Risque financier :** [Sous-capitalisation et comment l'éviter]
-- **Risque marché :** [Risque lié aux clients ou concurrents]
+- **Risque marché :** [Risque lié aux clients ou concurrents. Si tu cites des concurrents ici, applique la même règle stricte qu'en section Marché : vérifie qu'ils font vraiment la même chose. N'invente pas de concurrents. Pour un outil en ligne, ne cite pas Venngage, Visme, MyMap.AI ou tout outil de design/mind-mapping — ce ne sont pas des générateurs de business plan.]
 - **Trésorerie de sécurité :** [Montant à prévoir et comment le constituer]
 - **Conseil final :** [Le conseil le plus important pour réussir]`;
 
