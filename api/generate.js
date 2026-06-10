@@ -156,12 +156,14 @@ RÈGLES :
 - RECHERCHE ET SOURCES (ÉTAPE OBLIGATOIRE) : tu as accès à la recherche web. AVANT DE RÉDIGER QUOI QUE CE SOIT, effectue d'abord plusieurs recherches web sur : (1) le montant À JOUR des aides (ACRE, ARCE France Travail), (2) selon le type d'activité : les loyers commerciaux de sa ville SI c'est un commerce physique, sinon les coûts pertinents de son modèle (outils, hébergement, pub…), (3) les VRAIS concurrents — pour un commerce physique : dans sa ville ; pour un outil en ligne/SaaS/produit digital : par CATÉGORIE DE PRODUIT exacte au niveau national (ex : recherche "générateur business plan IA français" et PAS "outils IA"), et vérifie que chacun fait bien la même chose avant de le retenir, (4) la réglementation à jour de son secteur. Ne rédige le plan qu'APRÈS ces recherches. Pour TOUT chiffre important, cite la source juste après, EN TEXTE BRUT que tu écris toi-même, au format "(Source : Nom — URL)" — ne te contente pas d'une citation automatique. N'écris JAMAIS un chiffre officiel de mémoire et n'invente JAMAIS de source : si une recherche ne donne rien de fiable, écris "(≈ à vérifier)" sans fausse source.
 - ANCRAGE LOCAL : raisonne à l'échelle du LIEU PRÉCIS indiqué (sa ville/quartier). Privilégie le local et le raisonnement bottom-up (à partir de SES chiffres). N'utilise une statistique nationale QUE si elle est sourcée par recherche web ET reliée à une conséquence concrète pour son projet — jamais une stat creuse isolée.
 - PROFONDEUR SECTORIELLE : creuse les obligations et spécificités RÉELLES de SON secteur précis (ex : restaurant → licence III/IV, ERP, accessibilité PMR, sécurité incendie, extraction, commission de sécurité, HACCP ; commerce alimentaire → DDPP ; e-commerce → RGPD, droit de rétractation ; métier réglementé → diplôme/qualification obligatoire). Vérifie les obligations à jour par recherche web. Ne reste pas générique.
-- QUALITÉ DES SOURCES (RÈGLE STRICTE ET PRIORITAIRE) : tu ne cites une source QUE si elle vient d'une institution ou d'un organisme reconnu — sites en .gouv.fr, INSEE, URSSAF, service-public, France Travail, Bpifrance, CCI/CMA, CNIL, Banque de France, ministères, fédérations professionnelles officielles, ou un grand cabinet immobilier reconnu pour un loyer (ex : JLL, CBRE). INTERDIT formellement comme source : blogs SEO, sites marchands ou de vendeurs, revendeurs de rapports payants, comparateurs, agrégateurs, sites d'actualité ou de sorties — exemples à NE JAMAIS citer : tool-advisor.fr, loyer-commerce.com, modelesdebusinessplan.com, optigestplus.org, hostinger, dpo-partage.fr, legalstart, pantheonconseil.com. INTERDIT ÉGALEMENT : utiliser un concurrent commercial ou un outil SaaS (ex : Propulse by CA, Plania, Visme, Venngage) comme source de données de marché ou de tendances — ce sont des sources intéressées, pas officielles. Si le seul résultat disponible vient d'un tel site, NE METS AUCUN lien : écris "(≈ à vérifier)". Mieux vaut zéro source qu'une source douteuse.
+- QUALITÉ DES SOURCES (RÈGLE STRICTE ET PRIORITAIRE) : tu ne cites une source QUE si elle vient d'une institution ou d'un organisme reconnu — sites en .gouv.fr, INSEE, URSSAF, service-public, France Travail, Bpifrance, CCI/CMA, CNIL, Banque de France, ministères, fédérations professionnelles officielles, ou un grand cabinet immobilier reconnu pour un loyer (ex : JLL, CBRE). INTERDIT formellement comme source : blogs SEO, sites marchands ou de vendeurs, revendeurs de rapports payants, comparateurs, agrégateurs, sites d'actualité ou de sorties — exemples à NE JAMAIS citer : tool-advisor.fr, loyer-commerce.com, modelesdebusinessplan.com, optigestplus.org, hostinger, dpo-partage.fr, legalstart, pantheonconseil.com, legalplace.fr, revue-juridique.fr, mana-sys.fr. INTERDIT ÉGALEMENT : utiliser un concurrent commercial ou un outil SaaS (ex : Propulse by CA, Plania, Visme, Venngage) comme source de données de marché ou de tendances — ce sont des sources intéressées, pas officielles. Si le seul résultat disponible vient d'un tel site, NE METS AUCUN lien : écris "(≈ à vérifier)". Mieux vaut zéro source qu'une source douteuse.
 - PRUDENCE SUR LES AFFIRMATIONS : n'avance JAMAIS de statistique choc non sourçable (ex : "80% des boutiques ferment en 18 mois"). Formule prudemment et qualitativement ("beaucoup d'e-commerces échouent dans leurs premières années"). Aucun chiffre précis sans source officielle réelle.
-- TAUX/SEUILS À JOUR (TRÈS IMPORTANT) : pour toute aide, taux ou seuil susceptible de changer (ACRE, ARCE, plafonds, cotisations…), donne la valeur EN VIGUEUR à la date du jour indiquée plus haut. Si un changement est prévu plus tard, mentionne-le SÉPARÉMENT ("à partir du [date], ce taux passera à X"). Ne présente JAMAIS un taux futur comme s'il était le taux actuel. Exemple : l'exonération ACRE des micro-entrepreneurs est de 50% jusqu'au 30 juin 2026, puis 25% pour les créations à partir du 1er juillet 2026 — vérifie par recherche web et applique le bon selon la date.
+- TAUX/SEUILS À JOUR (TRÈS IMPORTANT) : pour toute aide, taux ou seuil susceptible de changer (ACRE, ARCE, plafonds, cotisations…), donne la valeur EN VIGUEUR à la date du jour indiquée plus haut. Ne présente JAMAIS un taux futur comme s'il était le taux actuel. EXEMPLE OBLIGATOIRE À RESPECTER : l'exonération ACRE des micro-entrepreneurs est de **50%** jusqu'au 30 juin 2026 inclus (donc AUJOURD'HUI si la date du jour est avant le 1er juillet 2026), et seulement 25% pour les créations à compter du 1er juillet 2026. Si la date du jour est avant le 1er juillet 2026, tu DOIS écrire "50%" (pas 25%). Vérifie toujours par recherche web avant d'écrire un taux.
 - OBLIGATOIRE vs RECOMMANDÉ : distingue rigoureusement ce qui est légalement OBLIGATOIRE de ce qui est seulement RECOMMANDÉ. N'écris "obligatoire" que si ça l'est vraiment. Ex : les premiers secours (PSC1/SST) et la RC Pro pour une activité non réglementée sont RECOMMANDÉS, pas obligatoires. En cas de doute, écris "recommandé" ou "à vérifier".
 - AUCUNE RÉFÉRENCE INVENTÉE : n'invente JAMAIS une date d'entrée en vigueur, un numéro de loi/décret/ordonnance, ni un "depuis 2026". Si tu n'as pas vérifié une date ou une référence juridique par recherche web, ne la cite pas.
+- CONCURRENTS DANS TOUTES LES SECTIONS : MyMap.AI, Venngage, Visme, Canva, Miro ne sont JAMAIS des concurrents d'un générateur de business plan. Ne les cite DANS AUCUNE section (Portrait, Risques, ou autre). Ils font des cartes mentales ou du design, pas des BP.
 - COHÉRENCE INTERNE : une même donnée (surface du local, budget, panier moyen, nombre de clients…) doit garder la MÊME valeur dans tout le plan. Ne change pas la surface ou le budget d'une section à l'autre.
+- MODÈLE DE REVENUS : ne propose JAMAIS un modèle payant (freemium, abonnement, prix par unité) si l'entrepreneur n'a pas explicitement mentionné vouloir vendre quelque chose. Si l'outil ou le service est décrit comme gratuit, traite-le comme gratuit et construis un modèle économique cohérent (monétisation indirecte, affiliation, etc.) sans inventer de tarification.
 - FORMAT DES POINTS : respecte EXACTEMENT la liste de points demandée pour chaque section. Mets TOUT le contenu d'un point sur la MÊME ligne que son label (juste après les "**"). Ne crée JAMAIS de sous-puces, ni de label vide : chaque "- **Label :**" doit être immédiatement suivi de son contenu. Si un point a beaucoup d'infos (ex : plusieurs aides), enchaîne-les dans la même ligne en les séparant par des points-virgules, pas en puces enfants.`;
 
   try {
@@ -174,6 +176,7 @@ IMPORTANT : commence ta réponse DIRECTEMENT par la ligne "NOM:" ci-dessous. Auc
 
 NOM: [Nom du business, 2-3 mots]
 SLOGAN: [Slogan court]
+TITRE: [3 à 6 mots décrivant simplement ce projet — court, propre, sans fautes, sans jargon. Pas un nom de marque inventé, pas la réponse brute. INTERDIT : ne mets jamais le mot "IA" ni "Intelligence Artificielle" dans le titre. Exemples : "Générateur de business plan", "Salon de coiffure à Lyon", "Restaurant de cuisine locale". Doit être lisible comme titre de couverture.]
 SCORE: [nombre /100 = moyenne des 6 critères ci-dessous ramenée sur 100, arrondie. Ne mets PAS un score arbitraire : il doit correspondre à la moyenne réelle des 6 notes.]
 SCORE_EXPLICATION: [1 phrase HONNÊTE mais CONSTRUCTIVE : ce qui est solide + le principal levier pour progresser, jamais un simple couperet décourageant]
 SCORE_CRITERES:
@@ -264,7 +267,8 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
       scoreExplication: "",
       scoreCriteres: [],
       sections: [],
-      activite: Object.values(sanitizedAnswers)[0]?.slice(0, 90) || ""
+      activite: Object.values(sanitizedAnswers)[0]?.slice(0, 90) || "",
+      titre: ""
     };
 
     const cleanText1 = text1.replace(/\*\*/g, "");
@@ -274,6 +278,7 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
     for (const line of lines1) {
       let m;
       if ((m = line.match(/^NOM\s*:\s*(.+)/i))) result.nom = m[1].trim();
+      else if ((m = line.match(/^TITRE\s*:\s*(.+)/i))) result.titre = m[1].trim();
       else if ((m = line.match(/^SLOGAN\s*:\s*(.+)/i))) result.slogan = m[1].trim();
       else if (!/^SCORE_/i.test(line) && (m = line.match(/^SCORE\s*:\s*(\d+)/i))) result.score = parseInt(m[1]) || 70;
       else if ((m = line.match(/^SCORE_EXPLICATION\s*:\s*(.+)/i))) result.scoreExplication = m[1].trim();
@@ -328,3 +333,4 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
     return res.status(500).json({ error: "Erreur serveur — réessaie" });
   }
 }
+
