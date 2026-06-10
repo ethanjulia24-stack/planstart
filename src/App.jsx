@@ -370,13 +370,13 @@ export default function App() {
 <title>Business Plan — ${escape(data.nom)}</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:Arial,sans-serif; color:#1a1a1a; background:#fff; font-size:13px; line-height:1.6; }
+  body { font-family:Arial,sans-serif; color:#1a1a1a; background:#fff; font-size:13px; line-height:1.6; word-wrap:break-word; overflow-wrap:break-word; }
   @page { size:A4; margin:0; }
   @media print { body { -webkit-print-color-adjust:exact; print-color-adjust:exact; } .section { page-break-after:always; } }
   a { color:#0a58ca; word-break:break-all; }
 
   /* COUVERTURE */
-  .cover { min-height:100vh; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:70px 60px; page-break-after:always; }
+  .cover { min-height:1050px; background:#000; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:60px; page-break-after:always; box-sizing:border-box; }
   .cover-brand { font-size:11px; font-weight:900; letter-spacing:0.3em; color:rgba(255,255,255,0.3); margin-bottom:64px; }
   .cover-label { font-size:10px; font-weight:900; letter-spacing:0.25em; color:rgba(255,255,255,0.35); margin-bottom:16px; }
   .cover-activite { font-size:40px; font-weight:900; letter-spacing:-0.02em; line-height:1.1; margin-bottom:36px; color:#fff; }
@@ -398,13 +398,13 @@ export default function App() {
   .toc-pg { font-size:11px; color:rgba(0,0,0,0.3); }
 
   /* SECTIONS */
-  .section { padding:56px 60px; page-break-after:always; }
+  .section { padding:48px 52px; page-break-after:always; page-break-inside:auto; }
   .section-num { font-size:9px; font-weight:900; letter-spacing:0.2em; color:rgba(0,0,0,0.2); margin-bottom:6px; }
   .section-title { font-size:22px; font-weight:900; letter-spacing:-0.01em; border-bottom:3px solid #000; padding-bottom:14px; margin-bottom:20px; }
   .section-intro { font-size:13px; color:rgba(0,0,0,0.55); font-style:italic; line-height:1.6; margin-bottom:28px; border-left:3px solid #000; padding-left:14px; }
-  .point { display:flex; gap:16px; padding:13px 0; border-bottom:1px solid #f5f5f5; }
-  .point-label { font-size:12px; font-weight:900; min-width:160px; color:#000; flex-shrink:0; }
-  .point-text { font-size:13px; color:rgba(0,0,0,0.65); line-height:1.65; flex:1; }
+  .point { display:flex; flex-wrap:wrap; gap:8px 16px; padding:13px 0; border-bottom:1px solid #f5f5f5; page-break-inside:avoid; }
+  .point-label { font-size:12px; font-weight:900; min-width:140px; max-width:180px; color:#000; flex-shrink:0; word-break:break-word; }
+  .point-text { font-size:13px; color:rgba(0,0,0,0.65); line-height:1.65; flex:1; min-width:200px; overflow-wrap:break-word; word-break:break-word; }
 
   /* FOOTER */
   .pg-footer { text-align:center; font-size:9px; color:rgba(0,0,0,0.2); font-weight:900; letter-spacing:0.1em; border-top:1px solid #e5e5e5; padding:10px 60px; margin-top:auto; }
@@ -416,7 +416,7 @@ export default function App() {
   <div>
     <div class="cover-brand">PLANSTART — planstart.fr</div>
     <div class="cover-label">BUSINESS PLAN PROFESSIONNEL</div>
-    <div class="cover-activite">${escape(data.activite || data.nom || "Mon projet")}</div>
+    <div class="cover-activite">${escape(data.titre || data.nom || data.activite || "Mon projet")}</div>
     ${data.scoreExplication ? `<div class="cover-expl">${escape(data.scoreExplication)}</div>` : ""}
     ${critHTML ? `<div class="cover-crit-lbl">ANALYSE DE TON PROJET</div><table class="cover-crit-table">${critHTML}</table>` : ""}
     <div class="cover-disclaimer">Ce business plan a été généré par intelligence artificielle à partir de tes réponses. Il est fourni à titre indicatif et peut contenir des erreurs ou imprécisions. Vérifie les informations importantes auprès de sources officielles avant de te lancer.</div>
@@ -820,7 +820,7 @@ ${sections.map((s, i) => {
               <div style={{ background: "#000", padding: isMobile ? "100px 24px 48px" : "120px 60px 60px", textAlign: "center" }}>
                 <p style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.3em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>BUSINESS PLAN PROFESSIONNEL</p>
                 <h1 style={{ fontSize: isMobile ? "clamp(28px,8vw,48px)" : "clamp(36px,5vw,60px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#fff", marginBottom: 36, maxWidth: 640, margin: "0 auto 36px" }}>
-                  {result.activite || result.nom || "Ton business plan"}
+                  {result.titre || result.nom || result.activite || "Ton business plan"}
                 </h1>
                 {result.scoreExplication && (
                   <div style={{ maxWidth: 520, margin: "0 auto 32px", padding: "16px 24px", borderLeft: "3px solid rgba(255,255,255,0.2)" }}>
