@@ -564,7 +564,7 @@ ${sections.map((s, i) => {
 
   // ─── STYLES ───────────────────────────────────────────────────────────────────
 
-  const sectionPad = isMobile ? "56px 20px" : "96px 60px";
+  const sectionPad = isMobile ? "56px 14px" : "96px 60px";
 
   return (
     <div style={{ background: CREAM, minHeight: "100vh", fontFamily: "'Arial Black', Arial, sans-serif", color: "#000", overflowX: "hidden" }}>
@@ -653,20 +653,22 @@ ${sections.map((s, i) => {
             </div>
           </div>
 
-          {/* STATS — 3 blocs arrondis et doux, côte à côte */}
-          <div style={{ background: CREAM, padding: isMobile ? "32px 12px" : "48px 60px" }}>
-            <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20 }}>
+          {/* STATS — 3 blocs gris foncé arrondis, côte à côte, avec touche orange */}
+          <div style={{ background: CREAM, padding: isMobile ? "32px 8px" : "48px 60px" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
               {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
-                <div key={i} style={{ background: "#fff", border: "1px solid #ece8e1", borderRadius: 20, padding: isMobile ? "16px 12px" : "32px 32px", boxShadow: "0 4px 18px rgba(0,0,0,0.04)" }}>
-                  <div style={{ fontSize: isMobile ? "clamp(11px,3vw,14px)" : "clamp(16px,2vw,22px)", fontWeight: 900, lineHeight: 1.15 }}>{s.n}</div>
-                  <div style={{ fontSize: isMobile ? 10 : 13, color: isOrange ? "#ff7a2e" : "rgba(0,0,0,0.45)", marginTop: 6, fontFamily: "Arial, sans-serif", lineHeight: 1.3 }}>{s.label}</div>
+                <div key={i} style={{ position: "relative", background: DARK, borderRadius: 20, padding: isMobile ? "16px 14px" : "26px 28px", boxShadow: "0 6px 22px rgba(0,0,0,0.12)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+                  {/* touche orange : barre latérale */}
+                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: isOrange ? "linear-gradient(180deg,#ff9d3d,#ff5e3a)" : "rgba(255,255,255,0.25)" }} />
+                  <div style={{ fontSize: isMobile ? "clamp(12px,3.2vw,15px)" : "clamp(17px,2vw,22px)", fontWeight: 900, lineHeight: 1.15, color: "#fff", letterSpacing: "0.01em" }}>{s.n}</div>
+                  <div style={{ fontSize: isMobile ? 10 : 13, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.35, marginTop: 10 }}>{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* CE QUE TU OBTIENS */}
-          <div style={{ padding: isMobile ? "20px 16px" : "32px 60px" }}>
+          <div style={{ padding: isMobile ? "20px 8px" : "32px 60px" }}>
             <div style={{ maxWidth: 1100, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             {isMobile ? (
               <div>
@@ -732,7 +734,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* REJOINS LES PREMIERS UTILISATEURS */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "16px 16px 56px" : "32px 60px 96px" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "16px 8px 56px" : "32px 60px 96px" }}>
             <div style={{ maxWidth: 1100, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
@@ -770,7 +772,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CTA FINAL */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "16px 16px 56px" : "32px 60px 96px" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "16px 8px 56px" : "32px 60px 96px" }}>
             <div style={{ maxWidth: 1100, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
             <h2 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(56px,9vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
