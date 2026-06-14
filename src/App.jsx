@@ -633,7 +633,7 @@ ${sections.map((s, i) => {
               <div key={i} style={{ position: "absolute", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === slideIndex ? 1 : 0, transition: "opacity 1.5s ease" }} />
             ))}
             <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.52)" }} />
-            <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "0 24px" : "0 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
+            <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
               <div style={{ fontSize: isMobile ? 12 : 14, color: "rgba(255,255,255,0.7)", fontWeight: 900, letterSpacing: "0.06em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Ton idée mérite d'exister. On t'aide à la structurer.</div>
               <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#fff", marginBottom: 20, textTransform: "uppercase" }}>
                 TON PROJET.<br />TON PLAN.<br /><span style={{ color: NOW_COLOR, fontStyle: "italic" }}>MAINTENANT.</span>
@@ -641,11 +641,11 @@ ${sections.map((s, i) => {
               <p style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.6)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Tu as une idée d'entreprise ? Réponds à 10 questions et obtiens un business plan personnalisé en quelques minutes. Gratuit et sans compte.</p>
               <button onClick={() => setScreen("quiz")} style={{ background: ACCENT_GRAD, color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.12em", borderRadius: 14, boxShadow: isOrange ? "0 10px 30px rgba(255,94,58,0.35)" : "none" }}>CRÉER MON PLAN →</button>
             </div>
-            <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8 }}>
-              {IMAGES.map((_, i) => (<div key={i} onClick={() => setSlideIndex(i)} style={{ width: i === slideIndex ? 32 : 8, height: 2, background: i === slideIndex ? "#fff" : "rgba(255,255,255,0.3)", cursor: "pointer", transition: "all 0.4s ease" }} />))}
+            <div style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, zIndex: 1 }}>
+              {IMAGES.map((_, i) => (<div key={i} onClick={() => setSlideIndex(i)} style={{ width: i === slideIndex ? 32 : 8, height: 2, background: i === slideIndex ? (isOrange ? "#ff7a2e" : "#fff") : "rgba(255,255,255,0.3)", cursor: "pointer", transition: "all 0.4s ease" }} />))}
             </div>
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.1)" }}>
-              <div key={slideIndex} style={{ height: "100%", background: "#fff", animation: "barGrow 5s linear both" }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.1)", zIndex: 1 }}>
+              <div key={slideIndex} style={{ height: "100%", background: isOrange ? "#ff7a2e" : "#fff", animation: "barGrow 5s linear both" }} />
             </div>
           </div>
 
@@ -842,7 +842,7 @@ ${sections.map((s, i) => {
                       });
                       if (inputRef.current) inputRef.current.focus();
                     }} style={{ background: isPicked ? (isOrange ? "rgba(255,122,46,0.25)" : "rgba(255,255,255,0.25)") : "rgba(255,255,255,0.08)", border: `1px solid ${isPicked ? (isOrange ? "#ff7a2e" : "#fff") : "rgba(255,255,255,0.2)"}`, color: isPicked ? "#fff" : "rgba(255,255,255,0.7)", padding: "8px 16px", fontSize: 12, fontFamily: "Arial, sans-serif", borderRadius: 20, transition: "all 0.2s", cursor: "pointer" }}>
-                      {isPicked ? "✓ " : "+ "}{ex}
+                      <span style={{ color: isOrange ? "#ff7a2e" : "inherit", fontWeight: 900 }}>{isPicked ? "✓" : "+"}</span> {ex}
                     </button>
                   );
                 })}
@@ -881,7 +881,7 @@ ${sections.map((s, i) => {
 
             {/* Boutons */}
             <div style={{ display: "flex", gap: 12 }}>
-              <button onClick={handleBack} style={{ flex: 1, background: "rgba(255,255,255,0.08)", border: "2px solid rgba(255,255,255,0.2)", color: "#fff", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: 10, cursor: "pointer" }}>← RETOUR</button>
+              <button onClick={handleBack} style={{ flex: 1, background: "rgba(255,255,255,0.08)", border: `2px solid ${isOrange ? "rgba(255,122,46,0.6)" : "rgba(255,255,255,0.2)"}`, color: isOrange ? "#ff7a2e" : "#fff", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: 10, cursor: "pointer" }}>← RETOUR</button>
               <button onClick={handleNext} disabled={!current.trim() || loadingQuestion} style={{ flex: 2, background: current.trim() && !loadingQuestion ? (isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff") : "rgba(255,255,255,0.08)", border: `2px solid ${current.trim() && !loadingQuestion ? (isOrange ? "transparent" : "#fff") : "rgba(255,255,255,0.2)"}`, color: current.trim() && !loadingQuestion ? (isOrange ? "#fff" : "#000") : "rgba(255,255,255,0.3)", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: 10, transition: "all 0.2s", cursor: current.trim() && !loadingQuestion ? "pointer" : "not-allowed" }}>
                 {loadingQuestion ? "..." : qIndex === TOTAL_QUESTIONS - 1 ? "GÉNÉRER MON PLAN →" : "SUIVANT →"}
               </button>
