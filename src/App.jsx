@@ -70,11 +70,13 @@ const ROTATING_MESSAGES = [
 
 // ─── LOADING SCREEN ────────────────────────────────────────────────────────────
 
-function LoadingScreen() {
+function LoadingScreen({ isOrange }) {
   const [stepIndex, setStepIndex] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [msgIndex, setMsgIndex] = useState(0);
   const isMobile = window.innerWidth < 768;
+  const ACC = isOrange ? "#ff7a2e" : "#fff";
+  const ACC_GRAD = isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff";
 
   useEffect(() => {
     const timer = setInterval(() => setElapsed(e => e + 1), 1000);
@@ -109,7 +111,7 @@ function LoadingScreen() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 40 }}>
-        <div style={{ width: 32, height: 32, border: "3px solid rgba(255,255,255,0.1)", borderTop: "3px solid #fff", borderRadius: "50%", animation: "spin 0.8s linear infinite", flexShrink: 0 }} />
+        <div style={{ width: 32, height: 32, border: "3px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${ACC}`, borderRadius: "50%", animation: "spin 0.8s linear infinite", flexShrink: 0 }} />
         <div>
           <div style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, color: "#fff", letterSpacing: "0.05em" }}>{LOADING_STEPS[stepIndex].label}</div>
           <div style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 4, fontFamily: "Arial, sans-serif" }}>Étape {stepIndex + 1} sur {LOADING_STEPS.length}</div>
@@ -119,19 +121,19 @@ function LoadingScreen() {
       <div style={{ width: "100%", maxWidth: 440, marginBottom: 32 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
           <span style={{ fontSize: 10, fontWeight: 900, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>PROGRESSION</span>
-          <span style={{ fontSize: 10, fontWeight: 900, color: "rgba(255,255,255,0.3)" }}>{Math.round(globalProgress)}%</span>
+          <span style={{ fontSize: 10, fontWeight: 900, color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.3)" }}>{Math.round(globalProgress)}%</span>
         </div>
         <div style={{ height: 3, background: "rgba(255,255,255,0.08)", borderRadius: 2 }}>
-          <div style={{ height: "100%", width: `${globalProgress}%`, background: "#fff", borderRadius: 2, transition: "width 1s ease" }} />
+          <div style={{ height: "100%", width: `${globalProgress}%`, background: ACC_GRAD, borderRadius: 2, transition: "width 1s ease" }} />
         </div>
       </div>
 
       <div style={{ width: "100%", maxWidth: 440 }}>
         {LOADING_STEPS.map((step, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, padding: "9px 0", borderBottom: i < LOADING_STEPS.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none", opacity: i > stepIndex ? 0.2 : 1, transition: "opacity 0.3s" }}>
-            <div style={{ width: 18, height: 18, borderRadius: "50%", flexShrink: 0, background: i < stepIndex ? "#fff" : "transparent", border: i < stepIndex ? "none" : i === stepIndex ? "2px solid #fff" : "2px solid rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              {i < stepIndex && <span style={{ fontSize: 9, color: "#000", fontWeight: 900 }}>✓</span>}
-              {i === stepIndex && <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#fff", animation: "pulse3 1.2s infinite" }} />}
+            <div style={{ width: 18, height: 18, borderRadius: "50%", flexShrink: 0, background: i < stepIndex ? ACC : "transparent", border: i < stepIndex ? "none" : i === stepIndex ? `2px solid ${ACC}` : "2px solid rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {i < stepIndex && <span style={{ fontSize: 9, color: isOrange ? "#fff" : "#000", fontWeight: 900 }}>✓</span>}
+              {i === stepIndex && <div style={{ width: 5, height: 5, borderRadius: "50%", background: ACC, animation: "pulse3 1.2s infinite" }} />}
             </div>
             <span style={{ fontSize: 11, fontWeight: 900, color: i <= stepIndex ? "#fff" : "rgba(255,255,255,0.2)", letterSpacing: "0.08em" }}>{step.label}</span>
           </div>
@@ -186,7 +188,7 @@ export default function App() {
   const isOrange = theme === "orange";
   const ACCENT = isOrange ? "#ff7a2e" : "#000";
   const ACCENT_GRAD = isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff";
-  const NOW_COLOR = isOrange ? "#ff7a2e" : "rgba(255,255,255,0.35)";
+  const NOW_COLOR = isOrange ? "#ff7a2e" : "rgba(255,255,255,0.72)";
   const ACCENT_ON_DARK = isOrange ? "#ff7a2e" : "#fff"; // accents sur fond sombre (quiz)
 
   useEffect(() => {
@@ -431,7 +433,7 @@ export default function App() {
   .cover-label { font-size:10px; font-weight:900; letter-spacing:0.22em; color:rgba(255,255,255,0.55); margin-bottom:18px; }
   .cover-bar { width:42px; height:4px; background:#fff; margin-bottom:44px; }
   .cover-activite { font-size:46px; font-weight:900; letter-spacing:-0.02em; line-height:1.0; margin-bottom:18px; color:#fff; text-transform:uppercase; }
-  .cover-now { color:#9a9a9a; }
+  .cover-now { color:#9a9a9a; font-style:italic; }
   .cover-expl { max-width:480px; color:rgba(255,255,255,0.6); font-size:13px; line-height:1.7; margin-bottom:30px; padding-left:16px; border-left:3px solid rgba(255,255,255,0.25); }
   .cover-crit-lbl { font-size:12px; font-weight:900; letter-spacing:0.04em; color:#fff; margin-bottom:14px; }
   .cover-crit-box { border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:18px 22px; width:480px; max-width:62%; background:rgba(0,0,0,0.35); margin-bottom:30px; }
@@ -634,10 +636,10 @@ ${sections.map((s, i) => {
             <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "0 24px" : "0 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
               <div style={{ fontSize: isMobile ? 12 : 14, color: "rgba(255,255,255,0.7)", fontWeight: 900, letterSpacing: "0.06em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Ton idée mérite d'exister. On t'aide à la structurer.</div>
               <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#fff", marginBottom: 20, textTransform: "uppercase" }}>
-                TON PROJET.<br />TON PLAN.<br /><span style={{ color: NOW_COLOR, fontStyle: isOrange ? "normal" : "italic" }}>MAINTENANT.</span>
+                TON PROJET.<br />TON PLAN.<br /><span style={{ color: NOW_COLOR, fontStyle: "italic" }}>MAINTENANT.</span>
               </h1>
               <p style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.6)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Tu as une idée d'entreprise ? Réponds à 10 questions et obtiens un business plan personnalisé en quelques minutes. Gratuit et sans compte.</p>
-              <button onClick={() => setScreen("quiz")} style={{ background: ACCENT_GRAD, color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.12em", borderRadius: isOrange ? 14 : 0, boxShadow: isOrange ? "0 10px 30px rgba(255,94,58,0.35)" : "none" }}>CRÉER MON PLAN →</button>
+              <button onClick={() => setScreen("quiz")} style={{ background: ACCENT_GRAD, color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.12em", borderRadius: 14, boxShadow: isOrange ? "0 10px 30px rgba(255,94,58,0.35)" : "none" }}>CRÉER MON PLAN →</button>
             </div>
             <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8 }}>
               {IMAGES.map((_, i) => (<div key={i} onClick={() => setSlideIndex(i)} style={{ width: i === slideIndex ? 32 : 8, height: 2, background: i === slideIndex ? "#fff" : "rgba(255,255,255,0.3)", cursor: "pointer", transition: "all 0.4s ease" }} />))}
@@ -663,7 +665,7 @@ ${sections.map((s, i) => {
               <div>
                 <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div style={{ background: "#000", color: "#fff", padding: "48px 20px" }}>
-                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", marginBottom: 32, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
+                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.5)", marginBottom: 32, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
                   {["ANALYSE DE MARCHÉ", "PROJECTIONS FINANCIÈRES", "STRATÉGIE MARKETING", "PLAN D'ACTION 90 JOURS", "DÉMARCHES LÉGALES", "GESTION DES RISQUES"].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
                       <span style={{ fontSize: 13, color: isOrange ? "#ff7a2e" : "#fff", minWidth: 28, fontWeight: 900, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
@@ -676,7 +678,7 @@ ${sections.map((s, i) => {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 500 }}>
                 <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div style={{ background: "#000", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", marginBottom: 36, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
+                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.5)", marginBottom: 36, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
                   {["ANALYSE DE MARCHÉ", "PROJECTIONS FINANCIÈRES", "STRATÉGIE MARKETING", "PLAN D'ACTION 90 JOURS", "DÉMARCHES LÉGALES", "GESTION DES RISQUES"].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
                       <span style={{ fontSize: 13, color: isOrange ? "#ff7a2e" : "#fff", minWidth: 32, fontWeight: 900, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
@@ -691,7 +693,7 @@ ${sections.map((s, i) => {
           {/* POUR QUI */}
           <div style={{ background: "#fff", padding: sectionPad, borderTop: "2px solid #000" }}>
             <div style={{ maxWidth: 900, margin: "0 auto" }}>
-              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#000", marginBottom: 40, fontWeight: 900 }}>FAIT POUR TOI SI —</div>
+              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 40, fontWeight: 900 }}>FAIT POUR TOI SI —</div>
               {["TU AS UNE IDÉE MAIS TU NE SAIS PAS PAR OÙ COMMENCER", "TU VEUX SAVOIR SI TON IDÉE EST VIABLE", "TU VEUX STRUCTURER TON PROJET RAPIDEMENT", "TU VEUX TE METTRE À TON COMPTE", "TU VEUX CRÉER TON ENTREPRISE AVEC UN PLAN CLAIR", "TU CHERCHES UN BUSINESS PLAN SIMPLE ET PERSONNALISÉ"].map((item, i) => (
                 <div key={i} style={{ borderBottom: "1px solid #e5e5e5", padding: "20px 0", display: "flex", alignItems: "flex-start", gap: 20 }}>
                   <span style={{ fontSize: 13, color: isOrange ? "#ff7a2e" : "#000", minWidth: 30, fontWeight: 900, paddingTop: 2, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
@@ -704,7 +706,7 @@ ${sections.map((s, i) => {
           {/* COMMENT ÇA MARCHE */}
           <div id="comment" style={{ background: "#f5f5f5", padding: sectionPad, borderTop: "2px solid #000" }}>
             <div style={{ maxWidth: 900, margin: "0 auto" }}>
-              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#000", marginBottom: 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
+              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
                 {[
                   { n: "01", titre: "TU RÉPONDS", desc: "Réponds à 10 questions simples sur ton projet, ton expérience et tes objectifs. Chaque question s'adapte à tes réponses pour comprendre précisément ton idée." },
@@ -724,14 +726,14 @@ ${sections.map((s, i) => {
           {/* REJOINS LES PREMIERS UTILISATEURS */}
           <div style={{ background: "#000", padding: sectionPad, borderTop: "2px solid #000", textAlign: "center" }}>
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
-              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
+              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
               <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
                 ACCÈDE GRATUITEMENT, PARTAGE TON AVIS, INFLUENCE LA SUITE !
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.7, marginBottom: 40 }}>
                 Génère ton business plan gratuitement et aide-nous à améliorer la plateforme. Ton avis nous aidera à rendre l'outil encore plus utile.
               </p>
-              <button onClick={() => setScreen("quiz")} style={{ background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.12em", borderRadius: isOrange ? 14 : 0 }}>
+              <button onClick={() => setScreen("quiz")} style={{ background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.12em", borderRadius: 14 }}>
                 CRÉER MON PLAN →
               </button>
             </div>
@@ -741,7 +743,7 @@ ${sections.map((s, i) => {
           <div id="apropos" style={{ background: "#f5f5f5", padding: sectionPad, borderTop: "2px solid #000" }}>
             <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
               <div>
-                <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#000", marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
+                <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
                 <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 20 }}>PLANSTART C'EST POUR CEUX QUI PASSENT À L'ACTION.</h2>
                 <p style={{ fontSize: 15, color: "rgba(0,0,0,0.6)", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>J'ai créé PLANSTART parce que beaucoup de personnes ont une idée de projet mais ne savent pas comment la transformer en quelque chose de concret.</p>
                 <p style={{ fontSize: 15, color: "rgba(0,0,0,0.6)", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>L'objectif est simple : rendre la création d'entreprise plus accessible en permettant à chacun d'obtenir un business plan structuré, sans connaissances particulières et sans dépenser des milliers d'euros.</p>
@@ -762,7 +764,7 @@ ${sections.map((s, i) => {
             <h2 style={{ fontSize: isMobile ? "clamp(48px,14vw,80px)" : "clamp(64px,10vw,110px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
             </h2>
-            <button onClick={() => setScreen("quiz")} style={{ background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "20px 60px", fontSize: isMobile ? 13 : 14, fontWeight: 900, letterSpacing: "0.15em", borderRadius: isOrange ? 14 : 0 }}>C'EST PARTI →</button>
+            <button onClick={() => setScreen("quiz")} style={{ background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "20px 60px", fontSize: isMobile ? 13 : 14, fontWeight: 900, letterSpacing: "0.15em", borderRadius: 14 }}>C'EST PARTI →</button>
           </div>
 
           {/* FOOTER LÉGAL */}
@@ -879,8 +881,8 @@ ${sections.map((s, i) => {
 
             {/* Boutons */}
             <div style={{ display: "flex", gap: 12 }}>
-              <button onClick={handleBack} style={{ flex: 1, background: "rgba(255,255,255,0.08)", border: "2px solid rgba(255,255,255,0.2)", color: "#fff", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: 2, cursor: "pointer" }}>← RETOUR</button>
-              <button onClick={handleNext} disabled={!current.trim() || loadingQuestion} style={{ flex: 2, background: current.trim() && !loadingQuestion ? (isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff") : "rgba(255,255,255,0.08)", border: `2px solid ${current.trim() && !loadingQuestion ? (isOrange ? "transparent" : "#fff") : "rgba(255,255,255,0.2)"}`, color: current.trim() && !loadingQuestion ? (isOrange ? "#fff" : "#000") : "rgba(255,255,255,0.3)", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: isOrange ? 12 : 2, transition: "all 0.2s", cursor: current.trim() && !loadingQuestion ? "pointer" : "not-allowed" }}>
+              <button onClick={handleBack} style={{ flex: 1, background: "rgba(255,255,255,0.08)", border: "2px solid rgba(255,255,255,0.2)", color: "#fff", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: 10, cursor: "pointer" }}>← RETOUR</button>
+              <button onClick={handleNext} disabled={!current.trim() || loadingQuestion} style={{ flex: 2, background: current.trim() && !loadingQuestion ? (isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff") : "rgba(255,255,255,0.08)", border: `2px solid ${current.trim() && !loadingQuestion ? (isOrange ? "transparent" : "#fff") : "rgba(255,255,255,0.2)"}`, color: current.trim() && !loadingQuestion ? (isOrange ? "#fff" : "#000") : "rgba(255,255,255,0.3)", fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", padding: "16px", borderRadius: 10, transition: "all 0.2s", cursor: current.trim() && !loadingQuestion ? "pointer" : "not-allowed" }}>
                 {loadingQuestion ? "..." : qIndex === TOTAL_QUESTIONS - 1 ? "GÉNÉRER MON PLAN →" : "SUIVANT →"}
               </button>
             </div>
@@ -894,7 +896,7 @@ ${sections.map((s, i) => {
       {screen === "result" && (
         <div style={{ animation: "fadeIn 0.6s ease both" }}>
 
-          {loading && <LoadingScreen />}
+          {loading && <LoadingScreen isOrange={isOrange} />}
 
           {!loading && error && (
             <div style={{ minHeight: "100vh", background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 40px" }}>
@@ -907,42 +909,70 @@ ${sections.map((s, i) => {
 
           {!loading && result && (
             <>
-              {/* Header résultat — cover */}
-              <div style={{ background: "#000", padding: isMobile ? "100px 24px 48px" : "120px 60px 60px", textAlign: "center" }}>
-                <p style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.3em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>BUSINESS PLAN PROFESSIONNEL</p>
-                <h1 style={{ fontSize: isMobile ? "clamp(28px,8vw,48px)" : "clamp(36px,5vw,60px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#fff", marginBottom: 36, maxWidth: 640, margin: "0 auto 36px" }}>
-                  {result.titre || result.nom || result.activite || "Ton business plan"}
-                </h1>
-                {result.scoreExplication && (
-                  <div style={{ maxWidth: 520, margin: "0 auto 32px", padding: "16px 24px", borderLeft: "3px solid rgba(255,255,255,0.2)" }}>
-                    <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "Arial, sans-serif", lineHeight: 1.6, textAlign: "left" }}>{result.scoreExplication}</p>
-                  </div>
-                )}
-                {result.scoreCriteres && result.scoreCriteres.length > 0 && (
-                  <div style={{ maxWidth: 520, margin: "0 auto 32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: isMobile ? "16px" : "20px 24px", borderRadius: 4 }}>
-                    <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 16 }}>ANALYSE DE TON PROJET</div>
-                    {result.scoreCriteres.map((c, i) => {
-                      const match = c.match(/^(.+?):\s*(\d+)\/10\s*—\s*(.+)/);
-                      if (!match) return null;
-                      const CRIT_FR = { Experience: "Expérience", Marche: "Marché", Differenciation: "Différenciation", Budget: "Budget", Clarte: "Clarté", Timing: "Timing" };
-                      const [, label, note] = match;
-                      const labelFR = CRIT_FR[label.trim()] || label.trim();
-                      return (
-                        <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderBottom: i < result.scoreCriteres.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
-                          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", minWidth: 120, fontFamily: "Arial, sans-serif", textAlign: "left" }}>{labelFR}</span>
-                          <div style={{ flex: 1, height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2 }}>
-                            <div style={{ height: "100%", width: `${parseInt(note) * 10}%`, background: parseInt(note) >= 7 ? "#4ade80" : parseInt(note) >= 5 ? "#facc15" : "#f87171", borderRadius: 2 }} />
-                          </div>
-                          <span style={{ fontSize: 12, fontWeight: 900, color: "#fff", minWidth: 32 }}>{note}/10</span>
+              {/* Header résultat — cover (identique à la maquette) */}
+              <div style={{ position: "relative", background: "#000", padding: isMobile ? "92px 22px 44px" : "110px 60px 56px", overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${COVER_IMAGE})`, backgroundSize: "cover", backgroundPosition: "72% center" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.82) 45%, rgba(0,0,0,0.45) 72%, rgba(0,0,0,0.2) 100%)" }} />
+                <div style={{ position: "relative", zIndex: 2, maxWidth: 900, margin: "0 auto" }}>
+
+                  {/* En-tête marque */}
+                  <div style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, letterSpacing: "0.04em", color: "#fff" }}>PLAN<span style={{ color: isOrange ? "#ff7a2e" : "#fff" }}>START</span></div>
+                  <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.22em", color: "rgba(255,255,255,0.55)", marginTop: 4 }}>BUSINESS PLAN PROFESSIONNEL</div>
+                  <div style={{ width: 42, height: 4, background: isOrange ? "#ff7a2e" : "#fff", margin: "18px 0 32px" }} />
+
+                  {/* Titre projet + Maintenant */}
+                  <h1 style={{ fontSize: isMobile ? "clamp(34px,10vw,52px)" : "clamp(48px,6vw,72px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 0.98, color: "#fff", marginBottom: 16, textTransform: "uppercase" }}>
+                    {result.titre || result.nom || result.activite || "Ton business plan"}<br />
+                    <span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", fontStyle: "italic" }}>Maintenant.</span>
+                  </h1>
+
+                  {result.scoreExplication && (
+                    <div style={{ maxWidth: 540, margin: "0 0 30px", padding: "14px 20px", borderLeft: `3px solid ${isOrange ? "#ff7a2e" : "rgba(255,255,255,0.25)"}` }}>
+                      <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, fontFamily: "Arial, sans-serif", lineHeight: 1.6 }}>{result.scoreExplication}</p>
+                    </div>
+                  )}
+
+                  {result.scoreCriteres && result.scoreCriteres.length > 0 && (() => {
+                    const CRIT_FR = { Experience: "Expérience", Marche: "Marché", Differenciation: "Différenciation", Budget: "Budget", Clarte: "Clarté", Timing: "Timing" };
+                    const parsed = result.scoreCriteres.map(c => {
+                      const m = c.match(/^(.+?):\s*(\d+)\/10/);
+                      if (!m) return null;
+                      return { label: CRIT_FR[m[1].trim()] || m[1].trim(), note: parseInt(m[2]) };
+                    }).filter(Boolean);
+                    return (
+                      <>
+                        <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.04em", color: "#fff", marginBottom: 14 }}>POTENTIEL DU PROJET</div>
+                        <div style={{ maxWidth: 540, background: "rgba(0,0,0,0.4)", border: `1px solid ${isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)"}`, padding: isMobile ? "16px 18px" : "20px 24px", borderRadius: 10, marginBottom: 28 }}>
+                          <div style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.14em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>ANALYSE DE TON PROJET</div>
+                          {parsed.map((c, i) => (
+                            <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "7px 0" }}>
+                              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.75)", minWidth: 110, fontFamily: "Arial, sans-serif" }}>{c.label}</span>
+                              <div style={{ flex: 1, height: 5, background: "rgba(255,255,255,0.14)", borderRadius: 3 }}>
+                                <div style={{ height: "100%", width: `${c.note * 10}%`, background: c.note >= 7 ? "#4ade80" : c.note >= 5 ? "#facc15" : "#f87171", borderRadius: 3 }} />
+                              </div>
+                              <span style={{ fontSize: 11, fontWeight: 900, color: "#fff", minWidth: 32, textAlign: "right" }}>{c.note}/10</span>
+                            </div>
+                          ))}
                         </div>
-                      );
-                    })}
+
+                        {/* Ligne des 6 critères en cellules */}
+                        <div style={{ display: "flex", justifyContent: "space-between", maxWidth: 600, marginBottom: 28, flexWrap: isMobile ? "wrap" : "nowrap", gap: isMobile ? 12 : 0 }}>
+                          {parsed.map((c, i) => (
+                            <div key={i} style={{ flex: isMobile ? "0 0 30%" : 1, textAlign: "center", padding: "0 4px", borderLeft: !isMobile && i > 0 ? "1px solid rgba(255,255,255,0.18)" : "none" }}>
+                              <div style={{ fontSize: 8, fontWeight: 900, letterSpacing: "0.05em", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{c.label}</div>
+                              <div style={{ fontSize: 15, fontWeight: 900, color: isOrange ? "#ff7a2e" : "#fff", marginTop: 4 }}>{c.note}/10</div>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    );
+                  })()}
+
+                  <div style={{ maxWidth: 540, padding: "16px 0 0", borderTop: `1px solid ${isOrange ? "rgba(255,122,46,0.4)" : "rgba(255,255,255,0.1)"}` }}>
+                    <p style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontFamily: "Arial, sans-serif", lineHeight: 1.55 }}>
+                      Ce plan est généré par IA à titre indicatif. Les montants chiffrés sont des estimations à confirmer auprès de sources officielles avant de te lancer.
+                    </p>
                   </div>
-                )}
-                <div style={{ maxWidth: 520, margin: "0 auto 0", padding: "16px 0", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-                  <p style={{ fontSize: 11, color: "rgba(255,255,255,0.2)", fontFamily: "Arial, sans-serif", lineHeight: 1.55, textAlign: "center" }}>
-                    Ce plan est généré par IA à titre indicatif. Les informations peuvent contenir des erreurs — vérifie les points importants auprès de sources officielles avant de te lancer.
-                  </p>
                 </div>
               </div>
 
