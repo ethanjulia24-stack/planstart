@@ -97,7 +97,7 @@ function LoadingScreen({ isOrange }) {
   const formatTime = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px" }}>
+    <div style={{ minHeight: "100vh", background: "#222227", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px" }}>
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes pulse3 { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -192,6 +192,7 @@ export default function App() {
   const ACCENT_ON_DARK = isOrange ? "#ff7a2e" : "#fff"; // accents sur fond sombre (quiz)
   const CREAM = "#faf8f5";        // fond clair principal (blanc cassé très léger)
   const CREAM_ALT = "#f4f1ec";    // fond clair secondaire (sections / cartes décalées)
+  const DARK = "#222227";         // gris foncé pour les grands blocs (au lieu du noir pur)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -581,6 +582,7 @@ ${sections.map((s, i) => {
         ::placeholder { color:rgba(255,255,255,0.3); font-family:Arial,sans-serif; font-weight:400; }
         .input-light::placeholder { color:rgba(0,0,0,0.3); }
         .example-pill:hover { border-color:#fff!important; color:#fff!important; }
+        .feature-card-sep { border-right:1px solid #ece8e1; }
       `}</style>
 
       {/* ── INTRO ── */}
@@ -651,22 +653,25 @@ ${sections.map((s, i) => {
             </div>
           </div>
 
-          {/* STATS */}
-          <div style={{ display: "flex", borderBottom: "2px solid #000", borderTop: "2px solid #000" }}>
-            {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
-              <div key={i} style={{ flex: 1, padding: isMobile ? "20px 12px" : "32px 40px", borderRight: i < 2 ? "2px solid #000" : "none" }}>
-                <div style={{ fontSize: isMobile ? "clamp(11px,3vw,16px)" : "clamp(16px,2vw,22px)", fontWeight: 900 }}>{s.n}</div>
-                <div style={{ fontSize: isMobile ? 10 : 12, color: "rgba(0,0,0,0.45)", marginTop: 4, fontFamily: "Arial, sans-serif" }}>{s.label}</div>
-              </div>
-            ))}
+          {/* STATS — 3 blocs arrondis et doux, côte à côte */}
+          <div style={{ background: CREAM, padding: isMobile ? "32px 12px" : "48px 60px" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20 }}>
+              {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
+                <div key={i} style={{ background: "#fff", border: "1px solid #ece8e1", borderRadius: 20, padding: isMobile ? "16px 12px" : "32px 32px", boxShadow: "0 4px 18px rgba(0,0,0,0.04)" }}>
+                  <div style={{ fontSize: isMobile ? "clamp(11px,3vw,14px)" : "clamp(16px,2vw,22px)", fontWeight: 900, lineHeight: 1.15 }}>{s.n}</div>
+                  <div style={{ fontSize: isMobile ? 10 : 13, color: isOrange ? "#ff7a2e" : "rgba(0,0,0,0.45)", marginTop: 6, fontFamily: "Arial, sans-serif", lineHeight: 1.3 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* CE QUE TU OBTIENS */}
-          <div style={{ borderTop: "2px solid #000" }}>
+          <div style={{ padding: isMobile ? "20px 16px" : "32px 60px" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             {isMobile ? (
               <div>
                 <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ background: "#000", color: "#fff", padding: "48px 20px" }}>
+                <div style={{ background: DARK, color: "#fff", padding: "48px 24px" }}>
                   <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.5)", marginBottom: 32, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
                   {["ANALYSE DE MARCHÉ", "PROJECTIONS FINANCIÈRES", "STRATÉGIE MARKETING", "PLAN D'ACTION 90 JOURS", "DÉMARCHES LÉGALES", "GESTION DES RISQUES"].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
@@ -679,7 +684,7 @@ ${sections.map((s, i) => {
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 500 }}>
                 <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ background: "#000", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <div style={{ background: DARK, color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.5)", marginBottom: 36, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
                   {["ANALYSE DE MARCHÉ", "PROJECTIONS FINANCIÈRES", "STRATÉGIE MARKETING", "PLAN D'ACTION 90 JOURS", "DÉMARCHES LÉGALES", "GESTION DES RISQUES"].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
@@ -690,10 +695,11 @@ ${sections.map((s, i) => {
                 </div>
               </div>
             )}
+            </div>
           </div>
 
           {/* POUR QUI */}
-          <div style={{ background: CREAM, padding: sectionPad, borderTop: "2px solid #000" }}>
+          <div style={{ background: CREAM, padding: sectionPad }}>
             <div style={{ maxWidth: 900, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 40, fontWeight: 900 }}>FAIT POUR TOI SI —</div>
               {["TU AS UNE IDÉE MAIS TU NE SAIS PAS PAR OÙ COMMENCER", "TU VEUX SAVOIR SI TON IDÉE EST VIABLE", "TU VEUX STRUCTURER TON PROJET RAPIDEMENT", "TU VEUX TE METTRE À TON COMPTE", "TU VEUX CRÉER TON ENTREPRISE AVEC UN PLAN CLAIR", "TU CHERCHES UN BUSINESS PLAN SIMPLE ET PERSONNALISÉ"].map((item, i) => (
@@ -706,7 +712,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* COMMENT ÇA MARCHE */}
-          <div id="comment" style={{ background: CREAM_ALT, padding: sectionPad, borderTop: "2px solid #000" }}>
+          <div id="comment" style={{ background: CREAM_ALT, padding: sectionPad }}>
             <div style={{ maxWidth: 900, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
@@ -726,7 +732,8 @@ ${sections.map((s, i) => {
           </div>
 
           {/* REJOINS LES PREMIERS UTILISATEURS */}
-          <div style={{ background: "#000", padding: sectionPad, borderTop: "2px solid #000", textAlign: "center" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "16px 16px 56px" : "32px 60px 96px" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
               <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
@@ -739,10 +746,11 @@ ${sections.map((s, i) => {
                 CRÉER MON PLAN →
               </button>
             </div>
+            </div>
           </div>
 
           {/* À PROPOS */}
-          <div id="apropos" style={{ background: CREAM_ALT, padding: sectionPad, borderTop: "2px solid #000" }}>
+          <div id="apropos" style={{ background: CREAM_ALT, padding: sectionPad }}>
             <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
               <div>
                 <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
@@ -750,7 +758,7 @@ ${sections.map((s, i) => {
                 <p style={{ fontSize: 15, color: "rgba(0,0,0,0.6)", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>J'ai créé PLANSTART parce que beaucoup de personnes ont une idée de projet mais ne savent pas comment la transformer en quelque chose de concret.</p>
                 <p style={{ fontSize: 15, color: "rgba(0,0,0,0.6)", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>L'objectif est simple : rendre la création d'entreprise plus accessible en permettant à chacun d'obtenir un business plan structuré, sans connaissances particulières et sans dépenser des milliers d'euros.</p>
               </div>
-              <div style={{ background: "#000", padding: "40px 32px" }}>
+              <div style={{ background: DARK, padding: "40px 32px", borderRadius: 20 }}>
                 {[{ n: "100% GRATUIT", label: "" }, { n: "7 SECTIONS", label: "" }, { n: "10 QUESTIONS", label: "" }].map((stat, i) => (
                   <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
                     <div style={{ fontSize: isMobile ? 20 : 32, fontWeight: 900, color: isOrange ? "#ff7a2e" : "#fff", lineHeight: 1 }}>{stat.n}</div>
@@ -762,11 +770,13 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CTA FINAL */}
-          <div style={{ background: "#000", padding: isMobile ? "80px 24px" : "120px 60px", textAlign: "center" }}>
-            <h2 style={{ fontSize: isMobile ? "clamp(48px,14vw,80px)" : "clamp(64px,10vw,110px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "16px 16px 56px" : "32px 60px 96px" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
+            <h2 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(56px,9vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
             </h2>
             <button onClick={() => setScreen("quiz")} style={{ background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", border: "none", padding: isMobile ? "16px 40px" : "20px 60px", fontSize: isMobile ? 13 : 14, fontWeight: 900, letterSpacing: "0.15em", borderRadius: 14 }}>C'EST PARTI →</button>
+            </div>
           </div>
 
           {/* FOOTER LÉGAL */}
@@ -902,7 +912,7 @@ ${sections.map((s, i) => {
           {loading && <LoadingScreen isOrange={isOrange} />}
 
           {!loading && error && (
-            <div style={{ minHeight: "100vh", background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 40px" }}>
+            <div style={{ minHeight: "100vh", background: "#222227", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 40px" }}>
               <div style={{ fontSize: 40, marginBottom: 24 }}>⚠️</div>
               <h2 style={{ color: "#fff", fontWeight: 900, fontSize: 24, marginBottom: 16 }}>Une erreur est survenue</h2>
               <p style={{ color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", marginBottom: 32, maxWidth: 400 }}>{error}</p>
@@ -982,7 +992,7 @@ ${sections.map((s, i) => {
               {/* Sections */}
               <div style={{ maxWidth: 800, margin: "0 auto", padding: isMobile ? "32px 16px 60px" : "48px 40px 80px", background: CREAM_ALT }}>
                 {(result.sections || []).map((s, i) => (
-                  <div key={i} style={{ background: "#fffefb", borderRadius: 6, boxShadow: "0 4px 24px rgba(0,0,0,0.08)", padding: isMobile ? "28px 22px" : "48px 44px", marginBottom: isMobile ? 20 : 28 }}>
+                  <div key={i} style={{ background: "#fffefb", borderRadius: 20, boxShadow: "0 4px 24px rgba(0,0,0,0.08)", padding: isMobile ? "28px 22px" : "48px 44px", marginBottom: isMobile ? 20 : 28 }}>
                     <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(0,0,0,0.3)", marginBottom: 10 }}>SECTION {String(i + 1).padStart(2, "0")} / {String((result.sections || []).length).padStart(2, "0")}</div>
                     <div style={{ display: "flex", gap: 16, marginBottom: 16, alignItems: "baseline", borderBottom: `3px solid ${isOrange ? "#ff7a2e" : "#000"}`, paddingBottom: 14 }}>
                       <span style={{ fontSize: 13, fontWeight: 900, color: isOrange ? "#ff7a2e" : "rgba(0,0,0,0.25)", minWidth: 24 }}>{String(i + 1).padStart(2, "0")}</span>
@@ -1012,7 +1022,7 @@ ${sections.map((s, i) => {
                 ))}
 
                 {/* CTA PDF */}
-                <div style={{ marginTop: 48, padding: isMobile ? 24 : 40, background: "#000", textAlign: "center" }}>
+                <div style={{ marginTop: 48, padding: isMobile ? 32 : 48, background: DARK, textAlign: "center", borderRadius: 20 }}>
                   <p style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>BUSINESS PLAN COMPLET</p>
                   <h3 style={{ fontSize: isMobile ? 18 : 24, fontWeight: 900, color: "#fff", marginBottom: 12, lineHeight: 1.2 }}>TÉLÉCHARGER MON PLAN</h3>
                   <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, marginBottom: 28, fontFamily: "Arial, sans-serif" }}>
