@@ -782,7 +782,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* FOOTER LÉGAL */}
-          <div style={{ background: CREAM, borderTop: "1px solid #ebe7e0", padding: isMobile ? "24px 20px" : "24px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+          <div style={{ background: CREAM, borderTop: "1px solid #ebe7e0", padding: isMobile ? "24px 20px 110px" : "24px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
             <span style={{ fontSize: 11, color: "rgba(0,0,0,0.3)", fontFamily: "Arial, sans-serif" }}>© 2025-2026 PLANSTART — Tous droits réservés</span>
             <div style={{ display: "flex", gap: 24 }}>
               {[["Mentions légales", "/mentions-legales"], ["Confidentialité", "/confidentialite"], ["CGU", "/cgu"]].map(([label, href]) => (
