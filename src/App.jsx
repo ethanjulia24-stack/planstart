@@ -44,8 +44,6 @@ const COVER_IMAGE = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/
 
 
 
-// Image de fond "réussite" du hero Business : skyline doré au coucher de soleil
-const BUSINESS_IMAGE = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201400%201000%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bsky%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23120d04%22/%3E%3Cstop%20offset%3D%220.45%22%20stop-color%3D%22%231d1407%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080806%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22bsun%22%20cx%3D%220.5%22%20cy%3D%220.62%22%20r%3D%220.55%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f7dd9c%22%20stop-opacity%3D%220.95%22/%3E%3Cstop%20offset%3D%220.25%22%20stop-color%3D%22%23e8c87a%22%20stop-opacity%3D%220.6%22/%3E%3Cstop%20offset%3D%220.6%22%20stop-color%3D%22%23c9a44a%22%20stop-opacity%3D%220.18%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c9a44a%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3ClinearGradient%20id%3D%22bbld%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23241a09%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230c0a06%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%221400%22%20height%3D%221000%22%20fill%3D%22url%28%23bsky%29%22/%3E%3Crect%20width%3D%221400%22%20height%3D%221000%22%20fill%3D%22url%28%23bsun%29%22/%3E%3C%21--%20sun%20glow%20core%20--%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22600%22%20r%3D%22150%22%20fill%3D%22%23f7dd9c%22%20opacity%3D%220.25%22/%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22600%22%20r%3D%2290%22%20fill%3D%22%23f7dd9c%22%20opacity%3D%220.3%22/%3E%3C%21--%20skyline%20back%20layer%20--%3E%3Cg%20fill%3D%22%231a1308%22%20opacity%3D%220.9%22%3E%3Crect%20x%3D%2280%22%20y%3D%22560%22%20width%3D%2290%22%20height%3D%22440%22/%3E%3Crect%20x%3D%22200%22%20y%3D%22500%22%20width%3D%22110%22%20height%3D%22500%22/%3E%3Crect%20x%3D%221080%22%20y%3D%22520%22%20width%3D%22100%22%20height%3D%22480%22/%3E%3Crect%20x%3D%221210%22%20y%3D%22560%22%20width%3D%22110%22%20height%3D%22440%22/%3E%3C/g%3E%3C%21--%20skyline%20front%20layer%20%28tall%20towers%29%20--%3E%3Cg%20fill%3D%22url%28%23bbld%29%22%3E%3Crect%20x%3D%22330%22%20y%3D%22430%22%20width%3D%22120%22%20height%3D%22570%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22330%22%20width%3D%22140%22%20height%3D%22670%22/%3E%3Crect%20x%3D%22650%22%20y%3D%22390%22%20width%3D%22110%22%20height%3D%22610%22/%3E%3Crect%20x%3D%22790%22%20y%3D%22290%22%20width%3D%22150%22%20height%3D%22710%22/%3E%3Crect%20x%3D%22970%22%20y%3D%22440%22%20width%3D%22120%22%20height%3D%22560%22/%3E%3C/g%3E%3C%21--%20tower%20edge%20highlights%20%28golden%20rim%29%20--%3E%3Cg%20opacity%3D%220.7%22%3E%3Crect%20x%3D%22480%22%20y%3D%22330%22%20width%3D%224%22%20height%3D%22670%22%20fill%3D%22%23e8c87a%22/%3E%3Crect%20x%3D%22790%22%20y%3D%22290%22%20width%3D%224%22%20height%3D%22710%22%20fill%3D%22%23f7dd9c%22/%3E%3Crect%20x%3D%22650%22%20y%3D%22390%22%20width%3D%223%22%20height%3D%22610%22%20fill%3D%22%23c9a44a%22/%3E%3C/g%3E%3C%21--%20lit%20windows%20--%3E%3Cg%20fill%3D%22%23f7dd9c%22%3E%3Crect%20x%3D%22512%22%20y%3D%22370%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.8%22/%3E%3Crect%20x%3D%22548%22%20y%3D%22370%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.5%22/%3E%3Crect%20x%3D%22584%22%20y%3D%22410%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.7%22/%3E%3Crect%20x%3D%22512%22%20y%3D%22460%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.6%22/%3E%3Crect%20x%3D%22825%22%20y%3D%22330%22%20width%3D%2216%22%20height%3D%2220%22%20opacity%3D%220.85%22/%3E%3Crect%20x%3D%22865%22%20y%3D%22330%22%20width%3D%2216%22%20height%3D%2220%22%20opacity%3D%220.5%22/%3E%3Crect%20x%3D%22905%22%20y%3D%22380%22%20width%3D%2216%22%20height%3D%2220%22%20opacity%3D%220.7%22/%3E%3Crect%20x%3D%22825%22%20y%3D%22440%22%20width%3D%2216%22%20height%3D%2220%22%20opacity%3D%220.6%22/%3E%3Crect%20x%3D%22865%22%20y%3D%22500%22%20width%3D%2216%22%20height%3D%2220%22%20opacity%3D%220.45%22/%3E%3Crect%20x%3D%22685%22%20y%3D%22430%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.7%22/%3E%3Crect%20x%3D%22720%22%20y%3D%22470%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.5%22/%3E%3Crect%20x%3D%22368%22%20y%3D%22470%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.6%22/%3E%3Crect%20x%3D%22404%22%20y%3D%22520%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.45%22/%3E%3Crect%20x%3D%221008%22%20y%3D%22480%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.6%22/%3E%3Crect%20x%3D%221044%22%20y%3D%22530%22%20width%3D%2214%22%20height%3D%2218%22%20opacity%3D%220.4%22/%3E%3C/g%3E%3C%21--%20foreground%20haze%20--%3E%3Crect%20x%3D%220%22%20y%3D%22640%22%20width%3D%221400%22%20height%3D%22360%22%20fill%3D%22%23080806%22%20opacity%3D%220.55%22/%3E%3C/svg%3E";
 
 const LOADING_STEPS = [
   { label: "LECTURE DE TES RÉPONSES", duration: 6000 },
@@ -609,37 +607,43 @@ ${sections.map((s, i) => {
 
       {/* ── NAV ── */}
       {screen !== "intro" && (
-        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: screen === "quiz" ? "rgba(0,0,0,0.95)" : screen === "business" ? "rgba(10,10,11,0.95)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${screen === "quiz" ? "rgba(255,255,255,0.1)" : screen === "business" ? "rgba(232,200,122,0.2)" : "#ededed"}`, padding: `0 ${isMobile ? "20px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
+        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: screen === "quiz" ? "rgba(0,0,0,0.95)" : screen === "idea" ? "rgba(248,247,255,0.95)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${screen === "quiz" ? "rgba(255,255,255,0.1)" : screen === "idea" ? "#e8e3ff" : "#ededed"}`, padding: `0 ${isMobile ? "20px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
           <div style={{ position: "relative" }}>
             <button onClick={() => setMenuOpen(o => !o)} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 34, height: 34, borderRadius: "50%", background: screen === "quiz" ? "#fff" : screen === "business" ? "linear-gradient(135deg,#e8c87a,#c9a44a)" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <span style={{ color: screen === "quiz" ? "#000" : screen === "business" ? "#1a1206" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
+              <div style={{ width: 34, height: 34, borderRadius: "50%", background: screen === "quiz" ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <span style={{ color: screen === "quiz" ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
               </div>
-              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: screen === "quiz" || screen === "business" ? "#fff" : "#000" }}>PLAN<span style={{ color: screen === "business" ? "#e8c87a" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
-              {screen === "business" && (
-                <span style={{ fontSize: isMobile ? 9 : 10, fontWeight: 900, letterSpacing: "0.12em", color: "#1a1206", background: "linear-gradient(90deg,#e8c87a,#c9a44a)", padding: "3px 9px", borderRadius: 20, marginLeft: 2 }}>BUSINESS</span>
+              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: screen === "quiz" ? "#fff" : "#000" }}>PLAN<span style={{ color: screen === "idea" ? "#6c47ff" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
+              {screen === "idea" && (
+                <span style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: "#6c47ff", marginLeft: 4 }}>IDEA</span>
               )}
-              <span style={{ fontSize: 9, color: screen === "quiz" || screen === "business" ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
+              <span style={{ fontSize: 9, color: screen === "quiz" ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
             </button>
 
             {/* MENU DÉROULANT Basic / Business */}
             {menuOpen && (
               <>
                 <div onClick={() => setMenuOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 110 }} />
-                <div style={{ position: "absolute", top: 48, left: 0, zIndex: 120, background: "#fff", borderRadius: 16, boxShadow: "0 16px 40px rgba(0,0,0,0.18)", border: "1px solid #eee", overflow: "hidden", width: 260, animation: "slideDown 0.2s ease both" }}>
-                  <button onClick={() => { setMenuOpen(false); restart(); }} style={{ width: "100%", textAlign: "left", background: screen !== "business" ? "#f6f6f7" : "#fff", border: "none", borderBottom: "1px solid #efefef", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3 }}>
-                    <span style={{ fontSize: 14, fontWeight: 900, color: "#000" }}>PLANSTART BASIC</span>
-                    <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Génère ton business plan — gratuit</span>
-                  </button>
-                  <button onClick={() => { setMenuOpen(false); setScreen("business"); }} style={{ width: "100%", textAlign: "left", background: screen === "business" ? "#161618" : "#101012", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3 }}>
-                    <span style={{ fontSize: 14, fontWeight: 900, color: "#e8c87a", display: "flex", alignItems: "center", gap: 7 }}>PLANSTART BUSINESS <span style={{ fontSize: 8, background: "linear-gradient(90deg,#e8c87a,#c9a44a)", color: "#1a1206", padding: "2px 7px", borderRadius: 20, letterSpacing: "0.08em" }}>BIENTÔT</span></span>
-                    <span style={{ fontSize: 11, color: "rgba(232,200,122,0.6)", fontFamily: "Arial, sans-serif" }}>La version pro pour aller plus loin</span>
+                <div style={{ position: "absolute", top: 48, left: 0, zIndex: 120, background: "#fff", borderRadius: 16, boxShadow: "0 16px 40px rgba(0,0,0,0.18)", border: "1px solid #eee", overflow: "hidden", width: 320, animation: "slideDown 0.2s ease both" }}>
+                  <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid #efefef", background: screen !== "idea" ? "#f6f6f7" : "#fff" }}>
+                    <button onClick={() => { setMenuOpen(false); restart(); }} style={{ flex: 1, textAlign: "left", background: "transparent", border: "none", padding: "16px 14px 16px 18px", display: "flex", flexDirection: "column", gap: 3, cursor: "pointer" }}>
+                      <span style={{ fontSize: 14, fontWeight: 900, color: "#000" }}>PLANSTART BASIC</span>
+                      <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Génère ton business plan — gratuit</span>
+                    </button>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 5, padding: "0 14px 0 0", flexShrink: 0 }}>
+                      <button onClick={() => setTheme("bw")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 9, letterSpacing: "0.03em", padding: "6px 10px", borderRadius: 20, border: "1px solid #e5e5e5", background: !isOrange ? "#000" : "#fff", color: !isOrange ? "#fff" : "#000", whiteSpace: "nowrap", cursor: "pointer" }}>NOIR / BLANC</button>
+                      <button onClick={() => setTheme("orange")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 9, letterSpacing: "0.03em", padding: "6px 10px", borderRadius: 20, border: "1px solid #e5e5e5", background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", whiteSpace: "nowrap", cursor: "pointer" }}>ORANGE / NOIR</button>
+                    </div>
+                  </div>
+                  <button onClick={() => { setMenuOpen(false); setScreen("idea"); }} style={{ width: "100%", textAlign: "left", background: screen === "idea" ? "#f3f0ff" : "#fff", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3 }}>
+                    <span style={{ fontSize: 14, fontWeight: 900, color: "#6c47ff", display: "flex", alignItems: "center", gap: 7 }}>PLANSTART IDEA <span style={{ fontSize: 8, background: "linear-gradient(90deg,#7c5cff,#5b8cff)", color: "#fff", padding: "2px 7px", borderRadius: 20, letterSpacing: "0.08em" }}>BIENTÔT</span></span>
+                    <span style={{ fontSize: 11, color: "rgba(108,71,255,0.7)", fontFamily: "Arial, sans-serif" }}>Trouve l'idée qui te ressemble</span>
                   </button>
                 </div>
               </>
             )}
           </div>
-          {screen !== "quiz" && screen !== "business" && (
+          {screen !== "quiz" && screen !== "idea" && (
             <div style={{ display: "flex", gap: isMobile ? 12 : 32, alignItems: "center" }}>
               <a href="#comment" style={{ fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
               <a href="#apropos" style={{ fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
@@ -651,12 +655,6 @@ ${sections.map((s, i) => {
       {/* ── HOME ── */}
       {screen === "home" && (
         <div style={{ animation: "fadeIn 0.5s ease both" }}>
-
-          {/* SWITCH DE THÈME — flottant en bas, home uniquement */}
-          <div style={{ position: "fixed", bottom: 16, left: "50%", transform: "translateX(-50%)", zIndex: 200, display: "flex", gap: 6, background: "rgba(20,20,22,0.92)", backdropFilter: "blur(8px)", padding: 6, borderRadius: 40, border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 8px 30px rgba(0,0,0,0.4)" }}>
-            <button onClick={() => setTheme("bw")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 11, letterSpacing: "0.05em", padding: "10px 16px", borderRadius: 30, border: "none", background: !isOrange ? "#fff" : "transparent", color: !isOrange ? "#000" : "#fff", whiteSpace: "nowrap" }}>NOIR / BLANC</button>
-            <button onClick={() => setTheme("orange")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 11, letterSpacing: "0.05em", padding: "10px 16px", borderRadius: 30, border: "none", background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", color: "#fff", whiteSpace: "nowrap" }}>ORANGE / NOIR</button>
-          </div>
 
           {/* HERO */}
           <div style={{ height: "100vh", position: "relative", overflow: "hidden" }}>
@@ -681,8 +679,8 @@ ${sections.map((s, i) => {
           </div>
 
           {/* STATS — 3 blocs gris foncé arrondis, côte à côte, avec touche orange */}
-          <div style={{ background: CREAM, padding: isMobile ? "24px 8px 10px" : "40px 60px 20px" }}>
-            <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
+          <div style={{ background: CREAM, padding: isMobile ? "24px 8px 10px" : "40px 32px 20px" }}>
+            <div style={{ maxWidth: 1500, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
               {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
                 <div key={i} style={{ position: "relative", background: DARK, borderRadius: 20, padding: isMobile ? "16px 14px" : "26px 28px", boxShadow: "0 6px 22px rgba(0,0,0,0.12)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
                   {/* touche orange : barre latérale */}
@@ -695,8 +693,8 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CE QUE TU OBTIENS */}
-          <div style={{ padding: isMobile ? "10px 8px" : "20px 60px" }}>
-            <div style={{ maxWidth: 1100, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
+          <div style={{ padding: isMobile ? "10px 8px" : "20px 32px" }}>
+            <div style={{ maxWidth: 1500, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             {isMobile ? (
               <div>
                 <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
@@ -761,8 +759,8 @@ ${sections.map((s, i) => {
           </div>
 
           {/* REJOINS LES PREMIERS UTILISATEURS */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 8px 40px" : "24px 60px 72px" }}>
-            <div style={{ maxWidth: 1100, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 8px 40px" : "24px 32px 72px" }}>
+            <div style={{ maxWidth: 1500, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
               <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
@@ -799,8 +797,8 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CTA FINAL */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 8px 40px" : "24px 60px 72px" }}>
-            <div style={{ maxWidth: 1100, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 8px 40px" : "24px 32px 72px" }}>
+            <div style={{ maxWidth: 1500, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
             <h2 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(56px,9vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
             </h2>
@@ -820,59 +818,23 @@ ${sections.map((s, i) => {
         </div>
       )}
 
-      {/* ── BUSINESS (vitrine premium noir + or + blanc) ── */}
-      {screen === "business" && (
-        <div style={{ minHeight: "100vh", background: "#0a0a0b", color: "#fff", animation: "fadeIn 0.5s ease both" }}>
-
-          {/* HERO BUSINESS */}
-          <div style={{ position: "relative", padding: isMobile ? "120px 22px 60px" : "160px 60px 90px", textAlign: "center", overflow: "hidden", borderBottom: "1px solid rgba(232,200,122,0.15)" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: `url("${BUSINESS_IMAGE}")`, backgroundSize: "cover", backgroundPosition: "center" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,11,0.82) 0%, rgba(10,10,11,0.6) 45%, rgba(10,10,11,0.9) 100%)" }} />
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 35%, rgba(201,164,74,0.16), transparent 65%)" }} />
-            <div style={{ position: "relative", maxWidth: 760, margin: "0 auto" }}>
-              <div style={{ display: "inline-block", fontSize: 11, fontWeight: 900, letterSpacing: "0.2em", color: "#1a1206", background: "linear-gradient(90deg,#e8c87a,#c9a44a)", padding: "7px 18px", borderRadius: 30, marginBottom: 28 }}>PLANSTART BUSINESS</div>
-              <h1 style={{ fontSize: isMobile ? "clamp(34px,9vw,52px)" : "clamp(52px,6vw,76px)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-0.02em", marginBottom: 24, textTransform: "uppercase", color: "#fff" }}>
-                LE DOSSIER QUI<br />
-                <span style={{ color: "#e8c87a" }}>CONVAINC TA BANQUE.</span>
-              </h1>
-              <p style={{ fontSize: isMobile ? 15 : 18, color: "rgba(255,255,255,0.6)", fontFamily: "Arial, sans-serif", lineHeight: 1.7, maxWidth: 560, margin: "0 auto 36px" }}>
-                La version gratuite t'aide à structurer ton idée. <strong style={{ color: "#e8c87a" }}>Business</strong> te donne le dossier complet, chiffré et présentable — celui qu'on montre à un banquier ou un investisseur.
-              </p>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(232,200,122,0.3)", borderRadius: 30, padding: "10px 22px" }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#e8c87a", display: "inline-block" }} />
+      {/* ── IDEA (vitrine ampoule jaune sur fond sombre) ── */}
+      {screen === "idea" && (
+        <div style={{ minHeight: "100vh", background: "#0b0a14" }}>
+          {/* HERO IDEA — vitrine simple "bientôt disponible" */}
+          <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px" }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpg)", backgroundSize: "cover", backgroundPosition: "center" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(30,15,70,0.62) 0%, rgba(20,10,50,0.78) 100%)" }} />
+            <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32 }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b79bff", display: "inline-block" }} />
                 <span style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", color: "#fff" }}>BIENTÔT DISPONIBLE</span>
               </div>
-            </div>
-          </div>
-
-          {/* CE QUE BUSINESS APPORTE */}
-          <div style={{ padding: isMobile ? "56px 16px" : "90px 60px", maxWidth: 1000, margin: "0 auto" }}>
-            <div style={{ fontSize: 12, letterSpacing: "0.2em", color: "#c9a44a", marginBottom: 40, fontWeight: 900, textAlign: "center" }}>CE QUE TU DÉBLOQUERAS</div>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 14 : 20 }}>
-              {[
-                { t: "TABLEAU DE TRÉSORERIE", d: "Tes entrées et sorties mois par mois sur 12 à 24 mois, ton point mort et ton seuil de rentabilité. Exactement ce qu'une banque exige." },
-                { t: "PROJECTIONS CHIFFRÉES", d: "3 scénarios (prudent, réaliste, optimiste), charges sociales, TVA et résultat prévisionnel calculés pour toi." },
-                { t: "EXPORT WORD & DOSSIER BANCAIRE", d: "Un document professionnel modifiable, mis en forme avec page de garde, sommaire et annexes, prêt à envoyer." },
-                { t: "AIDES & FINANCEMENT", d: "Les aides auxquelles tu as droit (ACRE, prêts d'honneur, BPI) et une simulation de ton plan de financement." },
-              ].map((f, i) => (
-                <div key={i} style={{ background: "#141416", border: "1px solid rgba(232,200,122,0.28)", borderRadius: 20, padding: isMobile ? "24px 20px" : "32px 30px", boxShadow: "0 10px 30px rgba(0,0,0,0.4)" }}>
-                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "linear-gradient(135deg,#f4d79a,#c9a44a)", display: "flex", alignItems: "center", justifyContent: "center", color: "#1a1206", fontWeight: 900, fontSize: 16, marginBottom: 18, boxShadow: "0 4px 14px rgba(201,164,74,0.35)" }}>{String(i + 1).padStart(2, "0")}</div>
-                  <div style={{ fontSize: isMobile ? 15 : 17, fontWeight: 900, marginBottom: 10, color: "#f4d79a", letterSpacing: "0.01em" }}>{f.t}</div>
-                  <div style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.65, fontFamily: "Arial, sans-serif" }}>{f.d}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* PIED — retour Basic */}
-          <div style={{ padding: isMobile ? "16px 16px 80px" : "20px 60px 100px", textAlign: "center" }}>
-            <div style={{ maxWidth: 620, margin: "0 auto", borderTop: "1px solid rgba(232,200,122,0.2)", paddingTop: 48 }}>
-              <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.7, marginBottom: 28 }}>
-                En attendant, la version gratuite est déjà là pour structurer ton projet.
-              </p>
-              <button onClick={restart} style={{ background: "#fff", color: "#1a1206", border: "none", borderRadius: 14, padding: isMobile ? "16px 32px" : "18px 44px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", cursor: "pointer" }}>
-                ESSAYER PLANSTART GRATUIT →
-              </button>
+              <h1 style={{ fontSize: isMobile ? "clamp(40px,11vw,64px)" : "clamp(60px,7vw,96px)", fontWeight: 900, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#fff", marginBottom: 24, textTransform: "uppercase" }}>
+                ET SI LA BONNE<br />IDÉE ÉTAIT DÉJÀ<br /><span style={{ color: "#b79bff", fontStyle: "italic" }}>EN TOI ?</span>
+              </h1>
+              <p style={{ fontSize: isMobile ? 15 : 18, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 40, fontFamily: "Arial, sans-serif", maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>PlanStart Idea t'aidera bientôt à trouver et tester l'idée de business faite pour toi. En attendant, crée ton business plan gratuitement.</p>
+              <button onClick={restart} style={{ background: "#fff", color: "#1a1530", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer" }}>ESSAYER PLANSTART GRATUIT →</button>
             </div>
           </div>
         </div>
