@@ -823,7 +823,7 @@ ${sections.map((s, i) => {
         <div style={{ minHeight: "100vh", background: "#0b0a14" }}>
           {/* HERO IDEA — vitrine simple "bientôt disponible" */}
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpg)", backgroundSize: "cover", backgroundPosition: "center" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpeg)", backgroundSize: "cover", backgroundPosition: "center" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(30,15,70,0.62) 0%, rgba(20,10,50,0.78) 100%)" }} />
             <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32 }}>
