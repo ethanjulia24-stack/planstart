@@ -628,7 +628,7 @@ ${sections.map((s, i) => {
                   <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid #efefef", background: screen !== "idea" ? "#f6f6f7" : "#fff" }}>
                     <button onClick={() => { setMenuOpen(false); restart(); }} style={{ flex: 1, textAlign: "left", background: "transparent", border: "none", padding: "16px 14px 16px 18px", display: "flex", flexDirection: "column", gap: 3, cursor: "pointer" }}>
                       <span style={{ fontSize: 14, fontWeight: 900, color: "#000" }}>PLANSTART BASIC</span>
-                      <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Génère ton business plan — gratuit</span>
+                      <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Génère ton business plan</span>
                     </button>
                     <div style={{ display: "flex", flexDirection: "column", gap: 5, padding: "0 14px 0 0", flexShrink: 0 }}>
                       <button onClick={() => setTheme("bw")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 9, letterSpacing: "0.03em", padding: "6px 10px", borderRadius: 20, border: "1px solid #e5e5e5", background: !isOrange ? "#000" : "#fff", color: !isOrange ? "#fff" : "#000", whiteSpace: "nowrap", cursor: "pointer" }}>NOIR / BLANC</button>
@@ -679,7 +679,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* STATS — 3 blocs gris foncé arrondis, côte à côte, avec touche orange */}
-          <div style={{ background: CREAM, padding: isMobile ? "24px 8px 10px" : "40px 32px 20px" }}>
+          <div style={{ background: CREAM, padding: isMobile ? "24px 0px 10px" : "40px 32px 20px" }}>
             <div style={{ maxWidth: 1500, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
               {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
                 <div key={i} style={{ position: "relative", background: DARK, borderRadius: 20, padding: isMobile ? "16px 14px" : "26px 28px", boxShadow: "0 6px 22px rgba(0,0,0,0.12)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
@@ -693,7 +693,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CE QUE TU OBTIENS */}
-          <div style={{ padding: isMobile ? "10px 8px" : "20px 32px" }}>
+          <div style={{ padding: isMobile ? "10px 0px" : "20px 32px" }}>
             <div style={{ maxWidth: 1500, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             {isMobile ? (
               <div>
@@ -759,7 +759,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* REJOINS LES PREMIERS UTILISATEURS */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 8px 40px" : "24px 32px 72px" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 32px 72px" }}>
             <div style={{ maxWidth: 1500, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
@@ -797,7 +797,7 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CTA FINAL */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 8px 40px" : "24px 32px 72px" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 32px 72px" }}>
             <div style={{ maxWidth: 1500, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
             <h2 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(56px,9vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
@@ -820,11 +820,11 @@ ${sections.map((s, i) => {
 
       {/* ── IDEA (vitrine ampoule jaune sur fond sombre) ── */}
       {screen === "idea" && (
-        <div style={{ minHeight: "100vh", background: "#0b0a14" }}>
-          {/* HERO IDEA — vitrine simple "bientôt disponible" */}
-          <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpeg)", backgroundSize: "cover", backgroundPosition: "center" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(30,15,70,0.62) 0%, rgba(20,10,50,0.78) 100%)" }} />
+        <div style={{ background: "#0b0a14" }}>
+          {/* HERO IDEA */}
+          <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", alignItems: "center", textAlign: "center", padding: isMobile ? "0 24px 60px" : "0 60px 80px" }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpeg)", backgroundSize: "cover", backgroundPosition: "center 20%" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.3) 0%, rgba(11,10,20,0.5) 45%, rgba(11,10,20,0.97) 70%)" }} />
             <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32 }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b79bff", display: "inline-block" }} />
@@ -835,6 +835,19 @@ ${sections.map((s, i) => {
               </h1>
               <p style={{ fontSize: isMobile ? 15 : 18, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 40, fontFamily: "Arial, sans-serif", maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>PlanStart Idea t'aidera bientôt à trouver et tester l'idée de business faite pour toi. En attendant, crée ton business plan gratuitement.</p>
               <button onClick={restart} style={{ background: "#fff", color: "#1a1530", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer" }}>ESSAYER PLANSTART GRATUIT →</button>
+            </div>
+          </div>
+
+          {/* BANNIÈRE BAS DE PAGE */}
+          <div style={{ background: "linear-gradient(90deg,#1a1040 0%,#0f0a2e 100%)", borderTop: "1px solid rgba(183,155,255,0.15)", padding: "20px 20px", display: "flex", flexDirection: "column", alignItems: "center", gap: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 28 }}>🚀</div>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 900, color: "#fff", marginBottom: 4 }}>Une idée mérite d'exister.</div>
+              <div style={{ fontSize: 12, color: "rgba(183,155,255,0.8)", fontFamily: "Arial, sans-serif" }}>Trouve-la avec Planstart Idea. Structure-la avec Planstart.</div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "row", gap: 10, width: "100%" }}>
+              <button style={{ flex: 1, background: "transparent", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.25)", padding: "12px 8px", fontSize: 11, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 10, cursor: "not-allowed" }}>TROUVER MON IDÉE ✦</button>
+              <button onClick={restart} style={{ flex: 1, background: "#fff", color: "#1a1040", border: "none", padding: "12px 8px", fontSize: 11, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 10, cursor: "pointer" }}>CRÉER MON PLAN →</button>
             </div>
           </div>
         </div>
