@@ -799,7 +799,7 @@ ${sections.map((s, i) => {
 
   // ─── STYLES ───────────────────────────────────────────────────────────────────
 
-  const sectionPad = isMobile ? "40px 14px" : "72px 60px";
+  const sectionPad = isMobile ? "32px 20px" : "44px 60px";
 
   return (
     <div style={{ background: CREAM, minHeight: "100vh", fontFamily: "'Arial Black', Arial, sans-serif", color: "#000", overflowX: "hidden" }}>
@@ -841,17 +841,20 @@ ${sections.map((s, i) => {
 
       {/* ── NAV ── */}
       {screen !== "intro" && (
-        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: screen === "quiz" ? "rgba(0,0,0,0.95)" : screen === "idea" ? "rgba(248,247,255,0.95)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${screen === "quiz" ? "rgba(255,255,255,0.1)" : screen === "idea" ? "#e8e3ff" : "#ededed"}`, padding: `0 ${isMobile ? "20px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
+        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(11,10,20,0.92)" : screen === "idea" ? "rgba(248,247,255,0.95)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(183,155,255,0.15)" : screen === "idea" ? "#e8e3ff" : "#ededed"}`, padding: `0 ${isMobile ? "20px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
           <div style={{ position: "relative" }}>
             <button onClick={() => setMenuOpen(o => !o)} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 34, height: 34, borderRadius: "50%", background: screen === "quiz" ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <span style={{ color: screen === "quiz" ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
+              <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <span style={{ color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
               </div>
-              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: screen === "quiz" ? "#fff" : "#000" }}>PLAN<span style={{ color: screen === "idea" ? "#6c47ff" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
-              {screen === "idea" && (
-                <span onClick={(e) => { e.stopPropagation(); handleIdeaLogoClick(); }} style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: "#6c47ff", marginLeft: 4, cursor: "pointer" }}>IDEA</span>
+              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000" }}>PLAN<span style={{ color: String(screen).startsWith("idea") ? "#b79bff" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
+              {String(screen).startsWith("idea") && (
+                <span onClick={(e) => { e.stopPropagation(); handleIdeaLogoClick(); }} style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: "#b79bff", marginLeft: 4, cursor: "pointer" }}>IDEA</span>
               )}
-              <span style={{ fontSize: 9, color: screen === "quiz" ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
+              {(screen === "home" || screen === "quiz") && (
+                <span style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: screen === "quiz" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.4)", marginLeft: 4 }}>BASIC</span>
+              )}
+              <span style={{ fontSize: 9, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
             </button>
 
             {/* MENU DÉROULANT Basic / Business */}
@@ -877,7 +880,7 @@ ${sections.map((s, i) => {
               </>
             )}
           </div>
-          {screen !== "quiz" && screen !== "idea" && (
+          {screen !== "quiz" && !String(screen).startsWith("idea") && (
             <div style={{ display: "flex", gap: isMobile ? 12 : 32, alignItems: "center" }}>
               <a href="#comment" style={{ fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
               <a href="#apropos" style={{ fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
@@ -962,11 +965,11 @@ ${sections.map((s, i) => {
           {/* POUR QUI */}
           <div style={{ background: CREAM, padding: sectionPad }}>
             <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 40, fontWeight: 900 }}>FAIT POUR TOI SI —</div>
+              <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: isMobile ? 24 : 28, fontWeight: 900 }}>FAIT POUR TOI SI —</div>
               {["TU AS UNE IDÉE MAIS TU NE SAIS PAS PAR OÙ COMMENCER", "TU VEUX SAVOIR SI TON IDÉE EST VIABLE", "TU VEUX STRUCTURER TON PROJET RAPIDEMENT", "TU VEUX TE METTRE À TON COMPTE", "TU VEUX CRÉER TON ENTREPRISE AVEC UN PLAN CLAIR", "TU CHERCHES UN BUSINESS PLAN SIMPLE ET PERSONNALISÉ"].map((item, i) => (
-                <div key={i} style={{ borderBottom: "1px solid #e5e5e5", padding: "20px 0", display: "flex", alignItems: "flex-start", gap: 20 }}>
-                  <span style={{ fontSize: 13, color: isOrange ? "#ff7a2e" : "#000", minWidth: 30, fontWeight: 900, paddingTop: 2, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
-                  <span style={{ fontSize: isMobile ? 15 : 20, fontWeight: 900, lineHeight: 1.3 }}>{item}</span>
+                <div key={i} style={{ borderBottom: "1px solid #e5e5e5", padding: isMobile ? "16px 0" : "15px 0", display: "flex", alignItems: "flex-start", gap: 18 }}>
+                  <span style={{ fontSize: 12, color: isOrange ? "#ff7a2e" : "#000", minWidth: 28, fontWeight: 900, paddingTop: 2, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
+                  <span style={{ fontSize: isMobile ? 15 : 16, fontWeight: 800, lineHeight: 1.3 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -993,12 +996,12 @@ ${sections.map((s, i) => {
           </div>
 
           {/* REJOINS LES PREMIERS UTILISATEURS */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 0px 72px" }}>
-            <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 24px" : "20px 0px 36px" }}>
+            <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "48px 24px" : "64px 60px", textAlign: "center" }}>
             <div style={{ maxWidth: 900, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
-              <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
-                ACCÈDE GRATUITEMENT, PARTAGE TON AVIS, INFLUENCE LA SUITE !
+              <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 20, letterSpacing: "-0.02em" }}>
+                ACCÈDE GRATUITEMENT,<br />PARTAGE TON AVIS,<br />INFLUENCE LA SUITE !
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.7, marginBottom: 40 }}>
                 Génère ton business plan gratuitement et aide-nous à améliorer la plateforme. Ton avis nous aidera à rendre l'outil encore plus utile.
@@ -1031,8 +1034,8 @@ ${sections.map((s, i) => {
           </div>
 
           {/* CTA FINAL */}
-          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 0px 72px" }}>
-            <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
+          <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 24px" : "20px 0px 44px" }}>
+            <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
             <h2 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(56px,9vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
             </h2>
@@ -1117,8 +1120,8 @@ ${sections.map((s, i) => {
         const currentKey = isDynamic ? "dynamique" : currentQ.key;
         return (
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", animation: "slideUp 0.4s ease both" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center", opacity: 0.18 }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.85) 0%, rgba(11,10,20,0.92) 100%)" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center", opacity: 0.45 }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.55) 0%, rgba(11,10,20,0.7) 100%)" }} />
             <div style={{ maxWidth: 680, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
               {/* Progression */}
               <div style={{ marginBottom: 40 }}>
