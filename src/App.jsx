@@ -273,7 +273,6 @@ export default function App() {
         setIdeaPreview(true);
         setShowPreviewModal(false);
         setPreviewPwd("");
-        startIdeaQuiz();
       } else {
         setPreviewError(true);
       }
@@ -1117,8 +1116,10 @@ ${sections.map((s, i) => {
         const progress = ((ideaStep + 1) / ideaTotalSteps) * 100;
         const currentKey = isDynamic ? "dynamique" : currentQ.key;
         return (
-          <div style={{ minHeight: "100vh", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", animation: "slideUp 0.4s ease both" }}>
-            <div style={{ maxWidth: 680, margin: "0 auto", width: "100%" }}>
+          <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", animation: "slideUp 0.4s ease both" }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center", opacity: 0.18 }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.85) 0%, rgba(11,10,20,0.92) 100%)" }} />
+            <div style={{ maxWidth: 680, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
               {/* Progression */}
               <div style={{ marginBottom: 40 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
