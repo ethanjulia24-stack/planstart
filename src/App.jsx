@@ -823,7 +823,7 @@ ${sections.map((s, i) => {
         <div style={{ background: "#0b0a14" }}>
           {/* HERO IDEA */}
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)", backgroundSize: "cover", backgroundPosition: "center center" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.png)", backgroundSize: "cover", backgroundPosition: "center center" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.3) 0%, rgba(11,10,20,0.5) 45%, rgba(11,10,20,0.97) 70%)" }} />
             <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32 }}>
