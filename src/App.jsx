@@ -680,7 +680,7 @@ ${sections.map((s, i) => {
 
           {/* STATS — 3 blocs gris foncé arrondis, côte à côte, avec touche orange */}
           <div style={{ background: CREAM, padding: isMobile ? "24px 0px 10px" : "40px 0px 20px" }}>
-            <div style={{ maxWidth: 1500, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
               {[{ n: "SIMPLE ET RAPIDE", label: "Pour structurer ton projet" }, { n: "10 QUESTIONS", label: "Personnalisées pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
                 <div key={i} style={{ position: "relative", background: DARK, borderRadius: 20, padding: isMobile ? "16px 14px" : "26px 28px", boxShadow: "0 6px 22px rgba(0,0,0,0.12)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
                   {/* touche orange : barre latérale */}
@@ -694,7 +694,7 @@ ${sections.map((s, i) => {
 
           {/* CE QUE TU OBTIENS */}
           <div style={{ padding: isMobile ? "10px 0px" : "20px 0px" }}>
-            <div style={{ maxWidth: 1500, margin: "0 auto", borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
+            <div style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             {isMobile ? (
               <div>
                 <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
@@ -760,7 +760,7 @@ ${sections.map((s, i) => {
 
           {/* REJOINS LES PREMIERS UTILISATEURS */}
           <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 0px 72px" }}>
-            <div style={{ maxWidth: 1500, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
+            <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
               <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
@@ -798,7 +798,7 @@ ${sections.map((s, i) => {
 
           {/* CTA FINAL */}
           <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 0px 72px" }}>
-            <div style={{ maxWidth: 1500, margin: "0 auto", background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
+            <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "64px 24px" : "100px 60px", textAlign: "center" }}>
             <h2 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(56px,9vw,96px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, marginBottom: 40, color: "#fff", textTransform: "uppercase" }}>
               PRÊT À<br /><span style={{ color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.2)" }}>TE LANCER ?</span>
             </h2>
@@ -823,7 +823,7 @@ ${sections.map((s, i) => {
         <div style={{ background: "#0b0a14" }}>
           {/* HERO IDEA */}
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)", backgroundSize: isMobile ? "cover" : "auto 90%", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)", backgroundSize: "cover", backgroundPosition: "center center" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.3) 0%, rgba(11,10,20,0.5) 45%, rgba(11,10,20,0.97) 70%)" }} />
             <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32 }}>
