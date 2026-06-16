@@ -823,7 +823,7 @@ ${sections.map((s, i) => {
         <div style={{ background: "#0b0a14" }}>
           {/* HERO IDEA */}
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", alignItems: "center", textAlign: "center", padding: isMobile ? "0 24px 60px" : "0 60px 80px" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpeg)", backgroundSize: "cover", backgroundPosition: "center 20%" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/idea-bulb.jpeg)", backgroundSize: "cover", backgroundPosition: "55% 40%" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.3) 0%, rgba(11,10,20,0.5) 45%, rgba(11,10,20,0.97) 70%)" }} />
             <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32 }}>
