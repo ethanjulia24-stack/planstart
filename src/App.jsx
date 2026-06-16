@@ -838,18 +838,7 @@ ${sections.map((s, i) => {
             </div>
           </div>
 
-          {/* BANNIÈRE BAS DE PAGE */}
-          <div style={{ background: "linear-gradient(90deg,#1a1040 0%,#0f0a2e 100%)", borderTop: "1px solid rgba(183,155,255,0.15)", padding: "20px 20px", display: "flex", flexDirection: "column", alignItems: "center", gap: 14, textAlign: "center" }}>
-            <div style={{ fontSize: 28 }}>🚀</div>
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 900, color: "#fff", marginBottom: 4 }}>Une idée mérite d'exister.</div>
-              <div style={{ fontSize: 12, color: "rgba(183,155,255,0.8)", fontFamily: "Arial, sans-serif" }}>Trouve-la avec Planstart Idea. Structure-la avec Planstart.</div>
-            </div>
-            <div style={{ display: "flex", flexDirection: "row", gap: 10, width: "100%" }}>
-              <button style={{ flex: 1, background: "transparent", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.25)", padding: "12px 8px", fontSize: 11, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 10, cursor: "not-allowed" }}>TROUVER MON IDÉE ✦</button>
-              <button onClick={restart} style={{ flex: 1, background: "#fff", color: "#1a1040", border: "none", padding: "12px 8px", fontSize: 11, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 10, cursor: "pointer" }}>CRÉER MON PLAN →</button>
-            </div>
-          </div>
+
         </div>
       )}
 
