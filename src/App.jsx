@@ -727,7 +727,7 @@ ${sections.map((s, i) => {
 
           {/* POUR QUI */}
           <div style={{ background: CREAM, padding: sectionPad }}>
-            <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ maxWidth: 1400, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 40, fontWeight: 900 }}>FAIT POUR TOI SI —</div>
               {["TU AS UNE IDÉE MAIS TU NE SAIS PAS PAR OÙ COMMENCER", "TU VEUX SAVOIR SI TON IDÉE EST VIABLE", "TU VEUX STRUCTURER TON PROJET RAPIDEMENT", "TU VEUX TE METTRE À TON COMPTE", "TU VEUX CRÉER TON ENTREPRISE AVEC UN PLAN CLAIR", "TU CHERCHES UN BUSINESS PLAN SIMPLE ET PERSONNALISÉ"].map((item, i) => (
                 <div key={i} style={{ borderBottom: "1px solid #e5e5e5", padding: "20px 0", display: "flex", alignItems: "flex-start", gap: 20 }}>
@@ -740,7 +740,7 @@ ${sections.map((s, i) => {
 
           {/* COMMENT ÇA MARCHE */}
           <div id="comment" style={{ background: CREAM_ALT, padding: sectionPad }}>
-            <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ maxWidth: 1400, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
                 {[
@@ -761,7 +761,7 @@ ${sections.map((s, i) => {
           {/* REJOINS LES PREMIERS UTILISATEURS */}
           <div style={{ background: CREAM_ALT, padding: isMobile ? "12px 0px 40px" : "24px 0px 72px" }}>
             <div style={{ background: DARK, borderRadius: 24, padding: isMobile ? "56px 24px" : "80px 60px", textAlign: "center" }}>
-            <div style={{ maxWidth: 600, margin: "0 auto" }}>
+            <div style={{ maxWidth: 900, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.4)", marginBottom: 24, fontWeight: 900 }}>REJOINS LES PREMIERS UTILISATEURS</div>
               <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.02em" }}>
                 ACCÈDE GRATUITEMENT, PARTAGE TON AVIS, INFLUENCE LA SUITE !
@@ -778,7 +778,7 @@ ${sections.map((s, i) => {
 
           {/* À PROPOS */}
           <div id="apropos" style={{ background: CREAM_ALT, padding: sectionPad }}>
-            <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
+            <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
               <div>
                 <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "#000", marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
                 <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 20 }}>PLANSTART C'EST POUR CEUX QUI PASSENT À L'ACTION.</h2>
@@ -977,7 +977,7 @@ ${sections.map((s, i) => {
               <div style={{ position: "relative", background: "#000", padding: isMobile ? "92px 22px 44px" : "110px 60px 56px", overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, backgroundImage: `url("${COVER_IMAGE}")`, backgroundSize: "cover", backgroundPosition: "72% center" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.66) 48%, rgba(0,0,0,0.32) 74%, rgba(0,0,0,0.12) 100%)" }} />
-                <div style={{ position: "relative", zIndex: 2, maxWidth: 900, margin: "0 auto" }}>
+                <div style={{ position: "relative", zIndex: 2, maxWidth: 1400, margin: "0 auto" }}>
 
                   {/* En-tête marque */}
                   <div style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, letterSpacing: "0.04em", color: "#fff" }}>PLAN<span style={{ color: isOrange ? "#ff7a2e" : "#fff" }}>START</span></div>
