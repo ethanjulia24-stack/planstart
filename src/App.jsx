@@ -1060,9 +1060,9 @@ ${sections.map((s, i) => {
         <div style={{ background: "#ffffff" }}>
           {/* BANDEAU MODE PREVIEW */}
           {ideaPreview && (
-            <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 99, background: IDEA_VIOLET_ACCENT, color: "#fff", padding: "8px 16px", textAlign: "center", fontSize: 11, fontWeight: 900, letterSpacing: "0.06em" }}>
-              🛠 MODE PREVIEW — PlanStart Idea
-              <button onClick={() => { try { localStorage.removeItem("ideaPreview"); } catch {} setIdeaPreview(false); }} style={{ marginLeft: 12, background: "rgba(0,0,0,0.25)", color: "#fff", border: "none", borderRadius: 6, padding: "3px 10px", fontSize: 10, fontWeight: 900, cursor: "pointer" }}>QUITTER</button>
+            <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 99, background: IDEA_VIOLET_ACCENT, color: "#fff", padding: "4px 12px", textAlign: "center", fontSize: 10, fontWeight: 800, letterSpacing: "0.04em", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+              <span>🛠 PREVIEW</span>
+              <button onClick={() => { try { localStorage.removeItem("ideaPreview"); } catch {} setIdeaPreview(false); }} style={{ background: "rgba(0,0,0,0.25)", color: "#fff", border: "none", borderRadius: 5, padding: "2px 8px", fontSize: 9, fontWeight: 900, cursor: "pointer" }}>QUITTER</button>
             </div>
           )}
 
@@ -1089,20 +1089,19 @@ ${sections.map((s, i) => {
           {ideaPreview && (
             <>
               {/* ─── HERO ─── */}
-              <div style={{ position: "relative", overflow: "hidden", minHeight: isMobile ? "auto" : "70vh", padding: isMobile ? "84px 20px 56px" : "120px 60px 90px", display: "flex", alignItems: "center" }}>
-                {/* Ampoule en arrière-plan */}
-                <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: isMobile ? "center center" : "right center" }} />
-                {/* Voile clair pour lisibilité du texte */}
-                <div style={{ position: "absolute", inset: 0, background: isMobile ? "linear-gradient(180deg, rgba(243,238,254,0.82) 0%, rgba(243,238,254,0.55) 50%, rgba(252,232,243,0.4) 100%)" : "linear-gradient(90deg, rgba(243,238,254,0.92) 0%, rgba(243,238,254,0.7) 40%, rgba(243,238,254,0.15) 70%, rgba(252,232,243,0.05) 100%)" }} />
-                <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%" }}>
-                  <div style={{ maxWidth: isMobile ? "100%" : 560, animation: "slideUp 0.6s ease both" }}>
-                    <h1 style={{ fontSize: isMobile ? "clamp(34px,9vw,44px)" : "clamp(44px,4.5vw,60px)", fontWeight: 900, lineHeight: 1.08, letterSpacing: "-0.02em", color: "#1a1333", marginBottom: 20 }}>
-                      Et si la bonne idée était déjà <span style={{ color: IDEA_VIOLET_ACCENT }}>en toi ?</span>
+              <div style={{ position: "relative", overflow: "hidden", padding: isMobile ? "60px 20px 32px" : "112px 60px 80px", background: "linear-gradient(135deg, #ece7ff 0%, #f3eefe 45%, #fce8f3 100%)" }}>
+                <div style={{ position: "relative", zIndex: 2, maxWidth: 1150, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.1fr 0.9fr", gap: isMobile ? 16 : 40, alignItems: "center" }}>
+                  <div style={{ animation: "slideUp 0.6s ease both" }}>
+                    <h1 style={{ fontSize: isMobile ? "clamp(28px,6.8vw,34px)" : "clamp(38px,4vw,52px)", fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#1a1333", marginBottom: 16 }}>
+                      Trouve le projet entrepreneurial qui te <span style={{ color: IDEA_VIOLET_ACCENT }}>correspond vraiment</span>
                     </h1>
-                    <p style={{ fontSize: isMobile ? 15 : 17, color: "#4a4560", fontFamily: "Arial, sans-serif", lineHeight: 1.65, marginBottom: 30, maxWidth: 440, fontWeight: 600 }}>
-                      Réponds à quelques questions, explore des idées uniques et trouve le projet qui te ressemble vraiment.
+                    <p style={{ fontSize: isMobile ? 14 : 17, color: "#5b5570", fontFamily: "Arial, sans-serif", lineHeight: 1.55, marginBottom: 24, maxWidth: 460 }}>
+                      Réponds à quelques questions et découvre les projets les plus adaptés à ton budget, ton temps disponible et tes compétences.
                     </p>
-                    <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: isMobile ? "15px 32px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.35)" }}>TROUVER MON IDÉE ✦</button>
+                    <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: isMobile ? "15px 30px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.35)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "center", animation: "slideUp 0.6s ease 0.15s both", order: isMobile ? 2 : 0 }}>
+                    <img src="/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG" alt="Idée" style={{ width: "100%", maxWidth: isMobile ? 230 : 380, borderRadius: 20 }} />
                   </div>
                 </div>
               </div>
@@ -1114,7 +1113,7 @@ ${sections.map((s, i) => {
                   <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 24 }}>
                     {[
                       { ic: "💬", bg: "#ede8ff", n: "1", t: "Réponds à 6 questions", d: "Parle-nous de toi, de tes envies, de ton budget et de tes compétences." },
-                      { ic: "💡", bg: "#fff2dd", n: "2", t: "Découvre des idées", d: "Notre IA génère des idées de projets faites pour toi." },
+                      { ic: "💡", bg: "#fff2dd", n: "2", t: "Reçois 3 recommandations", d: "Notre IA analyse ton profil et sélectionne les projets les plus adaptés." },
                       { ic: "🚀", bg: "#e0f0ff", n: "3", t: "Lance ton projet", d: "Choisis ton idée favorite et crée ton business plan sur PlanStart." },
                     ].map((s, i) => (
                       <div key={i} style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -1130,87 +1129,25 @@ ${sections.map((s, i) => {
                 </div>
               </div>
 
-              {/* ─── DES IDÉES FAITES POUR TOI (vitrine) ─── */}
-              <div style={{ background: "#faf9ff", padding: isMobile ? "40px 0 44px" : "56px 0 64px" }}>
-                <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "0 20px" : "0 60px" }}>
-                  <h2 style={{ fontSize: isMobile ? 22 : 30, fontWeight: 900, color: "#1a1333", marginBottom: 24, letterSpacing: "-0.02em" }}>Des idées faites pour toi ✦</h2>
-                </div>
-                <div style={{ display: "flex", gap: 16, overflowX: "auto", padding: isMobile ? "4px 20px 8px" : "4px 60px 8px", scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}>
-                  {[
-                    { tag: "EN LIGNE", tagBg: "#6C47FF", img: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&q=80", t: "Créateur de contenu gaming", d: "Aide les marques gaming à toucher leur audience avec du contenu engageant.", inv: "Faible", stars: 4 },
-                    { tag: "SERVICE LOCAL", tagBg: "#22b07d", img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=80", t: "Toilettage mobile pour chiens", d: "Un service pratique qui se déplace à domicile et chouchoute les animaux.", inv: "Moyen", stars: 4 },
-                    { tag: "E-COMMERCE", tagBg: "#f0962e", img: "https://images.unsplash.com/photo-1545048702-79362596cdc9?w=600&q=80", t: "Boutique zéro déchet", d: "Vente de produits écologiques et durables pour un quotidien plus responsable.", inv: "Moyen", stars: 4 },
-                    { tag: "DIGITAL", tagBg: "#6C47FF", img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80", t: "Agence d'automatisation IA", d: "Aide les petites entreprises à gagner du temps grâce à des automatisations intelligentes.", inv: "Faible", stars: 4 },
-                  ].map((card, i) => (
-                    <div key={i} style={{ flexShrink: 0, width: isMobile ? 280 : 300, background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 6px 24px rgba(26,19,51,0.08)", scrollSnapAlign: "start" }}>
-                      <div style={{ position: "relative", height: 150, backgroundImage: `url(${card.img})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-                        <span style={{ position: "absolute", top: 12, left: 12, background: card.tagBg, color: "#fff", fontSize: 10, fontWeight: 900, letterSpacing: "0.06em", padding: "5px 12px", borderRadius: 20 }}>{card.tag}</span>
-                      </div>
-                      <div style={{ padding: "18px 18px 16px" }}>
-                        <div style={{ fontSize: 16, fontWeight: 900, color: "#1a1333", marginBottom: 8 }}>{card.t}</div>
-                        <p style={{ fontSize: 13, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.55, marginBottom: 16, minHeight: 60 }}>{card.d}</p>
-                        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", borderTop: "1px solid #f0eef7", paddingTop: 12 }}>
-                          <div>
-                            <div style={{ fontSize: 10, color: "#9b95ad", fontFamily: "Arial, sans-serif" }}>Investissement</div>
-                            <div style={{ fontSize: 13, fontWeight: 900, color: "#1a1333" }}>{card.inv}</div>
-                          </div>
-                          <div>
-                            <div style={{ fontSize: 10, color: "#9b95ad", fontFamily: "Arial, sans-serif" }}>Potentiel</div>
-                            <div style={{ fontSize: 13, color: "#f0962e" }}>{"★".repeat(card.stars)}{"☆".repeat(5 - card.stars)}</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* ─── GÉNÉRATEUR D'IDÉES IA ─── */}
-              <div style={{ background: "#fff", padding: isMobile ? "40px 20px" : "56px 60px" }}>
-                <div style={{ maxWidth: 1100, margin: "0 auto", background: "#f7f5ff", borderRadius: 24, padding: isMobile ? "28px 22px" : "44px 48px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 28 : 40, alignItems: "center" }}>
-                  <div>
-                    <h2 style={{ fontSize: isMobile ? 22 : 28, fontWeight: 900, color: IDEA_VIOLET_ACCENT, marginBottom: 14, letterSpacing: "-0.02em" }}>Générateur d'idées IA ✦</h2>
-                    <p style={{ fontSize: 14, color: "#5b5570", fontFamily: "Arial, sans-serif", lineHeight: 1.6, marginBottom: 20 }}>Décris ce que tu aimes, ce que tu sais faire et ce que tu recherches.</p>
-                    <div style={{ background: "#fff", border: "1px solid #e4e0f0", borderRadius: 12, padding: "14px 16px", fontSize: 13, color: "#9b95ad", fontFamily: "Arial, sans-serif", lineHeight: 1.5, marginBottom: 18, fontStyle: "italic" }}>
-                      J'aime le sport, j'ai 2000€ de budget et je veux un business en ligne qui aide les autres...
-                    </div>
-                    <button onClick={startIdeaQuiz} style={{ width: "100%", background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: "14px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>GÉNÉRER MES IDÉES ✦</button>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                    <div style={{ background: "#fff", borderRadius: 16, padding: "20px 20px", boxShadow: "0 6px 24px rgba(26,19,51,0.07)" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                        <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,#6C47FF,#8D6EFF)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>🏃</div>
-                        <div style={{ fontSize: 15, fontWeight: 900, color: "#1a1333" }}>Coaching sportif en ligne</div>
-                      </div>
-                      <p style={{ fontSize: 13, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.55, marginBottom: 12 }}>Accompagne des personnes à atteindre leurs objectifs sportifs depuis chez toi.</p>
-                      {["Faible coût de lancement", "Forte demande", "Revenus récurrents possibles"].map((b, bi) => (
-                        <div key={bi} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                          <span style={{ color: "#22b07d", fontSize: 13 }}>✓</span>
-                          <span style={{ fontSize: 12, color: "#5b5570", fontFamily: "Arial, sans-serif" }}>{b}</span>
-                        </div>
-                      ))}
-                      <div style={{ fontSize: 12, color: "#9b95ad", marginTop: 10, fontFamily: "Arial, sans-serif" }}>Potentiel <span style={{ color: "#f0962e" }}>★★★★☆</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* ─── TENDANCES DU MOMENT ─── */}
-              <div style={{ background: "#faf9ff", padding: isMobile ? "36px 20px" : "48px 60px" }}>
-                <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-                  <h2 style={{ fontSize: isMobile ? 20 : 26, fontWeight: 900, color: "#1a1333", marginBottom: 22, letterSpacing: "-0.02em" }}>Tendances du moment 🔥</h2>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+              {/* ─── POURQUOI NOS RECOMMANDATIONS SONT DIFFÉRENTES ─── */}
+              <div style={{ background: "#faf9ff", padding: isMobile ? "44px 20px" : "64px 60px" }}>
+                <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                  <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 900, color: "#1a1333", textAlign: "center", marginBottom: 12, letterSpacing: "-0.02em" }}>Pourquoi nos recommandations sont différentes</h2>
+                  <p style={{ fontSize: isMobile ? 14 : 16, color: "#6b6580", fontFamily: "Arial, sans-serif", textAlign: "center", lineHeight: 1.6, marginBottom: isMobile ? 32 : 44, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>Pas une liste d'idées au hasard. Une analyse de ton profil pour ne te proposer que des projets réalisables.</p>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14 }}>
                     {[
-                      { ic: "🤖", t: "IA & Automatisation", c: "#6C47FF" },
-                      { ic: "💚", t: "Bien-être & Santé", c: "#3b82f6" },
-                      { ic: "🌱", t: "Économie verte", c: "#22b07d" },
-                      { ic: "🎬", t: "Création de contenu", c: "#f0962e" },
-                      { ic: "🏠", t: "Services à domicile", c: "#ec4899" },
-                      { ic: "🎓", t: "Éducation & Formation", c: "#3b82f6" },
-                    ].map((tag, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, background: "#fff", border: "1px solid #ece9f7", borderRadius: 12, padding: "12px 16px", boxShadow: "0 2px 10px rgba(26,19,51,0.04)" }}>
-                        <span style={{ fontSize: 16 }}>{tag.ic}</span>
-                        <span style={{ fontSize: 13, fontWeight: 800, color: tag.c }}>{tag.t}</span>
+                      { ic: "💰", t: "Adaptées à ton budget", d: "On ne te propose jamais un projet hors de tes moyens." },
+                      { ic: "⏱️", t: "Compatibles avec ton temps", d: "Selon que tu sois dispo à temps plein ou quelques heures par semaine." },
+                      { ic: "🧠", t: "Basées sur tes compétences", d: "On part de ce que tu sais déjà faire pour aller plus vite." },
+                      { ic: "🎯", t: "Alignées sur tes objectifs", d: "Revenus rapides, liberté, projet de cœur : on s'adapte." },
+                      { ic: "⚡", t: "Conçues pour être réalisables", d: "Une idée lançable maintenant vaut mieux qu'un rêve irréaliste." },
+                    ].map((f, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, background: "#fff", border: "1px solid #ece9f7", borderRadius: 16, padding: isMobile ? "18px 18px" : "22px 24px", boxShadow: "0 2px 12px rgba(26,19,51,0.04)" }}>
+                        <div style={{ fontSize: 26, flexShrink: 0 }}>{f.ic}</div>
+                        <div>
+                          <div style={{ fontSize: isMobile ? 15 : 16, fontWeight: 900, color: "#1a1333", marginBottom: 4 }}>{f.t}</div>
+                          <div style={{ fontSize: 13, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{f.d}</div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -1225,9 +1162,8 @@ ${sections.map((s, i) => {
                     <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 900, color: "#fff", marginBottom: 6 }}>Une idée mérite d'exister.</div>
                     <div style={{ fontSize: 14, color: "rgba(183,155,255,0.85)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>Trouve-la avec PlanStart Idea. Structure-la avec PlanStart.</div>
                   </div>
-                  <div style={{ display: "flex", flexDirection: isMobile ? "column" : "column", gap: 10, width: isMobile ? "100%" : "auto" }}>
-                    <button onClick={startIdeaQuiz} style={{ background: "#fff", color: "#1a1040", border: "none", padding: "13px 24px", fontSize: 12, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 10, cursor: "pointer", whiteSpace: "nowrap" }}>TROUVER MON IDÉE ✦</button>
-                    <button onClick={restart} style={{ background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "13px 24px", fontSize: 12, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 10, cursor: "pointer", whiteSpace: "nowrap" }}>CRÉER MON BUSINESS PLAN →</button>
+                  <div style={{ width: isMobile ? "100%" : "auto" }}>
+                    <button onClick={startIdeaQuiz} style={{ background: "#fff", color: "#1a1040", border: "none", padding: isMobile ? "15px 20px" : "15px 30px", fontSize: isMobile ? 12 : 13, fontWeight: 900, letterSpacing: "0.05em", borderRadius: 12, cursor: "pointer", whiteSpace: "nowrap", width: isMobile ? "100%" : "auto", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
                   </div>
                 </div>
               </div>
