@@ -1089,21 +1089,20 @@ ${sections.map((s, i) => {
           {ideaPreview && (
             <>
               {/* ─── HERO ─── */}
-              <div style={{ background: "linear-gradient(135deg, #e9e4ff 0%, #f3eefe 40%, #fce8f3 100%)", padding: isMobile ? "84px 20px 40px" : "110px 60px 70px" }}>
-                <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 24 : 40, alignItems: "center" }}>
-                  {/* Colonne texte */}
-                  <div style={{ animation: "slideUp 0.6s ease both" }}>
-                    <h1 style={{ fontSize: isMobile ? "clamp(32px,8vw,40px)" : "clamp(40px,4vw,56px)", fontWeight: 900, lineHeight: 1.08, letterSpacing: "-0.02em", color: "#1a1333", marginBottom: 20 }}>
+              <div style={{ position: "relative", overflow: "hidden", minHeight: isMobile ? "auto" : "70vh", padding: isMobile ? "84px 20px 56px" : "120px 60px 90px", display: "flex", alignItems: "center" }}>
+                {/* Ampoule en arrière-plan */}
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: isMobile ? "center center" : "right center" }} />
+                {/* Voile clair pour lisibilité du texte */}
+                <div style={{ position: "absolute", inset: 0, background: isMobile ? "linear-gradient(180deg, rgba(243,238,254,0.82) 0%, rgba(243,238,254,0.55) 50%, rgba(252,232,243,0.4) 100%)" : "linear-gradient(90deg, rgba(243,238,254,0.92) 0%, rgba(243,238,254,0.7) 40%, rgba(243,238,254,0.15) 70%, rgba(252,232,243,0.05) 100%)" }} />
+                <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", width: "100%" }}>
+                  <div style={{ maxWidth: isMobile ? "100%" : 560, animation: "slideUp 0.6s ease both" }}>
+                    <h1 style={{ fontSize: isMobile ? "clamp(34px,9vw,44px)" : "clamp(44px,4.5vw,60px)", fontWeight: 900, lineHeight: 1.08, letterSpacing: "-0.02em", color: "#1a1333", marginBottom: 20 }}>
                       Et si la bonne idée était déjà <span style={{ color: IDEA_VIOLET_ACCENT }}>en toi ?</span>
                     </h1>
-                    <p style={{ fontSize: isMobile ? 15 : 17, color: "#5b5570", fontFamily: "Arial, sans-serif", lineHeight: 1.65, marginBottom: 30, maxWidth: 440 }}>
+                    <p style={{ fontSize: isMobile ? 15 : 17, color: "#4a4560", fontFamily: "Arial, sans-serif", lineHeight: 1.65, marginBottom: 30, maxWidth: 440, fontWeight: 600 }}>
                       Réponds à quelques questions, explore des idées uniques et trouve le projet qui te ressemble vraiment.
                     </p>
                     <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: isMobile ? "15px 32px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.35)" }}>TROUVER MON IDÉE ✦</button>
-                  </div>
-                  {/* Colonne image ampoule */}
-                  <div style={{ display: "flex", justifyContent: "center", animation: "slideUp 0.6s ease 0.15s both" }}>
-                    <img src="/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG" alt="Idée" style={{ width: "100%", maxWidth: isMobile ? 420 : 520, borderRadius: 20, boxShadow: "0 20px 50px rgba(108,71,255,0.18)" }} />
                   </div>
                 </div>
               </div>
