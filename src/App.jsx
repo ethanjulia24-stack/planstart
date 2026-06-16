@@ -216,8 +216,8 @@ export default function App() {
   const DARK = "#222227";         // gris foncé pour les grands blocs (au lieu du noir pur)
 
   // ─── COULEURS PLANSTART IDEA ───
-  const IDEA_BG = "#0B0A14";
-  const IDEA_SURFACE = "#171425";
+  const IDEA_BG = "#15122B";
+  const IDEA_SURFACE = "#221C3D";
   const IDEA_VIOLET = "#B79BFF";
   const IDEA_VIOLET_ACCENT = "#8D6EFF";
   const IDEA_TEXT2 = "#B8B8C7";
@@ -1057,7 +1057,7 @@ ${sections.map((s, i) => {
 
       {/* ── IDEA (vitrine ampoule jaune sur fond sombre) ── */}
       {screen === "idea" && (
-        <div style={{ background: "#0b0a14" }}>
+        <div style={{ background: "#15122B" }}>
           {/* BANDEAU MODE PREVIEW */}
           {ideaPreview && (
             <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 99, background: IDEA_VIOLET_ACCENT, color: "#fff", padding: "8px 16px", textAlign: "center", fontSize: 11, fontWeight: 900, letterSpacing: "0.06em" }}>
@@ -1068,7 +1068,7 @@ ${sections.map((s, i) => {
           {/* HERO IDEA */}
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px" }}>
             <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.3) 0%, rgba(11,10,20,0.5) 45%, rgba(11,10,20,0.97) 70%)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(21,18,43,0.25) 0%, rgba(21,18,43,0.45) 50%, rgba(21,18,43,0.9) 75%)" }} />
             <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
               <div onClick={!ideaPreview ? handleIdeaLogoClick : undefined} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32, cursor: !ideaPreview ? "default" : "default" }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b79bff", display: "inline-block" }} />
@@ -1153,7 +1153,7 @@ ${sections.map((s, i) => {
 
               {/* BANNIÈRE PHOTO */}
               <div style={{ width: "100%", height: isMobile ? 220 : 360, backgroundImage: "url(https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center", position: "relative" }}>
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.6), rgba(11,10,20,0.85))" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(34,28,61,0.55), rgba(21,18,43,0.8))" }} />
                 <div style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "0 24px" }}>
                   <h2 style={{ fontSize: isMobile ? 24 : 38, fontWeight: 900, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em" }}>L'idée parfaite ne se trouve pas par hasard.<br /><span style={{ color: IDEA_VIOLET }}>Elle se révèle.</span></h2>
                 </div>
@@ -1218,7 +1218,7 @@ ${sections.map((s, i) => {
         return (
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", animation: "slideUp 0.4s ease both" }}>
             <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center", opacity: 0.45 }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,10,20,0.55) 0%, rgba(11,10,20,0.7) 100%)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(34,28,61,0.5) 0%, rgba(21,18,43,0.65) 100%)" }} />
             <div style={{ maxWidth: 680, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
               {/* Progression */}
               <div style={{ marginBottom: 40 }}>
