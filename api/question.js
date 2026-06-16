@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: "Trop de requêtes" });
   }
 
-  const { history, nextNum, bloc } = req.body;
+  const { history, nextNum, bloc, ideaContext } = req.body;
 
   if (!history || !Array.isArray(history) || nextNum < 1 || nextNum > 10) {
     return res.status(400).json({ error: "Données invalides" });
@@ -53,8 +53,28 @@ export default async function handler(req, res) {
     reponse: sanitizeInput(h.reponse),
   }));
 
-  const prompt = `Tu es un consultant expert en création d'entreprise. Tu mènes un entretien structuré avec un entrepreneur français pour créer son business plan.
+  // Contexte PlanStart Idea (si l'utilisateur vient de la fonctionnalité Idea)
+  let ideaBlock = "";
+  if (ideaContext && typeof ideaContext === "object") {
+    const prof = ideaContext.profile || {};
+    const reasoning = Array.isArray(ideaContext.reasoning) ? ideaContext.reasoning.map(r => sanitizeInput(r)).join(", ") : "";
+    ideaBlock = `
+PROFIL IMPORTÉ DEPUIS PLANSTART IDEA — l'utilisateur a déjà été analysé. Tu CONNAIS déjà ces informations, ne les redemande JAMAIS :
+- Idée de business choisie : ${sanitizeInput(ideaContext.idea || "")}
+- Description : ${sanitizeInput(ideaContext.pitch || "")}
+- Objectif : ${sanitizeInput(prof.goal || "")}
+- Budget disponible : ${sanitizeInput(prof.budget || "")}
+- Temps disponible : ${sanitizeInput(prof.timeAvailable || "")}
+- Niveau d'expérience : ${sanitizeInput(prof.experience || "")}
+- Modèle économique : ${sanitizeInput(ideaContext.businessModel || "")}
+- Raisons du choix : ${reasoning}
 
+RÈGLE ABSOLUE : Ne pose JAMAIS de question sur l'objectif, le budget, le temps disponible, le niveau ou le type de business — ces informations sont DÉJÀ connues. Pose uniquement des questions qui APPROFONDISSENT ce qui manque : localisation précise, client cible exact, différenciation, méthode d'acquisition des premiers clients, ressources matérielles spécifiques, nom de marque éventuel. Tes questions doivent donner l'impression que PlanStart connaît déjà l'utilisateur et creuse intelligemment.
+`;
+  }
+
+  const prompt = `Tu es un consultant expert en création d'entreprise. Tu mènes un entretien structuré avec un entrepreneur français pour créer son business plan.
+${ideaBlock}
 Historique de l'entretien :
 ${sanitizedHistory.map((h, i) => `Q${i + 1}: ${h.question}\nR${i + 1}: ${h.reponse}`).join("\n\n")}
 
