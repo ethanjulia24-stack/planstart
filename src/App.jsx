@@ -886,6 +886,12 @@ ${sections.map((s, i) => {
               <a href="#apropos" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
             </div>
           )}
+          {screen === "idea" && ideaPreview && (
+            <div style={{ display: "flex", gap: isMobile ? 10 : 32, alignItems: "center" }}>
+              <a href="#comment-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
+              <a href="#apropos-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
+            </div>
+          )}
         </nav>
       )}
 
@@ -1167,7 +1173,7 @@ ${sections.map((s, i) => {
               </div>
 
               {/* ─── COMMENT ÇA MARCHE (style Basic : numéros 01/02/03) ─── */}
-              <div style={{ background: "#fff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
+              <div id="comment-idea" style={{ background: "#fff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
                 <div style={{ maxWidth: 1400, margin: "0 auto" }}>
                   <div style={{ fontSize: 13, letterSpacing: "0.2em", color: IDEA_VIOLET_ACCENT, marginBottom: isMobile ? 32 : 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
                   <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
@@ -1180,6 +1186,25 @@ ${sections.map((s, i) => {
                         <div style={{ fontSize: 48, fontWeight: 900, color: IDEA_VIOLET_ACCENT, lineHeight: 1, marginBottom: 16, opacity: 0.9 }}>{step.n}</div>
                         <div style={{ fontSize: 16, fontWeight: 900, marginBottom: 12, color: "#1a1333" }}>{step.titre}</div>
                         <div style={{ fontSize: 14, color: "#6b6580", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>{step.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* ─── À PROPOS (style Basic, texte Idea) ─── */}
+              <div id="apropos-idea" style={{ background: "#faf9ff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
+                <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
+                  <div>
+                    <div style={{ fontSize: 13, letterSpacing: "0.2em", color: IDEA_VIOLET_ACCENT, marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
+                    <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 20, color: "#1a1333" }}>TOUT LE MONDE N'A PAS ENCORE TROUVÉ SON IDÉE. C'EST NORMAL.</h2>
+                    <p style={{ fontSize: 15, color: "#5b5570", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>Beaucoup de gens veulent entreprendre mais bloquent sur la première marche : quelle idée ? PlanStart Idea est né pour répondre à ça, sans te noyer sous des listes d'idées génériques.</p>
+                    <p style={{ fontSize: 15, color: "#5b5570", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>On analyse ton budget, ton temps et tes compétences pour te recommander des projets réellement faits pour toi. Et une fois ton idée trouvée, PlanStart construit ton business plan. De l'idée au plan, au même endroit.</p>
+                  </div>
+                  <div style={{ background: "#1e1640", padding: "40px 32px", borderRadius: 20 }}>
+                    {[{ n: "100% PERSO" }, { n: "3 RECOMMANDATIONS" }, { n: "6 QUESTIONS" }].map((stat, i) => (
+                      <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#b79bff", lineHeight: 1 }}>{stat.n}</div>
                       </div>
                     ))}
                   </div>
