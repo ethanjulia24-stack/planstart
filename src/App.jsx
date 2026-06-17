@@ -1211,26 +1211,14 @@ ${sections.map((s, i) => {
                 </div>
               </div>
 
-              {/* ─── BANNIÈRE PHOTO INSPIRANTE ─── */}
-              <div style={{ position: "relative", height: isMobile ? 240 : 380, overflow: "hidden" }}>
+              {/* ─── BANNIÈRE PHOTO FINALE (phrases + CTA, sans fusée) ─── */}
+              <div style={{ position: "relative", minHeight: isMobile ? 360 : 420, overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,15,45,0.5), rgba(20,15,45,0.8))" }} />
-                <div style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "0 24px" }}>
-                  <h2 style={{ fontSize: isMobile ? 24 : 38, fontWeight: 900, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", maxWidth: 700 }}>Le bon projet existe déjà.<br /><span style={{ color: "#b79bff" }}>Il te ressemble.</span></h2>
-                </div>
-              </div>
-
-              {/* ─── BANNIÈRE FINALE FUSÉE ─── */}
-              <div style={{ background: "linear-gradient(120deg,#2a1a5e,#1a1040)", padding: isMobile ? "32px 20px" : "44px 60px", position: "relative", overflow: "hidden" }}>
-                <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", gap: isMobile ? 20 : 40, textAlign: isMobile ? "center" : "left" }}>
-                  <div style={{ fontSize: isMobile ? 44 : 60, flexShrink: 0 }}>🚀</div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 900, color: "#fff", marginBottom: 6 }}>Une idée mérite d'exister.</div>
-                    <div style={{ fontSize: 14, color: "rgba(183,155,255,0.85)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>Trouve-la avec PlanStart Idea. Structure-la avec PlanStart.</div>
-                  </div>
-                  <div style={{ width: isMobile ? "100%" : "auto" }}>
-                    <button onClick={startIdeaQuiz} style={{ background: "#fff", color: "#1a1040", border: "none", padding: isMobile ? "15px 20px" : "15px 30px", fontSize: isMobile ? 12 : 13, fontWeight: 900, letterSpacing: "0.05em", borderRadius: 12, cursor: "pointer", whiteSpace: "nowrap", width: isMobile ? "100%" : "auto", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
-                  </div>
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,15,45,0.65), rgba(20,15,45,0.88))" }} />
+                <div style={{ position: "relative", zIndex: 2, minHeight: isMobile ? 360 : 420, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "48px 24px" : "60px 40px" }}>
+                  <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>Une idée mérite d'exister.</h2>
+                  <p style={{ fontSize: isMobile ? 15 : 17, color: "rgba(183,155,255,0.9)", fontFamily: "Arial, sans-serif", lineHeight: 1.5, marginBottom: 32, maxWidth: 520 }}>Trouve-la avec PlanStart Idea. Structure-la avec PlanStart.</p>
+                  <button onClick={startIdeaQuiz} style={{ background: "#fff", color: "#1a1040", border: "none", padding: isMobile ? "15px 28px" : "16px 36px", fontSize: isMobile ? 12 : 13, fontWeight: 900, letterSpacing: "0.05em", borderRadius: 12, cursor: "pointer", boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
                 </div>
               </div>
 
