@@ -388,9 +388,27 @@ export default function App() {
 
   // Lancer le transfert vers Basic avec le profil pré-rempli
   const launchBasicFromIdea = async () => {
-    // On stocke le profil idea (utilisé pour le bandeau + le contexte)
+    // ─── DOSSIER PROJET COMPLET transféré à Basic ───
+    // On ne jette plus rien : toute l'intelligence d'Idea passe à Basic.
+    const dossier = {
+      ideaName: chosenIdea.name || "",
+      pitch: chosenIdea.pitch || "",
+      opportunity: chosenIdea.opportunity || "",
+      risks: chosenIdea.risks || "",
+      idealProfile: chosenIdea.idealProfile || "",
+      businessModel: chosenIdea.businessModel || "",
+      startBudget: chosenIdea.startBudget || "",
+      firstRevenue: chosenIdea.firstRevenue || "",
+      difficulty: chosenIdea.difficulty || "",
+      whyYou: chosenIdea.whyYou || "",
+      whyNow: chosenIdea.whyNow || "",
+      nextSteps: chosenIdea.nextSteps || "",
+      reasoning: chosenIdea.reasoning || [],
+      compatibilityScore: chosenIdea.score || chosenIdea.compatibilityScore || 0,
+      userProfile: { ...ideaAnswers }, // profil du quiz : objectif, budget, temps, interet, niveau, type
+    };
     try {
-      localStorage.setItem("ideaProfile", JSON.stringify(chosenIdea));
+      localStorage.setItem("ideaProfile", JSON.stringify(dossier));
     } catch {}
     setFromIdea(true);
 
@@ -485,13 +503,22 @@ export default function App() {
         try {
           const stored = localStorage.getItem("ideaProfile");
           if (stored) {
-            const idea = JSON.parse(stored);
+            const d = JSON.parse(stored);
             ideaContext = {
-              idea: idea.name,
-              pitch: idea.pitch,
-              profile: idea.userProfile,
-              reasoning: idea.reasoning,
-              businessModel: idea.businessModel,
+              ideaName: d.ideaName,
+              pitch: d.pitch,
+              opportunity: d.opportunity,
+              risks: d.risks,
+              idealProfile: d.idealProfile,
+              businessModel: d.businessModel,
+              startBudget: d.startBudget,
+              firstRevenue: d.firstRevenue,
+              difficulty: d.difficulty,
+              whyYou: d.whyYou,
+              whyNow: d.whyNow,
+              reasoning: d.reasoning,
+              compatibilityScore: d.compatibilityScore,
+              userProfile: d.userProfile,
             };
           }
         } catch {}
@@ -1291,8 +1318,7 @@ ${sections.map((s, i) => {
         const currentKey = isDynamic ? "dynamique" : currentQ.key;
         return (
           <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", animation: "slideUp 0.4s ease both" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center", opacity: 0.45 }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(34,28,61,0.5) 0%, rgba(21,18,43,0.65) 100%)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 30%, rgba(255,122,46,0.06) 0%, rgba(26,26,31,0) 60%)" }} />
             <div style={{ maxWidth: 680, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
               {/* Progression */}
               <div style={{ marginBottom: 40 }}>
@@ -1501,8 +1527,8 @@ ${sections.map((s, i) => {
               <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 24 }}>
                 <span style={{ fontSize: 18 }}>✦</span>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 900, color: "#ff7a2e", marginBottom: 2 }}>Profil entrepreneurial importé ✅</div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif" }}>On connaît déjà ton budget, ton objectif et ton idée. Plus que quelques questions.</div>
+                  <div style={{ fontSize: 12, fontWeight: 900, color: "#ff7a2e", marginBottom: 3 }}>Projet importé depuis PlanStart Idea ✅</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", fontFamily: "Arial, sans-serif", lineHeight: 1.4 }}>On a déjà analysé ton profil et préparé les bases du projet. Il reste juste quelques points à confirmer avant de générer ton business plan.</div>
                 </div>
               </div>
             )}
