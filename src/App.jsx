@@ -1124,6 +1124,9 @@ ${sections.map((s, i) => {
                 </div>
               </div>
 
+              {/* ─── PHOTO TRANSITION (brainstorming) ─── */}
+              <div style={{ height: isMobile ? 200 : 320, backgroundImage: "url(https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
+
               {/* ─── COMMENT ÇA MARCHE (style Basic : numéros 01/02/03) ─── */}
               <div style={{ background: "#fff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
                 <div style={{ maxWidth: 1400, margin: "0 auto" }}>
@@ -1141,6 +1144,15 @@ ${sections.map((s, i) => {
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
+
+              {/* ─── BANNIÈRE PHOTO INSPIRANTE ─── */}
+              <div style={{ position: "relative", height: isMobile ? 240 : 380, overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,15,45,0.5), rgba(20,15,45,0.8))" }} />
+                <div style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "0 24px" }}>
+                  <h2 style={{ fontSize: isMobile ? 24 : 38, fontWeight: 900, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", maxWidth: 700 }}>Le bon projet existe déjà.<br /><span style={{ color: "#b79bff" }}>Il te ressemble.</span></h2>
                 </div>
               </div>
 
