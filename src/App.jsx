@@ -1088,21 +1088,17 @@ ${sections.map((s, i) => {
           {/* ══════════ PREVIEW : HOME IDEA COMPLÈTE (fidèle maquette) ══════════ */}
           {ideaPreview && (
             <>
-              {/* ─── HERO ─── */}
-              <div style={{ position: "relative", overflow: "hidden", padding: isMobile ? "60px 20px 32px" : "112px 60px 80px", background: "linear-gradient(135deg, #ece7ff 0%, #f3eefe 45%, #fce8f3 100%)" }}>
-                <div style={{ position: "relative", zIndex: 2, maxWidth: 1150, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.1fr 0.9fr", gap: isMobile ? 16 : 40, alignItems: "center" }}>
-                  <div style={{ animation: "slideUp 0.6s ease both" }}>
-                    <h1 style={{ fontSize: isMobile ? "clamp(28px,6.8vw,34px)" : "clamp(38px,4vw,52px)", fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#1a1333", marginBottom: 16 }}>
-                      Trouve le projet entrepreneurial qui te <span style={{ color: IDEA_VIOLET_ACCENT }}>correspond vraiment</span>
-                    </h1>
-                    <p style={{ fontSize: isMobile ? 14 : 17, color: "#5b5570", fontFamily: "Arial, sans-serif", lineHeight: 1.55, marginBottom: 24, maxWidth: 460 }}>
-                      Réponds à quelques questions et découvre les projets les plus adaptés à ton budget, ton temps disponible et tes compétences.
-                    </p>
-                    <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: isMobile ? "15px 30px" : "16px 40px", fontSize: 13, fontWeight: 900, letterSpacing: "0.06em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.35)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "center", animation: "slideUp 0.6s ease 0.15s both", order: isMobile ? 2 : 0 }}>
-                    <img src="/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG" alt="Idée" style={{ width: "100%", maxWidth: isMobile ? 230 : 380, borderRadius: 20 }} />
-                  </div>
+              {/* ─── HERO (style Basic : photo plein écran + voile + texte centré) ─── */}
+              <div style={{ height: isMobile ? "92vh" : "100vh", position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,15,45,0.55) 0%, rgba(20,15,45,0.45) 50%, rgba(20,15,45,0.7) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
+                  <div style={{ fontSize: isMobile ? 12 : 14, color: "rgba(255,255,255,0.75)", fontWeight: 900, letterSpacing: "0.06em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Chaque grand projet commence par la bonne idée.</div>
+                  <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#fff", marginBottom: 20, textTransform: "uppercase" }}>
+                    TROUVE<br />LA TIENNE.<br /><span style={{ color: "#b79bff", fontStyle: "italic" }}>MAINTENANT.</span>
+                  </h1>
+                  <p style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions et découvre les projets les plus adaptés à ton budget, ton temps et tes compétences. Gratuit et sans compte.</p>
+                  <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.4)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
                 </div>
               </div>
 
