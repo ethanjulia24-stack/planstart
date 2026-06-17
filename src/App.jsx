@@ -1102,48 +1102,42 @@ ${sections.map((s, i) => {
                 </div>
               </div>
 
-              {/* ─── COMMENT ÇA MARCHE ─── */}
-              <div style={{ background: "#fff", padding: isMobile ? "44px 20px" : "64px 60px" }}>
-                <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-                  <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 900, color: "#1a1333", textAlign: "center", marginBottom: isMobile ? 36 : 52, letterSpacing: "-0.02em" }}>Comment ça marche ?</h2>
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 24 }}>
-                    {[
-                      { ic: "💬", bg: "#ede8ff", n: "1", t: "Réponds à 6 questions", d: "Parle-nous de toi, de tes envies, de ton budget et de tes compétences." },
-                      { ic: "💡", bg: "#fff2dd", n: "2", t: "Reçois 3 recommandations", d: "Notre IA analyse ton profil et sélectionne les projets les plus adaptés." },
-                      { ic: "🚀", bg: "#e0f0ff", n: "3", t: "Lance ton projet", d: "Choisis ton idée favorite et crée ton business plan sur PlanStart." },
-                    ].map((s, i) => (
-                      <div key={i} style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                        <div style={{ width: 72, height: 72, borderRadius: "50%", background: s.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 30, marginBottom: 18 }}>{s.ic}</div>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                          <span style={{ width: 22, height: 22, borderRadius: "50%", background: IDEA_VIOLET_ACCENT, color: "#fff", fontSize: 12, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}>{s.n}</span>
-                          <span style={{ fontSize: 16, fontWeight: 900, color: "#1a1333" }}>{s.t}</span>
-                        </div>
-                        <p style={{ fontSize: 14, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.6, maxWidth: 280 }}>{s.d}</p>
+              {/* ─── POURQUOI NOS RECOMMANDATIONS SONT DIFFÉRENTES (bloc style Basic) ─── */}
+              <div style={{ background: "#faf9ff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
+                <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: IDEA_VIOLET_ACCENT, marginBottom: isMobile ? 24 : 28, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                  {[
+                    { ic: "💰", t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
+                    { ic: "⏱️", t: "COMPATIBLES AVEC TON TEMPS", d: "Selon que tu sois dispo à temps plein ou quelques heures par semaine." },
+                    { ic: "🧠", t: "BASÉES SUR TES COMPÉTENCES", d: "On part de ce que tu sais déjà faire pour aller plus vite." },
+                    { ic: "🎯", t: "ALIGNÉES SUR TES OBJECTIFS", d: "Revenus rapides, liberté, projet de cœur : on s'adapte." },
+                    { ic: "⚡", t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Une idée lançable maintenant vaut mieux qu'un rêve irréaliste." },
+                  ].map((item, i) => (
+                    <div key={i} style={{ borderBottom: "1px solid rgba(108,71,255,0.12)", padding: isMobile ? "16px 0" : "15px 0", display: "flex", alignItems: "flex-start", gap: 16 }}>
+                      <span style={{ fontSize: 22, flexShrink: 0, paddingTop: 2 }}>{item.ic}</span>
+                      <div>
+                        <div style={{ fontSize: isMobile ? 15 : 16, fontWeight: 900, lineHeight: 1.3, color: "#1a1333", marginBottom: 4 }}>{item.t}</div>
+                        <div style={{ fontSize: isMobile ? 13 : 14, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.55 }}>{item.d}</div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* ─── POURQUOI NOS RECOMMANDATIONS SONT DIFFÉRENTES ─── */}
-              <div style={{ background: "#faf9ff", padding: isMobile ? "44px 20px" : "64px 60px" }}>
-                <div style={{ maxWidth: 900, margin: "0 auto" }}>
-                  <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 900, color: "#1a1333", textAlign: "center", marginBottom: 12, letterSpacing: "-0.02em" }}>Pourquoi nos recommandations sont différentes</h2>
-                  <p style={{ fontSize: isMobile ? 14 : 16, color: "#6b6580", fontFamily: "Arial, sans-serif", textAlign: "center", lineHeight: 1.6, marginBottom: isMobile ? 32 : 44, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>Pas une liste d'idées au hasard. Une analyse de ton profil pour ne te proposer que des projets réalisables.</p>
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14 }}>
+              {/* ─── COMMENT ÇA MARCHE (style Basic : numéros 01/02/03) ─── */}
+              <div style={{ background: "#fff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
+                <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: IDEA_VIOLET_ACCENT, marginBottom: isMobile ? 32 : 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
                     {[
-                      { ic: "💰", t: "Adaptées à ton budget", d: "On ne te propose jamais un projet hors de tes moyens." },
-                      { ic: "⏱️", t: "Compatibles avec ton temps", d: "Selon que tu sois dispo à temps plein ou quelques heures par semaine." },
-                      { ic: "🧠", t: "Basées sur tes compétences", d: "On part de ce que tu sais déjà faire pour aller plus vite." },
-                      { ic: "🎯", t: "Alignées sur tes objectifs", d: "Revenus rapides, liberté, projet de cœur : on s'adapte." },
-                      { ic: "⚡", t: "Conçues pour être réalisables", d: "Une idée lançable maintenant vaut mieux qu'un rêve irréaliste." },
-                    ].map((f, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, background: "#fff", border: "1px solid #ece9f7", borderRadius: 16, padding: isMobile ? "18px 18px" : "22px 24px", boxShadow: "0 2px 12px rgba(26,19,51,0.04)" }}>
-                        <div style={{ fontSize: 26, flexShrink: 0 }}>{f.ic}</div>
-                        <div>
-                          <div style={{ fontSize: isMobile ? 15 : 16, fontWeight: 900, color: "#1a1333", marginBottom: 4 }}>{f.t}</div>
-                          <div style={{ fontSize: 13, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{f.d}</div>
-                        </div>
+                      { n: "01", titre: "TU RÉPONDS", desc: "Réponds à 6 questions simples sur toi, tes envies, ton budget et le temps que tu peux investir. 30 secondes, pas plus." },
+                      { n: "02", titre: "ON ANALYSE TON PROFIL", desc: "Notre IA évalue des centaines d'opportunités, écarte les marchés saturés et les idées irréalistes pour ne garder que ce qui te correspond." },
+                      { n: "03", titre: "TU REÇOIS TES IDÉES", desc: "3 projets faits pour toi, classés par compatibilité, avec budget, premiers revenus et la marche à suivre. Prêts à lancer." },
+                    ].map((step, i) => (
+                      <div key={i} style={{ padding: isMobile ? "0" : "0 40px 0 0", borderRight: !isMobile && i < 2 ? "1px solid #ece9f7" : "none" }}>
+                        <div style={{ fontSize: 48, fontWeight: 900, color: IDEA_VIOLET_ACCENT, lineHeight: 1, marginBottom: 16, opacity: 0.9 }}>{step.n}</div>
+                        <div style={{ fontSize: 16, fontWeight: 900, marginBottom: 12, color: "#1a1333" }}>{step.titre}</div>
+                        <div style={{ fontSize: 14, color: "#6b6580", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>{step.desc}</div>
                       </div>
                     ))}
                   </div>
