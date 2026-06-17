@@ -882,14 +882,14 @@ ${sections.map((s, i) => {
           </div>
           {screen !== "quiz" && !String(screen).startsWith("idea") && (
             <div style={{ display: "flex", gap: isMobile ? 10 : 32, alignItems: "center" }}>
-              <a href="#comment" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
-              <a href="#apropos" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
+              <a href="#comment" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
+              <a href="#apropos" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
             </div>
           )}
           {screen === "idea" && ideaPreview && (
             <div style={{ display: "flex", gap: isMobile ? 10 : 32, alignItems: "center" }}>
-              <a href="#comment-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
-              <a href="#apropos-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.5)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
+              <a href="#comment-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
+              <a href="#apropos-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
             </div>
           )}
         </nav>
@@ -1099,11 +1099,11 @@ ${sections.map((s, i) => {
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(45,25,110,0.5) 0%, rgba(35,22,90,0.4) 50%, rgba(30,18,80,0.72) 100%)" }} />
                 <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
-                  <div style={{ fontSize: isMobile ? 12 : 14, color: "rgba(255,255,255,0.82)", fontWeight: 500, letterSpacing: "0.08em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Trouver la bonne idée est souvent la partie la plus difficile.</div>
+                  <div style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.82)", fontWeight: 500, letterSpacing: "0.08em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Trouver la bonne idée est souvent la partie la plus difficile.</div>
                   <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#FFFFFF", marginBottom: 20, textTransform: "uppercase" }}>
                     TROUVE<br />LA TIENNE.<br /><span style={{ color: "#C8B3FF", fontStyle: "italic" }}>MAINTENANT.</span>
                   </h1>
-                  <p style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.88)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions et découvre 3 projets sélectionnés selon ton profil, ton budget et tes objectifs. Gratuit, sans inscription.</p>
+                  <p style={{ fontSize: isMobile ? 16 : 18, color: "rgba(255,255,255,0.88)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions et découvre 3 projets sélectionnés selon ton profil, ton budget et tes objectifs. Gratuit, sans inscription.</p>
                   <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#7C4DFF,#B14DFF)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.4)" }}>🚀 DÉCOUVRIR MES 3 PROJETS</button>
                 </div>
               </div>
@@ -1178,8 +1178,8 @@ ${sections.map((s, i) => {
                   <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
                     {[
                       { n: "01", titre: "TU RÉPONDS", desc: "Réponds à 6 questions simples sur toi, tes envies, ton budget et le temps que tu peux investir. 30 secondes, pas plus." },
-                      { n: "02", titre: "ON ANALYSE TON PROFIL", desc: "Notre IA évalue des centaines d'opportunités, écarte les marchés saturés et les idées irréalistes pour ne garder que ce qui te correspond." },
-                      { n: "03", titre: "TU REÇOIS TES IDÉES", desc: "3 projets faits pour toi, classés par compatibilité, avec budget, premiers revenus et la marche à suivre. Prêts à lancer." },
+                      { n: "02", titre: "ON ANALYSE TON PROFIL", desc: "Notre IA analyse ton profil, identifie les opportunités compatibles et élimine les projets peu adaptés à ta situation." },
+                      { n: "03", titre: "TU DÉCOUVRES TES PROJETS", desc: "3 projets faits pour toi, classés par compatibilité, avec budget, premiers revenus et la marche à suivre. Prêts à lancer." },
                     ].map((step, i) => (
                       <div key={i} style={{ padding: isMobile ? "0" : "0 40px 0 0", borderRight: !isMobile && i < 2 ? "1px solid #ece9f7" : "none" }}>
                         <div style={{ fontSize: 48, fontWeight: 900, color: IDEA_VIOLET_ACCENT, lineHeight: 1, marginBottom: 16, opacity: 0.9 }}>{step.n}</div>
