@@ -198,6 +198,10 @@ export default function App() {
   const [ideaPreview, setIdeaPreview] = useState(() => {
     try { return localStorage.getItem("ideaPreview") === "true"; } catch { return false; }
   });
+  // Idea est lancé publiquement : la home complète + le quiz sont visibles par tous.
+  // Repasser à false pour revenir au mode "Bientôt disponible" (accès preview only).
+  const IDEA_LIVE = true;
+  const ideaUnlocked = IDEA_LIVE || ideaPreview;
   const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [previewPwd, setPreviewPwd] = useState("");
   const [previewError, setPreviewError] = useState(false);
@@ -224,11 +228,11 @@ export default function App() {
   const DARK = "#222227";         // gris foncé pour les grands blocs (au lieu du noir pur)
 
   // ─── COULEURS PLANSTART IDEA ───
-  const IDEA_BG = "#15122B";
-  const IDEA_SURFACE = "#221C3D";
-  const IDEA_VIOLET = "#B79BFF";
-  const IDEA_VIOLET_ACCENT = "#7C4DFF";
-  const IDEA_TEXT2 = "#B8B8C7";
+  const IDEA_BG = "#1a1a1f";
+  const IDEA_SURFACE = "#222227";
+  const IDEA_VIOLET = "#ff9d3d";
+  const IDEA_VIOLET_ACCENT = "#ff7a2e";
+  const IDEA_TEXT2 = "#b0b0b8";
 
   // ─── QUESTIONS DU QUIZ IDEA ───
   const IDEA_QUESTIONS = [
@@ -855,7 +859,7 @@ ${sections.map((s, i) => {
 
       {/* ── NAV ── */}
       {screen !== "intro" && (
-        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(11,10,20,0.92)" : screen === "idea" ? "rgba(248,247,255,0.95)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(183,155,255,0.15)" : screen === "idea" ? "#e8e3ff" : "#ededed"}`, padding: `0 ${isMobile ? "14px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
+        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(11,10,20,0.92)" : screen === "idea" ? "rgba(252,252,252,0.97)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(255,122,46,0.15)" : screen === "idea" ? "#ededed" : "#ededed"}`, padding: `0 ${isMobile ? "14px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
           <div style={{ position: "relative" }}>
             <button onClick={() => setMenuOpen(o => !o)} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -877,18 +881,14 @@ ${sections.map((s, i) => {
                 <div onClick={() => setMenuOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 110 }} />
                 <div style={{ position: "absolute", top: 48, left: 0, zIndex: 120, background: "#fff", borderRadius: 16, boxShadow: "0 16px 40px rgba(0,0,0,0.18)", border: "1px solid #eee", overflow: "hidden", width: 320, animation: "slideDown 0.2s ease both" }}>
                   <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid #efefef", background: screen !== "idea" ? "#f6f6f7" : "#fff" }}>
-                    <button onClick={() => { setMenuOpen(false); restart(); }} style={{ flex: 1, textAlign: "left", background: "transparent", border: "none", padding: "16px 14px 16px 18px", display: "flex", flexDirection: "column", gap: 3, cursor: "pointer" }}>
+                    <button onClick={() => { setMenuOpen(false); restart(); }} style={{ flex: 1, textAlign: "left", background: "transparent", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3, cursor: "pointer" }}>
                       <span style={{ fontSize: 14, fontWeight: 900, color: "#000" }}>PLANSTART BASIC</span>
                       <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Génère ton business plan</span>
                     </button>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 5, padding: "0 14px 0 0", flexShrink: 0 }}>
-                      <button onClick={() => setTheme("bw")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 9, letterSpacing: "0.03em", padding: "6px 10px", borderRadius: 20, border: "1px solid #e5e5e5", background: !isOrange ? "#000" : "#fff", color: !isOrange ? "#fff" : "#000", whiteSpace: "nowrap", cursor: "pointer" }}>NOIR / BLANC</button>
-                      <button onClick={() => setTheme("orange")} style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: 9, letterSpacing: "0.03em", padding: "6px 10px", borderRadius: 20, border: "1px solid #e5e5e5", background: isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff", color: isOrange ? "#fff" : "#000", whiteSpace: "nowrap", cursor: "pointer" }}>ORANGE / NOIR</button>
-                    </div>
                   </div>
-                  <button onClick={() => { setMenuOpen(false); setScreen("idea"); }} style={{ width: "100%", textAlign: "left", background: screen === "idea" ? "#f3f0ff" : "#fff", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3 }}>
-                    <span style={{ fontSize: 14, fontWeight: 900, color: "#6c47ff", display: "flex", alignItems: "center", gap: 7 }}>PLANSTART IDEA <span style={{ fontSize: 8, background: "linear-gradient(90deg,#7c5cff,#5b8cff)", color: "#fff", padding: "2px 7px", borderRadius: 20, letterSpacing: "0.08em" }}>BIENTÔT</span></span>
-                    <span style={{ fontSize: 11, color: "rgba(108,71,255,0.7)", fontFamily: "Arial, sans-serif" }}>Trouve l'idée qui te ressemble</span>
+                  <button onClick={() => { setMenuOpen(false); setScreen("idea"); }} style={{ width: "100%", textAlign: "left", background: screen === "idea" ? "#fff5ef" : "#fff", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3 }}>
+                    <span style={{ fontSize: 14, fontWeight: 900, color: "#ff7a2e", display: "flex", alignItems: "center", gap: 7 }}>PLANSTART IDEA <span style={{ fontSize: 8, background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", padding: "2px 7px", borderRadius: 20, letterSpacing: "0.08em" }}>BIENTÔT</span></span>
+                    <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Trouve l'idée qui te ressemble</span>
                   </button>
                 </div>
               </>
@@ -900,7 +900,7 @@ ${sections.map((s, i) => {
               <a href="#apropos" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
             </div>
           )}
-          {screen === "idea" && ideaPreview && (
+          {screen === "idea" && ideaUnlocked && (
             <div style={{ display: "flex", gap: isMobile ? 10 : 32, alignItems: "center" }}>
               <a href="#comment-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
               <a href="#apropos-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
@@ -1078,8 +1078,8 @@ ${sections.map((s, i) => {
       {/* ── IDEA (vitrine ampoule jaune sur fond sombre) ── */}
       {screen === "idea" && (
         <div style={{ background: "#ffffff" }}>
-          {/* BANDEAU MODE PREVIEW */}
-          {ideaPreview && (
+          {/* BANDEAU MODE PREVIEW (uniquement si preview réel, pas en lancement public) */}
+          {ideaPreview && !IDEA_LIVE && (
             <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 99, background: "#ff7a2e", color: "#fff", padding: "4px 12px", textAlign: "center", fontSize: 10, fontWeight: 800, letterSpacing: "0.04em", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
               <span>🛠 PREVIEW</span>
               <button onClick={() => { try { localStorage.removeItem("ideaPreview"); } catch {} setIdeaPreview(false); }} style={{ background: "rgba(0,0,0,0.25)", color: "#fff", border: "none", borderRadius: 5, padding: "2px 8px", fontSize: 9, fontWeight: 900, cursor: "pointer" }}>QUITTER</button>
@@ -1087,7 +1087,7 @@ ${sections.map((s, i) => {
           )}
 
           {/* ══════════ VISITEURS NON-PREVIEW : page "bientôt disponible" ══════════ */}
-          {!ideaPreview && (
+          {!ideaUnlocked && (
             <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px", background: "#15122B" }}>
               <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(21,18,43,0.25) 0%, rgba(21,18,43,0.45) 50%, rgba(21,18,43,0.9) 75%)" }} />
@@ -1105,8 +1105,8 @@ ${sections.map((s, i) => {
             </div>
           )}
 
-          {/* ══════════ PREVIEW : HOME IDEA COMPLÈTE (fidèle maquette) ══════════ */}
-          {ideaPreview && (
+          {/* ══════════ HOME IDEA COMPLÈTE (publique) ══════════ */}
+          {ideaUnlocked && (
             <>
               {/* ─── HERO (carrousel 3 images défilantes, style Basic) ─── */}
               <div style={{ height: isMobile ? "92vh" : "100vh", position: "relative", overflow: "hidden" }}>
@@ -1272,10 +1272,10 @@ ${sections.map((s, i) => {
               onKeyDown={(e) => { if (e.key === "Enter") checkPreviewPassword(); }}
               placeholder="Mot de passe"
               autoFocus
-              style={{ width: "100%", boxSizing: "border-box", padding: "14px 16px", borderRadius: 10, border: `1px solid ${previewError ? "#ff5e5e" : "rgba(183,155,255,0.3)"}`, background: IDEA_BG, color: "#fff", fontSize: 15, marginBottom: previewError ? 8 : 20, outline: "none" }}
+              style={{ width: "100%", boxSizing: "border-box", padding: "14px 16px", borderRadius: 10, border: `1px solid ${previewError ? "#ff5e5e" : "rgba(255,122,46,0.3)"}`, background: IDEA_BG, color: "#fff", fontSize: 15, marginBottom: previewError ? 8 : 20, outline: "none" }}
             />
             {previewError && <div style={{ fontSize: 12, color: "#ff5e5e", marginBottom: 16 }}>Mot de passe incorrect</div>}
-            <button onClick={checkPreviewPassword} style={{ width: "100%", background: "linear-gradient(90deg,#8D6EFF,#B79BFF)", color: "#fff", border: "none", padding: "14px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 10, cursor: "pointer" }}>ACCÉDER →</button>
+            <button onClick={checkPreviewPassword} style={{ width: "100%", background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: "14px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 10, cursor: "pointer" }}>ACCÉDER →</button>
           </div>
         </div>
       )}
@@ -1300,8 +1300,8 @@ ${sections.map((s, i) => {
                   <span style={{ fontSize: 12, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.1em" }}>QUESTION {ideaStep + 1} / {ideaTotalSteps}</span>
                   <span style={{ fontSize: 12, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif" }}>~30 secondes</span>
                 </div>
-                <div style={{ height: 5, background: "rgba(183,155,255,0.15)", borderRadius: 10, overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg,#8D6EFF,#B79BFF)", borderRadius: 10, transition: "width 0.4s ease", boxShadow: "0 0 12px rgba(183,155,255,0.6)" }} />
+                <div style={{ height: 5, background: "rgba(255,122,46,0.15)", borderRadius: 10, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", borderRadius: 10, transition: "width 0.4s ease", boxShadow: "0 0 12px rgba(255,122,46,0.6)" }} />
                 </div>
               </div>
               {/* Question */}
@@ -1312,9 +1312,9 @@ ${sections.map((s, i) => {
                   <button
                     key={i}
                     onClick={() => answerIdea(currentKey, opt)}
-                    style={{ textAlign: "left", background: IDEA_SURFACE, border: "1px solid rgba(183,155,255,0.2)", borderRadius: 14, padding: isMobile ? "18px 20px" : "20px 24px", color: "#fff", fontSize: isMobile ? 15 : 17, fontWeight: 700, cursor: "pointer", transition: "all 0.18s", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}
+                    style={{ textAlign: "left", background: IDEA_SURFACE, border: "1px solid rgba(255,122,46,0.2)", borderRadius: 14, padding: isMobile ? "18px 20px" : "20px 24px", color: "#fff", fontSize: isMobile ? 15 : 17, fontWeight: 700, cursor: "pointer", transition: "all 0.18s", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}
                     onMouseEnter={(e) => { e.currentTarget.style.borderColor = IDEA_VIOLET; e.currentTarget.style.background = "#1f1b30"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(183,155,255,0.2)"; e.currentTarget.style.background = IDEA_SURFACE; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,122,46,0.2)"; e.currentTarget.style.background = IDEA_SURFACE; }}
                   >
                     <span>{opt}</span>
                     <span style={{ color: IDEA_VIOLET, fontSize: 18, opacity: 0.6 }}>→</span>
@@ -1334,12 +1334,12 @@ ${sections.map((s, i) => {
       {screen === "idea-loading" && (
         <div style={{ minHeight: "100vh", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: isMobile ? "90px 24px" : "100px 60px", textAlign: "center" }}>
           <div style={{ maxWidth: 480, width: "100%" }}>
-            <div style={{ width: 64, height: 64, margin: "0 auto 32px", borderRadius: "50%", background: "radial-gradient(circle, rgba(141,110,255,0.4), transparent 70%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, animation: "pulse 1.5s ease-in-out infinite" }}>✦</div>
+            <div style={{ width: 64, height: 64, margin: "0 auto 32px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,122,46,0.4), transparent 70%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, animation: "pulse 1.5s ease-in-out infinite" }}>✦</div>
             <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 900, color: "#fff", marginBottom: 36 }}>On analyse ton profil</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 16, textAlign: "left" }}>
               {IDEA_LOAD_STEPS.map((step, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, opacity: i <= ideaLoadStep ? 1 : 0.3, transition: "opacity 0.4s" }}>
-                  <div style={{ width: 22, height: 22, borderRadius: "50%", flexShrink: 0, background: i < ideaLoadStep ? "linear-gradient(90deg,#8D6EFF,#B79BFF)" : "transparent", border: i < ideaLoadStep ? "none" : `2px solid ${i === ideaLoadStep ? IDEA_VIOLET : "rgba(183,155,255,0.3)"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff" }}>
+                  <div style={{ width: 22, height: 22, borderRadius: "50%", flexShrink: 0, background: i < ideaLoadStep ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", border: i < ideaLoadStep ? "none" : `2px solid ${i === ideaLoadStep ? IDEA_VIOLET : "rgba(255,122,46,0.3)"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff" }}>
                     {i < ideaLoadStep ? "✓" : (i === ideaLoadStep ? <span style={{ width: 8, height: 8, borderRadius: "50%", background: IDEA_VIOLET, animation: "pulse 1s infinite" }} /> : "")}
                   </div>
                   <span style={{ fontSize: isMobile ? 14 : 16, fontWeight: 700, color: i <= ideaLoadStep ? "#fff" : IDEA_TEXT2 }}>{step}</span>
@@ -1359,14 +1359,14 @@ ${sections.map((s, i) => {
                 <div style={{ fontSize: 40, marginBottom: 20 }}>😕</div>
                 <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 12 }}>Oups</div>
                 <p style={{ color: IDEA_TEXT2, fontFamily: "Arial, sans-serif", marginBottom: 28 }}>{ideaError}</p>
-                <button onClick={() => launchIdeaGeneration(ideaAnswers)} style={{ background: "linear-gradient(90deg,#8D6EFF,#B79BFF)", color: "#fff", border: "none", padding: "14px 32px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>RÉESSAYER</button>
+                <button onClick={() => launchIdeaGeneration(ideaAnswers)} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: "14px 32px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>RÉESSAYER</button>
               </div>
             ) : ideaResults ? (
               <>
                 <div style={{ textAlign: "center", marginBottom: 40 }}>
                   <div style={{ fontSize: 12, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.12em", marginBottom: 12 }}>TES 3 OPPORTUNITÉS</div>
                   <h1 style={{ fontSize: isMobile ? 28 : 38, fontWeight: 900, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 12 }}>Voici les business faits pour toi</h1>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: IDEA_SURFACE, border: "1px solid rgba(183,155,255,0.2)", borderRadius: 20, padding: "6px 16px" }}>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: IDEA_SURFACE, border: "1px solid rgba(255,122,46,0.2)", borderRadius: 20, padding: "6px 16px" }}>
                     <span style={{ fontSize: 11, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif" }}>Confiance de l'analyse :</span>
                     <span style={{ fontSize: 11, fontWeight: 900, color: ideaResults.confidence === "Élevée" ? "#5fe3a1" : "#ffce6b" }}>{ideaResults.confidence}</span>
                   </div>
@@ -1374,10 +1374,10 @@ ${sections.map((s, i) => {
                 <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                   {ideaResults.ideas.map((idea, i) => {
                     const isTop = idea.rank === 1;
-                    const borderColor = isTop ? IDEA_VIOLET : idea.rank === 2 ? "rgba(183,155,255,0.35)" : "rgba(255,255,255,0.12)";
+                    const borderColor = isTop ? IDEA_VIOLET : idea.rank === 2 ? "rgba(255,122,46,0.35)" : "rgba(255,255,255,0.12)";
                     const isExpanded = expandedCard === i;
                     return (
-                      <div key={i} style={{ background: IDEA_SURFACE, borderRadius: 18, border: `1px solid ${borderColor}`, padding: isMobile ? "22px 20px" : "28px 28px", boxShadow: isTop ? "0 10px 40px rgba(141,110,255,0.25)" : "none" }}>
+                      <div key={i} style={{ background: IDEA_SURFACE, borderRadius: 18, border: `1px solid ${borderColor}`, padding: isMobile ? "22px 20px" : "28px 28px", boxShadow: isTop ? "0 10px 40px rgba(255,122,46,0.25)" : "none" }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14, gap: 10 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                             <span style={{ fontSize: 24 }}>{idea.medal}</span>
@@ -1394,7 +1394,7 @@ ${sections.map((s, i) => {
                         {idea.badges && idea.badges.length > 0 && (
                           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 18 }}>
                             {idea.badges.map((b, bi) => (
-                              <span key={bi} style={{ fontSize: 11, fontWeight: 700, color: IDEA_VIOLET, background: "rgba(183,155,255,0.12)", border: "1px solid rgba(183,155,255,0.25)", borderRadius: 20, padding: "5px 12px" }}>{b}</span>
+                              <span key={bi} style={{ fontSize: 11, fontWeight: 700, color: IDEA_VIOLET, background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.25)", borderRadius: 20, padding: "5px 12px" }}>{b}</span>
                             ))}
                           </div>
                         )}
@@ -1420,7 +1420,7 @@ ${sections.map((s, i) => {
                         </div>
 
                         {/* Accordéon */}
-                        <button onClick={() => setExpandedCard(isExpanded ? null : i)} style={{ width: "100%", background: "transparent", border: "1px solid rgba(183,155,255,0.2)", borderRadius: 10, padding: "11px", color: IDEA_VIOLET, fontSize: 12, fontWeight: 900, letterSpacing: "0.06em", cursor: "pointer", marginBottom: isExpanded ? 16 : 14 }}>
+                        <button onClick={() => setExpandedCard(isExpanded ? null : i)} style={{ width: "100%", background: "transparent", border: "1px solid rgba(255,122,46,0.2)", borderRadius: 10, padding: "11px", color: IDEA_VIOLET, fontSize: 12, fontWeight: 900, letterSpacing: "0.06em", cursor: "pointer", marginBottom: isExpanded ? 16 : 14 }}>
                           {isExpanded ? "MOINS DE DÉTAILS ▲" : "EN SAVOIR PLUS ▼"}
                         </button>
                         {isExpanded && idea.details && (
@@ -1440,7 +1440,7 @@ ${sections.map((s, i) => {
                         )}
 
                         {/* CTA */}
-                        <button onClick={() => chooseIdea(idea)} style={{ width: "100%", background: isTop ? "linear-gradient(90deg,#8D6EFF,#B79BFF)" : "transparent", color: "#fff", border: isTop ? "none" : `1px solid ${IDEA_VIOLET}`, padding: "15px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>🚀 CONSTRUIRE CE PROJET</button>
+                        <button onClick={() => chooseIdea(idea)} style={{ width: "100%", background: isTop ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", color: "#fff", border: isTop ? "none" : `1px solid ${IDEA_VIOLET}`, padding: "15px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>🚀 CONSTRUIRE CE PROJET</button>
                       </div>
                     );
                   })}
@@ -1461,7 +1461,7 @@ ${sections.map((s, i) => {
             <div style={{ display: "flex", flexDirection: "column", gap: 14, textAlign: "left", marginBottom: 40 }}>
               {TRANSFER_STEPS.map((step, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, opacity: i <= transferStep ? 1 : 0.3, transition: "opacity 0.4s" }}>
-                  <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: i <= transferStep ? "linear-gradient(90deg,#8D6EFF,#B79BFF)" : "transparent", border: i <= transferStep ? "none" : "2px solid rgba(183,155,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, color: "#fff" }}>{i <= transferStep ? "✓" : ""}</div>
+                  <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: i <= transferStep ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", border: i <= transferStep ? "none" : "2px solid rgba(255,122,46,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, color: "#fff" }}>{i <= transferStep ? "✓" : ""}</div>
                   <span style={{ fontSize: isMobile ? 15 : 16, fontWeight: 700, color: i <= transferStep ? "#fff" : IDEA_TEXT2 }}>{step}</span>
                 </div>
               ))}
@@ -1469,7 +1469,7 @@ ${sections.map((s, i) => {
             <button
               onClick={launchBasicFromIdea}
               disabled={transferStep < TRANSFER_STEPS.length - 1}
-              style={{ width: "100%", background: transferStep < TRANSFER_STEPS.length - 1 ? "rgba(183,155,255,0.2)" : "linear-gradient(90deg,#8D6EFF,#B79BFF)", color: "#fff", border: "none", padding: "16px", fontSize: 14, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: transferStep < TRANSFER_STEPS.length - 1 ? "default" : "pointer", transition: "all 0.4s", boxShadow: transferStep < TRANSFER_STEPS.length - 1 ? "none" : "0 8px 30px rgba(141,110,255,0.4)" }}
+              style={{ width: "100%", background: transferStep < TRANSFER_STEPS.length - 1 ? "rgba(255,122,46,0.2)" : "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: "16px", fontSize: 14, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: transferStep < TRANSFER_STEPS.length - 1 ? "default" : "pointer", transition: "all 0.4s", boxShadow: transferStep < TRANSFER_STEPS.length - 1 ? "none" : "0 8px 30px rgba(255,122,46,0.4)" }}
             >
               🚀 GÉNÉRER MON BUSINESS PLAN COMPLET
             </button>
@@ -1498,10 +1498,10 @@ ${sections.map((s, i) => {
 
             {/* Bandeau profil importé depuis IDEA */}
             {fromIdea && (
-              <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(141,110,255,0.12)", border: "1px solid rgba(183,155,255,0.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 24 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 24 }}>
                 <span style={{ fontSize: 18 }}>✦</span>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 900, color: "#A78BFA", marginBottom: 2 }}>Profil entrepreneurial importé ✅</div>
+                  <div style={{ fontSize: 12, fontWeight: 900, color: "#ff7a2e", marginBottom: 2 }}>Profil entrepreneurial importé ✅</div>
                   <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif" }}>On connaît déjà ton budget, ton objectif et ton idée. Plus que quelques questions.</div>
                 </div>
               </div>
