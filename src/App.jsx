@@ -39,11 +39,11 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
 ];
 
-// Images du hero Idea (thème idée / créativité / entrepreneur) — défilent comme Basic
+// Images du hero Idea (thème idée / créativité / inspiration) — défilent comme Basic
 const IDEA_IMAGES = [
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
-  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
+  "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&q=80",
+  "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80",
+  "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80",
 ];
 
 // Photo de couverture du business plan généré (homme pensif, ambiance sombre/chaude)
@@ -1151,7 +1151,7 @@ ${sections.map((s, i) => {
                     <div>
                       <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
                       <div style={{ background: "#222227", color: "#fff", padding: "48px 24px" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#FFFFFF", marginBottom: 32, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: 32, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
                         {[
                           { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
                           { t: "ADAPTÉES À TON RYTHME", d: "Que tu aies quelques heures ou plusieurs jours par semaine." },
@@ -1173,7 +1173,7 @@ ${sections.map((s, i) => {
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
                       <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
                       <div style={{ background: "#222227", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#FFFFFF", marginBottom: 36, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: 36, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
                         {[
                           { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
                           { t: "ADAPTÉES À TON RYTHME", d: "Que tu aies quelques heures ou plusieurs jours par semaine." },
@@ -1220,14 +1220,14 @@ ${sections.map((s, i) => {
                 <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
                   <div>
                     <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
-                    <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 20, color: "#17142F" }}>Tu n'as pas besoin d'avoir déjà une idée pour entreprendre.</h2>
+                    <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 20, color: "#17142F", textTransform: "uppercase" }}>Tu n'as pas besoin d'avoir déjà une idée pour entreprendre.</h2>
                     <p style={{ fontSize: 15, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>Beaucoup de futurs entrepreneurs savent qu'ils veulent se lancer, mais ne savent pas quel projet choisir. PlanStart Idea a été conçu pour les aider à passer cette première étape avec méthode.</p>
                     <p style={{ fontSize: 15, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>Notre IA analyse ton profil, tes contraintes et tes objectifs pour identifier les opportunités les plus cohérentes avec ta situation. Une fois ton projet choisi, PlanStart t'accompagne dans la création de ton business plan.</p>
                   </div>
                   <div style={{ background: "#222227", padding: "40px 32px", borderRadius: 20 }}>
                     {[{ n: "PROFIL ANALYSÉ" }, { n: "3 PROJETS SÉLECTIONNÉS" }, { n: "AUCUNE INSCRIPTION" }].map((stat, i) => (
                       <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.18)" : "none" }}>
-                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#FFFFFF", lineHeight: 1 }}>{stat.n}</div>
+                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#ff9d3d", lineHeight: 1 }}>{stat.n}</div>
                       </div>
                     ))}
                   </div>
