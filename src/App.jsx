@@ -1127,7 +1127,7 @@ ${sections.map((s, i) => {
                     <div>
                       <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
                       <div style={{ background: "linear-gradient(135deg, #6D4FD0 0%, #8A6FE0 35%, #A98FE8 65%, #9D8FE0 100%)", color: "#fff", padding: "48px 24px" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.75)", marginBottom: 32, fontWeight: 700 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", marginBottom: 32, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
                         {[
                           { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
                           { t: "ADAPTÉES À TON RYTHME", d: "Que tu aies quelques heures ou plusieurs jours par semaine." },
@@ -1135,10 +1135,10 @@ ${sections.map((s, i) => {
                           { t: "ALIGNÉES SUR TES AMBITIONS", d: "Revenus complémentaires, indépendance ou projet à long terme." },
                           { t: "RÉALISTES À LANCER", d: "Des opportunités que tu peux concrètement démarrer rapidement." },
                         ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 16px", marginBottom: 10, border: "1px solid rgba(255,255,255,0.28)", borderRadius: 14, background: "rgba(255,255,255,0.06)" }}>
-                            <span style={{ fontSize: 13, color: "#fff", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.18)" }}>
+                            <span style={{ fontSize: 13, color: "#fff", minWidth: 28, fontWeight: 900, opacity: 0.4, paddingTop: 2 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
-                              <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.01em", marginBottom: 4 }}>{item.t}</div>
+                              <div style={{ fontSize: 14, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
                               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.88)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
                             </div>
                           </div>
@@ -1149,7 +1149,7 @@ ${sections.map((s, i) => {
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
                       <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
                       <div style={{ background: "linear-gradient(135deg, #6D4FD0 0%, #8A6FE0 35%, #A98FE8 65%, #9D8FE0 100%)", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.75)", marginBottom: 36, fontWeight: 700 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", marginBottom: 36, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
                         {[
                           { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
                           { t: "ADAPTÉES À TON RYTHME", d: "Que tu aies quelques heures ou plusieurs jours par semaine." },
@@ -1157,10 +1157,10 @@ ${sections.map((s, i) => {
                           { t: "ALIGNÉES SUR TES AMBITIONS", d: "Revenus complémentaires, indépendance ou projet à long terme." },
                           { t: "RÉALISTES À LANCER", d: "Des opportunités que tu peux concrètement démarrer rapidement." },
                         ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "18px 20px", marginBottom: 12, border: "1px solid rgba(255,255,255,0.28)", borderRadius: 14, background: "rgba(255,255,255,0.06)" }}>
-                            <span style={{ fontSize: 13, color: "#fff", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.18)" }}>
+                            <span style={{ fontSize: 13, color: "#fff", minWidth: 32, fontWeight: 900, opacity: 0.4, paddingTop: 2 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
-                              <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.01em", marginBottom: 4 }}>{item.t}</div>
+                              <div style={{ fontSize: 14, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
                               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.88)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
                             </div>
                           </div>
