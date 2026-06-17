@@ -1097,7 +1097,7 @@ ${sections.map((s, i) => {
               {/* ─── HERO (style Basic : photo plein écran + voile + texte centré) ─── */}
               <div style={{ height: isMobile ? "92vh" : "100vh", position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(45,25,110,0.5) 0%, rgba(35,22,90,0.4) 50%, rgba(30,18,80,0.72) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(91,63,212,0.6) 0%, rgba(91,63,212,0.5) 50%, rgba(91,63,212,0.75) 100%)" }} />
                 <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
                   <div style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.82)", fontWeight: 500, letterSpacing: "0.08em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Trouver la bonne idée est souvent la partie la plus difficile.</div>
                   <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#FFFFFF", marginBottom: 20, textTransform: "uppercase" }}>
@@ -1112,7 +1112,7 @@ ${sections.map((s, i) => {
               <div style={{ background: "#f4f0ff", padding: isMobile ? "14px 0px 8px" : "40px 0px 20px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
                   {[{ n: "PERSONNALISÉ", label: "Selon ton profil" }, { n: "3 RECOMMANDATIONS", label: "Classées pour toi" }, { n: "GRATUIT", label: "Sans inscription" }].map((s, i) => (
-                    <div key={i} style={{ position: "relative", background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(61,42,140,0.25)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+                    <div key={i} style={{ position: "relative", background: "#5B3FD4", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(61,42,140,0.25)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
                       <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "linear-gradient(180deg,#B14DFF,#7C4DFF)" }} />
                       <div style={{ fontSize: isMobile ? "clamp(11px,2.8vw,13px)" : "clamp(17px,2vw,22px)", fontWeight: 900, lineHeight: 1.15, color: "#FFFFFF", letterSpacing: "0.01em" }}>{s.n}</div>
                       <div style={{ fontSize: isMobile ? 9 : 13, color: "#FFFFFF", fontFamily: "Arial, sans-serif", lineHeight: 1.3, marginTop: 7 }}>{s.label}</div>
@@ -1127,7 +1127,7 @@ ${sections.map((s, i) => {
                   {isMobile ? (
                     <div>
                       <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", color: "#fff", padding: "48px 24px" }}>
+                      <div style={{ background: "#5B3FD4", color: "#fff", padding: "48px 24px" }}>
                         <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#FFFFFF", marginBottom: 32, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
                         {[
                           { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
@@ -1149,7 +1149,7 @@ ${sections.map((s, i) => {
                   ) : (
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
                       <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                      <div style={{ background: "#5B3FD4", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                         <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#FFFFFF", marginBottom: 36, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
                         {[
                           { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
@@ -1201,7 +1201,7 @@ ${sections.map((s, i) => {
                     <p style={{ fontSize: 15, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>Beaucoup de futurs entrepreneurs savent qu'ils veulent se lancer, mais ne savent pas quel projet choisir. PlanStart Idea a été conçu pour les aider à passer cette première étape avec méthode.</p>
                     <p style={{ fontSize: 15, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>Notre IA analyse ton profil, tes contraintes et tes objectifs pour identifier les opportunités les plus cohérentes avec ta situation. Une fois ton projet choisi, PlanStart t'accompagne dans la création de ton business plan.</p>
                   </div>
-                  <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", padding: "40px 32px", borderRadius: 20 }}>
+                  <div style={{ background: "#5B3FD4", padding: "40px 32px", borderRadius: 20 }}>
                     {[{ n: "PROFIL ANALYSÉ" }, { n: "3 PROJETS SÉLECTIONNÉS" }, { n: "AUCUNE INSCRIPTION" }].map((stat, i) => (
                       <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.18)" : "none" }}>
                         <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#FFFFFF", lineHeight: 1 }}>{stat.n}</div>
@@ -1214,7 +1214,7 @@ ${sections.map((s, i) => {
               {/* ─── BANNIÈRE PHOTO FINALE (phrases + CTA, sans fusée) ─── */}
               <div style={{ position: "relative", minHeight: isMobile ? 360 : 420, overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(45,25,110,0.7), rgba(30,18,80,0.9))" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(91,63,212,0.8), rgba(91,63,212,0.9))" }} />
                 <div style={{ position: "relative", zIndex: 2, minHeight: isMobile ? 360 : 420, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "48px 24px" : "60px 40px" }}>
                   <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 800, color: "#FFFFFF", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>Ton prochain projet commence ici.</h2>
                   <p style={{ fontSize: isMobile ? 15 : 17, color: "rgba(255,255,255,0.75)", fontFamily: "Arial, sans-serif", lineHeight: 1.5, marginBottom: 32, maxWidth: 520 }}>Identifie la bonne opportunité. Transforme-la en projet concret avec PlanStart.</p>
