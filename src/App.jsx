@@ -219,7 +219,7 @@ export default function App() {
   const IDEA_BG = "#15122B";
   const IDEA_SURFACE = "#221C3D";
   const IDEA_VIOLET = "#B79BFF";
-  const IDEA_VIOLET_ACCENT = "#8D6EFF";
+  const IDEA_VIOLET_ACCENT = "#7C4DFF";
   const IDEA_TEXT2 = "#B8B8C7";
 
   // ─── QUESTIONS DU QUIZ IDEA ───
@@ -847,9 +847,9 @@ ${sections.map((s, i) => {
               <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <span style={{ color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
               </div>
-              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000" }}>PLAN<span style={{ color: String(screen).startsWith("idea") ? "#b79bff" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
+              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000" }}>PLAN<span style={{ color: String(screen).startsWith("idea") ? "#A78BFA" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
               {String(screen).startsWith("idea") && (
-                <span onClick={(e) => { e.stopPropagation(); handleIdeaLogoClick(); }} style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: "#b79bff", marginLeft: 4, cursor: "pointer" }}>IDEA</span>
+                <span onClick={(e) => { e.stopPropagation(); handleIdeaLogoClick(); }} style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: "#A78BFA", marginLeft: 4, cursor: "pointer" }}>IDEA</span>
               )}
               {(screen === "home" || screen === "quiz") && (
                 <span style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: screen === "quiz" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.4)", marginLeft: 4 }}>BASIC</span>
@@ -1079,11 +1079,11 @@ ${sections.map((s, i) => {
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(21,18,43,0.25) 0%, rgba(21,18,43,0.45) 50%, rgba(21,18,43,0.9) 75%)" }} />
               <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
                 <div onClick={handleIdeaLogoClick} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(183,155,255,0.4)", borderRadius: 30, padding: "10px 22px", marginBottom: 32, cursor: "default" }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b79bff", display: "inline-block" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#A78BFA", display: "inline-block" }} />
                   <span style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", color: "#fff" }}>BIENTÔT DISPONIBLE</span>
                 </div>
                 <h1 style={{ fontSize: isMobile ? "clamp(40px,11vw,64px)" : "clamp(60px,7vw,96px)", fontWeight: 900, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#fff", marginBottom: 24, textTransform: "uppercase" }}>
-                  ET SI LA BONNE<br />IDÉE ÉTAIT DÉJÀ<br /><span style={{ color: "#b79bff", fontStyle: "italic" }}>EN TOI ?</span>
+                  ET SI LA BONNE<br />IDÉE ÉTAIT DÉJÀ<br /><span style={{ color: "#A78BFA", fontStyle: "italic" }}>EN TOI ?</span>
                 </h1>
                 <p style={{ fontSize: isMobile ? 15 : 18, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 40, fontFamily: "Arial, sans-serif", maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>PlanStart Idea t'aidera bientôt à trouver et tester l'idée de business faite pour toi. En attendant, crée ton business plan gratuitement.</p>
                 <button onClick={restart} style={{ background: "#fff", color: "#1a1530", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer" }}>ESSAYER PLANSTART GRATUIT →</button>
@@ -1097,23 +1097,23 @@ ${sections.map((s, i) => {
               {/* ─── HERO (style Basic : photo plein écran + voile + texte centré) ─── */}
               <div style={{ height: isMobile ? "92vh" : "100vh", position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,15,45,0.55) 0%, rgba(20,15,45,0.45) 50%, rgba(20,15,45,0.7) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(45,25,110,0.5) 0%, rgba(35,22,90,0.4) 50%, rgba(30,18,80,0.72) 100%)" }} />
                 <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
                   <div style={{ fontSize: isMobile ? 12 : 14, color: "rgba(255,255,255,0.75)", fontWeight: 900, letterSpacing: "0.06em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Chaque grand projet commence par la bonne idée.</div>
                   <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#fff", marginBottom: 20, textTransform: "uppercase" }}>
-                    TROUVE<br />LA TIENNE.<br /><span style={{ color: "#b79bff", fontStyle: "italic" }}>MAINTENANT.</span>
+                    TROUVE<br />LA TIENNE.<br /><span style={{ color: "#A78BFA", fontStyle: "italic" }}>MAINTENANT.</span>
                   </h1>
                   <p style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions et découvre les projets les plus adaptés à ton budget, ton temps et tes compétences. Gratuit et sans compte.</p>
-                  <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#6C47FF,#8D6EFF)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.4)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
+                  <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#7C4DFF,#B14DFF)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.4)" }}>🚀 DÉCOUVRIR MES RECOMMANDATIONS</button>
                 </div>
               </div>
 
               {/* ─── 3 CARTES (style Basic, texte Idea) ─── */}
-              <div style={{ background: "#faf9ff", padding: isMobile ? "14px 0px 8px" : "40px 0px 20px" }}>
+              <div style={{ background: "#f4f0ff", padding: isMobile ? "14px 0px 8px" : "40px 0px 20px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
                   {[{ n: "100% PERSO", label: "Selon ton profil unique" }, { n: "3 PROJETS", label: "Faits pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
-                    <div key={i} style={{ position: "relative", background: "#1e1640", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(26,19,51,0.18)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-                      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "linear-gradient(180deg,#8D6EFF,#B79BFF)" }} />
+                    <div key={i} style={{ position: "relative", background: "linear-gradient(145deg,#5B3FD4,#7C4DFF)", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(26,19,51,0.18)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+                      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "linear-gradient(180deg,#B14DFF,#7C4DFF)" }} />
                       <div style={{ fontSize: isMobile ? "clamp(11px,2.8vw,13px)" : "clamp(17px,2vw,22px)", fontWeight: 900, lineHeight: 1.15, color: "#fff", letterSpacing: "0.01em" }}>{s.n}</div>
                       <div style={{ fontSize: isMobile ? 9 : 13, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.3, marginTop: 7 }}>{s.label}</div>
                     </div>
@@ -1127,8 +1127,8 @@ ${sections.map((s, i) => {
                   {isMobile ? (
                     <div>
                       <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "#1e1640", color: "#fff", padding: "48px 24px" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#b79bff", marginBottom: 32, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                      <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", color: "#fff", padding: "48px 24px" }}>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#A78BFA", marginBottom: 32, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
                         {[
                           { t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
                           { t: "COMPATIBLES AVEC TON TEMPS", d: "Temps plein ou quelques heures par semaine." },
@@ -1137,7 +1137,7 @@ ${sections.map((s, i) => {
                           { t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Lançable maintenant, pas un rêve irréaliste." },
                         ].map((item, i) => (
                           <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                            <span style={{ fontSize: 13, color: "#b79bff", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                            <span style={{ fontSize: 13, color: "#A78BFA", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
                               <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
                               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
@@ -1149,8 +1149,8 @@ ${sections.map((s, i) => {
                   ) : (
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
                       <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "#1e1640", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#b79bff", marginBottom: 36, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                      <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#A78BFA", marginBottom: 36, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
                         {[
                           { t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
                           { t: "COMPATIBLES AVEC TON TEMPS", d: "Temps plein ou quelques heures par semaine." },
@@ -1159,7 +1159,7 @@ ${sections.map((s, i) => {
                           { t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Lançable maintenant, pas un rêve irréaliste." },
                         ].map((item, i) => (
                           <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                            <span style={{ fontSize: 13, color: "#b79bff", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                            <span style={{ fontSize: 13, color: "#A78BFA", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
                               <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
                               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
@@ -1193,7 +1193,7 @@ ${sections.map((s, i) => {
               </div>
 
               {/* ─── À PROPOS (style Basic, texte Idea) ─── */}
-              <div id="apropos-idea" style={{ background: "#faf9ff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
+              <div id="apropos-idea" style={{ background: "#f4f0ff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
                 <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
                   <div>
                     <div style={{ fontSize: 13, letterSpacing: "0.2em", color: IDEA_VIOLET_ACCENT, marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
@@ -1201,10 +1201,10 @@ ${sections.map((s, i) => {
                     <p style={{ fontSize: 15, color: "#5b5570", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>Beaucoup de gens veulent entreprendre mais bloquent sur la première marche : quelle idée ? PlanStart Idea est né pour répondre à ça, sans te noyer sous des listes d'idées génériques.</p>
                     <p style={{ fontSize: 15, color: "#5b5570", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>On analyse ton budget, ton temps et tes compétences pour te recommander des projets réellement faits pour toi. Et une fois ton idée trouvée, PlanStart construit ton business plan. De l'idée au plan, au même endroit.</p>
                   </div>
-                  <div style={{ background: "#1e1640", padding: "40px 32px", borderRadius: 20 }}>
+                  <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", padding: "40px 32px", borderRadius: 20 }}>
                     {[{ n: "100% PERSO" }, { n: "3 RECOMMANDATIONS" }, { n: "6 QUESTIONS" }].map((stat, i) => (
                       <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
-                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#b79bff", lineHeight: 1 }}>{stat.n}</div>
+                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#A78BFA", lineHeight: 1 }}>{stat.n}</div>
                       </div>
                     ))}
                   </div>
@@ -1214,7 +1214,7 @@ ${sections.map((s, i) => {
               {/* ─── BANNIÈRE PHOTO FINALE (phrases + CTA, sans fusée) ─── */}
               <div style={{ position: "relative", minHeight: isMobile ? 360 : 420, overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,15,45,0.65), rgba(20,15,45,0.88))" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(45,25,110,0.7), rgba(30,18,80,0.9))" }} />
                 <div style={{ position: "relative", zIndex: 2, minHeight: isMobile ? 360 : 420, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "48px 24px" : "60px 40px" }}>
                   <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 900, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>Une idée mérite d'exister.</h2>
                   <p style={{ fontSize: isMobile ? 15 : 17, color: "rgba(183,155,255,0.9)", fontFamily: "Arial, sans-serif", lineHeight: 1.5, marginBottom: 32, maxWidth: 520 }}>Trouve-la avec PlanStart Idea. Structure-la avec PlanStart.</p>
@@ -1478,7 +1478,7 @@ ${sections.map((s, i) => {
               <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(141,110,255,0.12)", border: "1px solid rgba(183,155,255,0.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 24 }}>
                 <span style={{ fontSize: 18 }}>✦</span>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 900, color: "#b79bff", marginBottom: 2 }}>Profil entrepreneurial importé ✅</div>
+                  <div style={{ fontSize: 12, fontWeight: 900, color: "#A78BFA", marginBottom: 2 }}>Profil entrepreneurial importé ✅</div>
                   <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif" }}>On connaît déjà ton budget, ton objectif et ton idée. Plus que quelques questions.</div>
                 </div>
               </div>
