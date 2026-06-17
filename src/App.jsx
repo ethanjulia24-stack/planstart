@@ -1102,30 +1102,56 @@ ${sections.map((s, i) => {
                 </div>
               </div>
 
-              {/* ─── POURQUOI NOS RECOMMANDATIONS SONT DIFFÉRENTES (bloc style Basic) ─── */}
-              <div style={{ background: "#faf9ff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
-                <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: IDEA_VIOLET_ACCENT, marginBottom: isMobile ? 24 : 28, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
-                  {[
-                    { ic: "💰", t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
-                    { ic: "⏱️", t: "COMPATIBLES AVEC TON TEMPS", d: "Selon que tu sois dispo à temps plein ou quelques heures par semaine." },
-                    { ic: "🧠", t: "BASÉES SUR TES COMPÉTENCES", d: "On part de ce que tu sais déjà faire pour aller plus vite." },
-                    { ic: "🎯", t: "ALIGNÉES SUR TES OBJECTIFS", d: "Revenus rapides, liberté, projet de cœur : on s'adapte." },
-                    { ic: "⚡", t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Une idée lançable maintenant vaut mieux qu'un rêve irréaliste." },
-                  ].map((item, i) => (
-                    <div key={i} style={{ borderBottom: "1px solid rgba(108,71,255,0.12)", padding: isMobile ? "16px 0" : "15px 0", display: "flex", alignItems: "flex-start", gap: 16 }}>
-                      <span style={{ fontSize: 22, flexShrink: 0, paddingTop: 2 }}>{item.ic}</span>
-                      <div>
-                        <div style={{ fontSize: isMobile ? 15 : 16, fontWeight: 900, lineHeight: 1.3, color: "#1a1333", marginBottom: 4 }}>{item.t}</div>
-                        <div style={{ fontSize: isMobile ? 13 : 14, color: "#6b6580", fontFamily: "Arial, sans-serif", lineHeight: 1.55 }}>{item.d}</div>
+              {/* ─── POURQUOI C'EST DIFFÉRENT (style Basic CE QUE TU OBTIENS : photo + bloc sombre) ─── */}
+              <div style={{ padding: isMobile ? "10px 0px" : "20px 0px" }}>
+                <div style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(26,19,51,0.15)" }}>
+                  {isMobile ? (
+                    <div>
+                      <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
+                      <div style={{ background: "#1e1640", color: "#fff", padding: "48px 24px" }}>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#b79bff", marginBottom: 32, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                        {[
+                          { t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
+                          { t: "COMPATIBLES AVEC TON TEMPS", d: "Temps plein ou quelques heures par semaine." },
+                          { t: "BASÉES SUR TES COMPÉTENCES", d: "On part de ce que tu sais déjà faire." },
+                          { t: "ALIGNÉES SUR TES OBJECTIFS", d: "Revenus rapides, liberté, projet de cœur." },
+                          { t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Lançable maintenant, pas un rêve irréaliste." },
+                        ].map((item, i) => (
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                            <span style={{ fontSize: 13, color: "#b79bff", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                            <div>
+                              <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
+                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  ))}
+                  ) : (
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
+                      <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
+                      <div style={{ background: "#1e1640", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#b79bff", marginBottom: 36, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                        {[
+                          { t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
+                          { t: "COMPATIBLES AVEC TON TEMPS", d: "Temps plein ou quelques heures par semaine." },
+                          { t: "BASÉES SUR TES COMPÉTENCES", d: "On part de ce que tu sais déjà faire." },
+                          { t: "ALIGNÉES SUR TES OBJECTIFS", d: "Revenus rapides, liberté, projet de cœur." },
+                          { t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Lançable maintenant, pas un rêve irréaliste." },
+                        ].map((item, i) => (
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                            <span style={{ fontSize: 13, color: "#b79bff", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                            <div>
+                              <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
+                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-
-              {/* ─── PHOTO TRANSITION (brainstorming) ─── */}
-              <div style={{ height: isMobile ? 200 : 320, backgroundImage: "url(https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
 
               {/* ─── COMMENT ÇA MARCHE (style Basic : numéros 01/02/03) ─── */}
               <div style={{ background: "#fff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
