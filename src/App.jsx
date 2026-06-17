@@ -1135,11 +1135,11 @@ ${sections.map((s, i) => {
                           { t: "ALIGNÉES SUR TES AMBITIONS", d: "Revenus complémentaires, indépendance ou projet à long terme." },
                           { t: "RÉALISTES À LANCER", d: "Des opportunités que tu peux concrètement démarrer rapidement." },
                         ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.18)" }}>
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 16px", marginBottom: 10, border: "1px solid rgba(255,255,255,0.28)", borderRadius: 14, background: "rgba(255,255,255,0.06)" }}>
                             <span style={{ fontSize: 13, color: "#fff", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
                               <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.01em", marginBottom: 4 }}>{item.t}</div>
-                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
+                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.88)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
                             </div>
                           </div>
                         ))}
@@ -1157,11 +1157,11 @@ ${sections.map((s, i) => {
                           { t: "ALIGNÉES SUR TES AMBITIONS", d: "Revenus complémentaires, indépendance ou projet à long terme." },
                           { t: "RÉALISTES À LANCER", d: "Des opportunités que tu peux concrètement démarrer rapidement." },
                         ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.18)" }}>
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "18px 20px", marginBottom: 12, border: "1px solid rgba(255,255,255,0.28)", borderRadius: 14, background: "rgba(255,255,255,0.06)" }}>
                             <span style={{ fontSize: 13, color: "#fff", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
                               <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.01em", marginBottom: 4 }}>{item.t}</div>
-                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
+                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.88)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
                             </div>
                           </div>
                         ))}
