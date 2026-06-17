@@ -39,6 +39,13 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
 ];
 
+// Images du hero Idea (thème idée / créativité / entrepreneur) — défilent comme Basic
+const IDEA_IMAGES = [
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80",
+  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
+];
+
 // Photo de couverture du business plan généré (homme pensif, ambiance sombre/chaude)
 const COVER_IMAGE = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201400%201000%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220.6%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%233a3f4a%22/%3E%3Cstop%20offset%3D%220.55%22%20stop-color%3D%22%23262a33%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2315171c%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22warm%22%20cx%3D%220.7%22%20cy%3D%220.28%22%20r%3D%220.6%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff9d3d%22%20stop-opacity%3D%220.55%22/%3E%3Cstop%20offset%3D%220.4%22%20stop-color%3D%22%23ff7a2e%22%20stop-opacity%3D%220.18%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff7a2e%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3ClinearGradient%20id%3D%22desk%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232c2f37%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231a1c22%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22screenglow%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffb066%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff7a2e%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C%21--%20background%20--%3E%3Crect%20width%3D%221400%22%20height%3D%221000%22%20fill%3D%22url%28%23sky%29%22/%3E%3Crect%20width%3D%221400%22%20height%3D%221000%22%20fill%3D%22url%28%23warm%29%22/%3E%3C%21--%20window%20light%20streaks%20--%3E%3Cg%20opacity%3D%220.10%22%20fill%3D%22%23ffffff%22%3E%3Cpolygon%20points%3D%22900%2C0%201080%2C0%20760%2C1000%20600%2C1000%22/%3E%3Cpolygon%20points%3D%221140%2C0%201240%2C0%20980%2C1000%20870%2C1000%22/%3E%3C/g%3E%3C%21--%20desk%20--%3E%3Crect%20x%3D%220%22%20y%3D%22730%22%20width%3D%221400%22%20height%3D%22270%22%20fill%3D%22url%28%23desk%29%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%22730%22%20x2%3D%221400%22%20y2%3D%22730%22%20stroke%3D%22%23454a55%22%20stroke-width%3D%223%22/%3E%3C%21--%20person%20silhouette%20%28lighter%2C%20with%20rim%20light%29%20--%3E%3Cg%3E%3Ccircle%20cx%3D%22520%22%20cy%3D%22430%22%20r%3D%2278%22%20fill%3D%22%233c424d%22/%3E%3Cpath%20d%3D%22M372%20730%20Q372%20558%20520%20536%20Q668%20558%20668%20730%20Z%22%20fill%3D%22%233c424d%22/%3E%3C%21--%20rim%20light%20--%3E%3Cpath%20d%3D%22M448%20478%20Q470%20405%20520%20396%22%20fill%3D%22none%22%20stroke%3D%22%237a8492%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.8%22/%3E%3Cpath%20d%3D%22M642%20730%20Q662%20560%20560%20540%22%20fill%3D%22none%22%20stroke%3D%22%235a626f%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.7%22/%3E%3C/g%3E%3C%21--%20laptop%20%28clear%2C%20glowing%29%20--%3E%3Cg%3E%3Cpath%20d%3D%22M452%20726%20L452%20604%20Q452%20592%20464%20592%20L596%20592%20Q608%20592%20608%20604%20L608%20726%20Z%22%20fill%3D%22%230f1013%22%20stroke%3D%22%235a626f%22%20stroke-width%3D%223%22/%3E%3Crect%20x%3D%22466%22%20y%3D%22606%22%20width%3D%22128%22%20height%3D%22104%22%20rx%3D%224%22%20fill%3D%22%231b1d24%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22620%22%20width%3D%2284%22%20height%3D%229%22%20rx%3D%224.5%22%20fill%3D%22url%28%23screenglow%29%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22638%22%20width%3D%22100%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%235a626f%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22652%22%20width%3D%2286%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%235a626f%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22666%22%20width%3D%22100%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%23444b57%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22680%22%20width%3D%2264%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%23444b57%22/%3E%3Cpath%20d%3D%22M430%20726%20L630%20726%20L648%20746%20L412%20746%20Z%22%20fill%3D%22%2323252d%22%20stroke%3D%22%235a626f%22%20stroke-width%3D%223%22/%3E%3C%21--%20screen%20light%20spill%20--%3E%3Cellipse%20cx%3D%22530%22%20cy%3D%22700%22%20rx%3D%22150%22%20ry%3D%2240%22%20fill%3D%22%23ff7a2e%22%20opacity%3D%220.10%22/%3E%3C/g%3E%3C%21--%20coffee%20cup%20--%3E%3Cg%3E%3Cellipse%20cx%3D%22800%22%20cy%3D%22712%22%20rx%3D%2240%22%20ry%3D%2212%22%20fill%3D%22%2315171c%22/%3E%3Cpath%20d%3D%22M765%20706%20Q765%20662%20800%20662%20Q835%20662%20835%20706%20Z%22%20fill%3D%22%232a2d35%22%20stroke%3D%22%23565d68%22%20stroke-width%3D%223%22/%3E%3Cpath%20d%3D%22M835%20676%20Q860%20676%20860%20692%20Q860%20706%20838%20706%22%20fill%3D%22none%22%20stroke%3D%22%23565d68%22%20stroke-width%3D%224%22/%3E%3Cellipse%20cx%3D%22800%22%20cy%3D%22668%22%20rx%3D%2230%22%20ry%3D%228%22%20fill%3D%22%2315171c%22/%3E%3C%21--%20steam%20--%3E%3Cpath%20d%3D%22M792%20650%20Q786%20636%20794%20624%20Q800%20614%20794%20602%22%20fill%3D%22none%22%20stroke%3D%22%238a929e%22%20stroke-width%3D%222.5%22%20opacity%3D%220.4%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M810%20650%20Q804%20636%20812%20624%22%20fill%3D%22none%22%20stroke%3D%22%238a929e%22%20stroke-width%3D%222.5%22%20opacity%3D%220.3%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C%21--%20notebook%20%2B%20pen%20--%3E%3Cg%20transform%3D%22rotate%28-5%20960%20706%29%22%3E%3Crect%20x%3D%22880%22%20y%3D%22684%22%20width%3D%22160%22%20height%3D%2246%22%20rx%3D%225%22%20fill%3D%22%2333363f%22%20stroke%3D%22%23565d68%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%22900%22%20y1%3D%22698%22%20x2%3D%221018%22%20y2%3D%22698%22%20stroke%3D%22%234a505b%22%20stroke-width%3D%222.5%22/%3E%3Cline%20x1%3D%22900%22%20y1%3D%22710%22%20x2%3D%221018%22%20y2%3D%22710%22%20stroke%3D%22%234a505b%22%20stroke-width%3D%222.5%22/%3E%3Crect%20x%3D%221030%22%20y%3D%22676%22%20width%3D%2270%22%20height%3D%229%22%20rx%3D%224%22%20fill%3D%22%23ff7a2e%22%20opacity%3D%220.9%22/%3E%3C/g%3E%3C%21--%20plant%20--%3E%3Cg%3E%3Crect%20x%3D%22116%22%20y%3D%22700%22%20width%3D%2248%22%20height%3D%2234%22%20rx%3D%224%22%20fill%3D%22%232a2d35%22%20stroke%3D%22%234a505b%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M140%20700%20L140%20640%22%20stroke%3D%22%233f5a48%22%20stroke-width%3D%224%22/%3E%3Cpath%20d%3D%22M140%20660%20Q108%20628%2092%20652%20Q120%20664%20140%20678%22%20fill%3D%22%233a5644%22/%3E%3Cpath%20d%3D%22M140%20656%20Q172%20624%20190%20648%20Q160%20662%20140%20678%22%20fill%3D%22%23436149%22/%3E%3C/g%3E%3C/svg%3E";
 
@@ -171,6 +178,7 @@ export default function App() {
   const [introStep, setIntroStep] = useState(0);
   const [introLetters, setIntroLetters] = useState("");
   const [slideIndex, setSlideIndex] = useState(0);
+  const [ideaSlideIndex, setIdeaSlideIndex] = useState(0);
   const [qIndex, setQIndex] = useState(0);
   const [questions, setQuestions] = useState([FIRST_QUESTION]);
   const [answers, setAnswers] = useState({});
@@ -428,6 +436,12 @@ export default function App() {
   useEffect(() => {
     if (screen !== "home") return;
     const t = setInterval(() => setSlideIndex(i => (i + 1) % IMAGES.length), 5000);
+    return () => clearInterval(t);
+  }, [screen]);
+
+  useEffect(() => {
+    if (screen !== "idea") return;
+    const t = setInterval(() => setIdeaSlideIndex(i => (i + 1) % IDEA_IMAGES.length), 5000);
     return () => clearInterval(t);
   }, [screen]);
 
@@ -1094,17 +1108,26 @@ ${sections.map((s, i) => {
           {/* ══════════ PREVIEW : HOME IDEA COMPLÈTE (fidèle maquette) ══════════ */}
           {ideaPreview && (
             <>
-              {/* ─── HERO (style Basic : photo plein écran + voile + texte centré) ─── */}
+              {/* ─── HERO (carrousel 3 images défilantes, style Basic) ─── */}
               <div style={{ height: isMobile ? "92vh" : "100vh", position: "relative", overflow: "hidden" }}>
-                <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.52)" }} />
+                {IDEA_IMAGES.map((img, i) => (
+                  <div key={i} style={{ position: "absolute", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === ideaSlideIndex ? 1 : 0, transition: "opacity 1.5s ease" }} />
+                ))}
+                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.56)" }} />
                 <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
                   <div style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.82)", fontWeight: 500, letterSpacing: "0.08em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Trouver la bonne idée est souvent la partie la plus difficile.</div>
                   <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#FFFFFF", marginBottom: 20, textTransform: "uppercase" }}>
                     TROUVE<br />LA TIENNE.<br /><span style={{ color: "#ff7a2e", fontStyle: "italic" }}>MAINTENANT.</span>
                   </h1>
                   <p style={{ fontSize: isMobile ? 16 : 18, color: "rgba(255,255,255,0.88)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions et découvre 3 projets sélectionnés selon ton profil, ton budget et tes objectifs. Gratuit, sans inscription.</p>
-                  <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(108,71,255,0.4)" }}>🚀 DÉCOUVRIR MES 3 PROJETS</button>
+                  <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(255,94,58,0.35)" }}>🚀 DÉCOUVRIR MES 3 PROJETS</button>
+                </div>
+                {/* Indicateurs de slide */}
+                <div style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, zIndex: 3 }}>
+                  {IDEA_IMAGES.map((_, i) => (<div key={i} onClick={() => setIdeaSlideIndex(i)} style={{ width: i === ideaSlideIndex ? 32 : 8, height: 2, background: i === ideaSlideIndex ? "#ff7a2e" : "rgba(255,255,255,0.3)", cursor: "pointer", transition: "all 0.4s ease" }} />))}
+                </div>
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.1)", zIndex: 1 }}>
+                  <div key={ideaSlideIndex} style={{ height: "100%", background: "#ff7a2e", animation: "barGrow 5s linear both" }} />
                 </div>
               </div>
 
