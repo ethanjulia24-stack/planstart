@@ -1102,6 +1102,19 @@ ${sections.map((s, i) => {
                 </div>
               </div>
 
+              {/* ─── 3 CARTES (style Basic, texte Idea) ─── */}
+              <div style={{ background: "#faf9ff", padding: isMobile ? "14px 0px 8px" : "40px 0px 20px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
+                  {[{ n: "100% PERSO", label: "Selon ton profil unique" }, { n: "3 PROJETS", label: "Faits pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
+                    <div key={i} style={{ position: "relative", background: "#1e1640", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(26,19,51,0.18)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+                      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "linear-gradient(180deg,#8D6EFF,#B79BFF)" }} />
+                      <div style={{ fontSize: isMobile ? "clamp(11px,2.8vw,13px)" : "clamp(17px,2vw,22px)", fontWeight: 900, lineHeight: 1.15, color: "#fff", letterSpacing: "0.01em" }}>{s.n}</div>
+                      <div style={{ fontSize: isMobile ? 9 : 13, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.3, marginTop: 7 }}>{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* ─── POURQUOI C'EST DIFFÉRENT (style Basic CE QUE TU OBTIENS : photo + bloc sombre) ─── */}
               <div style={{ padding: isMobile ? "10px 0px" : "20px 0px" }}>
                 <div style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(26,19,51,0.15)" }}>
