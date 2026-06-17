@@ -944,7 +944,7 @@ ${sections.map((s, i) => {
                 <div style={{ background: DARK, color: "#fff", padding: "48px 24px" }}>
                   <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.5)", marginBottom: 32, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
                   {["ANALYSE DE MARCHÉ", "PROJECTIONS FINANCIÈRES", "STRATÉGIE MARKETING", "PLAN D'ACTION 90 JOURS", "DÉMARCHES LÉGALES", "GESTION DES RISQUES"].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.22)" }}>
                       <span style={{ fontSize: 13, color: isOrange ? "#ff7a2e" : "#fff", minWidth: 28, fontWeight: 900, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
                       <span style={{ fontSize: 14, fontWeight: 900 }}>{item}</span>
                     </div>
@@ -957,7 +957,7 @@ ${sections.map((s, i) => {
                 <div style={{ background: DARK, color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <div style={{ fontSize: 13, letterSpacing: "0.2em", color: isOrange ? "#ff7a2e" : "rgba(255,255,255,0.5)", marginBottom: 36, fontWeight: 900 }}>CE QUE TU OBTIENS</div>
                   {["ANALYSE DE MARCHÉ", "PROJECTIONS FINANCIÈRES", "STRATÉGIE MARKETING", "PLAN D'ACTION 90 JOURS", "DÉMARCHES LÉGALES", "GESTION DES RISQUES"].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.22)" }}>
                       <span style={{ fontSize: 13, color: isOrange ? "#ff7a2e" : "#fff", minWidth: 32, fontWeight: 900, opacity: isOrange ? 1 : 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
                       <span style={{ fontSize: 15, fontWeight: 900 }}>{item}</span>
                     </div>
@@ -1030,7 +1030,7 @@ ${sections.map((s, i) => {
               </div>
               <div style={{ background: DARK, padding: "40px 32px", borderRadius: 20 }}>
                 {[{ n: "100% GRATUIT", label: "" }, { n: "7 SECTIONS", label: "" }, { n: "10 QUESTIONS", label: "" }].map((stat, i) => (
-                  <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+                  <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.25)" : "none" }}>
                     <div style={{ fontSize: isMobile ? 20 : 32, fontWeight: 900, color: isOrange ? "#ff7a2e" : "#fff", lineHeight: 1 }}>{stat.n}</div>
                     <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", fontFamily: "Arial, sans-serif", marginTop: 4, letterSpacing: "0.05em" }}>{stat.label}</div>
                   </div>
@@ -1112,10 +1112,9 @@ ${sections.map((s, i) => {
               <div style={{ background: "#f4f0ff", padding: isMobile ? "14px 0px 8px" : "40px 0px 20px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
                   {[{ n: "100% PERSO", label: "Selon ton profil unique" }, { n: "3 PROJETS", label: "Faits pour toi" }, { n: "SANS COMPTE", label: "Aucune inscription" }].map((s, i) => (
-                    <div key={i} style={{ position: "relative", background: "linear-gradient(145deg,#5B3FD4,#7C4DFF)", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(26,19,51,0.18)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-                      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "linear-gradient(180deg,#B14DFF,#7C4DFF)" }} />
+                    <div key={i} style={{ position: "relative", background: "linear-gradient(135deg, #7C4DFF 0%, #B14DFF 40%, #E14B9E 70%, #4D7CFF 100%)", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(124,77,255,0.3)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
                       <div style={{ fontSize: isMobile ? "clamp(11px,2.8vw,13px)" : "clamp(17px,2vw,22px)", fontWeight: 900, lineHeight: 1.15, color: "#fff", letterSpacing: "0.01em" }}>{s.n}</div>
-                      <div style={{ fontSize: isMobile ? 9 : 13, color: "rgba(255,255,255,0.5)", fontFamily: "Arial, sans-serif", lineHeight: 1.3, marginTop: 7 }}>{s.label}</div>
+                      <div style={{ fontSize: isMobile ? 9 : 13, color: "rgba(255,255,255,0.85)", fontFamily: "Arial, sans-serif", lineHeight: 1.3, marginTop: 7 }}>{s.label}</div>
                     </div>
                   ))}
                 </div>
@@ -1127,8 +1126,8 @@ ${sections.map((s, i) => {
                   {isMobile ? (
                     <div>
                       <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", color: "#fff", padding: "48px 24px" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#A78BFA", marginBottom: 32, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                      <div style={{ background: "linear-gradient(135deg, #7C4DFF 0%, #B14DFF 35%, #E14B9E 60%, #4D7CFF 100%)", color: "#fff", padding: "48px 24px" }}>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.9)", marginBottom: 32, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
                         {[
                           { t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
                           { t: "COMPATIBLES AVEC TON TEMPS", d: "Temps plein ou quelques heures par semaine." },
@@ -1136,11 +1135,11 @@ ${sections.map((s, i) => {
                           { t: "ALIGNÉES SUR TES OBJECTIFS", d: "Revenus rapides, liberté, projet de cœur." },
                           { t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Lançable maintenant, pas un rêve irréaliste." },
                         ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                            <span style={{ fontSize: 13, color: "#A78BFA", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.22)" }}>
+                            <span style={{ fontSize: 13, color: "#fff", minWidth: 28, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
                               <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
-                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
+                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
                             </div>
                           </div>
                         ))}
@@ -1149,8 +1148,8 @@ ${sections.map((s, i) => {
                   ) : (
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
                       <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#A78BFA", marginBottom: 36, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
+                      <div style={{ background: "linear-gradient(135deg, #7C4DFF 0%, #B14DFF 35%, #E14B9E 60%, #4D7CFF 100%)", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.9)", marginBottom: 36, fontWeight: 900 }}>POURQUOI C'EST DIFFÉRENT</div>
                         {[
                           { t: "ADAPTÉES À TON BUDGET", d: "On ne te propose jamais un projet hors de tes moyens." },
                           { t: "COMPATIBLES AVEC TON TEMPS", d: "Temps plein ou quelques heures par semaine." },
@@ -1158,11 +1157,11 @@ ${sections.map((s, i) => {
                           { t: "ALIGNÉES SUR TES OBJECTIFS", d: "Revenus rapides, liberté, projet de cœur." },
                           { t: "CONÇUES POUR ÊTRE RÉALISABLES", d: "Lançable maintenant, pas un rêve irréaliste." },
                         ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                            <span style={{ fontSize: 13, color: "#A78BFA", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.22)" }}>
+                            <span style={{ fontSize: 13, color: "#fff", minWidth: 32, fontWeight: 900, paddingTop: 3 }}>{String(i + 1).padStart(2, "0")}</span>
                             <div>
                               <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 4 }}>{item.t}</div>
-                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
+                              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
                             </div>
                           </div>
                         ))}
@@ -1201,10 +1200,10 @@ ${sections.map((s, i) => {
                     <p style={{ fontSize: 15, color: "#5b5570", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>Beaucoup de gens veulent entreprendre mais bloquent sur la première marche : quelle idée ? PlanStart Idea est né pour répondre à ça, sans te noyer sous des listes d'idées génériques.</p>
                     <p style={{ fontSize: 15, color: "#5b5570", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>On analyse ton budget, ton temps et tes compétences pour te recommander des projets réellement faits pour toi. Et une fois ton idée trouvée, PlanStart construit ton business plan. De l'idée au plan, au même endroit.</p>
                   </div>
-                  <div style={{ background: "linear-gradient(160deg,#3D2A8C,#5B3FD4)", padding: "40px 32px", borderRadius: 20 }}>
+                  <div style={{ background: "linear-gradient(135deg, #7C4DFF 0%, #B14DFF 35%, #E14B9E 60%, #4D7CFF 100%)", padding: "40px 32px", borderRadius: 20 }}>
                     {[{ n: "100% PERSO" }, { n: "3 RECOMMANDATIONS" }, { n: "6 QUESTIONS" }].map((stat, i) => (
-                      <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
-                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#A78BFA", lineHeight: 1 }}>{stat.n}</div>
+                      <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.25)" : "none" }}>
+                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#fff", lineHeight: 1 }}>{stat.n}</div>
                       </div>
                     ))}
                   </div>
