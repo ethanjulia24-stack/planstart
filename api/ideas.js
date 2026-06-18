@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: "Trop de requêtes" });
   }
 
-  const { objectif, budget, temps, interet, niveau, type, dynamique } = req.body || {};
+  const { objectif, budget, temps, interet, niveau, type, dynamique, aise, environnement, statut } = req.body || {};
 
   if (!objectif || !budget || !temps || !niveau) {
     return res.status(400).json({ error: "Données invalides" });
@@ -57,6 +57,9 @@ export default async function handler(req, res) {
     niveau: sanitizeInput(niveau),
     type: sanitizeInput(type),
     dynamique: sanitizeInput(dynamique),
+    aise: sanitizeInput(aise),
+    environnement: sanitizeInput(environnement),
+    statut: sanitizeInput(statut),
   };
 
   const prompt = `Tu es un conseiller en création d'entreprise expert. Tu dois analyser le profil d'un utilisateur et lui recommander exactement 3 idées de business personnalisées.
@@ -69,6 +72,19 @@ PROFIL UTILISATEUR :
 - Niveau d'expérience : ${p.niveau}
 - Type de business préféré : ${p.type}
 - Réponse question dynamique : ${p.dynamique}
+- Domaine où il est le plus à l'aise (savoir-faire) : ${p.aise}
+- Environnement où il a passé le plus de temps (vécu / terrain connu) : ${p.environnement}
+- Statut actuel : ${p.statut}
+
+---
+
+RÈGLE DE PERSONNALISATION LA PLUS IMPORTANTE — L'IDÉE DOIT VENIR DE LA PERSONNE :
+Ne te contente PAS de filtrer des idées génériques selon le budget et le temps. La meilleure idée pour cette personne naît du CROISEMENT entre :
+1. Ce dans quoi elle est à l'aise (son savoir-faire : ${p.aise})
+2. L'environnement qu'elle connaît de l'intérieur (son vécu : ${p.environnement})
+3. Son statut actuel (${p.statut})
+Une personne qui a passé des années dans un environnement précis y a vu des problèmes, des lenteurs, des manques que les autres ne voient pas — c'est SON avantage caché. Tes 3 idées doivent exploiter cet avantage : propose des projets où SON vécu et SON savoir-faire lui donnent une longueur d'avance qu'un inconnu n'aurait pas. Exemple : quelqu'un à l'aise en relationnel + vécu en restauration ne reçoit pas "ouvre un restaurant" (générique) mais un projet où sa connaissance du terrain restauration ET son aisance relationnelle se combinent en un angle précis. Dans le champ "whyYou" de chaque idée, explique explicitement en quoi SON parcours (savoir-faire + environnement vécu) lui donne un avantage sur ce projet précis.
+Si "environnement" = "Autre" ou si les infos sont trop vagues pour dégager un vrai avantage, reste honnête : propose des idées solides basées sur le reste du profil, sans inventer un faux avantage de terrain.
 
 ---
 
@@ -77,6 +93,7 @@ Analyse silencieusement :
 - Les contraintes dures (budget, temps)
 - Les contraintes flexibles (compétences, objectifs)
 - Les opportunités alignées avec les intérêts
+- LE CROISEMENT savoir-faire (${p.aise}) × vécu/environnement (${p.environnement}) : c'est la source de l'avantage différenciant
 - Niveau de confiance : si l'utilisateur a répondu "Peu importe" ou "Ouvert à tout" à plus de 2 questions → confidence = "Moyenne", sinon → confidence = "Élevée"
 
 ---
