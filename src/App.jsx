@@ -419,12 +419,33 @@ export default function App() {
     setResult(null); setError(null);
     setQuestions([FIRST_QUESTION]);
 
-    // Aller au quiz et générer la Q2 directement
+    // ─── Q2 FORCÉE EN MODE VALIDATION (pas générée par l'IA, pour garantir le ton mentor) ───
+    // On part du problème déjà identifié par Idea et on le fait VALIDER plutôt que demander.
+    const cible = (chosenIdea.idealProfile || "tes futurs clients").replace(/^(les?|des?)\s+/i, "");
+    const probleme = chosenIdea.opportunity || chosenIdea.whyNow || "";
+    // Phrase d'introduction : on affirme ce qu'on a compris, on demande de confirmer/préciser
+    const q2 = {
+      label: "02",
+      bloc: "TON PROJET",
+      question: `Cette analyse te paraît-elle juste, ou tu vois les choses autrement ?`,
+      intro: probleme
+        ? `Voici ce qu'on a compris de ton projet : il s'adresse à ${cible}, et répond à ce besoin — ${probleme}`
+        : `Voici ce qu'on a compris : ton projet s'adresse à ${cible}.`,
+      placeholder: "Tu peux choisir une réponse ci-dessus, ou préciser avec tes propres mots.",
+      examples: [
+        "Oui, c'est exactement ça",
+        "Globalement oui, mais je préciserais",
+        "Pas tout à fait, je vois ça autrement",
+        "Je ne sais pas encore",
+      ],
+    };
+    setQuestions([FIRST_QUESTION, q2]);
+
+    // Aller au quiz, afficher directement la Q2 forcée (sans appel IA)
     setScreen("quiz");
     setBlocTransition(false);
     setQIndex(1);
     setCurrent("");
-    await generateNextQuestion(newAnswers, [FIRST_QUESTION]);
   };
 
   useEffect(() => {
@@ -1557,6 +1578,14 @@ ${sections.map((s, i) => {
                 </span>
               </div>
             </div>
+
+            {/* Intro "ce qu'on a identifié" (uniquement pour les questions de validation venant d'Idea) */}
+            {questions[qIndex]?.intro && (
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 18, padding: "12px 16px", background: "rgba(255,122,46,0.1)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 12, maxWidth: 650 }}>
+                <span style={{ fontSize: 16, flexShrink: 0 }}>✦</span>
+                <span style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, fontFamily: "Arial, sans-serif" }}>{questions[qIndex].intro}</span>
+              </div>
+            )}
 
             {/* Question */}
             <h2 style={{ fontSize: isMobile ? "20px" : "28px", fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.4, marginBottom: 32, color: "#fff", maxWidth: 650, animation: "slideDown 0.4s ease both" }}>
