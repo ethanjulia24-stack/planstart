@@ -1173,7 +1173,7 @@ ${sections.map((s, i) => {
                   <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#FFFFFF", marginBottom: 20, textTransform: "uppercase" }}>
                     TROUVE<br />LA TIENNE.<br /><span style={{ color: "#ff7a2e", fontStyle: "italic" }}>MAINTENANT.</span>
                   </h1>
-                  <p style={{ fontSize: isMobile ? 16 : 18, color: "rgba(255,255,255,0.88)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions et découvre 3 projets sélectionnés selon ton profil, ton budget et tes objectifs. Gratuit, sans inscription.</p>
+                  <p style={{ fontSize: isMobile ? 16 : 18, color: "rgba(255,255,255,0.88)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions. À partir de ton expérience et de tes points forts, on révèle 3 projets qui te ressemblent. Gratuit, sans inscription.</p>
                   <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(255,94,58,0.35)" }}>🚀 DÉCOUVRIR MES 3 PROJETS</button>
                 </div>
                 {/* Indicateurs de slide */}
@@ -1255,8 +1255,8 @@ ${sections.map((s, i) => {
                   <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: isMobile ? 32 : 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
                   <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
                     {[
-                      { n: "01", titre: "TU RÉPONDS", desc: "Réponds à 6 questions simples sur toi, tes envies, ton budget et le temps que tu peux investir. 30 secondes, pas plus." },
-                      { n: "02", titre: "ON ANALYSE TON PROFIL", desc: "Notre IA analyse ton profil, identifie les opportunités compatibles et élimine les projets peu adaptés à ta situation." },
+                      { n: "01", titre: "TU RÉPONDS", desc: "Réponds à quelques questions simples sur toi, ton expérience, tes points forts et tes envies. Moins d'une minute." },
+                      { n: "02", titre: "ON PART DE QUI TU ES", desc: "Notre IA croise ton expérience, tes compétences et tes contraintes pour révéler des opportunités où tu as déjà une longueur d'avance." },
                       { n: "03", titre: "TU DÉCOUVRES TES PROJETS", desc: "3 projets faits pour toi, classés par compatibilité, avec budget, premiers revenus et la marche à suivre. Prêts à lancer." },
                     ].map((step, i) => (
                       <div key={i} style={{ padding: isMobile ? "0" : "0 40px 0 0", borderRight: !isMobile && i < 2 ? "1px solid #ece9f7" : "none" }}>
