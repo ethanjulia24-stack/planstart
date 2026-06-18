@@ -242,6 +242,9 @@ export default function App() {
     { key: "interet", q: "Qu'est-ce qui t'intéresse le plus ?", opts: ["Tech / IA", "Création de contenu", "E-commerce", "Services", "Immobilier", "Je suis ouvert à tout"] },
     { key: "niveau", q: "Quel est ton niveau ?", opts: ["Débutant", "Intermédiaire", "Avancé"] },
     { key: "type", q: "Quel type de business préfères-tu ?", opts: ["En ligne uniquement", "Local", "Mixte", "Peu importe"] },
+    { key: "aise", q: "Dans quoi es-tu le plus à l'aise aujourd'hui ?", opts: ["🔨 Manuel / technique", "🤝 Relationnel / vente", "🎨 Créatif / design", "📊 Analyse / chiffres", "💻 Informatique / digital", "📋 Organisation / gestion"] },
+    { key: "environnement", q: "Dans quel environnement as-tu passé le plus de temps ?", opts: ["🛒 Commerce / vente", "🍽️ Restauration / hôtellerie", "🏥 Santé / social", "🏗️ Bâtiment / artisanat", "🖥️ Bureau / administratif", "🎓 Éducation / formation", "🚚 Logistique / transport", "📦 Industrie / production", "🌱 Autre"] },
+    { key: "statut", q: "Quel est ton statut aujourd'hui ?", opts: ["Salarié", "Indépendant", "Étudiant", "En recherche d'emploi", "Autre"] },
   ];
 
   // Question dynamique selon l'intérêt choisi (Q4)
@@ -341,6 +344,9 @@ export default function App() {
       niveau: allAnswers.niveau || "",
       type: allAnswers.type || "",
       dynamique: allAnswers.dynamique || "",
+      aise: allAnswers.aise || "",
+      environnement: allAnswers.environnement || "",
+      statut: allAnswers.statut || "",
     };
 
     // Animation des étapes de chargement
