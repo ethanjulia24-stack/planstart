@@ -375,7 +375,7 @@ export default function App() {
       setTimeout(() => {
         setIdeaResults(data);
         setIdeaLoading(false);
-        setScreen("idea-results");
+        setScreen("idea-mirror");
       }, 600);
     } catch {
       clearInterval(loadTimer);
@@ -386,6 +386,45 @@ export default function App() {
   };
 
   // Choisir une idée → écran de transition
+  // ─── MIROIR : "Voici ce qu'on a compris de toi" ───
+  // Construit UNIQUEMENT à partir des cases cochées. Ton prudent, zéro invention.
+  const buildMirror = () => {
+    const a = ideaAnswers;
+    const lignes = [];
+
+    // Ligne 1 : ce qu'il recherche (objectif + contraintes)
+    const obj = (a.objectif || "").toLowerCase();
+    let intro = "Tu sembles rechercher un projet réaliste";
+    if (obj.includes("complémentaire")) intro = "Tu sembles rechercher un revenu complémentaire, avec un projet réaliste";
+    else if (obj.includes("remplacer")) intro = "Tu sembles vouloir un projet capable de remplacer ton salaire à terme";
+    else if (obj.includes("scalable")) intro = "Tu sembles viser un projet avec un vrai potentiel de croissance";
+    else if (obj.includes("passif")) intro = "Tu sembles rechercher une activité générant des revenus réguliers";
+    if (a.temps || a.budget) intro += ", compatible avec ton temps disponible et ton budget";
+    lignes.push(intro + ".");
+
+    // Ligne 2 : son terrain (environnement + savoir-faire)
+    const env = a.environnement && !/(autre)/i.test(a.environnement) ? a.environnement.replace(/^[^\wÀ-ÿ]+/, "").trim() : "";
+    const aise = a.aise ? a.aise.replace(/^[^\wÀ-ÿ]+/, "").trim() : "";
+    if (env && aise) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)} et te sentir plus à l'aise dans des activités liées à ${frAise(aise)}.`);
+    else if (env) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)}.`);
+    else if (aise) lignes.push(`Tu sembles plus à l'aise dans des activités liées à ${frAise(aise)}.`);
+
+    // Ligne 3 : la logique de recommandation
+    if (env || aise) lignes.push("Nous avons donc privilégié des opportunités qui s'appuient sur ce que tu connais déjà, plutôt que sur des compétences totalement nouvelles.");
+    else lignes.push("Nous avons sélectionné des opportunités réalistes et accessibles, en accord avec ce que tu as indiqué.");
+
+    return lignes;
+  };
+  // Reformulations douces pour des phrases naturelles
+  const frEnv = (e) => {
+    const m = { "Commerce / vente": "le commerce et la vente", "Restauration / hôtellerie": "la restauration et l'hôtellerie", "Santé / social": "le secteur de la santé et du social", "Bâtiment / artisanat": "le bâtiment et l'artisanat", "Bureau / administratif": "le travail de bureau et administratif", "Éducation / formation": "l'éducation et la formation", "Logistique / transport": "la logistique et le transport", "Industrie / production": "l'industrie et la production" };
+    return m[e] || e.toLowerCase();
+  };
+  const frAise = (s) => {
+    const m = { "Manuel / technique": "le travail manuel et technique", "Relationnel / vente": "le relationnel et la vente", "Créatif / design": "la création et le design", "Analyse / chiffres": "l'analyse et les chiffres", "Informatique / digital": "l'informatique et le digital", "Organisation / gestion": "l'organisation et la gestion" };
+    return m[s] || s.toLowerCase();
+  };
+
   const chooseIdea = (idea) => {
     setChosenIdea(idea);
     setTransferStep(0);
@@ -913,20 +952,20 @@ ${sections.map((s, i) => {
 
       {/* ── NAV ── */}
       {screen !== "intro" && (
-        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(11,10,20,0.92)" : screen === "idea" ? "rgba(252,252,252,0.97)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(255,122,46,0.15)" : screen === "idea" ? "#ededed" : "#ededed"}`, padding: `0 ${isMobile ? "14px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
+        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "rgba(11,10,20,0.92)" : screen === "idea" ? "rgba(252,252,252,0.97)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "rgba(255,122,46,0.15)" : screen === "idea" ? "#ededed" : "#ededed"}`, padding: `0 ${isMobile ? "14px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
           <div style={{ position: "relative" }}>
             <button onClick={() => setMenuOpen(o => !o)} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <span style={{ color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
+              <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <span style={{ color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
               </div>
-              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "#fff" : "#000" }}>PLAN<span style={{ color: String(screen).startsWith("idea") ? "#ff7a2e" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
+              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "#fff" : "#000" }}>PLAN<span style={{ color: String(screen).startsWith("idea") ? "#ff7a2e" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
               {String(screen).startsWith("idea") && (
                 <span onClick={(e) => { e.stopPropagation(); handleIdeaLogoClick(); }} style={{ fontSize: isMobile ? 13 : 16, fontWeight: 700, letterSpacing: "0.02em", color: "#ff7a2e", marginLeft: 4, cursor: "pointer" }}>IDEA</span>
               )}
               {(screen === "home" || screen === "quiz") && (
                 <span style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: screen === "quiz" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.4)", marginLeft: 4 }}>BASIC</span>
               )}
-              <span style={{ fontSize: 9, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-transfer") ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, marginRight: isMobile ? 10 : 0, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
+              <span style={{ fontSize: 9, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, marginRight: isMobile ? 10 : 0, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
             </button>
 
             {/* MENU DÉROULANT Basic / Business */}
@@ -1398,6 +1437,27 @@ ${sections.map((s, i) => {
                   <span style={{ fontSize: isMobile ? 14 : 16, fontWeight: 700, color: i <= ideaLoadStep ? "#fff" : IDEA_TEXT2 }}>{step}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── IDEA MIRROR : "Voici ce qu'on a compris de toi" ── */}
+      {screen === "idea-mirror" && (
+        <div style={{ minHeight: "100vh", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px", textAlign: "center", animation: "fadeIn 0.6s ease both" }}>
+          <div style={{ maxWidth: 560, width: "100%" }}>
+            <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: "0.18em", color: "#ff7a2e", marginBottom: 24, animation: "slideUp 0.6s ease 0.1s both" }}>🎯 CE QUE NOUS AVONS COMPRIS DE TOI</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18, marginBottom: 36 }}>
+              {buildMirror().map((ligne, i) => (
+                <p key={i} style={{ fontSize: isMobile ? 17 : 19, lineHeight: 1.55, color: i === buildMirror().length - 1 ? "rgba(255,255,255,0.7)" : "#fff", fontWeight: i === buildMirror().length - 1 ? 400 : 600, fontFamily: "Arial, sans-serif", animation: `slideUp 0.6s ease ${0.2 + i * 0.15}s both` }}>{ligne}</p>
+              ))}
+            </div>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 36, padding: "8px 16px", background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 30, animation: "slideUp 0.6s ease 0.7s both" }}>
+              <span style={{ fontSize: 14 }}>✅</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#ff9d3d", letterSpacing: "0.04em" }}>Analyse terminée</span>
+            </div>
+            <div style={{ animation: "slideUp 0.6s ease 0.85s both" }}>
+              <button onClick={() => setScreen("idea-results")} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 14, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(255,94,58,0.35)" }}>DÉCOUVRIR MES OPPORTUNITÉS →</button>
             </div>
           </div>
         </div>
