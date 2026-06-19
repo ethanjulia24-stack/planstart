@@ -39,13 +39,6 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
 ];
 
-// Images du hero Idea (thème idée / créativité / inspiration) — défilent comme Basic
-const IDEA_IMAGES = [
-  "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&q=80",
-  "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80",
-  "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80",
-];
-
 // Photo de couverture du business plan généré (homme pensif, ambiance sombre/chaude)
 const COVER_IMAGE = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201400%201000%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220.6%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%233a3f4a%22/%3E%3Cstop%20offset%3D%220.55%22%20stop-color%3D%22%23262a33%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2315171c%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22warm%22%20cx%3D%220.7%22%20cy%3D%220.28%22%20r%3D%220.6%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff9d3d%22%20stop-opacity%3D%220.55%22/%3E%3Cstop%20offset%3D%220.4%22%20stop-color%3D%22%23ff7a2e%22%20stop-opacity%3D%220.18%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff7a2e%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3ClinearGradient%20id%3D%22desk%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232c2f37%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231a1c22%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22screenglow%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffb066%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff7a2e%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C%21--%20background%20--%3E%3Crect%20width%3D%221400%22%20height%3D%221000%22%20fill%3D%22url%28%23sky%29%22/%3E%3Crect%20width%3D%221400%22%20height%3D%221000%22%20fill%3D%22url%28%23warm%29%22/%3E%3C%21--%20window%20light%20streaks%20--%3E%3Cg%20opacity%3D%220.10%22%20fill%3D%22%23ffffff%22%3E%3Cpolygon%20points%3D%22900%2C0%201080%2C0%20760%2C1000%20600%2C1000%22/%3E%3Cpolygon%20points%3D%221140%2C0%201240%2C0%20980%2C1000%20870%2C1000%22/%3E%3C/g%3E%3C%21--%20desk%20--%3E%3Crect%20x%3D%220%22%20y%3D%22730%22%20width%3D%221400%22%20height%3D%22270%22%20fill%3D%22url%28%23desk%29%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%22730%22%20x2%3D%221400%22%20y2%3D%22730%22%20stroke%3D%22%23454a55%22%20stroke-width%3D%223%22/%3E%3C%21--%20person%20silhouette%20%28lighter%2C%20with%20rim%20light%29%20--%3E%3Cg%3E%3Ccircle%20cx%3D%22520%22%20cy%3D%22430%22%20r%3D%2278%22%20fill%3D%22%233c424d%22/%3E%3Cpath%20d%3D%22M372%20730%20Q372%20558%20520%20536%20Q668%20558%20668%20730%20Z%22%20fill%3D%22%233c424d%22/%3E%3C%21--%20rim%20light%20--%3E%3Cpath%20d%3D%22M448%20478%20Q470%20405%20520%20396%22%20fill%3D%22none%22%20stroke%3D%22%237a8492%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.8%22/%3E%3Cpath%20d%3D%22M642%20730%20Q662%20560%20560%20540%22%20fill%3D%22none%22%20stroke%3D%22%235a626f%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.7%22/%3E%3C/g%3E%3C%21--%20laptop%20%28clear%2C%20glowing%29%20--%3E%3Cg%3E%3Cpath%20d%3D%22M452%20726%20L452%20604%20Q452%20592%20464%20592%20L596%20592%20Q608%20592%20608%20604%20L608%20726%20Z%22%20fill%3D%22%230f1013%22%20stroke%3D%22%235a626f%22%20stroke-width%3D%223%22/%3E%3Crect%20x%3D%22466%22%20y%3D%22606%22%20width%3D%22128%22%20height%3D%22104%22%20rx%3D%224%22%20fill%3D%22%231b1d24%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22620%22%20width%3D%2284%22%20height%3D%229%22%20rx%3D%224.5%22%20fill%3D%22url%28%23screenglow%29%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22638%22%20width%3D%22100%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%235a626f%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22652%22%20width%3D%2286%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%235a626f%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22666%22%20width%3D%22100%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%23444b57%22/%3E%3Crect%20x%3D%22480%22%20y%3D%22680%22%20width%3D%2264%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%23444b57%22/%3E%3Cpath%20d%3D%22M430%20726%20L630%20726%20L648%20746%20L412%20746%20Z%22%20fill%3D%22%2323252d%22%20stroke%3D%22%235a626f%22%20stroke-width%3D%223%22/%3E%3C%21--%20screen%20light%20spill%20--%3E%3Cellipse%20cx%3D%22530%22%20cy%3D%22700%22%20rx%3D%22150%22%20ry%3D%2240%22%20fill%3D%22%23ff7a2e%22%20opacity%3D%220.10%22/%3E%3C/g%3E%3C%21--%20coffee%20cup%20--%3E%3Cg%3E%3Cellipse%20cx%3D%22800%22%20cy%3D%22712%22%20rx%3D%2240%22%20ry%3D%2212%22%20fill%3D%22%2315171c%22/%3E%3Cpath%20d%3D%22M765%20706%20Q765%20662%20800%20662%20Q835%20662%20835%20706%20Z%22%20fill%3D%22%232a2d35%22%20stroke%3D%22%23565d68%22%20stroke-width%3D%223%22/%3E%3Cpath%20d%3D%22M835%20676%20Q860%20676%20860%20692%20Q860%20706%20838%20706%22%20fill%3D%22none%22%20stroke%3D%22%23565d68%22%20stroke-width%3D%224%22/%3E%3Cellipse%20cx%3D%22800%22%20cy%3D%22668%22%20rx%3D%2230%22%20ry%3D%228%22%20fill%3D%22%2315171c%22/%3E%3C%21--%20steam%20--%3E%3Cpath%20d%3D%22M792%20650%20Q786%20636%20794%20624%20Q800%20614%20794%20602%22%20fill%3D%22none%22%20stroke%3D%22%238a929e%22%20stroke-width%3D%222.5%22%20opacity%3D%220.4%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M810%20650%20Q804%20636%20812%20624%22%20fill%3D%22none%22%20stroke%3D%22%238a929e%22%20stroke-width%3D%222.5%22%20opacity%3D%220.3%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C%21--%20notebook%20%2B%20pen%20--%3E%3Cg%20transform%3D%22rotate%28-5%20960%20706%29%22%3E%3Crect%20x%3D%22880%22%20y%3D%22684%22%20width%3D%22160%22%20height%3D%2246%22%20rx%3D%225%22%20fill%3D%22%2333363f%22%20stroke%3D%22%23565d68%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%22900%22%20y1%3D%22698%22%20x2%3D%221018%22%20y2%3D%22698%22%20stroke%3D%22%234a505b%22%20stroke-width%3D%222.5%22/%3E%3Cline%20x1%3D%22900%22%20y1%3D%22710%22%20x2%3D%221018%22%20y2%3D%22710%22%20stroke%3D%22%234a505b%22%20stroke-width%3D%222.5%22/%3E%3Crect%20x%3D%221030%22%20y%3D%22676%22%20width%3D%2270%22%20height%3D%229%22%20rx%3D%224%22%20fill%3D%22%23ff7a2e%22%20opacity%3D%220.9%22/%3E%3C/g%3E%3C%21--%20plant%20--%3E%3Cg%3E%3Crect%20x%3D%22116%22%20y%3D%22700%22%20width%3D%2248%22%20height%3D%2234%22%20rx%3D%224%22%20fill%3D%22%232a2d35%22%20stroke%3D%22%234a505b%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M140%20700%20L140%20640%22%20stroke%3D%22%233f5a48%22%20stroke-width%3D%224%22/%3E%3Cpath%20d%3D%22M140%20660%20Q108%20628%2092%20652%20Q120%20664%20140%20678%22%20fill%3D%22%233a5644%22/%3E%3Cpath%20d%3D%22M140%20656%20Q172%20624%20190%20648%20Q160%20662%20140%20678%22%20fill%3D%22%23436149%22/%3E%3C/g%3E%3C/svg%3E";
 
@@ -178,7 +171,6 @@ export default function App() {
   const [introStep, setIntroStep] = useState(0);
   const [introLetters, setIntroLetters] = useState("");
   const [slideIndex, setSlideIndex] = useState(0);
-  const [ideaSlideIndex, setIdeaSlideIndex] = useState(0);
   const [qIndex, setQIndex] = useState(0);
   const [questions, setQuestions] = useState([FIRST_QUESTION]);
   const [answers, setAnswers] = useState({});
@@ -194,29 +186,6 @@ export default function App() {
   const [shareToast, setShareToast] = useState(false);
   const inputRef = useRef(null);
 
-  // ─── PLANSTART IDEA ───
-  const [ideaPreview, setIdeaPreview] = useState(() => {
-    try { return localStorage.getItem("ideaPreview") === "true"; } catch { return false; }
-  });
-  // Idea est lancé publiquement : la home complète + le quiz sont visibles par tous.
-  // Repasser à false pour revenir au mode "Bientôt disponible" (accès preview only).
-  const IDEA_LIVE = false;
-  const ideaUnlocked = IDEA_LIVE || ideaPreview;
-  const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [previewPwd, setPreviewPwd] = useState("");
-  const [previewError, setPreviewError] = useState(false);
-  const [logoClicks, setLogoClicks] = useState(0);
-  const [ideaStep, setIdeaStep] = useState(0);
-  const [ideaAnswers, setIdeaAnswers] = useState({});
-  const [ideaLoading, setIdeaLoading] = useState(false);
-  const [ideaResults, setIdeaResults] = useState(null);
-  const [ideaError, setIdeaError] = useState(null);
-  const [ideaLoadStep, setIdeaLoadStep] = useState(0);
-  const [chosenIdea, setChosenIdea] = useState(null);
-  const [expandedCard, setExpandedCard] = useState(null);
-  const [transferStep, setTransferStep] = useState(0);
-  const [fromIdea, setFromIdea] = useState(false);
-
   // ─── THÈME : accent orange ou noir/blanc ───
   const isOrange = theme === "orange";
   const ACCENT = isOrange ? "#ff7a2e" : "#000";
@@ -227,276 +196,6 @@ export default function App() {
   const CREAM_ALT = "#f6f6f7";    // blanc doux secondaire (sections / cartes décalées)
   const DARK = "#222227";         // gris foncé pour les grands blocs (au lieu du noir pur)
 
-  // ─── COULEURS PLANSTART IDEA ───
-  const IDEA_BG = "#1a1a1f";
-  const IDEA_SURFACE = "#222227";
-  const IDEA_VIOLET = "#ff9d3d";
-  const IDEA_VIOLET_ACCENT = "#ff7a2e";
-  const IDEA_TEXT2 = "#b0b0b8";
-
-  // ─── QUESTIONS DU QUIZ IDEA ───
-  const IDEA_QUESTIONS = [
-    { key: "objectif", q: "Quel est ton objectif principal ?", opts: ["Gagner un revenu complémentaire", "Remplacer mon salaire", "Créer une entreprise scalable", "Générer des revenus passifs"] },
-    { key: "budget", q: "Quel budget peux-tu investir ?", opts: ["0 €", "1 à 500 €", "500 à 2 000 €", "2 000 €+"] },
-    { key: "temps", q: "Combien de temps par semaine ?", opts: ["Moins de 5h", "5 à 10h", "10 à 20h", "20h+"] },
-    { key: "interet", q: "Qu'est-ce qui t'intéresse le plus ?", opts: ["Tech / IA", "Création de contenu", "E-commerce", "Services", "Immobilier", "Je suis ouvert à tout"] },
-    { key: "niveau", q: "Quel est ton niveau ?", opts: ["Débutant", "Intermédiaire", "Avancé"] },
-    { key: "type", q: "Quel type de business préfères-tu ?", opts: ["En ligne uniquement", "Local", "Mixte", "Peu importe"] },
-    { key: "aise", q: "Dans quoi es-tu le plus à l'aise aujourd'hui ?", opts: ["🔨 Manuel / technique", "🤝 Relationnel / vente", "🎨 Créatif / design", "📊 Analyse / chiffres", "💻 Informatique / digital", "📋 Organisation / gestion"] },
-    { key: "environnement", q: "Dans quel environnement as-tu passé le plus de temps ?", opts: ["🛒 Commerce / vente", "🍽️ Restauration / hôtellerie", "🏥 Santé / social", "🏗️ Bâtiment / artisanat", "🖥️ Bureau / administratif", "🎓 Éducation / formation", "🚚 Logistique / transport", "📦 Industrie / production", "🌱 Autre"] },
-    { key: "statut", q: "Quel est ton statut aujourd'hui ?", opts: ["Salarié", "Indépendant", "Étudiant", "En recherche d'emploi", "Autre"] },
-  ];
-
-  // Question dynamique selon l'intérêt choisi (Q4)
-  const IDEA_DYNAMIC = {
-    "Tech / IA": { q: "Dans la tech, tu préfères :", opts: ["Vendre un service", "Créer un logiciel", "Créer du contenu", "Peu importe"] },
-    "Création de contenu": { q: "Quel format te parle le plus ?", opts: ["Vidéo court", "Écrit / newsletter", "Audio / podcast", "Peu importe"] },
-    "E-commerce": { q: "Tu te vois plutôt :", opts: ["Vendre tes produits", "Revendre des produits", "Produits digitaux", "Peu importe"] },
-    "Services": { q: "Tu préfères servir :", opts: ["Des particuliers", "Des entreprises", "Les deux", "Peu importe"] },
-    "Immobilier": { q: "Quel angle immobilier ?", opts: ["Location", "Sous-location", "Conciergerie", "Peu importe"] },
-    "Je suis ouvert à tout": { q: "Tu préfères un business :", opts: ["Rapide à lancer", "Fort potentiel", "Passion avant tout", "Peu importe"] },
-  };
-
-  const IDEA_LOAD_STEPS = [
-    "Analyse de ton profil...",
-    "Identification de tes contraintes...",
-    "Recherche des opportunités compatibles...",
-    "Préparation de tes recommandations...",
-  ];
-
-  const TRANSFER_STEPS = [
-    "Concept validé",
-    "Marché identifié",
-    "Modèle économique construit",
-    "Business plan en préparation",
-  ];
-
-  // total étapes du quiz idea (6 fixes + 1 dynamique)
-  const ideaTotalSteps = IDEA_QUESTIONS.length + 1;
-
-  // Vérification mot de passe preview
-  const checkPreviewPassword = async () => {
-    setPreviewError(false);
-    try {
-      const r = await fetch("/api/preview-auth", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: previewPwd }),
-      });
-      if (r.ok) {
-        try { localStorage.setItem("ideaPreview", "true"); } catch {}
-        setIdeaPreview(true);
-        setShowPreviewModal(false);
-        setPreviewPwd("");
-      } else {
-        setPreviewError(true);
-      }
-    } catch {
-      setPreviewError(true);
-    }
-  };
-
-  // Triple clic sur "IDEA" dans la nav
-  const handleIdeaLogoClick = () => {
-    if (ideaPreview) { startIdeaQuiz(); return; }
-    const next = logoClicks + 1;
-    setLogoClicks(next);
-    if (next >= 3) { setShowPreviewModal(true); setLogoClicks(0); }
-    setTimeout(() => setLogoClicks(0), 1200);
-  };
-
-  // Démarrer le quiz idea
-  const startIdeaQuiz = () => {
-    setIdeaStep(0); setIdeaAnswers({}); setIdeaResults(null); setIdeaError(null);
-    setChosenIdea(null); setExpandedCard(null);
-    setScreen("idea-quiz");
-  };
-
-  // Répondre à une question du quiz idea
-  const answerIdea = (key, value) => {
-    const updated = { ...ideaAnswers, [key]: value };
-    setIdeaAnswers(updated);
-    const isLastFixed = ideaStep === IDEA_QUESTIONS.length - 1;
-    const isDynamic = ideaStep === IDEA_QUESTIONS.length;
-    if (isDynamic) { launchIdeaGeneration(updated); return; }
-    if (isLastFixed) {
-      // s'il y a une question dynamique pour cet intérêt → on l'affiche, sinon on génère
-      const interet = updated.interet;
-      if (IDEA_DYNAMIC[interet]) { setIdeaStep(ideaStep + 1); }
-      else { launchIdeaGeneration(updated); }
-      return;
-    }
-    setIdeaStep(ideaStep + 1);
-  };
-
-  // Lancer la génération des idées via l'API
-  const launchIdeaGeneration = async (allAnswers) => {
-    setScreen("idea-loading");
-    setIdeaLoading(true);
-    setIdeaError(null);
-    setIdeaLoadStep(0);
-
-    const payload = {
-      objectif: allAnswers.objectif || "",
-      budget: allAnswers.budget || "",
-      temps: allAnswers.temps || "",
-      interet: allAnswers.interet || "",
-      niveau: allAnswers.niveau || "",
-      type: allAnswers.type || "",
-      dynamique: allAnswers.dynamique || "",
-      aise: allAnswers.aise || "",
-      environnement: allAnswers.environnement || "",
-      statut: allAnswers.statut || "",
-    };
-
-    // Animation des étapes de chargement
-    let step = 0;
-    const loadTimer = setInterval(() => {
-      step++;
-      if (step < IDEA_LOAD_STEPS.length) setIdeaLoadStep(step);
-    }, 1100);
-
-    try {
-      const r = await fetch("/api/ideas", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await r.json();
-      clearInterval(loadTimer);
-      if (!r.ok || !data.ideas) {
-        setIdeaError("Une erreur est survenue. Réessaie dans un instant.");
-        setIdeaLoading(false);
-        setScreen("idea-results");
-        return;
-      }
-      // garantir un minimum de temps de chargement pour l'effet
-      setIdeaLoadStep(IDEA_LOAD_STEPS.length - 1);
-      setTimeout(() => {
-        setIdeaResults(data);
-        setIdeaLoading(false);
-        setScreen("idea-mirror");
-      }, 600);
-    } catch {
-      clearInterval(loadTimer);
-      setIdeaError("Connexion impossible. Vérifie ta connexion et réessaie.");
-      setIdeaLoading(false);
-      setScreen("idea-results");
-    }
-  };
-
-  // Choisir une idée → écran de transition
-  // ─── MIROIR : "Voici ce qu'on a compris de toi" ───
-  // Construit UNIQUEMENT à partir des cases cochées. Ton prudent, zéro invention.
-  const buildMirror = () => {
-    const a = ideaAnswers;
-    const lignes = [];
-
-    // Ligne 1 : ce qu'il recherche (objectif + contraintes)
-    const obj = (a.objectif || "").toLowerCase();
-    let intro = "Tu sembles rechercher un projet réaliste";
-    if (obj.includes("complémentaire")) intro = "Tu sembles rechercher un revenu complémentaire, avec un projet réaliste";
-    else if (obj.includes("remplacer")) intro = "Tu sembles vouloir un projet capable de remplacer ton salaire à terme";
-    else if (obj.includes("scalable")) intro = "Tu sembles viser un projet avec un vrai potentiel de croissance";
-    else if (obj.includes("passif")) intro = "Tu sembles rechercher une activité générant des revenus réguliers";
-    if (a.temps || a.budget) intro += ", compatible avec ton temps disponible et ton budget";
-    lignes.push(intro + ".");
-
-    // Ligne 2 : son terrain (environnement + savoir-faire)
-    const env = a.environnement && !/(autre)/i.test(a.environnement) ? a.environnement.replace(/^[^\wÀ-ÿ]+/, "").trim() : "";
-    const aise = a.aise ? a.aise.replace(/^[^\wÀ-ÿ]+/, "").trim() : "";
-    if (env && aise) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)} et te sentir plus à l'aise dans des activités liées ${frAisePrep(aise)}.`);
-    else if (env) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)}.`);
-    else if (aise) lignes.push(`Tu sembles plus à l'aise dans des activités liées ${frAisePrep(aise)}.`);
-
-    // Ligne 3 : la logique de recommandation
-    if (env || aise) lignes.push("Nous avons donc privilégié des opportunités qui s'appuient sur ce que tu connais déjà, plutôt que sur des compétences totalement nouvelles.");
-    else lignes.push("Nous avons sélectionné des opportunités réalistes et accessibles, en accord avec ce que tu as indiqué.");
-
-    return lignes;
-  };
-  // Reformulations douces pour des phrases naturelles
-  const frEnv = (e) => {
-    const m = { "Commerce / vente": "le commerce et la vente", "Restauration / hôtellerie": "la restauration et l'hôtellerie", "Santé / social": "le secteur de la santé et du social", "Bâtiment / artisanat": "le bâtiment et l'artisanat", "Bureau / administratif": "le travail de bureau et administratif", "Éducation / formation": "l'éducation et la formation", "Logistique / transport": "la logistique et le transport", "Industrie / production": "l'industrie et la production" };
-    return m[e] || e.toLowerCase();
-  };
-  const frAise = (s) => {
-    const m = { "Manuel / technique": "le travail manuel et technique", "Relationnel / vente": "le relationnel et la vente", "Créatif / design": "la création et le design", "Analyse / chiffres": "l'analyse et les chiffres", "Informatique / digital": "l'informatique et le digital", "Organisation / gestion": "l'organisation et la gestion" };
-    return m[s] || s.toLowerCase();
-  };
-  // Version avec la préposition correcte (à le → au, à les → aux, à l', à la)
-  const frAisePrep = (s) => {
-    const m = { "Manuel / technique": "au travail manuel et technique", "Relationnel / vente": "au relationnel et à la vente", "Créatif / design": "à la création et au design", "Analyse / chiffres": "à l'analyse et aux chiffres", "Informatique / digital": "à l'informatique et au digital", "Organisation / gestion": "à l'organisation et à la gestion" };
-    return m[s] || "à " + s.toLowerCase();
-  };
-
-  const chooseIdea = (idea) => {
-    setChosenIdea(idea);
-    setTransferStep(0);
-    setScreen("idea-transfer");
-  };
-
-  // Lancer le transfert vers Basic avec le profil pré-rempli
-  const launchBasicFromIdea = async () => {
-    // ─── DOSSIER PROJET COMPLET transféré à Basic ───
-    // On ne jette plus rien : toute l'intelligence d'Idea passe à Basic.
-    const dossier = {
-      ideaName: chosenIdea.name || "",
-      pitch: chosenIdea.pitch || "",
-      opportunity: chosenIdea.opportunity || "",
-      risks: chosenIdea.risks || "",
-      idealProfile: chosenIdea.idealProfile || "",
-      businessModel: chosenIdea.businessModel || "",
-      startBudget: chosenIdea.startBudget || "",
-      firstRevenue: chosenIdea.firstRevenue || "",
-      difficulty: chosenIdea.difficulty || "",
-      whyYou: chosenIdea.whyYou || "",
-      whyNow: chosenIdea.whyNow || "",
-      nextSteps: chosenIdea.nextSteps || "",
-      reasoning: chosenIdea.reasoning || [],
-      compatibilityScore: chosenIdea.score || chosenIdea.compatibilityScore || 0,
-      userProfile: { ...ideaAnswers }, // profil du quiz : objectif, budget, temps, interet, niveau, type
-    };
-    try {
-      localStorage.setItem("ideaProfile", JSON.stringify(dossier));
-    } catch {}
-    setFromIdea(true);
-
-    // Pré-remplir la Q1 avec l'idée choisie
-    const firstAnswer = chosenIdea.name + (chosenIdea.pitch ? " — " + chosenIdea.pitch : "");
-    const newAnswers = { 0: firstAnswer };
-    setAnswers(newAnswers);
-    setResult(null); setError(null);
-    setQuestions([FIRST_QUESTION]);
-
-    // ─── Q2 FORCÉE EN MODE VALIDATION (pas générée par l'IA, pour garantir le ton mentor) ───
-    // On part du problème déjà identifié par Idea et on le fait VALIDER plutôt que demander.
-    const cible = (chosenIdea.idealProfile || "tes futurs clients").replace(/^(les?|des?)\s+/i, "");
-    const probleme = chosenIdea.opportunity || chosenIdea.whyNow || "";
-    // Phrase d'introduction : on affirme ce qu'on a compris, on demande de confirmer/préciser
-    const q2 = {
-      label: "02",
-      bloc: "TON PROJET",
-      question: `Cette analyse te paraît-elle juste, ou tu vois les choses autrement ?`,
-      intro: probleme
-        ? `Voici ce qu'on a compris de ton projet : il s'adresse à ${cible}, et répond à ce besoin — ${probleme}`
-        : `Voici ce qu'on a compris : ton projet s'adresse à ${cible}.`,
-      placeholder: "Tu peux choisir une réponse ci-dessus, ou préciser avec tes propres mots.",
-      examples: [
-        "Oui, c'est exactement ça",
-        "Globalement oui, mais je préciserais",
-        "Pas tout à fait, je vois ça autrement",
-        "Je ne sais pas encore",
-      ],
-    };
-    setQuestions([FIRST_QUESTION, q2]);
-
-    // Aller au quiz, afficher directement la Q2 forcée (sans appel IA)
-    setScreen("quiz");
-    setBlocTransition(false);
-    setQIndex(1);
-    setCurrent("");
-  };
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -533,27 +232,8 @@ export default function App() {
   }, [screen]);
 
   useEffect(() => {
-    if (screen !== "idea") return;
-    const t = setInterval(() => setIdeaSlideIndex(i => (i + 1) % IDEA_IMAGES.length), 5000);
-    return () => clearInterval(t);
-  }, [screen]);
-
-  useEffect(() => {
     if (screen === "quiz" && inputRef.current) inputRef.current.focus();
   }, [screen, qIndex]);
-
-  // Animation des étapes de l'écran de transfert IDEA → Basic
-  useEffect(() => {
-    if (screen !== "idea-transfer") return;
-    setTransferStep(0);
-    const t = setInterval(() => {
-      setTransferStep((s) => {
-        if (s >= TRANSFER_STEPS.length - 1) { clearInterval(t); return s; }
-        return s + 1;
-      });
-    }, 800);
-    return () => clearInterval(t);
-  }, [screen]);
 
   // ─── API CALLS (vers le backend sécurisé) ────────────────────────────────────
 
@@ -568,37 +248,10 @@ export default function App() {
       const nextNum = currentQuestions.length + 1;
       const bloc = BLOCS[currentQuestions.length] || "TON AMBITION";
 
-      // Si on vient de PlanStart Idea, on transmet le profil + raisonnement
-      let ideaContext = null;
-      if (fromIdea) {
-        try {
-          const stored = localStorage.getItem("ideaProfile");
-          if (stored) {
-            const d = JSON.parse(stored);
-            ideaContext = {
-              ideaName: d.ideaName,
-              pitch: d.pitch,
-              opportunity: d.opportunity,
-              risks: d.risks,
-              idealProfile: d.idealProfile,
-              businessModel: d.businessModel,
-              startBudget: d.startBudget,
-              firstRevenue: d.firstRevenue,
-              difficulty: d.difficulty,
-              whyYou: d.whyYou,
-              whyNow: d.whyNow,
-              reasoning: d.reasoning,
-              compatibilityScore: d.compatibilityScore,
-              userProfile: d.userProfile,
-            };
-          }
-        } catch {}
-      }
-
       const response = await fetch("/api/question", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ history, nextNum, bloc, ideaContext }),
+        body: JSON.stringify({ history, nextNum, bloc }),
       });
 
       if (!response.ok) throw new Error("API error");
@@ -709,7 +362,6 @@ export default function App() {
   const restart = () => {
     setScreen("home"); setQIndex(0); setAnswers({}); setCurrent("");
     setBlocTransition(false); setQuestions([FIRST_QUESTION]); setResult(null); setError(null);
-    setFromIdea(false);
   };
 
   // ─── SHARE ────────────────────────────────────────────────────────────────────
@@ -957,20 +609,17 @@ ${sections.map((s, i) => {
 
       {/* ── NAV ── */}
       {screen !== "intro" && (
-        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "rgba(11,10,20,0.92)" : screen === "idea" ? "rgba(252,252,252,0.97)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "rgba(255,122,46,0.15)" : screen === "idea" ? "#ededed" : "#ededed"}`, padding: `0 ${isMobile ? "14px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
+        <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: (screen === "quiz") ? "rgba(11,10,20,0.92)" : "rgba(252,252,252,0.97)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${(screen === "quiz") ? "rgba(255,122,46,0.15)" : "#ededed"}`, padding: `0 ${isMobile ? "14px" : "60px"}`, height: 60, display: "flex", justifyContent: "space-between", alignItems: "center", animation: "fadeIn 0.4s ease both" }}>
           <div style={{ position: "relative" }}>
             <button onClick={() => setMenuOpen(o => !o)} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <span style={{ color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
+              <div style={{ width: 34, height: 34, borderRadius: "50%", background: (screen === "quiz") ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <span style={{ color: (screen === "quiz") ? "#000" : "#fff", fontSize: 11, fontWeight: 900 }}>PS</span>
               </div>
-              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "#fff" : "#000" }}>PLAN<span style={{ color: String(screen).startsWith("idea") ? "#ff7a2e" : isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
-              {String(screen).startsWith("idea") && (
-                <span onClick={(e) => { e.stopPropagation(); handleIdeaLogoClick(); }} style={{ fontSize: isMobile ? 13 : 16, fontWeight: 700, letterSpacing: "0.02em", color: "#ff7a2e", marginLeft: 4, cursor: "pointer" }}>IDEA</span>
-              )}
+              <span style={{ fontSize: isMobile ? 15 : 18, fontWeight: 900, color: (screen === "quiz") ? "#fff" : "#000" }}>PLAN<span style={{ color: isOrange ? "#ff7a2e" : (screen === "quiz" ? "#fff" : "#000") }}>START</span></span>
               {(screen === "home" || screen === "quiz") && (
                 <span style={{ fontSize: isMobile ? 13 : 16, fontWeight: 900, letterSpacing: "0.02em", color: screen === "quiz" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.4)", marginLeft: 4 }}>BASIC</span>
               )}
-              <span style={{ fontSize: 9, color: (screen === "quiz" || screen === "idea-quiz" || screen === "idea-loading" || screen === "idea-results" || screen === "idea-mirror" || screen === "idea-transfer") ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, marginRight: isMobile ? 10 : 0, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
+              <span style={{ fontSize: 9, color: (screen === "quiz") ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)", marginLeft: 2, marginRight: isMobile ? 10 : 0, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▼</span>
             </button>
 
             {/* MENU DÉROULANT Basic / Business */}
@@ -978,30 +627,20 @@ ${sections.map((s, i) => {
               <>
                 <div onClick={() => setMenuOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 110 }} />
                 <div style={{ position: "absolute", top: 48, left: 0, zIndex: 120, background: "#fff", borderRadius: 16, boxShadow: "0 16px 40px rgba(0,0,0,0.18)", border: "1px solid #eee", overflow: "hidden", width: 320, animation: "slideDown 0.2s ease both" }}>
-                  <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid #efefef", background: screen !== "idea" ? "#f6f6f7" : "#fff" }}>
+                  <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid #efefef", background: "#f6f6f7" }}>
                     <button onClick={() => { setMenuOpen(false); restart(); }} style={{ flex: 1, textAlign: "left", background: "transparent", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3, cursor: "pointer" }}>
                       <span style={{ fontSize: 14, fontWeight: 900, color: "#000" }}>PLANSTART BASIC</span>
                       <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Génère ton business plan</span>
                     </button>
                   </div>
-                  <button onClick={() => { setMenuOpen(false); setScreen("idea"); }} style={{ width: "100%", textAlign: "left", background: screen === "idea" ? "#fff5ef" : "#fff", border: "none", padding: "16px 18px", display: "flex", flexDirection: "column", gap: 3 }}>
-                    <span style={{ fontSize: 14, fontWeight: 900, color: "#ff7a2e", display: "flex", alignItems: "center", gap: 7 }}>PLANSTART IDEA <span style={{ fontSize: 8, background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", padding: "2px 7px", borderRadius: 20, letterSpacing: "0.08em" }}>BIENTÔT</span></span>
-                    <span style={{ fontSize: 11, color: "rgba(0,0,0,0.5)", fontFamily: "Arial, sans-serif" }}>Trouve l'idée qui te ressemble</span>
-                  </button>
                 </div>
               </>
             )}
           </div>
-          {screen !== "quiz" && !String(screen).startsWith("idea") && (
+          {screen !== "quiz" && (
             <div style={{ display: "flex", gap: isMobile ? 10 : 32, alignItems: "center" }}>
               <a href="#comment" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
               <a href="#apropos" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
-            </div>
-          )}
-          {screen === "idea" && ideaUnlocked && (
-            <div style={{ display: "flex", gap: isMobile ? 10 : 32, alignItems: "center" }}>
-              <a href="#comment-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>COMMENT ÇA MARCHE</a>
-              <a href="#apropos-idea" style={{ fontSize: isMobile ? 9 : 11, fontWeight: 900, letterSpacing: isMobile ? "0.04em" : "0.08em", color: "rgba(0,0,0,0.7)", textDecoration: "none", whiteSpace: "nowrap" }}>À PROPOS</a>
             </div>
           )}
         </nav>
@@ -1173,428 +812,6 @@ ${sections.map((s, i) => {
         </div>
       )}
 
-      {/* ── IDEA (vitrine ampoule jaune sur fond sombre) ── */}
-      {screen === "idea" && (
-        <div style={{ background: "#ffffff" }}>
-          {/* BANDEAU MODE PREVIEW (uniquement si preview réel, pas en lancement public) */}
-          {ideaPreview && !IDEA_LIVE && (
-            <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 99, background: "#ff7a2e", color: "#fff", padding: "4px 12px", textAlign: "center", fontSize: 10, fontWeight: 800, letterSpacing: "0.04em", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-              <span>🛠 PREVIEW</span>
-              <button onClick={() => { try { localStorage.removeItem("ideaPreview"); } catch {} setIdeaPreview(false); }} style={{ background: "rgba(0,0,0,0.25)", color: "#fff", border: "none", borderRadius: 5, padding: "2px 8px", fontSize: 9, fontWeight: 900, cursor: "pointer" }}>QUITTER</button>
-            </div>
-          )}
-
-          {/* ══════════ VISITEURS NON-PREVIEW : page "bientôt disponible" ══════════ */}
-          {!ideaUnlocked && (
-            <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "100px 24px 60px" : "120px 60px 80px", background: "#15122B" }}>
-              <div style={{ position: "absolute", inset: 0, backgroundImage: isMobile ? "url(/319A8DC6-FBF7-4DCA-9E03-D5F02CE4B3C6.PNG)" : "url(/19A5C07F-D0FE-411D-BF24-87746C272A6E.PNG)", backgroundSize: "cover", backgroundPosition: "center center" }} />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(21,18,43,0.25) 0%, rgba(21,18,43,0.45) 50%, rgba(21,18,43,0.9) 75%)" }} />
-              <div style={{ position: "relative", zIndex: 2, animation: "slideUp 0.8s ease 0.2s both", maxWidth: 720 }}>
-                <div onClick={handleIdeaLogoClick} style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,122,46,0.5)", borderRadius: 30, padding: "10px 22px", marginBottom: 32, cursor: "default" }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#ff7a2e", display: "inline-block" }} />
-                  <span style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", color: "#fff" }}>BIENTÔT DISPONIBLE</span>
-                </div>
-                <h1 style={{ fontSize: isMobile ? "clamp(40px,11vw,64px)" : "clamp(60px,7vw,96px)", fontWeight: 900, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#fff", marginBottom: 24, textTransform: "uppercase" }}>
-                  ET SI LA BONNE<br />IDÉE ÉTAIT DÉJÀ<br /><span style={{ color: "#ff7a2e", fontStyle: "italic" }}>EN TOI ?</span>
-                </h1>
-                <p style={{ fontSize: isMobile ? 15 : 18, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 40, fontFamily: "Arial, sans-serif", maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>PlanStart Idea t'aidera bientôt à trouver et tester l'idée de business faite pour toi. En attendant, crée ton business plan gratuitement.</p>
-                <button onClick={restart} style={{ background: "#fff", color: "#1a1530", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer" }}>ESSAYER PLANSTART GRATUIT →</button>
-              </div>
-            </div>
-          )}
-
-          {/* ══════════ HOME IDEA COMPLÈTE (publique) ══════════ */}
-          {ideaUnlocked && (
-            <>
-              {/* ─── HERO (carrousel 3 images défilantes, style Basic) ─── */}
-              <div style={{ height: isMobile ? "92vh" : "100vh", position: "relative", overflow: "hidden" }}>
-                {IDEA_IMAGES.map((img, i) => (
-                  <div key={i} style={{ position: "absolute", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === ideaSlideIndex ? 1 : 0, transition: "opacity 1.5s ease" }} />
-                ))}
-                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.56)" }} />
-                <div style={{ position: "absolute", inset: 0, zIndex: 2, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "80px 24px 40px" : "100px 60px 60px", animation: "slideUp 0.8s ease 0.2s both" }}>
-                  <div style={{ fontSize: isMobile ? 14 : 16, color: "rgba(255,255,255,0.82)", fontWeight: 500, letterSpacing: "0.08em", marginBottom: 18, fontFamily: "Arial, sans-serif" }}>Trouver la bonne idée est souvent la partie la plus difficile.</div>
-                  <h1 style={{ fontSize: isMobile ? "clamp(44px,13vw,72px)" : "clamp(72px,9vw,120px)", fontWeight: 900, lineHeight: 0.9, letterSpacing: "-0.03em", color: "#FFFFFF", marginBottom: 20, textTransform: "uppercase" }}>
-                    TROUVE<br />LA TIENNE.<br /><span style={{ color: "#ff7a2e", fontStyle: "italic" }}>MAINTENANT.</span>
-                  </h1>
-                  <p style={{ fontSize: isMobile ? 16 : 18, color: "rgba(255,255,255,0.88)", fontWeight: 400, marginBottom: 36, fontFamily: "Arial, sans-serif", maxWidth: 500 }}>Réponds à quelques questions. À partir de ton expérience et de tes points forts, on révèle 3 projets qui te ressemblent. Gratuit, sans inscription.</p>
-                  <button onClick={startIdeaQuiz} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 13, fontWeight: 900, letterSpacing: "0.1em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(255,94,58,0.35)" }}>🚀 DÉCOUVRIR MES 3 PROJETS</button>
-                </div>
-                {/* Indicateurs de slide */}
-                <div style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, zIndex: 3 }}>
-                  {IDEA_IMAGES.map((_, i) => (<div key={i} onClick={() => setIdeaSlideIndex(i)} style={{ width: i === ideaSlideIndex ? 32 : 8, height: 2, background: i === ideaSlideIndex ? "#ff7a2e" : "rgba(255,255,255,0.3)", cursor: "pointer", transition: "all 0.4s ease" }} />))}
-                </div>
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.1)", zIndex: 1 }}>
-                  <div key={ideaSlideIndex} style={{ height: "100%", background: "#ff7a2e", animation: "barGrow 5s linear both" }} />
-                </div>
-              </div>
-
-              {/* ─── 3 CARTES (style Basic, texte Idea) ─── */}
-              <div style={{ background: "#f6f6f7", padding: isMobile ? "14px 0px 8px" : "40px 0px 20px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 20, alignItems: "stretch" }}>
-                  {[{ n: "PERSONNALISÉ", label: "Selon ton profil" }, { n: "3 RECOMMANDATIONS", label: "Classées pour toi" }, { n: "GRATUIT", label: "Sans inscription" }].map((s, i) => (
-                    <div key={i} style={{ position: "relative", background: "#2a2a31", borderRadius: 18, padding: isMobile ? "14px 10px" : "26px 28px", boxShadow: "0 6px 22px rgba(0,0,0,0.25)", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-                      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 5, background: "linear-gradient(180deg,#ff9d3d,#ff5e3a)" }} />
-                      <div style={{ fontSize: isMobile ? "clamp(11px,2.8vw,13px)" : "clamp(17px,2vw,22px)", fontWeight: 900, lineHeight: 1.15, color: "#FFFFFF", letterSpacing: "0.01em" }}>{s.n}</div>
-                      <div style={{ fontSize: isMobile ? 9 : 13, color: "#FFFFFF", fontFamily: "Arial, sans-serif", lineHeight: 1.3, marginTop: 7 }}>{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* ─── POURQUOI C'EST DIFFÉRENT (style Basic CE QUE TU OBTIENS : photo + bloc sombre) ─── */}
-              <div style={{ padding: isMobile ? "10px 0px" : "20px 0px" }}>
-                <div style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 8px 30px rgba(26,19,51,0.15)" }}>
-                  {isMobile ? (
-                    <div>
-                      <div style={{ height: 220, backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "#2a2a31", color: "#fff", padding: "48px 24px" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: 32, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
-                        {[
-                          { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
-                          { t: "ADAPTÉES À TON RYTHME", d: "Que tu aies quelques heures ou plusieurs jours par semaine." },
-                          { t: "FONDÉES SUR TES POINTS FORTS", d: "Nous privilégions les projets où tu as déjà un avantage." },
-                          { t: "ALIGNÉES SUR TES AMBITIONS", d: "Revenus complémentaires, indépendance ou projet à long terme." },
-                          { t: "RÉALISTES À LANCER", d: "Des opportunités que tu peux concrètement démarrer rapidement." },
-                        ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.18)" }}>
-                            <span style={{ fontSize: 13, color: "#FFFFFF", minWidth: 28, fontWeight: 900, paddingTop: 2 }}>{String(i + 1).padStart(2, "0")}</span>
-                            <div>
-                              <div style={{ fontSize: 14, fontWeight: 900, marginBottom: 4, color: "#FFFFFF" }}>{item.t}</div>
-                              <div style={{ fontSize: 13, color: "#FFFFFF", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 520 }}>
-                      <div style={{ backgroundImage: "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                      <div style={{ background: "#2a2a31", color: "#fff", padding: "60px 48px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: 36, fontWeight: 900 }}>POURQUOI CES PROJETS SONT FAITS POUR TOI</div>
-                        {[
-                          { t: "COMPATIBLES AVEC TON BUDGET", d: "Chaque recommandation tient compte de tes ressources actuelles." },
-                          { t: "ADAPTÉES À TON RYTHME", d: "Que tu aies quelques heures ou plusieurs jours par semaine." },
-                          { t: "FONDÉES SUR TES POINTS FORTS", d: "Nous privilégions les projets où tu as déjà un avantage." },
-                          { t: "ALIGNÉES SUR TES AMBITIONS", d: "Revenus complémentaires, indépendance ou projet à long terme." },
-                          { t: "RÉALISTES À LANCER", d: "Des opportunités que tu peux concrètement démarrer rapidement." },
-                        ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.18)" }}>
-                            <span style={{ fontSize: 13, color: "#FFFFFF", minWidth: 32, fontWeight: 900, paddingTop: 2 }}>{String(i + 1).padStart(2, "0")}</span>
-                            <div>
-                              <div style={{ fontSize: 14, fontWeight: 900, marginBottom: 4, color: "#FFFFFF" }}>{item.t}</div>
-                              <div style={{ fontSize: 13, color: "#FFFFFF", fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>{item.d}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* ─── COMMENT ÇA MARCHE (style Basic : numéros 01/02/03) ─── */}
-              <div id="comment-idea" style={{ background: "#fff", padding: isMobile ? "32px 20px" : "44px 60px" }}>
-                <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-                  <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: isMobile ? 32 : 48, fontWeight: 900 }}>COMMENT ÇA MARCHE</div>
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 32 : 2 }}>
-                    {[
-                      { n: "01", titre: "TU RÉPONDS", desc: "Réponds à quelques questions simples sur toi, ton expérience, tes points forts et tes envies. Moins d'une minute." },
-                      { n: "02", titre: "ON PART DE QUI TU ES", desc: "Notre IA croise ton expérience, tes compétences et tes contraintes pour révéler des opportunités où tu as déjà une longueur d'avance." },
-                      { n: "03", titre: "TU DÉCOUVRES TES PROJETS", desc: "3 projets faits pour toi, classés par compatibilité, avec budget, premiers revenus et la marche à suivre. Prêts à lancer." },
-                    ].map((step, i) => (
-                      <div key={i} style={{ padding: isMobile ? "0" : "0 40px 0 0", borderRight: !isMobile && i < 2 ? "1px solid #ece9f7" : "none" }}>
-                        <div style={{ fontSize: 48, fontWeight: 900, color: "#ff7a2e", lineHeight: 1, marginBottom: 16, opacity: 0.9 }}>{step.n}</div>
-                        <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 12, color: "#17142F" }}>{step.titre}</div>
-                        <div style={{ fontSize: 14, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>{step.desc}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* ─── À PROPOS (style Basic, texte Idea) ─── */}
-              <div id="apropos-idea" style={{ background: "#f6f6f7", padding: isMobile ? "32px 20px" : "44px 60px" }}>
-                <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 80, alignItems: "center" }}>
-                  <div>
-                    <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "#ff7a2e", marginBottom: 32, fontWeight: 900 }}>À PROPOS</div>
-                    <h2 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 20, color: "#17142F", textTransform: "uppercase" }}>Tu n'as pas besoin d'avoir déjà une idée pour entreprendre.</h2>
-                    <p style={{ fontSize: 15, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif", marginBottom: 16 }}>Beaucoup de futurs entrepreneurs savent qu'ils veulent se lancer, mais ne savent pas quel projet choisir. PlanStart Idea a été conçu pour les aider à passer cette première étape avec méthode.</p>
-                    <p style={{ fontSize: 15, color: "#5E5A74", lineHeight: 1.7, fontFamily: "Arial, sans-serif" }}>Notre IA analyse ton profil, tes contraintes et tes objectifs pour identifier les opportunités les plus cohérentes avec ta situation. Une fois ton projet choisi, PlanStart t'accompagne dans la création de ton business plan.</p>
-                  </div>
-                  <div style={{ background: "#2a2a31", padding: "40px 32px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)" }}>
-                    {[{ n: "PROFIL ANALYSÉ" }, { n: "3 PROJETS SÉLECTIONNÉS" }, { n: "AUCUNE INSCRIPTION" }].map((stat, i) => (
-                      <div key={i} style={{ padding: "18px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.18)" : "none" }}>
-                        <div style={{ fontSize: isMobile ? 20 : 30, fontWeight: 900, color: "#ff7a2e", lineHeight: 1 }}>{stat.n}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* ─── BANNIÈRE PHOTO FINALE (phrases + CTA, sans fusée) ─── */}
-              <div style={{ position: "relative", minHeight: isMobile ? 360 : 420, overflow: "hidden" }}>
-                <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.62)" }} />
-                <div style={{ position: "relative", zIndex: 2, minHeight: isMobile ? 360 : 420, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: isMobile ? "48px 24px" : "60px 40px" }}>
-                  <h2 style={{ fontSize: isMobile ? 28 : 40, fontWeight: 800, color: "#FFFFFF", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14 }}>Ton prochain projet commence ici.</h2>
-                  <p style={{ fontSize: isMobile ? 15 : 17, color: "rgba(255,255,255,0.75)", fontFamily: "Arial, sans-serif", lineHeight: 1.5, marginBottom: 32, maxWidth: 520 }}>Identifie la bonne opportunité. Transforme-la en projet concret avec PlanStart.</p>
-                  <button onClick={startIdeaQuiz} style={{ background: "#fff", color: "#000", border: "none", padding: isMobile ? "15px 28px" : "16px 36px", fontSize: isMobile ? 12 : 13, fontWeight: 900, letterSpacing: "0.05em", borderRadius: 12, cursor: "pointer", boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}>🚀 DÉCOUVRIR MES 3 PROJETS</button>
-                </div>
-              </div>
-
-              {/* ─── FOOTER LÉGAL ─── */}
-              <div style={{ background: "#fff", borderTop: "1px solid #ededed", padding: isMobile ? "24px 20px 110px" : "24px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-                <span style={{ fontSize: 11, color: "rgba(0,0,0,0.3)", fontFamily: "Arial, sans-serif" }}>© 2025-2026 PLANSTART — Tous droits réservés</span>
-                <div style={{ display: "flex", gap: 20 }}>
-                  <a href="/mentions-legales.html" style={{ fontSize: 11, color: "rgba(0,0,0,0.4)", textDecoration: "none", fontFamily: "Arial, sans-serif" }}>Mentions légales</a>
-                  <a href="/confidentialite.html" style={{ fontSize: 11, color: "rgba(0,0,0,0.4)", textDecoration: "none", fontFamily: "Arial, sans-serif" }}>Confidentialité</a>
-                  <a href="/cgu.html" style={{ fontSize: 11, color: "rgba(0,0,0,0.4)", textDecoration: "none", fontFamily: "Arial, sans-serif" }}>CGU</a>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-      )}
-
-      {/* ── MODALE MOT DE PASSE PREVIEW ── */}
-      {showPreviewModal && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.8)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }} onClick={() => setShowPreviewModal(false)}>
-          <div onClick={(e) => e.stopPropagation()} style={{ background: IDEA_SURFACE, borderRadius: 18, padding: isMobile ? "32px 24px" : "40px 36px", width: "100%", maxWidth: 380, border: `1px solid ${IDEA_VIOLET_ACCENT}` }}>
-            <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 8 }}>🔒 Accès preview</div>
-            <div style={{ fontSize: 13, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif", marginBottom: 24, lineHeight: 1.6 }}>Entre le mot de passe pour accéder à PlanStart Idea en avant-première.</div>
-            <input
-              type="password"
-              value={previewPwd}
-              onChange={(e) => { setPreviewPwd(e.target.value); setPreviewError(false); }}
-              onKeyDown={(e) => { if (e.key === "Enter") checkPreviewPassword(); }}
-              placeholder="Mot de passe"
-              autoFocus
-              style={{ width: "100%", boxSizing: "border-box", padding: "14px 16px", borderRadius: 10, border: `1px solid ${previewError ? "#ff5e5e" : "rgba(255,122,46,0.3)"}`, background: IDEA_BG, color: "#fff", fontSize: 15, marginBottom: previewError ? 8 : 20, outline: "none" }}
-            />
-            {previewError && <div style={{ fontSize: 12, color: "#ff5e5e", marginBottom: 16 }}>Mot de passe incorrect</div>}
-            <button onClick={checkPreviewPassword} style={{ width: "100%", background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: "14px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 10, cursor: "pointer" }}>ACCÉDER →</button>
-          </div>
-        </div>
-      )}
-
-
-      {/* ── IDEA QUIZ ── */}
-      {screen === "idea-quiz" && (() => {
-        const isDynamic = ideaStep === IDEA_QUESTIONS.length;
-        const dynamicQ = isDynamic ? IDEA_DYNAMIC[ideaAnswers.interet] : null;
-        const currentQ = isDynamic ? dynamicQ : IDEA_QUESTIONS[ideaStep];
-        if (!currentQ) return null;
-        const progress = ((ideaStep + 1) / ideaTotalSteps) * 100;
-        const currentKey = isDynamic ? "dynamique" : currentQ.key;
-        return (
-          <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", animation: "slideUp 0.4s ease both" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 30%, rgba(255,122,46,0.06) 0%, rgba(26,26,31,0) 60%)" }} />
-            <div style={{ maxWidth: 680, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
-              {/* Progression */}
-              <div style={{ marginBottom: 40 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                  <span style={{ fontSize: 12, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.1em" }}>QUESTION {ideaStep + 1} / {ideaTotalSteps}</span>
-                  <span style={{ fontSize: 12, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif" }}>~30 secondes</span>
-                </div>
-                <div style={{ height: 5, background: "rgba(255,122,46,0.15)", borderRadius: 10, overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", borderRadius: 10, transition: "width 0.4s ease", boxShadow: "0 0 12px rgba(255,122,46,0.6)" }} />
-                </div>
-              </div>
-              {/* Question */}
-              <h2 style={{ fontSize: isMobile ? 26 : 36, fontWeight: 900, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 32 }}>{currentQ.q}</h2>
-              {/* Options */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {currentQ.opts.map((opt, i) => (
-                  <button
-                    key={i}
-                    onClick={() => answerIdea(currentKey, opt)}
-                    style={{ textAlign: "left", background: IDEA_SURFACE, border: "1px solid rgba(255,122,46,0.2)", borderRadius: 14, padding: isMobile ? "18px 20px" : "20px 24px", color: "#fff", fontSize: isMobile ? 15 : 17, fontWeight: 700, cursor: "pointer", transition: "all 0.18s", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}
-                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = IDEA_VIOLET; e.currentTarget.style.background = "#1f1b30"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,122,46,0.2)"; e.currentTarget.style.background = IDEA_SURFACE; }}
-                  >
-                    <span>{opt}</span>
-                    <span style={{ color: IDEA_VIOLET, fontSize: 18, opacity: 0.6 }}>→</span>
-                  </button>
-                ))}
-              </div>
-              {/* Retour */}
-              {ideaStep > 0 && (
-                <button onClick={() => setIdeaStep(ideaStep - 1)} style={{ background: "transparent", border: "none", color: IDEA_TEXT2, fontSize: 12, fontWeight: 900, letterSpacing: "0.08em", marginTop: 28, padding: 0, cursor: "pointer" }}>← RETOUR</button>
-              )}
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* ── IDEA LOADING ── */}
-      {screen === "idea-loading" && (
-        <div style={{ minHeight: "100vh", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: isMobile ? "90px 24px" : "100px 60px", textAlign: "center" }}>
-          <div style={{ maxWidth: 480, width: "100%" }}>
-            <div style={{ width: 64, height: 64, margin: "0 auto 32px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,122,46,0.4), transparent 70%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, animation: "pulse 1.5s ease-in-out infinite" }}>✦</div>
-            <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 900, color: "#fff", marginBottom: 36 }}>On analyse ton profil</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, textAlign: "left" }}>
-              {IDEA_LOAD_STEPS.map((step, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, opacity: i <= ideaLoadStep ? 1 : 0.3, transition: "opacity 0.4s" }}>
-                  <div style={{ width: 22, height: 22, borderRadius: "50%", flexShrink: 0, background: i < ideaLoadStep ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", border: i < ideaLoadStep ? "none" : `2px solid ${i === ideaLoadStep ? IDEA_VIOLET : "rgba(255,122,46,0.3)"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff" }}>
-                    {i < ideaLoadStep ? "✓" : (i === ideaLoadStep ? <span style={{ width: 8, height: 8, borderRadius: "50%", background: IDEA_VIOLET, animation: "pulse 1s infinite" }} /> : "")}
-                  </div>
-                  <span style={{ fontSize: isMobile ? 14 : 16, fontWeight: 700, color: i <= ideaLoadStep ? "#fff" : IDEA_TEXT2 }}>{step}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── IDEA MIRROR : "Voici ce qu'on a compris de toi" ── */}
-      {screen === "idea-mirror" && (
-        <div style={{ minHeight: "100vh", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px", textAlign: "center", animation: "fadeIn 0.6s ease both" }}>
-          <div style={{ maxWidth: 560, width: "100%" }}>
-            <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: "0.18em", color: "#ff7a2e", marginBottom: 24, animation: "slideUp 0.6s ease 0.1s both" }}>🎯 CE QUE NOUS AVONS COMPRIS DE TOI</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 18, marginBottom: 36 }}>
-              {buildMirror().map((ligne, i) => (
-                <p key={i} style={{ fontSize: isMobile ? 17 : 19, lineHeight: 1.55, color: i === buildMirror().length - 1 ? "rgba(255,255,255,0.7)" : "#fff", fontWeight: i === buildMirror().length - 1 ? 400 : 600, fontFamily: "Arial, sans-serif", animation: `slideUp 0.6s ease ${0.2 + i * 0.15}s both` }}>{ligne}</p>
-              ))}
-            </div>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 36, padding: "8px 16px", background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 30, animation: "slideUp 0.6s ease 0.7s both" }}>
-              <span style={{ fontSize: 14 }}>✅</span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#ff9d3d", letterSpacing: "0.04em" }}>Analyse terminée</span>
-            </div>
-            <div style={{ animation: "slideUp 0.6s ease 0.85s both" }}>
-              <button onClick={() => setScreen("idea-results")} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: isMobile ? "16px 36px" : "18px 48px", fontSize: 14, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: "pointer", boxShadow: "0 10px 30px rgba(255,94,58,0.35)" }}>DÉCOUVRIR MES OPPORTUNITÉS →</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── IDEA RESULTS ── */}
-      {screen === "idea-results" && (
-        <div style={{ minHeight: "100vh", background: IDEA_BG, padding: isMobile ? "90px 16px 60px" : "110px 40px 80px" }}>
-          <div style={{ maxWidth: 760, margin: "0 auto" }}>
-            {ideaError ? (
-              <div style={{ textAlign: "center", paddingTop: 40 }}>
-                <div style={{ fontSize: 40, marginBottom: 20 }}>😕</div>
-                <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 12 }}>Oups</div>
-                <p style={{ color: IDEA_TEXT2, fontFamily: "Arial, sans-serif", marginBottom: 28 }}>{ideaError}</p>
-                <button onClick={() => launchIdeaGeneration(ideaAnswers)} style={{ background: "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: "14px 32px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>RÉESSAYER</button>
-              </div>
-            ) : ideaResults ? (
-              <>
-                <div style={{ textAlign: "center", marginBottom: 40 }}>
-                  <div style={{ fontSize: 12, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.12em", marginBottom: 12 }}>TES 3 OPPORTUNITÉS</div>
-                  <h1 style={{ fontSize: isMobile ? 28 : 38, fontWeight: 900, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 12 }}>Voici les business faits pour toi</h1>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: IDEA_SURFACE, border: "1px solid rgba(255,122,46,0.2)", borderRadius: 20, padding: "6px 16px" }}>
-                    <span style={{ fontSize: 11, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif" }}>Confiance de l'analyse :</span>
-                    <span style={{ fontSize: 11, fontWeight: 900, color: ideaResults.confidence === "Élevée" ? "#5fe3a1" : "#ffce6b" }}>{ideaResults.confidence}</span>
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                  {ideaResults.ideas.map((idea, i) => {
-                    const isTop = idea.rank === 1;
-                    const borderColor = isTop ? IDEA_VIOLET : idea.rank === 2 ? "rgba(255,122,46,0.35)" : "rgba(255,255,255,0.12)";
-                    const isExpanded = expandedCard === i;
-                    return (
-                      <div key={i} style={{ background: IDEA_SURFACE, borderRadius: 18, border: `1px solid ${borderColor}`, padding: isMobile ? "22px 20px" : "28px 28px", boxShadow: isTop ? "0 10px 40px rgba(255,122,46,0.25)" : "none" }}>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14, gap: 10 }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                            <span style={{ fontSize: 24 }}>{idea.medal}</span>
-                            <span style={{ fontSize: 11, fontWeight: 900, color: isTop ? IDEA_VIOLET : IDEA_TEXT2, letterSpacing: "0.06em" }}>{idea.compatibilityLabel}</span>
-                          </div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 6, background: IDEA_BG, borderRadius: 20, padding: "5px 12px" }}>
-                            <span style={{ fontSize: 16, fontWeight: 900, color: isTop ? IDEA_VIOLET : "#fff" }}>{idea.compatibilityScore}%</span>
-                          </div>
-                        </div>
-                        <h2 style={{ fontSize: isMobile ? 20 : 24, fontWeight: 900, color: "#fff", marginBottom: 8, lineHeight: 1.15 }}>{idea.name}</h2>
-                        <p style={{ fontSize: 14, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif", lineHeight: 1.6, marginBottom: 18 }}>{idea.pitch}</p>
-
-                        {/* Badges */}
-                        {idea.badges && idea.badges.length > 0 && (
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 18 }}>
-                            {idea.badges.map((b, bi) => (
-                              <span key={bi} style={{ fontSize: 11, fontWeight: 700, color: IDEA_VIOLET, background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.25)", borderRadius: 20, padding: "5px 12px" }}>{b}</span>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Infos clés */}
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 18 }}>
-                          <div style={{ background: IDEA_BG, borderRadius: 10, padding: "12px 14px" }}>
-                            <div style={{ fontSize: 10, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif", marginBottom: 3, letterSpacing: "0.04em" }}>BUDGET DE DÉPART</div>
-                            <div style={{ fontSize: 15, fontWeight: 900, color: "#fff" }}>{idea.startBudget}</div>
-                          </div>
-                          <div style={{ background: IDEA_BG, borderRadius: 10, padding: "12px 14px" }}>
-                            <div style={{ fontSize: 10, color: IDEA_TEXT2, fontFamily: "Arial, sans-serif", marginBottom: 3, letterSpacing: "0.04em" }}>PREMIERS REVENUS</div>
-                            <div style={{ fontSize: 15, fontWeight: 900, color: "#fff" }}>{idea.firstRevenue}</div>
-                          </div>
-                        </div>
-
-                        {/* Pourquoi toi / pourquoi maintenant */}
-                        <div style={{ marginBottom: 16 }}>
-                          <div style={{ fontSize: 11, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.06em", marginBottom: 5 }}>POURQUOI CETTE IDÉE TE CORRESPOND</div>
-                          <p style={{ fontSize: 13, color: "#e8e8f0", fontFamily: "Arial, sans-serif", lineHeight: 1.6, marginBottom: 14 }}>{idea.whyYou}</p>
-                          <div style={{ fontSize: 11, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.06em", marginBottom: 5 }}>POURQUOI C'EST INTÉRESSANT AUJOURD'HUI</div>
-                          <p style={{ fontSize: 13, color: "#e8e8f0", fontFamily: "Arial, sans-serif", lineHeight: 1.6 }}>{idea.whyNow}</p>
-                        </div>
-
-                        {/* Accordéon */}
-                        <button onClick={() => setExpandedCard(isExpanded ? null : i)} style={{ width: "100%", background: "transparent", border: "1px solid rgba(255,122,46,0.2)", borderRadius: 10, padding: "11px", color: IDEA_VIOLET, fontSize: 12, fontWeight: 900, letterSpacing: "0.06em", cursor: "pointer", marginBottom: isExpanded ? 16 : 14 }}>
-                          {isExpanded ? "MOINS DE DÉTAILS ▲" : "EN SAVOIR PLUS ▼"}
-                        </button>
-                        {isExpanded && idea.details && (
-                          <div style={{ background: IDEA_BG, borderRadius: 12, padding: "18px 18px", marginBottom: 14, animation: "slideDown 0.3s ease both" }}>
-                            {[
-                              { l: "L'opportunité", v: idea.details.opportunity },
-                              { l: "Les risques", v: idea.details.risks },
-                              { l: "Profil idéal", v: idea.details.idealProfile },
-                              { l: "Prochaines étapes", v: idea.details.nextSteps },
-                            ].map((d, di) => (
-                              <div key={di} style={{ marginBottom: di < 3 ? 14 : 0 }}>
-                                <div style={{ fontSize: 11, fontWeight: 900, color: IDEA_VIOLET, marginBottom: 4, letterSpacing: "0.04em" }}>{d.l}</div>
-                                <p style={{ fontSize: 13, color: "#d8d8e2", fontFamily: "Arial, sans-serif", lineHeight: 1.6 }}>{d.v}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* CTA */}
-                        <button onClick={() => chooseIdea(idea)} style={{ width: "100%", background: isTop ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", color: "#fff", border: isTop ? "none" : `1px solid ${IDEA_VIOLET}`, padding: "15px", fontSize: 13, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 12, cursor: "pointer" }}>🚀 CONSTRUIRE CE PROJET</button>
-                      </div>
-                    );
-                  })}
-                </div>
-                <button onClick={startIdeaQuiz} style={{ display: "block", margin: "28px auto 0", background: "transparent", border: "none", color: IDEA_TEXT2, fontSize: 12, fontWeight: 900, letterSpacing: "0.08em", cursor: "pointer" }}>↻ REFAIRE LE TEST</button>
-              </>
-            ) : null}
-          </div>
-        </div>
-      )}
-
-      {/* ── IDEA TRANSFER (transition vers Basic) ── */}
-      {screen === "idea-transfer" && chosenIdea && (
-        <div style={{ minHeight: "100vh", background: IDEA_BG, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: isMobile ? "90px 24px" : "100px 60px", textAlign: "center" }}>
-          <div style={{ maxWidth: 480, width: "100%" }}>
-            <div style={{ fontSize: 12, fontWeight: 900, color: IDEA_VIOLET, letterSpacing: "0.12em", marginBottom: 14 }}>TU AS CHOISI</div>
-            <h1 style={{ fontSize: isMobile ? 26 : 32, fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 36 }}>{chosenIdea.name}</h1>
-            <div style={{ display: "flex", flexDirection: "column", gap: 14, textAlign: "left", marginBottom: 40 }}>
-              {TRANSFER_STEPS.map((step, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, opacity: i <= transferStep ? 1 : 0.3, transition: "opacity 0.4s" }}>
-                  <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: i <= transferStep ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "transparent", border: i <= transferStep ? "none" : "2px solid rgba(255,122,46,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, color: "#fff" }}>{i <= transferStep ? "✓" : ""}</div>
-                  <span style={{ fontSize: isMobile ? 15 : 16, fontWeight: 700, color: i <= transferStep ? "#fff" : IDEA_TEXT2 }}>{step}</span>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={launchBasicFromIdea}
-              disabled={transferStep < TRANSFER_STEPS.length - 1}
-              style={{ width: "100%", background: transferStep < TRANSFER_STEPS.length - 1 ? "rgba(255,122,46,0.2)" : "linear-gradient(90deg,#ff9d3d,#ff5e3a)", color: "#fff", border: "none", padding: "16px", fontSize: 14, fontWeight: 900, letterSpacing: "0.08em", borderRadius: 14, cursor: transferStep < TRANSFER_STEPS.length - 1 ? "default" : "pointer", transition: "all 0.4s", boxShadow: transferStep < TRANSFER_STEPS.length - 1 ? "none" : "0 8px 30px rgba(255,122,46,0.4)" }}
-            >
-              🚀 GÉNÉRER MON BUSINESS PLAN COMPLET
-            </button>
-            <button onClick={() => setScreen("idea-results")} style={{ background: "transparent", border: "none", color: IDEA_TEXT2, fontSize: 12, fontWeight: 900, letterSpacing: "0.08em", marginTop: 20, cursor: "pointer" }}>← CHOISIR UNE AUTRE IDÉE</button>
-          </div>
-        </div>
-      )}
 
       {/* ── QUIZ ── */}
       {screen === "quiz" && (
@@ -1613,17 +830,6 @@ ${sections.map((s, i) => {
           )}
 
           <div style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", maxWidth: 720, margin: "0 auto", animation: "slideUp 0.5s ease both" }}>
-
-            {/* Bandeau profil importé depuis IDEA */}
-            {fromIdea && (
-              <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,122,46,0.12)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 24 }}>
-                <span style={{ fontSize: 18 }}>✦</span>
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 900, color: "#ff7a2e", marginBottom: 3 }}>Projet importé depuis PlanStart Idea ✅</div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", fontFamily: "Arial, sans-serif", lineHeight: 1.4 }}>On a déjà analysé ton profil et préparé les bases du projet. Il reste juste quelques points à confirmer avant de générer ton business plan.</div>
-                </div>
-              </div>
-            )}
 
             {/* Blocs + Progress */}
             <div style={{ marginBottom: 48 }}>
@@ -1649,14 +855,6 @@ ${sections.map((s, i) => {
                 </span>
               </div>
             </div>
-
-            {/* Intro "ce qu'on a identifié" (uniquement pour les questions de validation venant d'Idea) */}
-            {questions[qIndex]?.intro && (
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 18, padding: "12px 16px", background: "rgba(255,122,46,0.1)", border: "1px solid rgba(255,122,46,0.3)", borderRadius: 12, maxWidth: 650 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>✦</span>
-                <span style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, fontFamily: "Arial, sans-serif" }}>{questions[qIndex].intro}</span>
-              </div>
-            )}
 
             {/* Question */}
             <h2 style={{ fontSize: isMobile ? "20px" : "28px", fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.4, marginBottom: 32, color: "#fff", maxWidth: 650, animation: "slideDown 0.4s ease both" }}>
