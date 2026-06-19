@@ -405,9 +405,9 @@ export default function App() {
     // Ligne 2 : son terrain (environnement + savoir-faire)
     const env = a.environnement && !/(autre)/i.test(a.environnement) ? a.environnement.replace(/^[^\wÀ-ÿ]+/, "").trim() : "";
     const aise = a.aise ? a.aise.replace(/^[^\wÀ-ÿ]+/, "").trim() : "";
-    if (env && aise) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)} et te sentir plus à l'aise dans des activités liées à ${frAise(aise)}.`);
+    if (env && aise) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)} et te sentir plus à l'aise dans des activités liées ${frAisePrep(aise)}.`);
     else if (env) lignes.push(`Tu as indiqué une expérience dans ${frEnv(env)}.`);
-    else if (aise) lignes.push(`Tu sembles plus à l'aise dans des activités liées à ${frAise(aise)}.`);
+    else if (aise) lignes.push(`Tu sembles plus à l'aise dans des activités liées ${frAisePrep(aise)}.`);
 
     // Ligne 3 : la logique de recommandation
     if (env || aise) lignes.push("Nous avons donc privilégié des opportunités qui s'appuient sur ce que tu connais déjà, plutôt que sur des compétences totalement nouvelles.");
@@ -423,6 +423,11 @@ export default function App() {
   const frAise = (s) => {
     const m = { "Manuel / technique": "le travail manuel et technique", "Relationnel / vente": "le relationnel et la vente", "Créatif / design": "la création et le design", "Analyse / chiffres": "l'analyse et les chiffres", "Informatique / digital": "l'informatique et le digital", "Organisation / gestion": "l'organisation et la gestion" };
     return m[s] || s.toLowerCase();
+  };
+  // Version avec la préposition correcte (à le → au, à les → aux, à l', à la)
+  const frAisePrep = (s) => {
+    const m = { "Manuel / technique": "au travail manuel et technique", "Relationnel / vente": "au relationnel et à la vente", "Créatif / design": "à la création et au design", "Analyse / chiffres": "à l'analyse et aux chiffres", "Informatique / digital": "à l'informatique et au digital", "Organisation / gestion": "à l'organisation et à la gestion" };
+    return m[s] || "à " + s.toLowerCase();
   };
 
   const chooseIdea = (idea) => {
