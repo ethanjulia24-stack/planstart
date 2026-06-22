@@ -34,9 +34,9 @@ const BLOCS = ["TON PROJET", "TON PROJET", "TON PROJET", "TOI", "TOI", "TOI", "T
 const MAX_INPUT_LENGTH = 500;
 
 const IMAGES = [
-  "/hero-1.jpg",
-  "/hero-2.jpg",
-  "/hero-3.jpg",
+  "/hero-1.jpeg",
+  "/hero-2.jpeg",
+  "/hero-3.jpeg",
 ];
 
 // Photo de couverture du business plan généré (homme pensif, ambiance sombre/chaude)
@@ -881,7 +881,7 @@ ${sections.map((s, i) => {
           {/* ════════ À PROPOS ════════ */}
           <div id="apropos" style={{ background: CREAM, padding: isMobile ? "32px 16px" : "44px 60px" }}>
             <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "0.8fr 1.2fr 1fr", gap: isMobile ? 24 : 40, alignItems: "center" }}>
-              <div style={{ width: "100%", height: isMobile ? 220 : 260, borderRadius: 16, backgroundImage: "url(/hero-1.jpg)", backgroundSize: "cover", backgroundPosition: "center" }} />
+              <div style={{ width: "100%", height: isMobile ? 220 : 260, borderRadius: 16, backgroundImage: "url(/hero-1.jpeg)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <div>
                 <div style={{ fontSize: 12.5, letterSpacing: "0.16em", color: OR, fontWeight: 700, marginBottom: 14 }}>À PROPOS</div>
                 <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: 16 }}>Planstart c'est pour ceux qui passent à l'action.</h2>
