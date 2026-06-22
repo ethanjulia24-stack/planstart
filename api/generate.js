@@ -182,17 +182,6 @@ IMPORTANT : commence ta réponse DIRECTEMENT par la ligne "NOM:" ci-dessous. Auc
 NOM: [Nom du business, 2-3 mots]
 SLOGAN: [Slogan court]
 TITRE: [3 à 6 mots décrivant simplement ce projet — court, propre, sans fautes, sans jargon. Pas un nom de marque inventé, pas la réponse brute. INTERDIT : ne mets jamais le mot "IA" ni "Intelligence Artificielle" dans le titre. Exemples : "Générateur de business plan", "Salon de coiffure à Lyon", "Restaurant de cuisine locale". Doit être lisible comme titre de couverture.]
-SCORE: [nombre /100 = moyenne des 6 critères ci-dessous ramenée sur 100, arrondie. Ne mets PAS un score arbitraire : il doit correspondre à la moyenne réelle des 6 notes.]
-SCORE_EXPLICATION: [1 phrase HONNÊTE mais CONSTRUCTIVE : ce qui est solide + le principal levier pour progresser, jamais un simple couperet décourageant]
-SCORE_CRITERES:
-- Experience: [note /10] — [1 phrase]
-- Marche: [note /10] — [1 phrase]
-- Differenciation: [note /10] — [1 phrase]
-- Budget: [note /10] — [1 phrase]
-- Clarte: [note /10] — [1 phrase]
-- Timing: [note /10] — [1 phrase]
-
-RÈGLE DE NOTATION : note chaque critère justement et sans complaisance, MAIS sans pénaliser abusivement un débutant — manquer d'expérience ou de gros budget au démarrage est NORMAL et ne doit pas faire chuter tout le score. Un projet sincère et réaliste mérite une note correcte. Garde l'évaluation honnête, mais encourageante et tournée vers le progrès.
 
 ## PORTRAIT DU PROJET
 INTRO: [1 phrase d'accroche]
@@ -268,9 +257,6 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
     const result = {
       nom: "",
       slogan: "",
-      score: 70,
-      scoreExplication: "",
-      scoreCriteres: [],
       sections: [],
       activite: Object.values(sanitizedAnswers)[0]?.slice(0, 90) || "",
       titre: ""
@@ -278,28 +264,12 @@ INTRO: [1 phrase sur l'importance d'anticiper les obstacles]
 
     const cleanText1 = text1.replace(/\*\*/g, "");
     const lines1 = cleanText1.split("\n").map(l => l.trim()).filter(l => l);
-    let inScoreCriteres = false;
 
     for (const line of lines1) {
       let m;
       if ((m = line.match(/^NOM\s*:\s*(.+)/i))) result.nom = m[1].trim();
       else if ((m = line.match(/^TITRE\s*:\s*(.+)/i))) result.titre = m[1].trim();
       else if ((m = line.match(/^SLOGAN\s*:\s*(.+)/i))) result.slogan = m[1].trim();
-      else if (!/^SCORE_/i.test(line) && (m = line.match(/^SCORE\s*:\s*(\d+)/i))) result.score = parseInt(m[1]) || 70;
-      else if ((m = line.match(/^SCORE_EXPLICATION\s*:\s*(.+)/i))) result.scoreExplication = m[1].trim();
-      else if (/^SCORE_CRITERES\s*:/i.test(line)) inScoreCriteres = true;
-      else if (inScoreCriteres && line.startsWith("-")) result.scoreCriteres.push(line.replace(/^-\s*/, "").trim());
-      else if (line.startsWith("##")) inScoreCriteres = false;
-    }
-
-    // Score TRANSPARENT : on recalcule la moyenne réelle des 6 critères /10
-    // (au lieu de faire confiance au nombre donné par le modèle).
-    const notes = result.scoreCriteres
-      .map(c => { const m = c.match(/(\d+(?:[.,]\d+)?)\s*\/\s*10/); return m ? parseFloat(m[1].replace(",", ".")) : null; })
-      .filter(n => n !== null && n >= 0 && n <= 10);
-    if (notes.length >= 4) {
-      const moyenne = notes.reduce((a, b) => a + b, 0) / notes.length;
-      result.score = Math.round(moyenne * 10);
     }
 
     // Parser les sections des 2 parties
