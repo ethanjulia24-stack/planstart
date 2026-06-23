@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 
 // Transforme les URL d'un texte en liens cliquables ENTIERS (jamais d'astérisque).
 // Version écran (renvoie du JSX).
@@ -825,23 +825,48 @@ ${sections.map((s, i) => {
               </div>
               <div id="comment">
                 <div style={{ fontSize: 12.5, letterSpacing: "0.16em", color: OR, fontWeight: 700, marginBottom: 26 }}>COMMENT ÇA MARCHE</div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: isMobile ? 8 : 12 }}>
-                  {[
-                    { n: "01", icon: (<Ic s={20} c="#444"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></Ic>), t: "Tu réponds", d: "Réponds à 10 questions simples sur ton projet, ton expérience et tes objectifs." },
-                    { n: "02", icon: (<Ic s={20} c="#444"><path d="M12 3l2 5.5L19.5 10 14 11.5 12 17l-2-5.5L4.5 10 10 8.5z" /></Ic>), t: "On construit ton plan", d: "À partir de tes réponses, notre IA structure ton projet et génère une analyse complète." },
-                    { n: "03", icon: (<Ic s={20} c="#444"><path d="M12 3v12" /><path d="M7 11l5 5 5-5" /><path d="M5 21h14" /></Ic>), t: "Tu télécharges", d: "Récupère un business plan complet, personnalisé et prêt à t'aider à lancer ton activité." },
-                  ].map((s, i) => (
-                    <div key={i}>
-                      <div style={{ fontSize: isMobile ? 26 : 34, fontWeight: 800, color: OR, lineHeight: 1, marginBottom: 14 }}>{s.n}</div>
-                      <div style={{ display: "flex", alignItems: "center", marginBottom: 14 }}>
-                        <span style={{ width: isMobile ? 34 : 40, height: isMobile ? 34 : 40, borderRadius: "50%", background: "#EFEFEF", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{s.icon}</span>
-                        {i < 2 && <span style={{ flex: 1, borderTop: `2px dashed ${OR}`, opacity: 0.5, margin: "0 4px" }} />}
+                {(() => {
+                  const steps = [
+                    { n: "01", icon: (<Ic s={isMobile ? 18 : 20} c="#444"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></Ic>), t: "Tu réponds", d: "Réponds à 10 questions simples sur ton projet, ton expérience et tes objectifs." },
+                    { n: "02", icon: (<Ic s={isMobile ? 18 : 20} c="#444"><path d="M12 3l2 5.5L19.5 10 14 11.5 12 17l-2-5.5L4.5 10 10 8.5z" /></Ic>), t: "On construit ton plan", d: "À partir de tes réponses, notre IA structure ton projet et génère une analyse complète." },
+                    { n: "03", icon: (<Ic s={isMobile ? 18 : 20} c="#444"><path d="M12 3v12" /><path d="M7 11l5 5 5-5" /><path d="M5 21h14" /></Ic>), t: "Tu télécharges", d: "Récupère un business plan complet, personnalisé et prêt à t'aider à lancer ton activité." },
+                  ];
+                  const al = (i) => i === 0 ? "left" : i === 1 ? "center" : "right";
+                  const iconSz = isMobile ? 32 : 40;
+                  return (
+                    <>
+                      {/* Numéros */}
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+                        {steps.map((s, i) => (
+                          <div key={i} style={{ width: "32%", textAlign: al(i), fontSize: isMobile ? 26 : 34, fontWeight: 800, color: OR, lineHeight: 1 }}>{s.n}</div>
+                        ))}
                       </div>
-                      <div style={{ fontSize: isMobile ? 13 : 15, fontWeight: 700, marginBottom: 8 }}>{s.t}</div>
-                      <div style={{ fontSize: isMobile ? 11 : 13, color: "rgba(0,0,0,0.5)", fontWeight: 500, lineHeight: 1.5 }}>{s.d}</div>
-                    </div>
-                  ))}
-                </div>
+                      {/* Icônes + connecteurs */}
+                      <div style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
+                        {steps.map((s, i) => (
+                          <Fragment key={i}>
+                            <span style={{ width: iconSz, height: iconSz, borderRadius: "50%", background: "#EFEFEF", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{s.icon}</span>
+                            {i < 2 && (
+                              <span style={{ flex: 1, display: "flex", alignItems: "center", margin: "0 7px" }}>
+                                <span style={{ flex: 1, borderTop: `2px dashed ${OR}`, opacity: 0.55 }} />
+                                <span style={{ width: 0, height: 0, borderTop: "4px solid transparent", borderBottom: "4px solid transparent", borderLeft: `6px solid ${OR}`, opacity: 0.7, marginLeft: 1 }} />
+                              </span>
+                            )}
+                          </Fragment>
+                        ))}
+                      </div>
+                      {/* Titres + descriptions */}
+                      <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        {steps.map((s, i) => (
+                          <div key={i} style={{ width: "31%", textAlign: al(i) }}>
+                            <div style={{ fontSize: isMobile ? 13 : 15, fontWeight: 700, marginBottom: 8 }}>{s.t}</div>
+                            <div style={{ fontSize: isMobile ? 11 : 13, color: "rgba(0,0,0,0.5)", fontWeight: 500, lineHeight: 1.5 }}>{s.d}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
             </div>
           </div>
@@ -883,8 +908,7 @@ ${sections.map((s, i) => {
 
           {/* ════════ À PROPOS ════════ */}
           <div id="apropos" style={{ background: CREAM, padding: isMobile ? "32px 16px" : "44px 60px" }}>
-            <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "0.8fr 1.2fr 1fr", gap: isMobile ? 24 : 40, alignItems: "center" }}>
-              <div style={{ width: "100%", height: isMobile ? 220 : 260, borderRadius: 16, backgroundImage: "url(/hero-1.jpeg)", backgroundSize: "cover", backgroundPosition: "center" }} />
+            <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.4fr 1fr", gap: isMobile ? 24 : 56, alignItems: "center" }}>
               <div>
                 <div style={{ fontSize: 12.5, letterSpacing: "0.16em", color: OR, fontWeight: 700, marginBottom: 14 }}>À PROPOS</div>
                 <h2 style={{ fontSize: isMobile ? 24 : 28, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: 16 }}>Planstart c'est pour ceux qui passent à l'action.</h2>
