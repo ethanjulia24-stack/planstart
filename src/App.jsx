@@ -75,6 +75,7 @@ function LoadingScreen({ isOrange }) {
   const [stepIndex, setStepIndex] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [msgIndex, setMsgIndex] = useState(0);
+  const [slide, setSlide] = useState(0);
   const isMobile = window.innerWidth < 768;
   const ACC = isOrange ? "#ff7a2e" : "#fff";
   const ACC_GRAD = isOrange ? "linear-gradient(90deg,#ff9d3d,#ff5e3a)" : "#fff";
@@ -82,12 +83,13 @@ function LoadingScreen({ isOrange }) {
   useEffect(() => {
     const timer = setInterval(() => setElapsed(e => e + 1), 1000);
     const msgTimer = setInterval(() => setMsgIndex(i => (i + 1) % ROTATING_MESSAGES.length), 6000);
+    const slideTimer = setInterval(() => setSlide(i => (i + 1) % IMAGES.length), 5000);
     let cumulative = 0;
     const timers = LOADING_STEPS.slice(0, -1).map((step, i) => {
       cumulative += step.duration;
       return setTimeout(() => setStepIndex(i + 1), cumulative);
     });
-    return () => { clearInterval(timer); clearInterval(msgTimer); timers.forEach(clearTimeout); };
+    return () => { clearInterval(timer); clearInterval(msgTimer); clearInterval(slideTimer); timers.forEach(clearTimeout); };
   }, []);
 
   // Progression asymptotique : avance vite au début puis ralentit, sans jamais
@@ -98,13 +100,19 @@ function LoadingScreen({ isOrange }) {
   const formatTime = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#222227", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px" }}>
+    <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px" }}>
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes pulse3 { 0%,100%{opacity:1} 50%{opacity:0.3} }
       `}</style>
 
-      <div style={{ width: "100%", maxWidth: 520, border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12, background: "rgba(255,255,255,0.025)", padding: isMobile ? "40px 24px" : "52px 48px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ position: "fixed", inset: 0, background: "#0a0a0a" }} />
+      {IMAGES.map((img, i) => (
+        <div key={i} style={{ position: "fixed", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === slide ? 1 : 0, transition: "opacity 1.6s ease" }} />
+      ))}
+      <div style={{ position: "fixed", inset: 0, background: "linear-gradient(180deg, rgba(8,7,6,0.84) 0%, rgba(8,7,6,0.62) 45%, rgba(8,7,6,0.84) 100%)" }} />
+
+      <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 520, border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12, background: "rgba(12,11,10,0.55)", backdropFilter: "blur(8px)", padding: isMobile ? "40px 24px" : "52px 48px", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
       <div style={{ marginBottom: 48, textAlign: "center" }}>
         <div style={{ fontSize: 10, letterSpacing: "0.3em", color: "rgba(255,255,255,0.25)", marginBottom: 8, fontWeight: 900 }}>PLANSTART</div>
