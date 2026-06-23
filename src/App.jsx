@@ -694,7 +694,7 @@ ${sections.map((s, i) => {
                 <span style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.82)", fontWeight: 600 }}>Ton idée mérite d'exister. On t'aide à la structurer.</span>
               </div>
               <h1 style={{ fontSize: isMobile ? "clamp(40px,11vw,56px)" : "clamp(60px,7vw,92px)", fontWeight: 800, lineHeight: 0.98, letterSpacing: "-0.03em", color: "#fff", textTransform: "uppercase", marginBottom: 22 }}>
-                Ton idée.<br />Ton entreprise.<br /><span style={{ color: OR }}>Maintenant.</span>
+                Ton idée.<br />Ton plan.<br /><span style={{ color: OR }}>Maintenant.</span>
               </h1>
               <p style={{ fontSize: isMobile ? 15 : 17, color: "rgba(255,255,255,0.78)", fontWeight: 500, lineHeight: 1.6, maxWidth: 480, marginBottom: 32 }}>Réponds à 10 questions et obtiens un business plan personnalisé en quelques minutes. Gratuit et sans compte.</p>
               <div>
@@ -818,7 +818,7 @@ ${sections.map((s, i) => {
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, padding: isMobile ? "14px 14px" : "14px 16px", background: BK }}>
                       {isMobile && <span style={{ fontSize: 13, fontWeight: 800, color: OR, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</span>}
                       <span style={{ flexShrink: 0 }}>{c.icon}</span>
-                      <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.3, color: "#fff" }}>{c.t}</span>
+                      <span style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.3, color: "rgba(255,255,255,0.6)" }}>{c.t}</span>
                     </div>
                   ))}
                 </div>
@@ -847,36 +847,36 @@ ${sections.map((s, i) => {
           </div>
 
           {/* ════════ BASÉ SUR DES DONNÉES RÉELLES ════════ */}
-          <div style={{ background: CREAM, padding: isMobile ? "8px 16px 38px" : "16px 60px 52px" }}>
-            <div style={{ maxWidth: 1180, margin: "0 auto", border: "1px solid #ECECEC", borderRadius: 18, padding: isMobile ? "26px 20px" : "34px 44px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.5fr", gap: isMobile ? 24 : 40, alignItems: "center" }}>
-              <div>
-                <div style={{ fontSize: 12.5, letterSpacing: "0.14em", color: OR, fontWeight: 700, marginBottom: 10 }}>BASÉ SUR DES DONNÉES RÉELLES</div>
-                <p style={{ fontSize: 14.5, color: "rgba(0,0,0,0.6)", fontWeight: 500, lineHeight: 1.5 }}>Nous nous appuyons sur des sources officielles et fiables pour construire ton plan.</p>
+          <div style={{ background: CREAM, padding: isMobile ? "8px 16px 30px" : "16px 60px 52px" }}>
+            <div style={{ maxWidth: 1180, margin: "0 auto", border: "1px solid #ECECEC", borderRadius: 16, padding: isMobile ? "16px 18px" : "26px 44px", display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 16 : 40, alignItems: "center" }}>
+              <div style={{ flexShrink: 0, textAlign: isMobile ? "center" : "left" }}>
+                <div style={{ fontSize: isMobile ? 11 : 12.5, letterSpacing: "0.14em", color: OR, fontWeight: 700, marginBottom: 8 }}>BASÉ SUR DES DONNÉES RÉELLES</div>
+                <p style={{ fontSize: isMobile ? 13 : 14.5, color: "rgba(0,0,0,0.6)", fontWeight: 500, lineHeight: 1.45 }}>Nous nous appuyons sur des sources officielles et fiables pour construire ton plan.</p>
               </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 12 : 28, flexWrap: "wrap", opacity: 0.5, filter: "grayscale(1)" }}>
-                <span style={{ fontWeight: 800, fontSize: isMobile ? 16 : 21, letterSpacing: "0.04em", color: "#2a2a2a" }}>INSEE</span>
-                <span style={{ fontWeight: 700, fontSize: isMobile ? 17 : 23, color: "#2a2a2a" }}>Urssaf</span>
-                <span style={{ fontWeight: 700, fontSize: isMobile ? 16 : 21, color: "#2a2a2a" }}>bpifrance</span>
-                <span style={{ fontWeight: 800, fontSize: isMobile ? 8.5 : 11, color: "#2a2a2a", lineHeight: 1.15, textAlign: "center" }}>RÉPUBLIQUE<br />FRANÇAISE</span>
+              <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "space-around", gap: isMobile ? 10 : 28, flexWrap: "nowrap", opacity: 0.5, filter: "grayscale(1)" }}>
+                <span style={{ fontWeight: 800, fontSize: isMobile ? 13 : 21, letterSpacing: "0.04em", color: "#2a2a2a" }}>INSEE</span>
+                <span style={{ fontWeight: 700, fontSize: isMobile ? 14 : 23, color: "#2a2a2a" }}>Urssaf</span>
+                <span style={{ fontWeight: 700, fontSize: isMobile ? 13 : 21, color: "#2a2a2a" }}>bpifrance</span>
+                <span style={{ fontWeight: 800, fontSize: isMobile ? 7 : 11, color: "#2a2a2a", lineHeight: 1.15, textAlign: "center" }}>RÉPUBLIQUE<br />FRANÇAISE</span>
               </div>
             </div>
           </div>
 
           {/* ════════ LANCE TON PROJET (bloc noir) ════════ */}
-          <div style={{ background: CREAM, padding: isMobile ? "8px 16px 28px" : "12px 60px 40px" }}>
-            <div style={{ maxWidth: 1180, margin: "0 auto", background: BK, borderRadius: 22, padding: isMobile ? "40px 24px" : "54px 56px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.1fr 1fr", gap: isMobile ? 28 : 50, alignItems: "center" }}>
-              <div style={{ display: "flex", gap: 22, alignItems: isMobile ? "flex-start" : "center", flexDirection: isMobile ? "column" : "row" }}>
-                <div style={{ width: 78, height: 78, borderRadius: "50%", border: `2px solid ${OR}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <Ic s={34}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /></Ic>
+          <div style={{ background: CREAM, padding: isMobile ? "8px 16px 24px" : "12px 60px 40px" }}>
+            <div style={{ maxWidth: 1180, margin: "0 auto", background: BK, borderRadius: 22, padding: isMobile ? "22px 20px" : "54px 56px", display: "flex", flexDirection: "row", alignItems: "center", gap: isMobile ? 16 : 40 }}>
+              <div style={{ width: isMobile ? 52 : 78, height: isMobile ? 52 : 78, borderRadius: "50%", border: `2px solid ${OR}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Ic s={isMobile ? 24 : 34}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /></Ic>
+              </div>
+              <div style={{ flex: 1, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.1fr 1fr", gap: isMobile ? 14 : 50, alignItems: "center" }}>
+                <div>
+                  <div style={{ fontSize: isMobile ? 10.5 : 12, letterSpacing: "0.14em", color: OR, fontWeight: 700, marginBottom: isMobile ? 7 : 10 }}>LANCE TON PROJET AUJOURD'HUI</div>
+                  <h2 style={{ fontSize: isMobile ? 20 : 34, fontWeight: 800, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.02em" }}>Accède gratuitement, partage ton avis, influence la suite !</h2>
                 </div>
                 <div>
-                  <div style={{ fontSize: 12, letterSpacing: "0.14em", color: OR, fontWeight: 700, marginBottom: 10 }}>LANCE TON PROJET AUJOURD'HUI</div>
-                  <h2 style={{ fontSize: isMobile ? 27 : 34, fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.02em" }}>Accède gratuitement, partage ton avis, influence la suite !</h2>
+                  <p style={{ fontSize: isMobile ? 13 : 15, color: "rgba(255,255,255,0.6)", fontWeight: 500, lineHeight: 1.55, marginBottom: isMobile ? 16 : 24 }}>Génère ton business plan gratuitement et aide-nous à améliorer la plateforme. Ton avis nous aidera à rendre l'outil encore plus utile.</p>
+                  <button onClick={() => setScreen("quiz")} style={{ background: OR, color: "#fff", border: "none", padding: isMobile ? "13px 26px" : "16px 36px", fontSize: isMobile ? 12 : 13, fontWeight: 700, letterSpacing: "0.08em", borderRadius: 12 }}>CRÉER MON PLAN →</button>
                 </div>
-              </div>
-              <div>
-                <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", fontWeight: 500, lineHeight: 1.6, marginBottom: 24 }}>Génère ton business plan gratuitement et aide-nous à améliorer la plateforme. Ton avis nous aidera à rendre l'outil encore plus utile.</p>
-                <button onClick={() => setScreen("quiz")} style={{ background: OR, color: "#fff", border: "none", padding: "16px 36px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", borderRadius: 12 }}>CRÉER MON PLAN →</button>
               </div>
             </div>
           </div>
@@ -907,11 +907,11 @@ ${sections.map((s, i) => {
           </div>
 
           {/* ════════ CTA FINAL (bloc noir) ════════ */}
-          <div style={{ background: CREAM, padding: isMobile ? "16px 16px 32px" : "20px 60px 48px" }}>
-            <div style={{ maxWidth: 1180, margin: "0 auto", background: BK, borderRadius: 22, padding: isMobile ? "40px 24px" : "52px 56px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr auto", gap: isMobile ? 22 : 40, alignItems: "center" }}>
-              <h2 style={{ fontSize: isMobile ? "clamp(40px,12vw,56px)" : "clamp(46px,5vw,72px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 0.92, color: "#fff", textTransform: "uppercase" }}>Prêt à<br /><span style={{ color: OR }}>te lancer ?</span></h2>
-              <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", fontWeight: 500, lineHeight: 1.6 }}>Transforme ton idée en plan concret en moins de 5 minutes.</p>
-              <button onClick={() => setScreen("quiz")} style={{ background: "#fff", color: "#000", border: "none", padding: isMobile ? "16px 36px" : "18px 40px", fontSize: 14, fontWeight: 700, letterSpacing: "0.1em", borderRadius: 12, whiteSpace: "nowrap", justifySelf: isMobile ? "start" : "end" }}>C'EST PARTI →</button>
+          <div style={{ background: CREAM, padding: isMobile ? "12px 16px 28px" : "20px 60px 48px" }}>
+            <div style={{ maxWidth: 1180, margin: "0 auto", background: BK, borderRadius: 22, padding: isMobile ? "22px 18px" : "52px 56px", display: "flex", flexDirection: "row", alignItems: "center", gap: isMobile ? 12 : 40 }}>
+              <h2 style={{ fontSize: isMobile ? "clamp(19px,5.4vw,26px)" : "clamp(46px,5vw,72px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: isMobile ? 1.0 : 0.92, color: "#fff", textTransform: "uppercase", flexShrink: 0 }}>Prêt à<br /><span style={{ color: OR }}>te lancer ?</span></h2>
+              <p style={{ flex: 1, fontSize: isMobile ? 11.5 : 15, color: "rgba(255,255,255,0.6)", fontWeight: 500, lineHeight: 1.45 }}>Transforme ton idée en plan concret en moins de 5 minutes.</p>
+              <button onClick={() => setScreen("quiz")} style={{ background: "#fff", color: "#000", border: "none", padding: isMobile ? "11px 16px" : "18px 40px", fontSize: isMobile ? 11 : 14, fontWeight: 700, letterSpacing: "0.08em", borderRadius: 11, whiteSpace: "nowrap", flexShrink: 0 }}>C'EST PARTI →</button>
             </div>
           </div>
 
