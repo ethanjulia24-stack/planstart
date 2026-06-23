@@ -234,7 +234,7 @@ export default function App() {
   }, [screen]);
 
   useEffect(() => {
-    if (screen !== "home") return;
+    if (screen !== "home" && screen !== "quiz") return;
     const t = setInterval(() => setSlideIndex(i => (i + 1) % IMAGES.length), 5000);
     return () => clearInterval(t);
   }, [screen]);
@@ -955,7 +955,10 @@ ${sections.map((s, i) => {
       {screen === "quiz" && (
         <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "fixed", inset: 0, background: "#0a0a0a" }} />
-          <div style={{ position: "fixed", inset: 0, backgroundImage: `url(${IMAGES[1]})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.08 }} />
+          {IMAGES.map((img, i) => (
+            <div key={i} style={{ position: "fixed", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === slideIndex ? 1 : 0, transition: "opacity 1.6s ease" }} />
+          ))}
+          <div style={{ position: "fixed", inset: 0, background: "linear-gradient(180deg, rgba(8,7,6,0.86) 0%, rgba(8,7,6,0.58) 38%, rgba(8,7,6,0.62) 64%, rgba(8,7,6,0.86) 100%)" }} />
 
           {blocTransition && (
             <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "#000", display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeIn 0.3s ease both" }}>
@@ -967,7 +970,7 @@ ${sections.map((s, i) => {
             </div>
           )}
 
-          <div style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", maxWidth: 720, margin: "0 auto", animation: "slideUp 0.5s ease both" }}>
+          <div style={{ position: "relative", zIndex: 2, minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: isMobile ? "90px 24px 60px" : "100px 60px 60px", maxWidth: 720, margin: "0 auto", animation: "slideUp 0.5s ease both" }}>
 
             {/* Blocs + Progress */}
             <div style={{ marginBottom: 48 }}>
