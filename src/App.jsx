@@ -727,56 +727,59 @@ ${sections.map((s, i) => {
 
           {/* ════════ CE QUE TU OBTIENS ════════ */}
           <div style={{ background: CREAM, padding: isMobile ? "46px 16px" : "80px 60px" }}>
-            <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 36 : 64, alignItems: "center" }}>
-              <div>
-                <div style={{ fontSize: 12.5, letterSpacing: "0.16em", color: OR, fontWeight: 700, marginBottom: 16 }}>CE QUE TU OBTIENS</div>
-                <h2 style={{ fontSize: isMobile ? 28 : 38, fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 22 }}>Un vrai dossier,<br />pas un résumé vague.</h2>
-                <div style={{ width: 54, height: 4, background: OR, borderRadius: 2, marginBottom: 26 }} />
-                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "14px 0" : "16px 28px", marginBottom: 24 }}>
-                  {["Analyse de marché", "Projections financières", "Stratégie marketing", "Plan d'action 90 jours", "Démarches légales", "Gestion des risques"].map((it, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 11 }}>
-                      <span style={{ width: 22, height: 22, borderRadius: "50%", background: OR, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}><Ic s={13} c="#fff" sw={3}><path d="M5 12l4 4 10-10" /></Ic></span>
-                      <span style={{ fontSize: 15, fontWeight: 600 }}>{it}</span>
-                    </div>
-                  ))}
-                </div>
-                <p style={{ fontSize: 13, color: "rgba(0,0,0,0.45)", fontWeight: 500, lineHeight: 1.5, maxWidth: 340 }}>Exemple de plan généré — chaque dossier est unique, adapté à ton projet.</p>
-              </div>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <div style={{ position: "relative", width: isMobile ? "94%" : 420, height: isMobile ? 400 : 420 }}>
-                  <div style={{ position: "absolute", inset: 0, borderRadius: 16, background: "#EFEEEB", transform: "rotate(4deg) translate(18px,6px)", boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }} />
-                  <div style={{ position: "absolute", inset: 0, borderRadius: 16, background: "#F7F6F4", transform: "rotate(2deg) translate(9px,3px)", boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }} />
-                  <div style={{ position: "absolute", inset: 0, borderRadius: 16, background: "#fff", boxShadow: "0 24px 60px rgba(0,0,0,0.14)", padding: isMobile ? "22px 22px" : "28px 28px", display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 22 }}>
-                      <div>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", color: OR }}>BUSINESS PLAN</div>
-                        <div style={{ fontSize: 21, fontWeight: 800, letterSpacing: "-0.02em", marginTop: 5 }}>Barbier — Paris 11e</div>
+            <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+              <div style={{ fontSize: 12.5, letterSpacing: "0.16em", color: OR, fontWeight: 700, marginBottom: 16 }}>CE QUE TU OBTIENS</div>
+              <h2 style={{ fontSize: isMobile ? 25 : 38, fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 18 }}>Un vrai dossier,<br />pas un résumé vague.</h2>
+              <div style={{ width: 54, height: 4, background: OR, borderRadius: 2, marginBottom: isMobile ? 26 : 34 }} />
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1.05fr 0.95fr" : "1fr 1fr", gap: isMobile ? 14 : 64, alignItems: "center" }}>
+                <div>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "11px 0" : "16px 28px" }}>
+                    {["Analyse de marché", "Projections financières", "Stratégie marketing", "Plan d'action 90 jours", "Démarches légales", "Gestion des risques"].map((it, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: isMobile ? 9 : 11 }}>
+                        <span style={{ width: isMobile ? 19 : 22, height: isMobile ? 19 : 22, borderRadius: "50%", background: OR, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}><Ic s={isMobile ? 11 : 13} c="#fff" sw={3}><path d="M5 12l4 4 10-10" /></Ic></span>
+                        <span style={{ fontSize: isMobile ? 13 : 15, fontWeight: 600, lineHeight: 1.25 }}>{it}</span>
                       </div>
-                      <div style={{ width: 34, height: 34, borderRadius: "50%", background: BK, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>PS</div>
-                    </div>
-                    <div style={{ fontSize: 12.5, fontWeight: 700, marginBottom: 10 }}>Analyse de marché</div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 24 }}>
-                      <div style={{ height: 7, borderRadius: 4, background: "#ECEBE8", width: "100%" }} />
-                      <div style={{ height: 7, borderRadius: 4, background: "#ECEBE8", width: "92%" }} />
-                      <div style={{ height: 7, borderRadius: 4, background: "#ECEBE8", width: "74%" }} />
-                    </div>
-                    <div style={{ fontSize: 12.5, fontWeight: 700, marginBottom: 12 }}>Projections sur 12 mois</div>
-                    <div style={{ display: "flex", alignItems: "flex-end", gap: 9, height: 130 }}>
-                      {[{ h: 30, m: "JAN" }, { h: 44, m: "FEV" }, { h: 60, m: "MAR" }, { h: 70, m: "AVR" }, { h: 84, m: "MAI" }, { h: 100, m: "JUN" }].map((b, i) => (
-                        <div key={i} style={{ flex: 1, height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", gap: 6 }}>
-                          <div style={{ width: "100%", height: `${b.h}%`, background: OR, borderRadius: "4px 4px 0 0" }} />
-                          <span style={{ fontSize: 9, color: "rgba(0,0,0,0.4)", fontWeight: 600 }}>{b.m}</span>
+                    ))}
+                  </div>
+                  {!isMobile && <p style={{ fontSize: 13, color: "rgba(0,0,0,0.45)", fontWeight: 500, lineHeight: 1.5, maxWidth: 340, marginTop: 24 }}>Exemple de plan généré — chaque dossier est unique, adapté à ton projet.</p>}
+                </div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div style={{ position: "relative", width: isMobile ? "100%" : 420, height: isMobile ? 270 : 420 }}>
+                    <div style={{ position: "absolute", inset: 0, borderRadius: 14, background: "#EFEEEB", transform: isMobile ? "rotate(3deg) translate(8px,4px)" : "rotate(4deg) translate(18px,6px)", boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }} />
+                    <div style={{ position: "absolute", inset: 0, borderRadius: 14, background: "#F7F6F4", transform: isMobile ? "rotate(1.5deg) translate(4px,2px)" : "rotate(2deg) translate(9px,3px)", boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }} />
+                    <div style={{ position: "absolute", inset: 0, borderRadius: 14, background: "#fff", boxShadow: "0 24px 60px rgba(0,0,0,0.14)", padding: isMobile ? "14px 13px" : "28px 28px", display: "flex", flexDirection: "column" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: isMobile ? 13 : 22 }}>
+                        <div>
+                          <div style={{ fontSize: isMobile ? 8 : 10, fontWeight: 700, letterSpacing: "0.14em", color: OR }}>BUSINESS PLAN</div>
+                          <div style={{ fontSize: isMobile ? 13 : 21, fontWeight: 800, letterSpacing: "-0.02em", marginTop: isMobile ? 3 : 5, lineHeight: 1.1 }}>Barbier — Paris 11e</div>
                         </div>
-                      ))}
+                        <div style={{ width: isMobile ? 24 : 34, height: isMobile ? 24 : 34, borderRadius: "50%", background: BK, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: isMobile ? 8 : 11, fontWeight: 800, flexShrink: 0 }}>PS</div>
+                      </div>
+                      <div style={{ fontSize: isMobile ? 9.5 : 12.5, fontWeight: 700, marginBottom: isMobile ? 7 : 10 }}>Analyse de marché</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 5 : 7, marginBottom: isMobile ? 14 : 24 }}>
+                        <div style={{ height: isMobile ? 5 : 7, borderRadius: 4, background: "#ECEBE8", width: "100%" }} />
+                        <div style={{ height: isMobile ? 5 : 7, borderRadius: 4, background: "#ECEBE8", width: "92%" }} />
+                        <div style={{ height: isMobile ? 5 : 7, borderRadius: 4, background: "#ECEBE8", width: "74%" }} />
+                      </div>
+                      <div style={{ fontSize: isMobile ? 9.5 : 12.5, fontWeight: 700, marginBottom: isMobile ? 8 : 12 }}>Projections sur 12 mois</div>
+                      <div style={{ display: "flex", alignItems: "flex-end", gap: isMobile ? 5 : 9, height: isMobile ? 78 : 130 }}>
+                        {[{ h: 30, m: "JAN" }, { h: 44, m: "FEV" }, { h: 60, m: "MAR" }, { h: 70, m: "AVR" }, { h: 84, m: "MAI" }, { h: 100, m: "JUN" }].map((b, i) => (
+                          <div key={i} style={{ flex: 1, height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", gap: isMobile ? 4 : 6 }}>
+                            <div style={{ width: "100%", height: `${b.h}%`, background: OR, borderRadius: "3px 3px 0 0" }} />
+                            <span style={{ fontSize: isMobile ? 7 : 9, color: "rgba(0,0,0,0.4)", fontWeight: 600 }}>{b.m}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              {isMobile && <p style={{ fontSize: 12, color: "rgba(0,0,0,0.45)", fontWeight: 500, lineHeight: 1.5, marginTop: 22 }}>Exemple de plan généré — chaque dossier est unique, adapté à ton projet.</p>}
             </div>
           </div>
 
           {/* ════════ POURQUOI TU PEUX T'Y FIER ════════ */}
-          <div style={{ background: "#F4F4F5", padding: isMobile ? "46px 16px" : "76px 60px" }}>
+          <div style={{ background: CREAM, padding: isMobile ? "46px 16px" : "76px 60px" }}>
             <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
               <div style={{ fontSize: 12.5, letterSpacing: "0.16em", color: OR, fontWeight: 700, marginBottom: 14 }}>POURQUOI TU PEUX T'Y FIER</div>
               <h2 style={{ fontSize: isMobile ? 27 : 38, fontWeight: 800, letterSpacing: "-0.03em", marginBottom: isMobile ? 30 : 42 }}>Fait pour t'être vraiment utile.</h2>
@@ -786,12 +789,12 @@ ${sections.map((s, i) => {
                   { icon: (<Ic s={26}><path d="M3 21h18" /><rect x="5" y="10" width="3.4" height="8" /><rect x="10.3" y="6" width="3.4" height="12" /><rect x="15.6" y="13" width="3.4" height="5" /></Ic>), t: "Sources réelles", d: "Des sources officielles (INSEE, URSSAF…), pas des chiffres inventés." },
                   { icon: (<Ic s={26}><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h16.9a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" /><path d="M12 9v4.5" /><path d="M12 17h.01" /></Ic>), t: "Analyse aussi les risques", d: "Il te dit aussi ce qui peut coincer, pas seulement le positif." },
                 ].map((c, i) => (
-                  <div key={i} style={{ background: "#fff", border: "1px solid #ECECEC", borderRadius: 16, padding: 24 }}>
+                  <div key={i} style={{ background: BK, border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 24 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                       <span style={{ flexShrink: 0 }}>{c.icon}</span>
-                      <span style={{ fontSize: 16, fontWeight: 700 }}>{c.t}</span>
+                      <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>{c.t}</span>
                     </div>
-                    <p style={{ fontSize: 14, color: "rgba(0,0,0,0.55)", fontWeight: 500, lineHeight: 1.55 }}>{c.d}</p>
+                    <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", fontWeight: 500, lineHeight: 1.55 }}>{c.d}</p>
                   </div>
                 ))}
               </div>
@@ -812,10 +815,10 @@ ${sections.map((s, i) => {
                     { icon: (<Ic s={20}><rect x="5" y="4" width="14" height="17" rx="1" /><path d="M9 8h.01M14 8h.01M9 12h.01M14 12h.01M9 16h.01M14 16h.01" /></Ic>), t: "Tu veux créer ton entreprise avec un plan clair" },
                     { icon: (<Ic s={20}><rect x="6" y="4" width="12" height="17" rx="2" /><rect x="9" y="2.5" width="6" height="3.2" rx="1" /><path d="M9.5 12h5M9.5 16h5" /></Ic>), t: "Tu cherches un business plan simple et personnalisé" },
                   ].map((c, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, border: "1px solid #EAEAEA", borderRadius: 12, padding: isMobile ? "14px 14px" : "14px 16px", background: "#fff" }}>
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, padding: isMobile ? "14px 14px" : "14px 16px", background: BK }}>
                       {isMobile && <span style={{ fontSize: 13, fontWeight: 800, color: OR, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</span>}
                       <span style={{ flexShrink: 0 }}>{c.icon}</span>
-                      <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.3 }}>{c.t}</span>
+                      <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.3, color: "#fff" }}>{c.t}</span>
                     </div>
                   ))}
                 </div>
