@@ -110,7 +110,7 @@ function LoadingScreen({ isOrange }) {
       {IMAGES.map((img, i) => (
         <div key={i} style={{ position: "fixed", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === slide ? 1 : 0, transition: "opacity 1.6s ease" }} />
       ))}
-      <div style={{ position: "fixed", inset: 0, background: "linear-gradient(180deg, rgba(8,7,6,0.84) 0%, rgba(8,7,6,0.62) 45%, rgba(8,7,6,0.84) 100%)" }} />
+      <div style={{ position: "fixed", inset: 0, background: "linear-gradient(180deg, rgba(8,7,6,0.68) 0%, rgba(8,7,6,0.42) 45%, rgba(8,7,6,0.68) 100%)" }} />
 
       <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 520, border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12, background: "rgba(12,11,10,0.55)", backdropFilter: "blur(8px)", padding: isMobile ? "40px 24px" : "52px 48px", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
@@ -966,7 +966,7 @@ ${sections.map((s, i) => {
           {IMAGES.map((img, i) => (
             <div key={i} style={{ position: "fixed", inset: 0, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === slideIndex ? 1 : 0, transition: "opacity 1.6s ease" }} />
           ))}
-          <div style={{ position: "fixed", inset: 0, background: "linear-gradient(180deg, rgba(8,7,6,0.86) 0%, rgba(8,7,6,0.58) 38%, rgba(8,7,6,0.62) 64%, rgba(8,7,6,0.86) 100%)" }} />
+          <div style={{ position: "fixed", inset: 0, background: "linear-gradient(180deg, rgba(8,7,6,0.72) 0%, rgba(8,7,6,0.40) 38%, rgba(8,7,6,0.44) 64%, rgba(8,7,6,0.72) 100%)" }} />
 
           {blocTransition && (
             <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "#000", display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeIn 0.3s ease both" }}>
